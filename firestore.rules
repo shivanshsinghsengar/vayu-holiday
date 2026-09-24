@@ -1,0 +1,45 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // PUBLIC READ — packages, destinations, blogs, testimonials, offers
+    match /packages/{doc} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    match /destinations/{doc} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    match /blogs/{doc} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    match /testimonials/{doc} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    match /offers/{doc} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // ENQUIRIES — anyone can create (website leads), only admin can read/update/delete
+    match /enquiries/{doc} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null;
+    }
+
+    // SETTINGS — public read (company info shown on site), admin write
+    match /settings/{doc} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // MEDIA — admin only
+    match /media/{doc} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}

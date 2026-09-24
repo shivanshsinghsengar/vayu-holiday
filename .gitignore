@@ -1,0 +1,32 @@
+# Vayu Holidays — .gitignore
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment & secrets (NEVER commit these)
+.env
+.env.local
+.env.production
+*.pem
+*.key
+
+# Node (if you add build tools later)
+node_modules/
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.bak

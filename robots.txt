@@ -1,0 +1,28 @@
+# Vayu Holidays — robots.txt
+# https://www.vayuholidays.com
+
+User-agent: *
+Allow: /
+
+# Disallow admin and private areas
+Disallow: /#/admin
+Disallow: /js/views/admin.js
+
+# Allow all crawlers on important public pages
+Allow: /#/
+Allow: /#/packages
+Allow: /#/about
+Allow: /#/contact
+Allow: /#/blog
+Allow: /#/services/
+Allow: /#/domestic
+Allow: /#/international
+Allow: /#/honeymoon
+Allow: /#/terms
+Allow: /#/privacy
+
+# Sitemap location
+Sitemap: https://www.vayuholidays.com/sitemap.xml
+
+# Crawl delay (be gentle with server)
+Crawl-delay: 1

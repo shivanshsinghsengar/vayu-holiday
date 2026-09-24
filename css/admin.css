@@ -1,0 +1,382 @@
+/* ==========================================================================
+   VAYU HOLIDAYS — ADMIN CMS DASHBOARD STYLESHEET
+   Aesthetic: Minimal Dark Luxury, High-contrast, Sleek Obsidian & Gold Accents
+   ========================================================================== */
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--color-obsidian);
+  color: var(--color-ivory);
+}
+
+/* --- Admin Sidebar --- */
+.admin-sidebar {
+  width: 270px;
+  background-color: #06090D;
+  border-right: 1px solid var(--border-dark-subtle);
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem 1.25rem;
+  flex-shrink: 0;
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-dark-subtle);
+}
+
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex-grow: 1;
+}
+
+.admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-text-inverse-muted);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.admin-nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-ivory);
+}
+
+.admin-nav-item.active {
+  background: rgba(197, 168, 128, 0.12);
+  color: var(--color-gold-light);
+  border-color: rgba(197, 168, 128, 0.25);
+  font-weight: 600;
+}
+
+.admin-nav-badge {
+  margin-left: auto;
+  background: var(--color-gold);
+  color: var(--color-obsidian);
+  font-size: 0.7rem;
+  padding: 2px 7px;
+  border-radius: 99px;
+  font-weight: 700;
+}
+
+.admin-sidebar-footer {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-dark-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* --- Admin Content Area --- */
+.admin-main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.admin-header {
+  height: 72px;
+  background: #0B0F15;
+  border-bottom: 1px solid var(--border-dark-subtle);
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-title-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-page-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--color-ivory);
+}
+
+.admin-user-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--color-text-inverse-muted);
+}
+
+.admin-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-gold-muted);
+  border: 1px solid var(--border-gold);
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.admin-body {
+  padding: 2.5rem;
+  flex-grow: 1;
+}
+
+/* --- Analytics Metric Cards --- */
+.admin-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.metric-card {
+  background: #0E141C;
+  border: 1px solid var(--border-dark-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-fast);
+}
+
+.metric-card:hover {
+  border-color: var(--border-gold);
+}
+
+.metric-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-inverse-muted);
+  font-weight: 600;
+}
+
+.metric-icon {
+  color: var(--color-gold);
+}
+
+.metric-val {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--color-ivory);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.metric-sub {
+  font-size: 0.78rem;
+  color: #4ade80;
+}
+
+/* --- Admin Data Tables --- */
+.admin-card {
+  background: #0E141C;
+  border: 1px solid var(--border-dark-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.admin-card-header {
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid var(--border-dark-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.admin-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--color-ivory);
+}
+
+.admin-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+.admin-table th {
+  background: #080C10;
+  color: var(--color-text-inverse-muted);
+  padding: 1rem 1.5rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--border-dark-subtle);
+}
+
+.admin-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--color-ivory);
+}
+
+.admin-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Status Pills */
+.status-pill {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 99px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.status-new {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.status-contacted {
+  background: rgba(234, 179, 8, 0.15);
+  color: #facc15;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+}
+
+.status-quoted {
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.status-booked {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.status-lost {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Action Buttons inside Table */
+.table-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-table-action {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-dark-subtle);
+  border-radius: var(--radius-xs);
+  color: var(--color-ivory);
+  padding: 0.35rem 0.65rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-table-action:hover {
+  background: var(--color-gold);
+  color: var(--color-obsidian);
+  border-color: var(--color-gold);
+}
+
+/* --- Admin Login Modal / View --- */
+.admin-login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #131A22 0%, #06090D 100%);
+  padding: 1.5rem;
+}
+
+.admin-login-card {
+  width: 100%;
+  max-width: 440px;
+  background: #0E141C;
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-xl);
+  padding: 3rem 2.5rem;
+  box-shadow: var(--shadow-xl);
+  text-align: center;
+}
+
+.admin-login-logo {
+  margin-bottom: 1.5rem;
+  display: inline-flex;
+}
+
+.admin-login-title {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  color: var(--color-ivory);
+  margin-bottom: 0.5rem;
+}
+
+.admin-login-sub {
+  font-size: 0.88rem;
+  color: var(--color-text-inverse-muted);
+  margin-bottom: 2rem;
+}
+
+.admin-login-hints {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed var(--border-dark);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem;
+  font-size: 0.78rem;
+  color: var(--color-gold-light);
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+/* Admin Responsive */
+@media (max-width: 992px) {
+  .admin-layout {
+    flex-direction: column;
+  }
+  .admin-sidebar {
+    width: 100%;
+    padding: 1rem 1.5rem;
+  }
+  .admin-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+  .admin-body {
+    padding: 1.5rem;
+  }
+}
