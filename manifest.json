@@ -5,8 +5,8 @@
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "theme_color": "#090D12",
-  "background_color": "#FCFBF7",
+  "theme_color": "#FF6B35",
+  "background_color": "#F8F9FC",
   "lang": "en-IN",
   "categories": ["travel", "lifestyle", "business"],
   "screenshots": [

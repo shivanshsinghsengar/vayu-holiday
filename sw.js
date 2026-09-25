@@ -17,6 +17,7 @@ const PRECACHE_ASSETS = [
   "/css/package-detail.css",
   "/css/admin.css",
   "/css/mobile.css",
+  "/css/theme.css",
   "/js/data.js",
   "/js/store.js",
   "/js/components.js",
