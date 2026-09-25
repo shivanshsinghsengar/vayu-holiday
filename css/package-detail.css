@@ -356,7 +356,7 @@
   margin-top: 1rem;
 }
 
-/* Responsive Package Detail */
+/* Responsive Package Detail — detailed in mobile.css */
 @media (max-width: 992px) {
   .package-layout-grid {
     grid-template-columns: 1fr;
@@ -364,28 +364,6 @@
   .sticky-quote-card {
     position: static;
     margin-top: 2.5rem;
-  }
-  .package-gallery-grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-  }
-  .gallery-item:first-child {
-    grid-column: span 2;
-    grid-row: auto;
-    height: 320px;
-  }
-}
-
-@media (max-width: 640px) {
-  .inclusions-grid {
-    grid-template-columns: 1fr;
-  }
-  .package-gallery-grid {
-    grid-template-columns: 1fr;
-  }
-  .gallery-item:first-child {
-    grid-column: 1;
-    height: 240px;
   }
 }
 

@@ -643,17 +643,10 @@
   color: var(--color-text-inverse-muted);
 }
 
-/* --- Responsive Layout Adjustments --- */
+/* --- Responsive Layout Adjustments (overridden by mobile.css for phones) --- */
 @media (max-width: 992px) {
   .hero-search-bar {
     grid-template-columns: 1fr 1fr;
-  }
-  .search-field {
-    border-right: none;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-  .search-submit-btn {
-    grid-column: span 2;
   }
   .planner-steps-nav {
     grid-template-columns: repeat(2, 1fr);
@@ -664,16 +657,7 @@
 }
 
 @media (max-width: 640px) {
-  .hero-search-bar {
-    grid-template-columns: 1fr;
-  }
-  .search-submit-btn {
-    grid-column: 1;
-  }
-  .planner-body {
-    padding: 1.75rem 1.25rem;
-  }
   .vip-cta-banner {
-    padding: 3.5rem 1.5rem;
+    padding: 3rem 1.25rem;
   }
 }

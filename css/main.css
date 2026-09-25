@@ -750,7 +750,7 @@ button, input, select, textarea {
   color: var(--color-gold);
 }
 
-/* --- Responsive Media Queries --- */
+/* --- Responsive Media Queries (detailed fixes in mobile.css) --- */
 @media (max-width: 1200px) {
   .footer-top {
     grid-template-columns: repeat(3, 1fr);
@@ -759,30 +759,8 @@ button, input, select, textarea {
 }
 
 @media (max-width: 992px) {
-  .nav-links {
-    display: none;
-  }
-  .mobile-nav-toggle {
-    display: block;
-  }
-  .footer-top {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .top-bar-left, .top-bar-right {
-    width: 100%;
-    justify-content: center;
-    gap: 1rem;
-  }
-  .footer-top {
-    grid-template-columns: 1fr;
-  }
-  .footer-bottom {
-    flex-direction: column;
-    text-align: center;
-  }
+  .nav-links         { display: none; }
+  .mobile-nav-toggle { display: block; }
 }
 
 /* ==========================================================================
