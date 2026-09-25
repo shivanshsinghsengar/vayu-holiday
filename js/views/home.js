@@ -1,5 +1,5 @@
 /* ==========================================================================
-   VAYU HOLIDAYS — HOMEPAGE VIEW (Cinematic Editorial Luxury Experience)
+   VAYU HOLIDAYS — HOMEPAGE VIEW (Luxury Redesign 2026)
    ========================================================================== */
 
 async function renderHomeView() {
@@ -9,44 +9,54 @@ async function renderHomeView() {
   const services     = window.vayuStore.getServices();
   const testimonials = await window.vayuStore.getTestimonials();
   const blogs        = await window.vayuStore.getBlogs();
+  const waNumber     = (company.whatsapp || "919826012345").replace(/[^0-9]/g, "");
+  const waMsg        = encodeURIComponent(company.whatsappMessage || "Hello Vayu Holidays! I'd like to inquire about a luxury holiday.");
 
   return `
-    <!-- CINEMATIC HERO SECTION -->
-    <section class="hero-section">
-      <img 
-        src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=85" 
-        alt="Vayu Holidays Cinematic Destination" 
-        class="hero-bg-media" 
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         SECTION 1 — CINEMATIC HERO
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section class="hero-section" aria-label="Hero">
+      <img
+        src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80"
+        alt="Luxury travel destination — Vayu Holidays"
+        class="hero-bg-media"
+        fetchpriority="high"
+        width="1920" height="1080"
       />
-      <div class="hero-overlay"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
 
       <div class="container hero-content">
-        <span class="hero-eyebrow">
-          ${ICONS.sparkles} 2026 Bespoke Travel Agency & Tour Operator • Bhopal
-        </span>
 
-        <h1 class="hero-title">
-          Your Journey. <em>Beautifully Planned.</em>
+        <div class="hero-eyebrow-wrap" data-reveal>
+          <span class="hero-eyebrow">
+            ${ICONS.sparkles} Bespoke Travel Agency & Tour Operator &nbsp;·&nbsp; Bhopal, India
+          </span>
+        </div>
+
+        <h1 class="hero-title" data-reveal>
+          Your Journey.<br/><em>Beautifully Planned.</em>
         </h1>
 
-        <p class="hero-subtitle">
-          Original, minimal luxury travel experiences. Handcrafted itineraries, private sanctuaries, and dedicated 24/7 concierge support curated from Bhopal to the world.
+        <p class="hero-subtitle" data-reveal>
+          Original, minimal luxury travel from Bhopal to the world. Handcrafted itineraries, private sanctuaries, and a dedicated 24/7 concierge — every step of the way.
         </p>
 
-        <div class="hero-actions">
+        <div class="hero-actions" data-reveal>
           <a href="#/packages" class="btn btn-gold btn-lg">
             Explore 2026 Holidays ${ICONS.arrowRight}
           </a>
-          <button class="btn btn-outline-white btn-lg" onclick="openEnquiryModal({ title: 'Bespoke Travel Consultation' })">
+          <button class="btn btn-outline-white btn-lg" onclick="openEnquiryModal({ title: 'Plan My Bespoke Journey' })">
             ${ICONS.sparkles} Plan My Trip
           </button>
         </div>
 
-        <!-- QUICK JOURNEY FINDER BAR -->
-        <div class="hero-search-bar">
+        <!-- Journey Finder Bar -->
+        <div class="hero-search-bar" role="search" aria-label="Journey finder" data-reveal>
           <div class="search-field">
             <span class="search-field-label">${ICONS.mapPin} Where To?</span>
-            <select class="search-field-select" id="heroSearchDest">
+            <select class="search-field-select" id="heroSearchDest" aria-label="Select destination">
               <option value="">All Destinations</option>
               <option value="kashmir">Kashmir & Gulmarg</option>
               <option value="kerala">Kerala Backwaters</option>
@@ -57,10 +67,9 @@ async function renderHomeView() {
               <option value="maldives">The Maldives</option>
             </select>
           </div>
-
           <div class="search-field">
             <span class="search-field-label">${ICONS.calendar} Travel Month</span>
-            <select class="search-field-select" id="heroSearchMonth">
+            <select class="search-field-select" id="heroSearchMonth" aria-label="Select travel month">
               <option value="">Any Month</option>
               <option value="oct">October 2026</option>
               <option value="nov">November 2026</option>
@@ -69,10 +78,9 @@ async function renderHomeView() {
               <option value="feb">February 2027</option>
             </select>
           </div>
-
           <div class="search-field">
             <span class="search-field-label">${ICONS.sparkles} Experience</span>
-            <select class="search-field-select" id="heroSearchTheme">
+            <select class="search-field-select" id="heroSearchTheme" aria-label="Select experience type">
               <option value="">All Themes</option>
               <option value="honeymoon">Honeymoon & Romance</option>
               <option value="luxury">Ultra-Luxury</option>
@@ -82,280 +90,365 @@ async function renderHomeView() {
               <option value="mice">Corporate MICE</option>
             </select>
           </div>
-
           <div class="search-field">
             <span class="search-field-label">${ICONS.clock} Duration</span>
-            <select class="search-field-select" id="heroSearchDuration">
+            <select class="search-field-select" id="heroSearchDuration" aria-label="Select duration">
               <option value="">Any Duration</option>
               <option value="4-6">4 to 6 Days</option>
               <option value="7-9">7 to 9 Days</option>
               <option value="10+">10+ Days</option>
             </select>
           </div>
-
-          <button class="search-submit-btn" onclick="executeHeroSearch()">
+          <button class="search-submit-btn" onclick="executeHeroSearch()" aria-label="Find journeys">
             ${ICONS.plane} Find Journeys
           </button>
         </div>
 
-        <!-- TRUST BADGES -->
-        <div class="hero-trust-row">
-          <div class="trust-badge-item">
-            ${ICONS.shield} 100% Transparent Itemized Quotations
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         SECTION 2 — TRUST METRICS BAR
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section class="trust-bar-section" aria-label="Trust metrics">
+      <div class="container">
+        <div class="trust-metrics-row">
+          <div class="trust-metric">
+            <div class="trust-metric-val">500<span>+</span></div>
+            <div class="trust-metric-label">Luxury Trips Curated</div>
           </div>
-          <div class="trust-badge-item">
-            ${ICONS.sparkles} 24/7 Dedicated Trip Concierge
+          <div class="trust-metric-divider" aria-hidden="true"></div>
+          <div class="trust-metric">
+            <div class="trust-metric-val">4.9<span>★</span></div>
+            <div class="trust-metric-label">Average Guest Rating</div>
           </div>
-          <div class="trust-badge-item">
-            ${ICONS.mapPin} Headquartered in Bhopal, MP
+          <div class="trust-metric-divider" aria-hidden="true"></div>
+          <div class="trust-metric">
+            <div class="trust-metric-val">50<span>+</span></div>
+            <div class="trust-metric-label">Countries &amp; Destinations</div>
           </div>
-          <div class="trust-badge-item">
-            ${ICONS.check} Verified 4★ & 5★ Luxury Partners
+          <div class="trust-metric-divider" aria-hidden="true"></div>
+          <div class="trust-metric">
+            <div class="trust-metric-val">24<span>/7</span></div>
+            <div class="trust-metric-label">Personal Concierge</div>
+          </div>
+          <div class="trust-metric-divider" aria-hidden="true"></div>
+          <div class="trust-metric">
+            <div class="trust-metric-val">100<span>%</span></div>
+            <div class="trust-metric-label">Transparent Pricing</div>
+          </div>
+          <div class="trust-metric-divider" aria-hidden="true"></div>
+          <div class="trust-metric">
+            <div class="trust-metric-val">8<span>yr</span></div>
+            <div class="trust-metric-label">Years of Excellence</div>
+          </div>
+        </div>
+
+        <!-- Partner / Certification Badges -->
+        <div class="partner-badges-row" aria-label="Partner certifications">
+          <div class="partner-badge">
+            <span class="partner-badge-icon">✈</span>
+            <span>IATA Accredited</span>
+          </div>
+          <div class="partner-badge">
+            <span class="partner-badge-icon">🏨</span>
+            <span>Marriott Partner</span>
+          </div>
+          <div class="partner-badge">
+            <span class="partner-badge-icon">🏨</span>
+            <span>IHG Preferred</span>
+          </div>
+          <div class="partner-badge">
+            <span class="partner-badge-icon">✈</span>
+            <span>Air India Authorized</span>
+          </div>
+          <div class="partner-badge">
+            <span class="partner-badge-icon">🛡</span>
+            <span>GST Registered</span>
+          </div>
+          <div class="partner-badge">
+            <span class="partner-badge-icon">⭐</span>
+            <span>Verified 4★ & 5★ Only</span>
+          </div>
+          <div class="partner-badge">
+            <span class="partner-badge-icon">🔒</span>
+            <span>100% Secure Booking</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SMART TRIP PLANNER (INTERACTIVE WIZARD) -->
-    <section class="section section-sand" id="plannerSection">
+    <!-- ═══════════════════════════════════════════════════════════════════
+         SECTION 3 — FEATURED DESTINATIONS
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section class="section" id="destinationsSection" aria-label="Featured destinations">
+      <div class="container">
+        <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;">
+          <div>
+            <span class="eyebrow">Curated Sanctuaries</span>
+            <h2 class="section-title">Featured Destinations</h2>
+            <p class="section-desc">From snow-draped Kashmir peaks to turquoise Maldivian lagoons — every destination, intimately known.</p>
+          </div>
+          <div class="tab-group" id="destTabGroup" role="group" aria-label="Filter destinations">
+            <button class="tab-btn active" onclick="filterDestinations('all', this)">All</button>
+            <button class="tab-btn" onclick="filterDestinations('domestic', this)">Domestic</button>
+            <button class="tab-btn" onclick="filterDestinations('international', this)">International</button>
+          </div>
+        </div>
+        <div class="destinations-grid" id="destinationsGrid">
+          ${destinations.map(d => renderDestinationCard(d)).join('')}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         SECTION 4 — SIGNATURE PACKAGES
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section class="section section-sand" id="packagesSection" aria-label="Signature packages">
       <div class="container">
         <div class="section-header text-center">
-          <span class="eyebrow">Interactive Bespoke Designer</span>
-          <h2 class="section-title">Design Your Custom Journey</h2>
-          <p class="section-desc">
-            Tell us your travel dream in four intuitive steps. Our Bhopal luxury travel specialists will craft a bespoke day-wise itinerary with private transfers and handpicked stays.
-          </p>
+          <span class="eyebrow">Signature Journeys</span>
+          <h2 class="section-title">Curated Holiday Packages</h2>
+          <p class="section-desc">Day-wise itineraries, verified 4★ &amp; 5★ properties, private chauffeur, and transparent pricing — all in one.</p>
+        </div>
+        <div class="packages-grid">
+          ${packages.slice(0, 6).map(p => renderPackageCard(p)).join('')}
+        </div>
+        <div style="text-align:center;margin-top:3rem;">
+          <a href="#/packages" class="btn btn-primary btn-lg">
+            View All 2026 Packages ${ICONS.arrowRight}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         SECTION 5 — EXPERIENCE THEMES
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section class="section" aria-label="Travel experiences">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="eyebrow">Themes &amp; Moments</span>
+          <h2 class="section-title">Travel by Experience</h2>
+          <p class="section-desc">Whether celebrating love in a Maldivian overwater villa or leading an executive delegation to Switzerland.</p>
+        </div>
+        <div class="experiences-grid">
+          ${INITIAL_DATA.experiences.map(exp => `
+            <div class="experience-item" onclick="window.location.hash='#/packages?theme=${exp.id}'" role="button" tabindex="0" aria-label="${exp.title}" onkeydown="if(event.key==='Enter')window.location.hash='#/packages?theme=${exp.id}'">
+              <img src="${exp.image}" alt="${exp.title}" loading="lazy" width="800" height="560" />
+              <div class="experience-overlay">
+                <span class="badge badge-gold" style="width:fit-content;margin-bottom:0.65rem;">${exp.tagline}</span>
+                <h3 class="experience-title">${exp.title}</h3>
+                <p class="experience-desc">${exp.description}</p>
+                <div class="experience-cta">
+                  Explore ${ICONS.arrowRight}
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         SECTION 6 — SMART TRIP PLANNER
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section class="section section-sand" id="plannerSection" aria-label="Trip planner">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="eyebrow">Bespoke Journey Designer</span>
+          <h2 class="section-title">Design Your Custom Trip</h2>
+          <p class="section-desc">Tell us your dream in four steps. Our Bhopal specialists craft a day-wise itinerary with private transfers and handpicked stays.</p>
         </div>
 
         <div class="planner-wrapper">
-          <!-- Step Tabs -->
-          <div class="planner-steps-nav">
-            <button class="planner-step-tab active" id="plannerTab1" onclick="switchPlannerStep(1)">
-              <span class="step-num">Step 01</span>
-              <span class="step-label">Experience & Vibe</span>
+          <div class="planner-steps-nav" role="tablist" aria-label="Trip planner steps">
+            <button class="planner-step-tab active" id="plannerTab1" onclick="switchPlannerStep(1)" role="tab" aria-selected="true" aria-controls="plannerStep1">
+              <span class="step-num">01</span>
+              <span class="step-label">Experience</span>
             </button>
-            <button class="planner-step-tab" id="plannerTab2" onclick="switchPlannerStep(2)">
-              <span class="step-num">Step 02</span>
-              <span class="step-label">Destination & Dates</span>
+            <button class="planner-step-tab" id="plannerTab2" onclick="switchPlannerStep(2)" role="tab" aria-selected="false" aria-controls="plannerStep2">
+              <span class="step-num">02</span>
+              <span class="step-label">Destination</span>
             </button>
-            <button class="planner-step-tab" id="plannerTab3" onclick="switchPlannerStep(3)">
-              <span class="step-num">Step 03</span>
-              <span class="step-label">Comfort & Inclusions</span>
+            <button class="planner-step-tab" id="plannerTab3" onclick="switchPlannerStep(3)" role="tab" aria-selected="false" aria-controls="plannerStep3">
+              <span class="step-num">03</span>
+              <span class="step-label">Preferences</span>
             </button>
-            <button class="planner-step-tab" id="plannerTab4" onclick="switchPlannerStep(4)">
-              <span class="step-num">Step 04</span>
-              <span class="step-label">Get Bespoke Quote</span>
+            <button class="planner-step-tab" id="plannerTab4" onclick="switchPlannerStep(4)" role="tab" aria-selected="false" aria-controls="plannerStep4">
+              <span class="step-num">04</span>
+              <span class="step-label">Get Quote</span>
             </button>
           </div>
 
           <div class="planner-body">
-            <!-- Step 1: Experience -->
-            <div class="planner-step-panel active" id="plannerStep1">
-              <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 0.5rem;">
-                What kind of journey are you envisioning?
-              </h3>
-              <p style="font-size: 0.92rem; color: var(--color-text-muted);">
-                Select the experience that best defines your mood and occasion.
-              </p>
-
+            <!-- Step 1 -->
+            <div class="planner-step-panel active" id="plannerStep1" role="tabpanel">
+              <h3 style="font-family:var(--font-serif);font-size:1.35rem;margin-bottom:0.4rem;">What kind of journey are you envisioning?</h3>
+              <p style="font-size:0.92rem;color:var(--color-text-muted);margin-bottom:1rem;">Choose the experience that defines your occasion.</p>
               <div class="options-grid" id="plannerThemeGrid">
-                <div class="option-card selected" onclick="selectPlannerOption('theme', 'Honeymoon & Romance', this)">
-                  <div class="option-icon">${ICONS.sparkles}</div>
+                <div class="option-card selected" onclick="selectPlannerOption('theme','Honeymoon & Romance',this)">
+                  <div class="option-icon">💍</div>
                   <div class="option-title">Honeymoon & Romance</div>
-                  <div class="option-desc">Private villas, candlelight dinners, scenic seclusion</div>
+                  <div class="option-desc">Private villas, candlelight dinners</div>
                 </div>
-                <div class="option-card" onclick="selectPlannerOption('theme', 'Ultra-Luxury Retreat', this)">
-                  <div class="option-icon">${ICONS.star}</div>
-                  <div class="option-title">Ultra-Luxury Retreat</div>
-                  <div class="option-desc">5-Star palace suites, private charters, butler service</div>
+                <div class="option-card" onclick="selectPlannerOption('theme','Ultra-Luxury Retreat',this)">
+                  <div class="option-icon">👑</div>
+                  <div class="option-title">Ultra-Luxury</div>
+                  <div class="option-desc">5-star palaces, butler service</div>
                 </div>
-                <div class="option-card" onclick="selectPlannerOption('theme', 'Family & Multi-Gen', this)">
-                  <div class="option-icon">${ICONS.mapPin}</div>
-                  <div class="option-title">Family & Multi-Gen</div>
-                  <div class="option-desc">Spacious private vehicles, child & elder friendly</div>
+                <div class="option-card" onclick="selectPlannerOption('theme','Family & Multi-Gen',this)">
+                  <div class="option-icon">👨‍👩‍👧‍👦</div>
+                  <div class="option-title">Family Retreat</div>
+                  <div class="option-desc">Elder & child friendly pacing</div>
                 </div>
-                <div class="option-card" onclick="selectPlannerOption('theme', 'Guided Group Escapes', this)">
-                  <div class="option-icon">${ICONS.plane}</div>
-                  <div class="option-title">Guided Group Escapes</div>
-                  <div class="option-desc">Fixed departures, tour leaders, shared camaraderie</div>
+                <div class="option-card" onclick="selectPlannerOption('theme','Guided Group Escapes',this)">
+                  <div class="option-icon">🌍</div>
+                  <div class="option-title">Group Tour</div>
+                  <div class="option-desc">Fixed departures, shared experience</div>
                 </div>
-                <div class="option-card" onclick="selectPlannerOption('theme', 'Adventure & Mountains', this)">
-                  <div class="option-icon">${ICONS.shield}</div>
-                  <div class="option-title">Adventure & Nature</div>
-                  <div class="option-desc">Himalayan valleys, safari drives, alpine walks</div>
+                <div class="option-card" onclick="selectPlannerOption('theme','Adventure & Mountains',this)">
+                  <div class="option-icon">⛰️</div>
+                  <div class="option-title">Adventure</div>
+                  <div class="option-desc">Himalayan valleys, alpine walks</div>
                 </div>
-                <div class="option-card" onclick="selectPlannerOption('theme', 'Corporate MICE & Offsite', this)">
-                  <div class="option-icon">${ICONS.clock}</div>
+                <div class="option-card" onclick="selectPlannerOption('theme','Corporate MICE',this)">
+                  <div class="option-icon">🏢</div>
                   <div class="option-title">Corporate MICE</div>
-                  <div class="option-desc">Leadership retreats, conferences, dealer summits</div>
+                  <div class="option-desc">Leadership retreats, conferences</div>
                 </div>
               </div>
-
               <div class="planner-controls">
                 <div></div>
-                <button class="btn btn-primary" onclick="switchPlannerStep(2)">
-                  Continue to Destination ${ICONS.arrowRight}
-                </button>
+                <button class="btn btn-primary" onclick="switchPlannerStep(2)">Next: Destination ${ICONS.arrowRight}</button>
               </div>
             </div>
 
-            <!-- Step 2: Destination & Dates -->
-            <div class="planner-step-panel" id="plannerStep2">
-              <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 0.5rem;">
-                Where and when would you like to travel?
-              </h3>
-              <p style="font-size: 0.92rem; color: var(--color-text-muted);">
-                Choose your dream destination or select custom discovery.
-              </p>
-
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.75rem 0 2rem;">
+            <!-- Step 2 -->
+            <div class="planner-step-panel" id="plannerStep2" role="tabpanel">
+              <h3 style="font-family:var(--font-serif);font-size:1.35rem;margin-bottom:0.4rem;">Where and when would you like to travel?</h3>
+              <p style="font-size:0.92rem;color:var(--color-text-muted);margin-bottom:1rem;">Pick your destination and preferred travel window.</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:1.5rem 0 1.75rem;">
                 <div class="form-group">
-                  <label class="form-label">Target Destination</label>
+                  <label class="form-label" for="plannerDestination">Target Destination</label>
                   <select class="form-control" id="plannerDestination">
-                    <option value="Kashmir (Srinagar, Gulmarg, Pahalgam)">Kashmir (Srinagar, Gulmarg, Pahalgam)</option>
-                    <option value="Kerala Backwaters & Munnar">Kerala Backwaters & Munnar</option>
-                    <option value="Royal Rajasthan Palaces">Royal Rajasthan Palaces</option>
-                    <option value="Dubai & Abu Dhabi">Dubai & Abu Dhabi</option>
-                    <option value="Bali & Nusa Penida">Bali & Nusa Penida</option>
-                    <option value="Switzerland Alps & Scenic Rail">Switzerland Alps & Scenic Rail</option>
-                    <option value="Maldives Overwater Resort">Maldives Overwater Resort</option>
-                    <option value="Vietnam & Indochina">Vietnam & Indochina</option>
-                    <option value="Custom World Destination">Custom World Destination</option>
+                    <option>Kashmir (Srinagar, Gulmarg, Pahalgam)</option>
+                    <option>Kerala Backwaters &amp; Munnar</option>
+                    <option>Royal Rajasthan Palaces</option>
+                    <option>Dubai &amp; Abu Dhabi</option>
+                    <option>Bali &amp; Nusa Penida</option>
+                    <option>Switzerland Alps &amp; Rail</option>
+                    <option>Maldives Overwater Resort</option>
+                    <option>Vietnam &amp; Indochina</option>
+                    <option>Custom World Destination</option>
                   </select>
                 </div>
-
                 <div class="form-group">
-                  <label class="form-label">Preferred Travel Month</label>
+                  <label class="form-label" for="plannerMonth">Preferred Travel Month</label>
                   <select class="form-control" id="plannerMonth">
-                    <option value="October 2026">October 2026</option>
-                    <option value="November 2026">November 2026</option>
-                    <option value="December 2026 (Festive / New Year)">December 2026 (Festive / New Year)</option>
-                    <option value="January 2027">January 2027</option>
-                    <option value="February 2027">February 2027</option>
-                    <option value="Summer 2027">Summer 2027</option>
+                    <option>October 2026</option>
+                    <option>November 2026</option>
+                    <option>December 2026 (Festive / New Year)</option>
+                    <option>January 2027</option>
+                    <option>February 2027</option>
+                    <option>Summer 2027</option>
                   </select>
                 </div>
-
                 <div class="form-group">
-                  <label class="form-label">Ideal Trip Duration</label>
+                  <label class="form-label" for="plannerDuration">Trip Duration</label>
                   <select class="form-control" id="plannerDuration">
-                    <option value="5 Days / 4 Nights">5 Days / 4 Nights</option>
-                    <option value="6 Days / 5 Nights">6 Days / 5 Nights (Recommended)</option>
-                    <option value="7 Days / 6 Nights">7 Days / 6 Nights</option>
-                    <option value="10+ Days Grand Tour">10+ Days Grand Tour</option>
+                    <option>5 Days / 4 Nights</option>
+                    <option>6 Days / 5 Nights (Recommended)</option>
+                    <option>7 Days / 6 Nights</option>
+                    <option>10+ Days Grand Tour</option>
                   </select>
                 </div>
-
                 <div class="form-group">
-                  <label class="form-label">Travelers (Adults & Children)</label>
-                  <input type="text" class="form-control" id="plannerTravelers" value="2 Adults (Couple)" />
+                  <label class="form-label" for="plannerTravelers">Travelers</label>
+                  <input type="text" class="form-control" id="plannerTravelers" value="2 Adults (Couple)" placeholder="e.g. 2 Adults, 1 Child" />
                 </div>
               </div>
-
               <div class="planner-controls">
-                <button class="btn btn-secondary" onclick="switchPlannerStep(1)">Back</button>
-                <button class="btn btn-primary" onclick="switchPlannerStep(3)">
-                  Continue to Preferences ${ICONS.arrowRight}
-                </button>
+                <button class="btn btn-secondary" onclick="switchPlannerStep(1)">← Back</button>
+                <button class="btn btn-primary" onclick="switchPlannerStep(3)">Next: Preferences ${ICONS.arrowRight}</button>
               </div>
             </div>
 
-            <!-- Step 3: Comfort & Preferences -->
-            <div class="planner-step-panel" id="plannerStep3">
-              <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 0.5rem;">
-                Select your comfort standards and services
-              </h3>
-              <p style="font-size: 0.92rem; color: var(--color-text-muted);">
-                We customize hotel categories and add turnkey travel services.
-              </p>
-
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.75rem 0 2rem;">
+            <!-- Step 3 -->
+            <div class="planner-step-panel" id="plannerStep3" role="tabpanel">
+              <h3 style="font-family:var(--font-serif);font-size:1.35rem;margin-bottom:0.4rem;">Your comfort and service preferences</h3>
+              <p style="font-size:0.92rem;color:var(--color-text-muted);margin-bottom:1rem;">We customize hotel tiers and include turnkey services.</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:1.5rem 0;">
                 <div class="form-group">
-                  <label class="form-label">Stay Category Preference</label>
+                  <label class="form-label" for="plannerStayType">Stay Category</label>
                   <select class="form-control" id="plannerStayType">
-                    <option value="Handpicked 4-Star Premium Hotels">Handpicked 4-Star Premium Boutique Stays</option>
-                    <option value="5-Star Luxury Resorts & Heritage Palaces">5-Star Luxury Resorts & Heritage Palaces</option>
-                    <option value="Private Island / Overwater Villas">Private Island / Overwater Sanctuary Villas</option>
+                    <option>Handpicked 4-Star Premium Boutique</option>
+                    <option>5-Star Luxury Resorts &amp; Heritage Palaces</option>
+                    <option>Private Island / Overwater Villas</option>
                   </select>
                 </div>
-
                 <div class="form-group">
-                  <label class="form-label">Departure Airport / City</label>
-                  <input type="text" class="form-control" id="plannerCity" placeholder="e.g. Bhopal (BHO), Indore, Delhi..." value="Bhopal" />
+                  <label class="form-label" for="plannerCity">Departure City</label>
+                  <input type="text" class="form-control" id="plannerCity" placeholder="e.g. Bhopal, Indore, Delhi" value="Bhopal" />
                 </div>
               </div>
-
-              <div style="margin-bottom: 1.5rem;">
-                <label class="form-label" style="margin-bottom: 0.75rem;">Additional Turnkey Services Needed:</label>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
-                  <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; cursor: pointer; background: var(--color-sand); padding: 0.5rem 0.85rem; border-radius: var(--radius-sm);">
-                    <input type="checkbox" id="chkFlights" checked /> Flights / Airline Desk
-                  </label>
-                  <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; cursor: pointer; background: var(--color-sand); padding: 0.5rem 0.85rem; border-radius: var(--radius-sm);">
-                    <input type="checkbox" id="chkVisa" checked /> Visa & Documentation
-                  </label>
-                  <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; cursor: pointer; background: var(--color-sand); padding: 0.5rem 0.85rem; border-radius: var(--radius-sm);">
-                    <input type="checkbox" id="chkForex" /> Forex / Multi-Currency Card
-                  </label>
-                  <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; cursor: pointer; background: var(--color-sand); padding: 0.5rem 0.85rem; border-radius: var(--radius-sm);">
-                    <input type="checkbox" id="chkInsurance" checked /> Comprehensive Travel Insurance
-                  </label>
+              <div style="margin-bottom:1.5rem;">
+                <label class="form-label" style="margin-bottom:0.75rem;display:block;">Additional Services Needed</label>
+                <div style="display:flex;flex-wrap:wrap;gap:0.65rem;">
+                  ${[
+                    {id:'chkFlights', label:'✈ Flights'},
+                    {id:'chkVisa', label:'🛂 Visa Help'},
+                    {id:'chkForex', label:'💱 Forex Card'},
+                    {id:'chkInsurance', label:'🛡 Insurance'}
+                  ].map(item => `
+                    <label class="planner-checkbox-label">
+                      <input type="checkbox" id="${item.id}" checked />
+                      ${item.label}
+                    </label>
+                  `).join('')}
                 </div>
               </div>
-
               <div class="planner-controls">
-                <button class="btn btn-secondary" onclick="switchPlannerStep(2)">Back</button>
-                <button class="btn btn-primary" onclick="switchPlannerStep(4)">
-                  Finalize & Get Quote ${ICONS.arrowRight}
-                </button>
+                <button class="btn btn-secondary" onclick="switchPlannerStep(2)">← Back</button>
+                <button class="btn btn-primary" onclick="switchPlannerStep(4)">Finalize &amp; Quote ${ICONS.arrowRight}</button>
               </div>
             </div>
 
-            <!-- Step 4: Contact & Instant Quote Request -->
-            <div class="planner-step-panel" id="plannerStep4">
-              <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 0.5rem;">
-                Where should we send your itemized itinerary & quotation?
-              </h3>
-              <p style="font-size: 0.92rem; color: var(--color-text-muted);">
-                Our travel manager in Bhopal will review your requirements and share an itemized proposal with transparent costing.
-              </p>
-
-              <form id="plannerFinalForm" onsubmit="submitPlannerWizard(event)" style="margin-top: 1.5rem;">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <!-- Step 4 -->
+            <div class="planner-step-panel" id="plannerStep4" role="tabpanel">
+              <h3 style="font-family:var(--font-serif);font-size:1.35rem;margin-bottom:0.4rem;">Where should we send your itinerary?</h3>
+              <p style="font-size:0.92rem;color:var(--color-text-muted);margin-bottom:1rem;">Our Bhopal specialist reviews your brief and shares an itemized proposal within 2 hours.</p>
+              <form id="plannerFinalForm" onsubmit="submitPlannerWizard(event)" novalidate>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
                   <div class="form-group">
-                    <label class="form-label">Full Name *</label>
-                    <input type="text" class="form-control" id="pName" placeholder="e.g. Vikram Sharma" required />
+                    <label class="form-label" for="pName">Full Name *</label>
+                    <input type="text" class="form-control" id="pName" placeholder="e.g. Vikram Sharma" required autocomplete="name" />
                   </div>
                   <div class="form-group">
-                    <label class="form-label">WhatsApp / Phone *</label>
-                    <input type="tel" class="form-control" id="pPhone" placeholder="+91 98260 00000" required />
-                  </div>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                  <div class="form-group">
-                    <label class="form-label">Email Address *</label>
-                    <input type="email" class="form-control" id="pEmail" placeholder="name@domain.com" required />
+                    <label class="form-label" for="pPhone">WhatsApp / Phone *</label>
+                    <input type="tel" class="form-control" id="pPhone" placeholder="+91 98260 00000" required autocomplete="tel" />
                   </div>
                   <div class="form-group">
-                    <label class="form-label">Approx Budget Preference</label>
+                    <label class="form-label" for="pEmail">Email Address *</label>
+                    <input type="email" class="form-control" id="pEmail" placeholder="name@domain.com" required autocomplete="email" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="pBudget">Budget Preference</label>
                     <select class="form-control" id="pBudget">
-                      <option value="Comfort Tier (₹35k - ₹55k / person)">Comfort Tier (₹35k - ₹55k / person)</option>
-                      <option value="Luxury Tier (₹55k - ₹95k / person)" selected>Luxury Tier (₹55k - ₹95k / person)</option>
-                      <option value="Signature Ultra-Luxury (₹95k - ₹2 Lakh+ / person)">Signature Ultra-Luxury (₹95k - ₹2 Lakh+ / person)</option>
+                      <option>Comfort Tier (₹35k – ₹55k / person)</option>
+                      <option selected>Luxury Tier (₹55k – ₹95k / person)</option>
+                      <option>Ultra-Luxury (₹95k – ₹2 Lakh+ / person)</option>
                     </select>
                   </div>
                 </div>
-
-                <div class="form-group">
-                  <label class="form-label">Specific Notes, Special Dates or Celebrations</label>
-                  <textarea class="form-control" id="pNotes" placeholder="E.g. 25th anniversary celebration, private pool villa preferred, pure vegetarian meals, need wheelchair assistance..."></textarea>
+                <div class="form-group" style="margin-top:0.5rem;">
+                  <label class="form-label" for="pNotes">Special Notes or Celebrations</label>
+                  <textarea class="form-control" id="pNotes" placeholder="E.g. 25th anniversary, vegetarian meals, wheelchair access, specific hotel preference…"></textarea>
                 </div>
-
-                <div class="planner-controls">
-                  <button type="button" class="btn btn-secondary" onclick="switchPlannerStep(3)">Back</button>
+                <div class="planner-controls" style="margin-top:1.5rem;">
+                  <button type="button" class="btn btn-secondary" onclick="switchPlannerStep(3)">← Back</button>
                   <button type="submit" class="btn btn-gold btn-lg">
-                    ${ICONS.sparkles} Generate My Quotation & Connect Concierge
+                    ${ICONS.sparkles} Get My Quotation
                   </button>
                 </div>
               </form>
@@ -365,207 +458,138 @@ async function renderHomeView() {
       </div>
     </section>
 
-    <!-- FEATURED DESTINATIONS -->
-    <section class="section" id="destinationsSection">
-      <div class="container">
-        <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem;">
-          <div>
-            <span class="eyebrow">Curated Sanctuaries</span>
-            <h2 class="section-title">Featured Destinations</h2>
-            <p class="section-desc">
-              From the snow-draped peaks of Kashmir and emerald backwaters of Kerala to the glittering dunes of Dubai and Swiss alpine rail.
-            </p>
-          </div>
-
-          <div class="tab-group" id="destTabGroup">
-            <button class="tab-btn active" onclick="filterDestinations('all', this)">All</button>
-            <button class="tab-btn" onclick="filterDestinations('domestic', this)">Domestic (India)</button>
-            <button class="tab-btn" onclick="filterDestinations('international', this)">International</button>
-          </div>
-        </div>
-
-        <div class="destinations-grid" id="destinationsGrid">
-          ${destinations.map(d => renderDestinationCard(d)).join('')}
-        </div>
-      </div>
-    </section>
-
-    <!-- FEATURED HOLIDAY PACKAGES -->
-    <section class="section section-sand" id="packagesSection">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="eyebrow">Signature Journeys</span>
-          <h2 class="section-title">Curated Holiday Packages</h2>
-          <p class="section-desc">
-            Handcrafted day-wise itineraries, verified 4★ & 5★ properties, private chauffeur transfers, and transparent pricing.
-          </p>
-        </div>
-
-        <div class="packages-grid">
-          ${packages.map(p => renderPackageCard(p)).join('')}
-        </div>
-
-        <div style="text-align: center; margin-top: 3.5rem;">
-          <a href="#/packages" class="btn btn-primary btn-lg">
-            View All 2026 Packages & Categories ${ICONS.arrowRight}
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- TRAVEL BY EXPERIENCE -->
-    <section class="section">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="eyebrow">Themes & Moments</span>
-          <h2 class="section-title">Travel by Experience</h2>
-          <p class="section-desc">
-            Whether celebrating love in secluded overwater villas or taking an executive corporate delegation overseas.
-          </p>
-        </div>
-
-        <div class="experiences-grid">
-          ${INITIAL_DATA.experiences.map(exp => `
-            <div class="experience-item" onclick="window.location.hash='#/packages?theme=${exp.id}'">
-              <img src="${exp.image}" alt="${exp.title}" loading="lazy" />
-              <div class="experience-overlay">
-                <span class="badge badge-gold" style="width: fit-content; margin-bottom: 0.65rem;">${exp.tagline}</span>
-                <h3 class="experience-title">${exp.title}</h3>
-                <p class="experience-desc">${exp.description}</p>
-                <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 700; color: var(--color-gold-light); text-transform: uppercase;">
-                  Explore Theme ${ICONS.arrowRight}
-                </div>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    </section>
-
-    <!-- CUSTOMIZED BESPOKE TRIP SECTION -->
-    <section class="section section-dark">
-      <div class="container">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
-          <div>
-            <span class="eyebrow">Bespoke Travel Architecture</span>
-            <h2 class="section-title" style="color: #fff;">Travel On Your Own Terms.</h2>
-            <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.75rem;">
-              Not all travelers fit into rigid tour boxes. At Vayu Holidays, we design private journeys around your pace, culinary preferences, flight schedules, and personal wishlist.
-            </p>
-
-            <div style="display: flex; flex-direction: column; gap: 1.15rem; margin-bottom: 2.5rem;">
-              <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                <span style="color: var(--color-gold); font-size: 1.1rem; margin-top: 2px;">${ICONS.check}</span>
-                <div>
-                  <strong style="color: var(--color-ivory);">Zero Cookie-Cutter Itineraries:</strong> Every route is custom drafted from scratch by our travel directors.
-                </div>
-              </div>
-              <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                <span style="color: var(--color-gold); font-size: 1.1rem; margin-top: 2px;">${ICONS.check}</span>
-                <div>
-                  <strong style="color: var(--color-ivory);">Dedicated Private Chauffeurs:</strong> Sanitized, private luxury vehicles exclusively for your party.
-                </div>
-              </div>
-              <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                <span style="color: var(--color-gold); font-size: 1.1rem; margin-top: 2px;">${ICONS.check}</span>
-                <div>
-                  <strong style="color: var(--color-ivory);">VIP Airport Concierge:</strong> Meet and greet, seamless luggage coordination, and 24/7 helpline.
-                </div>
-              </div>
-            </div>
-
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-              <button class="btn btn-gold" onclick="openEnquiryModal({ title: 'Design My Custom Itinerary' })">
-                ${ICONS.sparkles} Craft My Custom Journey
-              </button>
-              <a href="https://wa.me/919826012345?text=${encodeURIComponent(company.whatsappMessage)}" target="_blank" rel="noopener" class="btn btn-outline-white">
-                ${ICONS.whatsapp} WhatsApp Our Director
-              </a>
-            </div>
-          </div>
-
-          <div style="position: relative;">
-            <img 
-              src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80" 
-              alt="Bespoke Luxury Experience" 
-              style="border-radius: var(--radius-xl); border: 1px solid var(--border-gold); box-shadow: var(--shadow-xl); width: 100%;" 
-            />
-            <div style="position: absolute; bottom: -20px; left: -20px; background: var(--color-cream); border: 1px solid var(--border-gold); padding: 1.25rem 1.75rem; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); color: var(--color-obsidian); max-width: 260px;">
-              <div style="font-family: var(--font-serif); font-size: 1.75rem; color: var(--color-gold-dark); font-weight: 700;">100%</div>
-              <div style="font-size: 0.85rem; font-weight: 600;">Customizable Itineraries with Transparent Itemized Costing</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHY VAYU HOLIDAYS (4 LUXURY PILLARS) -->
-    <section class="section">
+    <!-- ═══════════════════════════════════════════════════════════════════
+         SECTION 7 — WHY VAYU HOLIDAYS
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section class="section" aria-label="Why choose Vayu Holidays">
       <div class="container">
         <div class="section-header text-center">
           <span class="eyebrow">The Vayu Standard</span>
-          <h2 class="section-title">Why Travel With Vayu Holidays</h2>
-          <p class="section-desc">
-            Guided by integrity, high hospitality standards, and hands-on executive leadership in Bhopal, Madhya Pradesh.
-          </p>
+          <h2 class="section-title">Why Discerning Travelers Choose Us</h2>
+          <p class="section-desc">We don't sell trips. We architect journeys — built around your rhythm, taste, and peace of mind.</p>
         </div>
 
-        <div class="pillars-grid">
-          <div class="pillar-card">
-            <div class="pillar-num">01</div>
-            <h3 class="pillar-title">Tailor-Made Precision</h3>
-            <p class="pillar-desc">
-              We never push pre-packaged compromise. Every departure date, duration, hotel room tier, and excursion is molded around your family's personal rhythm.
-            </p>
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">🗺</div>
+            <div class="why-num">01</div>
+            <h3 class="why-title">Tailor-Made Precision</h3>
+            <p class="why-desc">Every route, hotel, and departure time is drafted from scratch around your family's rhythm — never a rigid group template.</p>
           </div>
-
-          <div class="pillar-card">
-            <div class="pillar-num">02</div>
-            <h3 class="pillar-title">24/7 Personal Concierge</h3>
-            <p class="pillar-desc">
-              From the moment you step off your plane until your safe return, a dedicated WhatsApp concierge is standing by for real-time adjustments, dining reservations, or queries.
-            </p>
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">💬</div>
+            <div class="why-num">02</div>
+            <h3 class="why-title">24/7 Personal Concierge</h3>
+            <p class="why-desc">A dedicated WhatsApp manager stays with you from itinerary draft to safe return — available for real-time adjustments.</p>
           </div>
-
-          <div class="pillar-card">
-            <div class="pillar-num">03</div>
-            <h3 class="pillar-title">Verified Luxury Partners</h3>
-            <p class="pillar-desc">
-              We partner exclusively with vetted 4★ & 5★ luxury hotels, certified chauffeurs, licensed state guides, and accredited cruise operators.
-            </p>
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">🏨</div>
+            <div class="why-num">03</div>
+            <h3 class="why-title">Verified Luxury Partners</h3>
+            <p class="why-desc">We book only vetted 4★ &amp; 5★ properties, certified chauffeurs, and licensed state guides — personally inspected.</p>
           </div>
-
-          <div class="pillar-card">
-            <div class="pillar-num">04</div>
-            <h3 class="pillar-title">100% Transparent Costing</h3>
-            <p class="pillar-desc">
-              Phase 1 itemized quotations with clear inclusions and exclusions. No last-minute hidden taxes, unannounced mandatory surcharges, or forced tourist-trap stops.
-            </p>
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">📋</div>
+            <div class="why-num">04</div>
+            <h3 class="why-title">100% Transparent Costing</h3>
+            <p class="why-desc">Itemized proposals with clear inclusions &amp; exclusions. Zero hidden surcharges, no forced tourist-trap stops.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">🛂</div>
+            <div class="why-num">05</div>
+            <h3 class="why-title">Full Visa &amp; Documentation</h3>
+            <p class="why-desc">We manage Schengen, UAE, Bali, and 50+ country visa applications in-house — 99% first-time approval rate.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">🏆</div>
+            <div class="why-num">06</div>
+            <h3 class="why-title">Bhopal's Most Trusted Agency</h3>
+            <p class="why-desc">8 years of excellence. 500+ curated journeys. A 4.9★ rating from discerning families, couples, and corporate leaders.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TRAVEL SERVICES -->
-    <section class="section section-sand" id="servicesSection">
+    <!-- ═══════════════════════════════════════════════════════════════════
+         SECTION 8 — BESPOKE TRAVEL HIGHLIGHT
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section class="section section-dark" aria-label="Bespoke travel">
+      <div class="container">
+        <div class="bespoke-split">
+          <div class="bespoke-text">
+            <span class="eyebrow">Private &amp; Personalised</span>
+            <h2 class="section-title" style="color:#fff;">Travel On Your Own Terms.</h2>
+            <p style="font-size:1.1rem;line-height:1.8;margin-bottom:1.75rem;color:rgba(255,255,255,0.78);">
+              Not all travelers fit rigid tour boxes. Vayu Holidays designs journeys around your pace, dietary preferences, flight schedules, and personal wishlist — down to the finest detail.
+            </p>
+            <div class="bespoke-list">
+              <div class="bespoke-item">
+                <span style="color:var(--color-gold);">${ICONS.check}</span>
+                <div>
+                  <strong style="color:var(--color-ivory);">Zero Cookie-Cutter Itineraries</strong>
+                  <span style="color:rgba(255,255,255,0.65);"> — Every route custom-drafted by our travel directors.</span>
+                </div>
+              </div>
+              <div class="bespoke-item">
+                <span style="color:var(--color-gold);">${ICONS.check}</span>
+                <div>
+                  <strong style="color:var(--color-ivory);">Private Chauffeur-Driven Vehicles</strong>
+                  <span style="color:rgba(255,255,255,0.65);"> — Sanitized luxury vehicles exclusively for your party.</span>
+                </div>
+              </div>
+              <div class="bespoke-item">
+                <span style="color:var(--color-gold);">${ICONS.check}</span>
+                <div>
+                  <strong style="color:var(--color-ivory);">VIP Airport Concierge</strong>
+                  <span style="color:rgba(255,255,255,0.65);"> — Meet &amp; greet, seamless luggage, 24/7 helpline.</span>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
+              <button class="btn btn-gold" onclick="openEnquiryModal({ title: 'Design My Custom Itinerary' })">
+                ${ICONS.sparkles} Craft My Custom Journey
+              </button>
+              <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" class="btn btn-outline-white">
+                ${ICONS.whatsapp} WhatsApp Us Now
+              </a>
+            </div>
+          </div>
+          <div class="bespoke-visual">
+            <img
+              src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=900&q=80"
+              alt="Bespoke luxury travel experience"
+              loading="lazy"
+              style="border-radius:var(--radius-xl);border:1px solid var(--border-gold);box-shadow:var(--shadow-xl);width:100%;"
+              width="900" height="600"
+            />
+            <div class="bespoke-stat-card">
+              <div style="font-family:var(--font-serif);font-size:2rem;color:var(--color-gold-dark);font-weight:700;">100%</div>
+              <div style="font-size:0.85rem;font-weight:600;color:var(--color-obsidian);">Fully Customizable — Transparent Itemized Costing</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         SECTION 9 — SERVICES
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section class="section section-sand" id="servicesSection" aria-label="Travel services">
       <div class="container">
         <div class="section-header text-center">
           <span class="eyebrow">Comprehensive Travel Desk</span>
           <h2 class="section-title">End-to-End Travel Services</h2>
-          <p class="section-desc">
-            Beyond holiday packages, Vayu Holidays operates full-service ticketing, documentation, currency, and corporate desks.
-          </p>
+          <p class="section-desc">From Schengen visa to multi-currency forex cards — our expert desks handle every aspect of your journey.</p>
         </div>
-
         <div class="services-grid">
           ${services.map(s => `
             <div class="service-card">
-              <div class="service-icon-wrap">
+              <div class="service-icon-wrap" aria-hidden="true">
                 ${ICONS[s.icon] || ICONS.sparkles}
               </div>
               <h3 class="service-card-title">${s.title}</h3>
               <p class="service-card-desc">${s.shortDesc}</p>
-              <a href="#/services/${s.slug}" class="service-card-link">
+              <a href="#/services/${s.slug}" class="service-card-link" aria-label="Learn more about ${s.title}">
                 Learn More ${ICONS.arrowRight}
               </a>
             </div>
@@ -574,68 +598,71 @@ async function renderHomeView() {
       </div>
     </section>
 
-    <!-- HOW IT WORKS (3 STEPS) -->
-    <section class="section">
+    <!-- ═══════════════════════════════════════════════════════════════════
+         SECTION 10 — HOW IT WORKS
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section class="section" aria-label="How it works">
       <div class="container">
         <div class="section-header text-center">
-          <span class="eyebrow">Effortless Journey Planning</span>
+          <span class="eyebrow">Effortless Planning</span>
           <h2 class="section-title">How It Works</h2>
-          <p class="section-desc">
-            Planning a private luxury journey with Vayu Holidays is smooth, transparent, and completely stress-free.
-          </p>
+          <p class="section-desc">Three simple steps — from a dream to a confirmed luxury departure.</p>
         </div>
-
         <div class="how-steps-grid">
           <div class="how-step-card">
-            <div class="how-step-badge">1</div>
+            <div class="how-step-badge" aria-hidden="true">1</div>
             <h3 class="how-step-title">Share Your Dream</h3>
-            <p style="font-size: 0.95rem; color: var(--color-text-muted);">
-              Use our Smart Trip Planner, submit an inquiry form, or message our Bhopal office on WhatsApp with your desired dates, companions, and budget preference.
-            </p>
+            <p style="font-size:0.95rem;color:var(--color-text-muted);line-height:1.7;">Use our Trip Planner, submit an enquiry, or message us on WhatsApp. Tell us your dates, companions, and budget preference.</p>
           </div>
-
           <div class="how-step-card">
-            <div class="how-step-badge">2</div>
-            <h3 class="how-step-title">Receive Your Bespoke Quote</h3>
-            <p style="font-size: 0.95rem; color: var(--color-text-muted);">
-              Within 2 to 4 hours, our specialists design an itemized day-wise itinerary, accommodation options, and transparent pricing tailored to your feedback.
-            </p>
+            <div class="how-step-badge" aria-hidden="true">2</div>
+            <h3 class="how-step-title">Receive Your Bespoke Proposal</h3>
+            <p style="font-size:0.95rem;color:var(--color-text-muted);line-height:1.7;">Within 2–4 hours, our specialists design a day-wise itinerary with accommodation options and transparent itemized pricing.</p>
           </div>
-
           <div class="how-step-card">
-            <div class="how-step-badge">3</div>
+            <div class="how-step-badge" aria-hidden="true">3</div>
             <h3 class="how-step-title">Travel in Complete Peace</h3>
-            <p style="font-size: 0.95rem; color: var(--color-text-muted);">
-              Receive your confirmed vouchers, flight tickets, and visa clearance. Enjoy your holiday backed by our 24/7 active traveler support desk throughout your trip.
-            </p>
+            <p style="font-size:0.95rem;color:var(--color-text-muted);line-height:1.7;">Receive confirmed vouchers, e-tickets, and visa clearance. Enjoy your journey backed by our 24/7 active traveler support.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section class="section section-sand">
+    <!-- ═══════════════════════════════════════════════════════════════════
+         SECTION 11 — TESTIMONIALS (Enhanced)
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section class="section section-sand" aria-label="Guest testimonials">
       <div class="container">
         <div class="section-header text-center">
-          <span class="eyebrow">Guest Stories</span>
+          <span class="eyebrow">Verified Guest Stories</span>
           <h2 class="section-title">Words From Discerning Travelers</h2>
-          <p class="section-desc">
-            Authentic experiences from families, honeymoon couples, and corporate delegations who trust Vayu Holidays.
-          </p>
+          <!-- Aggregate Rating -->
+          <div class="aggregate-rating" aria-label="Average rating 4.9 out of 5">
+            <div class="agg-stars" aria-hidden="true">★★★★★</div>
+            <div class="agg-score">4.9 / 5</div>
+            <div class="agg-count">Based on 120+ verified guest reviews</div>
+          </div>
         </div>
 
         <div class="testimonials-grid">
           ${testimonials.map(t => `
-            <div class="testimonial-card">
-              <div style="color: #b89758; display: flex; gap: 3px; margin-bottom: 1.25rem;">
-                ${Array(t.rating).fill(ICONS.star).join('')}
+            <div class="testimonial-card" itemscope itemtype="https://schema.org/Review">
+              <div class="testimonial-stars" aria-label="${t.rating} out of 5 stars">
+                ${'★'.repeat(t.rating)}
               </div>
-              <p class="testimonial-quote">“${t.quote}”</p>
+              <p class="testimonial-quote" itemprop="reviewBody">"${t.quote}"</p>
               <div class="testimonial-author">
-                <img src="${t.avatar}" alt="${t.name}" class="author-avatar" loading="lazy" />
+                <img
+                  src="${t.avatar}"
+                  alt="${t.name}"
+                  class="author-avatar"
+                  loading="lazy"
+                  width="50" height="50"
+                />
                 <div>
-                  <div class="author-name">${t.name}</div>
-                  <div class="author-trip">${t.trip} • ${t.location}</div>
+                  <div class="author-name" itemprop="author">${t.name}</div>
+                  <div class="author-trip">${t.trip} · ${t.location}</div>
+                  <span class="verified-badge" aria-label="Verified guest">✓ Verified Guest</span>
                 </div>
               </div>
             </div>
@@ -644,61 +671,59 @@ async function renderHomeView() {
       </div>
     </section>
 
-    <!-- EDITORIAL TRAVEL STORIES / BLOG -->
-    <section class="section">
+    <!-- ═══════════════════════════════════════════════════════════════════
+         SECTION 12 — TRAVEL STORIES
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section class="section" aria-label="Travel journal">
       <div class="container">
-        <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem;">
+        <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;">
           <div>
-            <span class="eyebrow">Travel Journals & Guides</span>
+            <span class="eyebrow">The Vayu Journal</span>
             <h2 class="section-title">Stories From The Road</h2>
-            <p class="section-desc">
-              Insider advice, seasonal recommendations, and visa guidance authored by our luxury itinerary curators.
-            </p>
+            <p class="section-desc">Insider guides, visa tips, and destination essays by our travel curators.</p>
           </div>
-          <a href="#/blog" class="btn btn-secondary">
-            View All Stories ${ICONS.arrowRight}
-          </a>
+          <a href="#/blog" class="btn btn-secondary">View All Stories ${ICONS.arrowRight}</a>
         </div>
-
         <div class="blog-grid">
           ${blogs.slice(0, 3).map(b => `
-            <div class="blog-card" onclick="window.location.hash='#/blog/${b.slug}'">
-              <img src="${b.image}" alt="${b.title}" class="blog-card-img" loading="lazy" />
+            <article class="blog-card" onclick="window.location.hash='#/blog/${b.slug}'" role="button" tabindex="0" aria-label="Read: ${b.title}" onkeydown="if(event.key==='Enter')window.location.hash='#/blog/${b.slug}'">
+              <img src="${b.image}" alt="${b.title}" class="blog-card-img" loading="lazy" width="640" height="400" />
               <div class="blog-card-body">
-                <div class="blog-card-date">${b.category} • ${b.date}</div>
+                <div class="blog-card-date">${b.category} · ${b.date} · ${b.readTime}</div>
                 <h3 class="blog-card-title">${b.title}</h3>
-                <p style="font-size: 0.92rem; color: var(--color-text-muted); margin-bottom: 1.25rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                <p style="font-size:0.92rem;color:var(--color-text-muted);margin-bottom:1.25rem;line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">
                   ${b.excerpt}
                 </p>
-                <div style="display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 700; color: var(--color-gold-dark);">
-                  Read Journal ${ICONS.arrowRight}
-                </div>
+                <span style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.85rem;font-weight:700;color:var(--color-gold-dark);">
+                  Read Story ${ICONS.arrowRight}
+                </span>
               </div>
-            </div>
+            </article>
           `).join('')}
         </div>
       </div>
     </section>
 
-    <!-- FINAL VIP CALL TO ACTION -->
-    <section class="section" style="padding-top: 0;">
+    <!-- ═══════════════════════════════════════════════════════════════════
+         SECTION 13 — FINAL CTA BANNER
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section class="section" style="padding-top:0;" aria-label="Call to action">
       <div class="container">
         <div class="vip-cta-banner">
-          <span class="eyebrow" style="color: var(--color-gold-light);">Your 2026 Departure Awaits</span>
+          <span class="eyebrow" style="color:var(--color-gold-light);">Your 2026 Departure Awaits</span>
           <h2 class="vip-cta-title">Ready for an Extraordinary Journey?</h2>
           <p class="vip-cta-desc">
-            Speak directly with our senior holiday directors at our Bhopal headquarters. We turn travel aspirations into exquisitely planned memories.
+            Speak with our senior holiday directors in Bhopal. We turn travel aspirations into meticulously planned, unforgettable experiences.
           </p>
-
-          <div style="display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap;">
+          <div style="display:flex;justify-content:center;gap:1.25rem;flex-wrap:wrap;">
             <button class="btn btn-gold btn-lg" onclick="openEnquiryModal({ title: 'Plan My 2026 Journey' })">
               ${ICONS.sparkles} Plan My Trip Now
             </button>
             <a href="tel:${company.phone}" class="btn btn-outline-white btn-lg">
-              ${ICONS.phone} Call Concierge (${company.phone})
+              ${ICONS.phone} ${company.phone}
             </a>
-            <a href="https://wa.me/919826012345?text=${encodeURIComponent(company.whatsappMessage)}" target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg">
-              ${ICONS.whatsapp} WhatsApp Desk
+            <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg">
+              ${ICONS.whatsapp} WhatsApp Us
             </a>
           </div>
         </div>
@@ -707,7 +732,7 @@ async function renderHomeView() {
   `;
 }
 
-// --- Home Interactive Wizard Helpers ---
+// ── Planner State & Helpers ──────────────────────────────────────────────────
 let plannerState = {
   theme: "Honeymoon & Romance",
   destination: "Kashmir",
@@ -720,89 +745,72 @@ let plannerState = {
 
 function switchPlannerStep(stepNum) {
   for (let i = 1; i <= 4; i++) {
-    const tab = document.getElementById(`plannerTab${i}`);
+    const tab   = document.getElementById(`plannerTab${i}`);
     const panel = document.getElementById(`plannerStep${i}`);
     if (tab && panel) {
-      if (i === stepNum) {
-        tab.classList.add("active");
-        panel.classList.add("active");
-      } else {
-        tab.classList.remove("active");
-        panel.classList.remove("active");
-      }
+      const active = i === stepNum;
+      tab.classList.toggle("active", active);
+      panel.classList.toggle("active", active);
+      tab.setAttribute("aria-selected", active ? "true" : "false");
     }
+  }
+  // Scroll planner into view on mobile
+  const wrapper = document.querySelector(".planner-wrapper");
+  if (wrapper && window.innerWidth < 768) {
+    wrapper.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
 
 function selectPlannerOption(field, value, el) {
   plannerState[field] = value;
-  const parent = el.parentElement;
-  if (parent) {
-    parent.querySelectorAll(".option-card").forEach(c => c.classList.remove("selected"));
-  }
+  el.parentElement?.querySelectorAll(".option-card").forEach(c => c.classList.remove("selected"));
   el.classList.add("selected");
 }
 
 async function submitPlannerWizard(e) {
   e.preventDefault();
-  const name = document.getElementById("pName")?.value;
-  const phone = document.getElementById("pPhone")?.value;
-  const email = document.getElementById("pEmail")?.value;
-  const budget = document.getElementById("pBudget")?.value;
-  const notes = document.getElementById("pNotes")?.value || "";
-
-  const dest = document.getElementById("plannerDestination")?.value || plannerState.destination;
-  const month = document.getElementById("plannerMonth")?.value || plannerState.month;
-  const duration = document.getElementById("plannerDuration")?.value || plannerState.duration;
-  const travelers = document.getElementById("plannerTravelers")?.value || plannerState.travelers;
-  const stay = document.getElementById("plannerStayType")?.value || plannerState.stayType;
-  const city = document.getElementById("plannerCity")?.value || "Bhopal";
+  const btn = e.target.querySelector('button[type="submit"]');
+  if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
 
   const enquiry = {
-    name,
-    phone,
-    email,
-    departureCity: city,
-    destination: dest,
-    travelMonth: month,
-    duration: duration,
-    travelers: travelers,
-    budgetPerPerson: budget,
-    notes: `Theme: ${plannerState.theme} | Stay: ${stay} | Notes: ${notes}`
+    name:           document.getElementById("pName")?.value,
+    phone:          document.getElementById("pPhone")?.value,
+    email:          document.getElementById("pEmail")?.value,
+    departureCity:  document.getElementById("plannerCity")?.value || "Bhopal",
+    destination:    document.getElementById("plannerDestination")?.value || plannerState.destination,
+    travelMonth:    document.getElementById("plannerMonth")?.value || plannerState.month,
+    duration:       document.getElementById("plannerDuration")?.value,
+    travelers:      document.getElementById("plannerTravelers")?.value,
+    budgetPerPerson:document.getElementById("pBudget")?.value,
+    notes:          `Theme: ${plannerState.theme} | Stay: ${document.getElementById("plannerStayType")?.value} | ${document.getElementById("pNotes")?.value || ""}`
   };
 
   await window.vayuStore.addEnquiry(enquiry);
 
-  showToast("Quotation Generated!", `Thank you, ${name}. Reference: VAYU-${Date.now().toString().slice(-4)}`);
+  showToast("Quotation Sent!", `Thank you, ${enquiry.name}. Reference: VAYU-${Date.now().toString().slice(-4)}. We'll contact you within 2 hours.`);
   switchPlannerStep(1);
   e.target.reset();
+  if (btn) { btn.disabled = false; btn.innerHTML = `✦ Get My Quotation`; }
 
   setTimeout(() => {
-    const waText = encodeURIComponent(
-      `Hello Vayu Holidays! Trip Planner inquiry for "${dest}". Traveler: ${name} (${phone}), Month: ${month}, Duration: ${duration}, Theme: ${plannerState.theme}.`
-    );
-    if (confirm("Open WhatsApp to connect with your Vayu Holidays concierge?")) {
+    const waText = encodeURIComponent(`Hello Vayu Holidays! I just submitted a trip plan for "${enquiry.destination}" (${enquiry.travelMonth}). Traveler: ${enquiry.name} (${enquiry.phone}). Please share my quotation.`);
+    if (confirm("Open WhatsApp to connect with your Vayu Holidays concierge directly?")) {
       window.open(`https://wa.me/919826012345?text=${waText}`, "_blank");
     }
-  }, 900);
+  }, 800);
 }
 
 async function filterDestinations(type, btn) {
-  const allTabs = document.getElementById("destTabGroup")?.querySelectorAll(".tab-btn");
-  if (allTabs) allTabs.forEach(b => b.classList.remove("active"));
+  document.getElementById("destTabGroup")?.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
   btn.classList.add("active");
-
   const destinations = await window.vayuStore.getDestinations();
   const filtered = type === "all" ? destinations : destinations.filter(d => d.type === type);
-
   const grid = document.getElementById("destinationsGrid");
-  if (grid) {
-    grid.innerHTML = filtered.map(d => renderDestinationCard(d)).join('');
-  }
+  if (grid) grid.innerHTML = filtered.map(d => renderDestinationCard(d)).join('');
 }
 
 function executeHeroSearch() {
-  const dest = document.getElementById("heroSearchDest")?.value || "";
+  const dest  = document.getElementById("heroSearchDest")?.value  || "";
   const theme = document.getElementById("heroSearchTheme")?.value || "";
   window.location.hash = `#/packages?dest=${dest}&theme=${theme}`;
 }

@@ -176,5 +176,33 @@ document.addEventListener("DOMContentLoaded", () => {
   // 6. Track hash changes
   window.addEventListener("hashchange", () => trackPageView(window.location.hash));
 
+  // 7. Scroll reveal animation
+  function initScrollReveal() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+    document.querySelectorAll("[data-reveal]").forEach(el => observer.observe(el));
+  }
+  // Run on each navigation
+  window.addEventListener("hashchange", () => setTimeout(initScrollReveal, 200));
+  setTimeout(initScrollReveal, 300);
+
+  // 8. Mobile nav toggle ARIA update
+  const mobileToggle = document.getElementById("mobileNavToggle");
+  if (mobileToggle) {
+    mobileToggle.addEventListener("click", () => {
+      const isOpen = document.getElementById("mobileDrawer")?.classList.contains("open");
+      mobileToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  }
+
   console.log("%cVayu Holidays 2026 ✈️", "color:#C5A880;font-size:18px;font-weight:bold;font-family:serif;");
 });
