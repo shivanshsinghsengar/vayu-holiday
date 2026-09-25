@@ -90,13 +90,15 @@ function trackEvent(name, params = {}) {
 // ─── COOKIE CONSENT ───────────────────────────────────────────────────────────
 function handleCookieAccept() {
   localStorage.setItem("vayu_cookie_consent", "accepted");
-  document.getElementById("cookieConsentBanner").style.display = "none";
+  const b = document.getElementById("cookieConsentBanner");
+  if (b) { b.style.opacity = "0"; b.style.visibility = "hidden"; b.style.pointerEvents = "none"; }
   loadGA4();
 }
 
 function handleCookieDecline() {
   localStorage.setItem("vayu_cookie_consent", "declined");
-  document.getElementById("cookieConsentBanner").style.display = "none";
+  const b = document.getElementById("cookieConsentBanner");
+  if (b) { b.style.opacity = "0"; b.style.visibility = "hidden"; b.style.pointerEvents = "none"; }
 }
 
 function showCookieBanner() {
@@ -104,7 +106,11 @@ function showCookieBanner() {
   if (!consent) {
     setTimeout(() => {
       const b = document.getElementById("cookieConsentBanner");
-      if (b) b.style.display = "block";
+      if (b) {
+        b.style.visibility = "visible";
+        b.style.opacity    = "1";
+        b.style.pointerEvents = "auto";
+      }
     }, 2000);
   } else if (consent === "accepted") {
     loadGA4();

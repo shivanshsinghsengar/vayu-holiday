@@ -2,10 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-  <!-- Homepage -->
   <url>
     <loc>https://www.vayuholidays.com/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -14,199 +13,223 @@
     </image:image>
   </url>
 
-  <!-- All Packages -->
   <url>
-    <loc>https://www.vayuholidays.com/#/packages</loc>
-    <lastmod>2026-09-24</lastmod>
+    <loc>https://www.vayuholidays.com/packages</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://www.vayuholidays.com/domestic</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Domestic Tours -->
   <url>
-    <loc>https://www.vayuholidays.com/#/domestic</loc>
-    <lastmod>2026-09-24</lastmod>
+    <loc>https://www.vayuholidays.com/international</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.vayuholidays.com/honeymoon</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
-  <!-- International Tours -->
   <url>
-    <loc>https://www.vayuholidays.com/#/international</loc>
-    <lastmod>2026-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <!-- Honeymoon Packages -->
-  <url>
-    <loc>https://www.vayuholidays.com/#/honeymoon</loc>
-    <lastmod>2026-09-24</lastmod>
+    <loc>https://www.vayuholidays.com/group-tours</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Group Tours -->
   <url>
-    <loc>https://www.vayuholidays.com/#/group-tours</loc>
-    <lastmod>2026-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-
-  <!-- Individual Package Pages -->
-  <url>
-    <loc>https://www.vayuholidays.com/#/package/pkg-kashmir-01</loc>
-    <lastmod>2026-09-24</lastmod>
+    <loc>https://www.vayuholidays.com/mice</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- Package Detail Pages -->
+  <url>
+    <loc>https://www.vayuholidays.com/package/pkg-kashmir-01</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
     <image:image>
       <image:loc>https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
-      <image:title>Kashmir Luxury Tour — Vayu Holidays</image:title>
+      <image:title>Paradise in Bloom — Kashmir Luxury Tour</image:title>
     </image:image>
   </url>
 
   <url>
-    <loc>https://www.vayuholidays.com/#/package/pkg-kerala-01</loc>
-    <lastmod>2026-09-24</lastmod>
+    <loc>https://www.vayuholidays.com/package/pkg-kerala-01</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
+      <image:title>Kerala Backwaters &amp; Munnar — Vayu Holidays</image:title>
+    </image:image>
   </url>
 
   <url>
-    <loc>https://www.vayuholidays.com/#/package/pkg-dubai-01</loc>
-    <lastmod>2026-09-24</lastmod>
+    <loc>https://www.vayuholidays.com/package/pkg-dubai-01</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
+      <image:title>Dubai &amp; Abu Dhabi Luxury Tour — Vayu Holidays</image:title>
+    </image:image>
   </url>
 
   <url>
-    <loc>https://www.vayuholidays.com/#/package/pkg-bali-01</loc>
-    <lastmod>2026-09-24</lastmod>
+    <loc>https://www.vayuholidays.com/package/pkg-bali-01</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.vayuholidays.com/#/package/pkg-swiss-01</loc>
-    <lastmod>2026-09-24</lastmod>
+    <loc>https://www.vayuholidays.com/package/pkg-swiss-01</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.vayuholidays.com/#/package/pkg-maldives-01</loc>
-    <lastmod>2026-09-24</lastmod>
+    <loc>https://www.vayuholidays.com/package/pkg-maldives-01</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.vayuholidays.com/#/package/pkg-rajasthan-01</loc>
-    <lastmod>2026-09-24</lastmod>
+    <loc>https://www.vayuholidays.com/package/pkg-rajasthan-01</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
   <!-- Services -->
   <url>
-    <loc>https://www.vayuholidays.com/#/services/flights</loc>
-    <lastmod>2026-09-24</lastmod>
+    <loc>https://www.vayuholidays.com/services/visa</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://www.vayuholidays.com/#/services/visa</loc>
-    <lastmod>2026-09-24</lastmod>
+    <loc>https://www.vayuholidays.com/services/flights</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.vayuholidays.com/#/services/hotels</loc>
-    <lastmod>2026-09-24</lastmod>
+    <loc>https://www.vayuholidays.com/services/hotels</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.vayuholidays.com/#/services/forex</loc>
-    <lastmod>2026-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.vayuholidays.com/#/services/insurance</loc>
-    <lastmod>2026-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.vayuholidays.com/#/mice</loc>
-    <lastmod>2026-09-24</lastmod>
+    <loc>https://www.vayuholidays.com/services/forex</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
 
-  <!-- Blog / Travel Stories -->
   <url>
-    <loc>https://www.vayuholidays.com/#/blog</loc>
-    <lastmod>2026-09-24</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.vayuholidays.com/services/insurance</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://www.vayuholidays.com/services/passport</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.vayuholidays.com/#/blog/kashmir-travel-guide-2026</loc>
+    <loc>https://www.vayuholidays.com/services/bus</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <url>
+    <loc>https://www.vayuholidays.com/services/train</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <!-- Blog -->
+  <url>
+    <loc>https://www.vayuholidays.com/blog</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://www.vayuholidays.com/blog/kashmir-travel-guide-2026</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.vayuholidays.com/#/blog/schengen-visa-guide-india-2026</loc>
+    <loc>https://www.vayuholidays.com/blog/schengen-visa-guide-india-2026</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.vayuholidays.com/#/blog/bali-private-pool-villas-guide</loc>
+    <loc>https://www.vayuholidays.com/blog/bali-private-pool-villas-guide</loc>
     <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
 
-  <!-- About, Contact, Legal -->
+  <!-- Static Pages -->
   <url>
-    <loc>https://www.vayuholidays.com/#/about</loc>
-    <lastmod>2026-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.vayuholidays.com/#/contact</loc>
-    <lastmod>2026-09-24</lastmod>
+    <loc>https://www.vayuholidays.com/about</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
-    <loc>https://www.vayuholidays.com/#/terms</loc>
-    <lastmod>2026-09-24</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <loc>https://www.vayuholidays.com/contact</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.vayuholidays.com/#/privacy</loc>
-    <lastmod>2026-09-24</lastmod>
+    <loc>https://www.vayuholidays.com/terms</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.35</priority>
+  </url>
+
+  <url>
+    <loc>https://www.vayuholidays.com/privacy</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.35</priority>
   </url>
 
 </urlset>

@@ -162,6 +162,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://images.unsplash.com" />
   <link rel="dns-prefetch" href="https://cdn.emailjs.com" />
+  <link rel="dns-prefetch" href="https://www.gstatic.com" />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+  <!-- Preload hero image (LCP) -->
+  <link rel="preload" as="image"
+    href="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80"
+    fetchpriority="high" />
+
+  <!-- Preload Poppins 400 + 700 (critical text) -->
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" />
 
   <!-- =====================================================================
        FONTS (display=swap for performance)
@@ -205,12 +216,13 @@
   <!-- =====================================================================
        COOKIE CONSENT BANNER
   ====================================================================== -->
-  <div id="cookieConsentBanner" class="cookie-banner" role="dialog" aria-label="Cookie consent" style="display:none;">
+  <!-- Cookie consent — visibility:hidden avoids layout shift (CLS fix) -->
+  <div id="cookieConsentBanner" class="cookie-banner" role="dialog" aria-label="Cookie consent"
+       style="visibility:hidden;pointer-events:none;opacity:0;transition:opacity 0.3s ease,visibility 0.3s;">
     <div class="cookie-banner-inner">
       <div class="cookie-banner-text">
-        <strong>We use cookies</strong> to enhance your experience, analyze site usage, and for marketing purposes.
-        By continuing, you agree to our 
-        <a href="#/privacy" onclick="document.getElementById('cookieConsentBanner').style.display='none'">Privacy Policy</a>.
+        <strong>We use cookies</strong> to enhance your browsing experience and analyse site usage.
+        See our <a href="#/privacy" onclick="document.getElementById('cookieConsentBanner').style.cssText='visibility:hidden;pointer-events:none;opacity:0'">Privacy Policy</a>.
       </div>
       <div class="cookie-banner-actions">
         <button class="btn btn-secondary btn-sm" onclick="handleCookieDecline()">Decline</button>
@@ -220,26 +232,28 @@
   </div>
 
   <!-- =====================================================================
-       SCRIPTS — Data, State, Components, Views
+       SCRIPTS
+       Critical path: firebase → data → store → components (sync, needed before router)
+       Views + router + app: defer (non-blocking)
   ====================================================================== -->
   <script src="js/firebase.js"></script>
   <script src="js/data.js"></script>
   <script src="js/store.js"></script>
   <script src="js/components.js"></script>
 
-  <!-- Views -->
-  <script src="js/views/home.js"></script>
-  <script src="js/views/packages.js"></script>
-  <script src="js/views/packageDetail.js"></script>
-  <script src="js/views/services.js"></script>
-  <script src="js/views/about.js"></script>
-  <script src="js/views/blog.js"></script>
-  <script src="js/views/contact.js"></script>
-  <script src="js/views/admin.js"></script>
-  <script src="js/views/legal.js"></script>
+  <!-- Views (defer — load after HTML parsed) -->
+  <script src="js/views/home.js" defer></script>
+  <script src="js/views/packages.js" defer></script>
+  <script src="js/views/packageDetail.js" defer></script>
+  <script src="js/views/services.js" defer></script>
+  <script src="js/views/about.js" defer></script>
+  <script src="js/views/blog.js" defer></script>
+  <script src="js/views/contact.js" defer></script>
+  <script src="js/views/admin.js" defer></script>
+  <script src="js/views/legal.js" defer></script>
 
-  <!-- Router & Core App -->
-  <script src="js/router.js"></script>
-  <script src="js/app.js"></script>
+  <!-- Router & App (defer — runs after all views loaded) -->
+  <script src="js/router.js" defer></script>
+  <script src="js/app.js" defer></script>
 </body>
 </html>
