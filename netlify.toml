@@ -3,11 +3,14 @@
 [build]
   publish = "."
 
-# SPA Redirect — All routes serve index.html
+# SPA Redirect — ONLY for paths that don't have a real file
+# Static HTML files (packages/index.html, about/index.html, etc.) are served directly
+# This rule only fires when no static file exists at the requested path
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = false
 
 # Security Headers
 [[headers]]
