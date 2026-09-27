@@ -11,7 +11,7 @@ async function renderServiceDetailView(serviceSlug) {
       <div class="container" style="padding: 6rem 1.5rem; text-align: center;">
         <h2 style="font-family: var(--font-serif); font-size: 2.2rem; margin-bottom: 1rem;">Service Desk Not Found</h2>
         <p style="color: var(--color-text-muted); margin-bottom: 2rem;">The requested travel service page could not be located.</p>
-        <a href="#/" class="btn btn-primary">Return to Home</a>
+        <a href="/" class="btn btn-primary">Return to Home</a>
       </div>
     `;
   }
@@ -20,9 +20,9 @@ async function renderServiceDetailView(serviceSlug) {
     <div class="package-detail-header">
       <div class="container">
         <div class="breadcrumbs">
-          <a href="#/">Home</a>
+          <a href="/">Home</a>
           <span class="breadcrumb-separator">/</span>
-          <a href="#/services/flights">Services</a>
+          <a href="/services/flights">Services</a>
           <span class="breadcrumb-separator">/</span>
           <span style="color: var(--color-obsidian); font-weight: 600;">${service.title}</span>
         </div>
@@ -189,3 +189,4 @@ async function handleServiceFastSubmit(e, serviceTitle) {
     `Thank you, ${enquiry.name}. Our ${serviceTitle} desk at Bhopal headquarters will contact you shortly.`
   );
 }
+

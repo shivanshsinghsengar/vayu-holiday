@@ -9,7 +9,7 @@ async function renderContactView() {
     <div class="package-detail-header">
       <div class="container">
         <div class="breadcrumbs">
-          <a href="#/">Home</a>
+          <a href="/">Home</a>
           <span class="breadcrumb-separator">/</span>
           <span style="color: var(--color-obsidian); font-weight: 600;">Contact Us</span>
         </div>
@@ -193,3 +193,4 @@ async function handleContactPageSubmit(e) {
     `Thank you, ${enquiry.name}. Your inquiry has been sent to our Bhopal headquarters. We will connect shortly.`
   );
 }
+

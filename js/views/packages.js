@@ -6,8 +6,7 @@ async function renderPackagesView(filterType = "all") {
   const packages = await window.vayuStore.getPackages();
 
   // Read URL query params if any
-  const hash = window.location.hash;
-  const urlParams = new URLSearchParams(hash.includes("?") ? hash.split("?")[1] : "");
+  const urlParams = new URLSearchParams(window.location.search);
   const queryDest = urlParams.get("dest") || "";
   const queryTheme = urlParams.get("theme") || "";
 
@@ -18,7 +17,7 @@ async function renderPackagesView(filterType = "all") {
     <div class="package-detail-header">
       <div class="container">
         <div class="breadcrumbs">
-          <a href="#/">Home</a>
+          <a href="/">Home</a>
           <span class="breadcrumb-separator">/</span>
           <span style="color: var(--color-obsidian); font-weight: 600;">Holiday Packages</span>
         </div>
@@ -192,3 +191,5 @@ async function filterPackagesCatalog() {
     }
   }
 }
+
+

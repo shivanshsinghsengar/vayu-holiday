@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFirebaseAuthListener();
 
   // 6. Track hash changes
-  window.addEventListener("hashchange", () => trackPageView(window.location.hash));
+  window.addEventListener('popstate', () => trackPageView(window.location.pathname));
 
   // 7. Scroll reveal animation
   function initScrollReveal() {
@@ -212,3 +212,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log("%cVayu Holidays 2026 ✈️", "color:#C5A880;font-size:18px;font-weight:bold;font-family:serif;");
 });
+

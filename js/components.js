@@ -55,7 +55,7 @@ async function renderNavbar() {
       <div class="container navbar">
 
         <!-- Logo -->
-        <a href="#/" class="brand-logo" aria-label="Vayu Holidays home">
+        <a href="/" class="brand-logo" aria-label="Vayu Holidays home">
           <div class="brand-emblem" aria-hidden="true">V</div>
           <div class="brand-text">
             <span class="brand-name">Vayu Holidays</span>
@@ -66,54 +66,54 @@ async function renderNavbar() {
         <!-- Desktop Navigation -->
         <nav class="nav-links" aria-label="Site navigation">
           <div class="nav-item">
-            <a href="#/packages" class="nav-link" aria-haspopup="true">
+            <a href="/packages" class="nav-link" aria-haspopup="true">
               Holidays ${ICONS.chevronDown}
             </a>
             <div class="nav-dropdown" role="menu">
-              <a href="#/packages" class="dropdown-link" role="menuitem">
+              <a href="/packages" class="dropdown-link" role="menuitem">
                 <span>All Holiday Packages</span>
               </a>
-              <a href="#/domestic" class="dropdown-link" role="menuitem">
+              <a href="/domestic" class="dropdown-link" role="menuitem">
                 <span>Domestic India Tours</span>
                 <span class="dropdown-link-badge">Kashmir, Kerala+</span>
               </a>
-              <a href="#/international" class="dropdown-link" role="menuitem">
+              <a href="/international" class="dropdown-link" role="menuitem">
                 <span>International Escapes</span>
                 <span class="dropdown-link-badge">Dubai, Bali, Swiss+</span>
               </a>
-              <a href="#/honeymoon" class="dropdown-link" role="menuitem">Honeymoon Specials</a>
-              <a href="#/group-tours" class="dropdown-link" role="menuitem">Guided Group Tours</a>
-              <a href="#/mice" class="dropdown-link" role="menuitem">Corporate MICE</a>
+              <a href="/honeymoon" class="dropdown-link" role="menuitem">Honeymoon Specials</a>
+              <a href="/group-tours" class="dropdown-link" role="menuitem">Guided Group Tours</a>
+              <a href="/mice" class="dropdown-link" role="menuitem">Corporate MICE</a>
             </div>
           </div>
 
           <div class="nav-item">
-            <a href="#/services/flights" class="nav-link" aria-haspopup="true">
+            <a href="/services/flights" class="nav-link" aria-haspopup="true">
               Services ${ICONS.chevronDown}
             </a>
             <div class="nav-dropdown" style="min-width: 260px;" role="menu">
-              <a href="#/services/flights" class="dropdown-link" role="menuitem">✈ Flight Bookings & Charters</a>
-              <a href="#/services/hotels" class="dropdown-link" role="menuitem">🏨 Hotels & Luxury Resorts</a>
-              <a href="#/services/visa" class="dropdown-link" role="menuitem">🛂 Visa Assistance (50+ Countries)</a>
-              <a href="#/services/forex" class="dropdown-link" role="menuitem">💱 Forex & Multi-Currency Cards</a>
-              <a href="#/services/insurance" class="dropdown-link" role="menuitem">🛡 Travel Insurance Cover</a>
-              <a href="#/services/passport" class="dropdown-link" role="menuitem">📘 Passport Services</a>
-              <a href="#/services/bus" class="dropdown-link" role="menuitem">🚌 Bus & Volvo Coaches</a>
-              <a href="#/services/train" class="dropdown-link" role="menuitem">🚆 Train & Royal Rail</a>
-              <a href="#/services/mice" class="dropdown-link" role="menuitem">🏢 Corporate MICE Logistics</a>
+              <a href="/services/flights" class="dropdown-link" role="menuitem">✈ Flight Bookings & Charters</a>
+              <a href="/services/hotels" class="dropdown-link" role="menuitem">🏨 Hotels & Luxury Resorts</a>
+              <a href="/services/visa" class="dropdown-link" role="menuitem">🛂 Visa Assistance (50+ Countries)</a>
+              <a href="/services/forex" class="dropdown-link" role="menuitem">💱 Forex & Multi-Currency Cards</a>
+              <a href="/services/insurance" class="dropdown-link" role="menuitem">🛡 Travel Insurance Cover</a>
+              <a href="/services/passport" class="dropdown-link" role="menuitem">📘 Passport Services</a>
+              <a href="/services/bus" class="dropdown-link" role="menuitem">🚌 Bus & Volvo Coaches</a>
+              <a href="/services/train" class="dropdown-link" role="menuitem">🚆 Train & Royal Rail</a>
+              <a href="/services/mice" class="dropdown-link" role="menuitem">🏢 Corporate MICE Logistics</a>
             </div>
           </div>
 
           <div class="nav-item">
-            <a href="#/about" class="nav-link">About Us</a>
+            <a href="/about" class="nav-link">About Us</a>
           </div>
 
           <div class="nav-item">
-            <a href="#/blog" class="nav-link">Journal</a>
+            <a href="/blog" class="nav-link">Journal</a>
           </div>
 
           <div class="nav-item">
-            <a href="#/contact" class="nav-link">Contact</a>
+            <a href="/contact" class="nav-link">Contact</a>
           </div>
         </nav>
 
@@ -163,22 +163,22 @@ async function renderNavbar() {
       </div>
 
       <nav class="mobile-nav-links" aria-label="Mobile navigation">
-        <a href="#/" onclick="toggleMobileNav()">Home</a>
-        <a href="#/packages" onclick="toggleMobileNav()">All Holiday Packages</a>
-        <a href="#/domestic" onclick="toggleMobileNav()">Domestic Tours</a>
-        <a href="#/international" onclick="toggleMobileNav()">International Tours</a>
-        <a href="#/honeymoon" onclick="toggleMobileNav()">Honeymoon Escapes</a>
-        <a href="#/group-tours" onclick="toggleMobileNav()">Group Tours</a>
-        <a href="#/mice" onclick="toggleMobileNav()">Corporate MICE</a>
+        <a href="/" onclick="toggleMobileNav()">Home</a>
+        <a href="/packages" onclick="toggleMobileNav()">All Holiday Packages</a>
+        <a href="/domestic" onclick="toggleMobileNav()">Domestic Tours</a>
+        <a href="/international" onclick="toggleMobileNav()">International Tours</a>
+        <a href="/honeymoon" onclick="toggleMobileNav()">Honeymoon Escapes</a>
+        <a href="/group-tours" onclick="toggleMobileNav()">Group Tours</a>
+        <a href="/mice" onclick="toggleMobileNav()">Corporate MICE</a>
         <div class="mobile-nav-divider"></div>
-        <a href="#/services/visa" onclick="toggleMobileNav()">Visa Assistance</a>
-        <a href="#/services/flights" onclick="toggleMobileNav()">Flight Bookings</a>
-        <a href="#/services/forex" onclick="toggleMobileNav()">Forex & Currency</a>
-        <a href="#/services/insurance" onclick="toggleMobileNav()">Travel Insurance</a>
+        <a href="/services/visa" onclick="toggleMobileNav()">Visa Assistance</a>
+        <a href="/services/flights" onclick="toggleMobileNav()">Flight Bookings</a>
+        <a href="/services/forex" onclick="toggleMobileNav()">Forex & Currency</a>
+        <a href="/services/insurance" onclick="toggleMobileNav()">Travel Insurance</a>
         <div class="mobile-nav-divider"></div>
-        <a href="#/about" onclick="toggleMobileNav()">About Vayu Holidays</a>
-        <a href="#/blog" onclick="toggleMobileNav()">Travel Journal</a>
-        <a href="#/contact" onclick="toggleMobileNav()">Contact & Office</a>
+        <a href="/about" onclick="toggleMobileNav()">About Vayu Holidays</a>
+        <a href="/blog" onclick="toggleMobileNav()">Travel Journal</a>
+        <a href="/contact" onclick="toggleMobileNav()">Contact & Office</a>
       </nav>
 
       <div class="mobile-drawer-footer">
@@ -233,7 +233,7 @@ async function renderFooter() {
 
           <!-- Col 1: Brand -->
           <div class="footer-brand">
-            <a href="#/" class="brand-logo footer-brand-logo" aria-label="Vayu Holidays home">
+            <a href="/" class="brand-logo footer-brand-logo" aria-label="Vayu Holidays home">
               <div class="brand-emblem" style="width:38px;height:38px;font-size:1.1rem;" aria-hidden="true">V</div>
               <div class="brand-text">
                 <span class="brand-name" style="font-size:1.15rem;color:#fff;">Vayu Holidays</span>
@@ -286,15 +286,15 @@ async function renderFooter() {
           <div>
             <div class="footer-col-title">Destinations</div>
             <div class="footer-links">
-              <a href="#/domestic" class="footer-link">Kashmir & Gulmarg</a>
-              <a href="#/domestic" class="footer-link">Kerala Backwaters</a>
-              <a href="#/domestic" class="footer-link">Royal Rajasthan</a>
-              <a href="#/domestic" class="footer-link">Himachal Pradesh</a>
-              <a href="#/international" class="footer-link">Dubai & Abu Dhabi</a>
-              <a href="#/international" class="footer-link">Bali & Nusa Penida</a>
-              <a href="#/international" class="footer-link">Swiss Alps & Rail</a>
-              <a href="#/international" class="footer-link">The Maldives</a>
-              <a href="#/international" class="footer-link">Vietnam & Indochina</a>
+              <a href="/domestic" class="footer-link">Kashmir & Gulmarg</a>
+              <a href="/domestic" class="footer-link">Kerala Backwaters</a>
+              <a href="/domestic" class="footer-link">Royal Rajasthan</a>
+              <a href="/domestic" class="footer-link">Himachal Pradesh</a>
+              <a href="/international" class="footer-link">Dubai & Abu Dhabi</a>
+              <a href="/international" class="footer-link">Bali & Nusa Penida</a>
+              <a href="/international" class="footer-link">Swiss Alps & Rail</a>
+              <a href="/international" class="footer-link">The Maldives</a>
+              <a href="/international" class="footer-link">Vietnam & Indochina</a>
             </div>
           </div>
 
@@ -302,14 +302,14 @@ async function renderFooter() {
           <div>
             <div class="footer-col-title">Holiday Styles</div>
             <div class="footer-links">
-              <a href="#/honeymoon" class="footer-link">Honeymoon & Romance</a>
-              <a href="#/packages" class="footer-link">Family Luxury Retreats</a>
-              <a href="#/group-tours" class="footer-link">Guided Group Tours</a>
-              <a href="#/mice" class="footer-link">Corporate MICE</a>
-              <a href="#/packages" class="footer-link">Adventure & Trekking</a>
-              <a href="#/packages" class="footer-link">Heritage Palace Trails</a>
-              <a href="#/packages" class="footer-link">Custom Bespoke Trips</a>
-              <a href="#/packages" class="footer-link">Senior-Friendly Tours</a>
+              <a href="/honeymoon" class="footer-link">Honeymoon & Romance</a>
+              <a href="/packages" class="footer-link">Family Luxury Retreats</a>
+              <a href="/group-tours" class="footer-link">Guided Group Tours</a>
+              <a href="/mice" class="footer-link">Corporate MICE</a>
+              <a href="/packages" class="footer-link">Adventure & Trekking</a>
+              <a href="/packages" class="footer-link">Heritage Palace Trails</a>
+              <a href="/packages" class="footer-link">Custom Bespoke Trips</a>
+              <a href="/packages" class="footer-link">Senior-Friendly Tours</a>
             </div>
           </div>
 
@@ -317,15 +317,15 @@ async function renderFooter() {
           <div>
             <div class="footer-col-title">Travel Services</div>
             <div class="footer-links">
-              <a href="#/services/flights" class="footer-link">Flight Bookings</a>
-              <a href="#/services/hotels" class="footer-link">Hotels & Resorts</a>
-              <a href="#/services/visa" class="footer-link">Visa Assistance</a>
-              <a href="#/services/passport" class="footer-link">Passport Help</a>
-              <a href="#/services/forex" class="footer-link">Forex & Travel Cards</a>
-              <a href="#/services/insurance" class="footer-link">Travel Insurance</a>
-              <a href="#/services/bus" class="footer-link">Bus & Coaches</a>
-              <a href="#/services/train" class="footer-link">Train Ticketing</a>
-              <a href="#/services/mice" class="footer-link">Corporate MICE</a>
+              <a href="/services/flights" class="footer-link">Flight Bookings</a>
+              <a href="/services/hotels" class="footer-link">Hotels & Resorts</a>
+              <a href="/services/visa" class="footer-link">Visa Assistance</a>
+              <a href="/services/passport" class="footer-link">Passport Help</a>
+              <a href="/services/forex" class="footer-link">Forex & Travel Cards</a>
+              <a href="/services/insurance" class="footer-link">Travel Insurance</a>
+              <a href="/services/bus" class="footer-link">Bus & Coaches</a>
+              <a href="/services/train" class="footer-link">Train Ticketing</a>
+              <a href="/services/mice" class="footer-link">Corporate MICE</a>
             </div>
           </div>
 
@@ -388,12 +388,12 @@ async function renderFooter() {
             <span class="footer-reg-info">GST: 23XXXXX0000X1ZX &nbsp;|&nbsp; IATA Accredited Agent</span>
           </div>
           <div class="footer-legal-links">
-            <a href="#/terms">Terms & Conditions</a>
-            <a href="#/terms">Cancellation Policy</a>
-            <a href="#/privacy">Privacy Policy</a>
-            <a href="#/privacy">Cookie Policy</a>
-            <a href="#/about">About Us</a>
-            <a href="#/contact">Contact</a>
+            <a href="/terms">Terms & Conditions</a>
+            <a href="/terms">Cancellation Policy</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/privacy">Cookie Policy</a>
+            <a href="/about">About Us</a>
+            <a href="/contact">Contact</a>
           </div>
         </div>
 
@@ -442,7 +442,7 @@ function renderPackageCard(pkg) {
         </div>
 
         <h3 class="package-card-title">
-          <a href="#/package/${pkg.id}">${pkg.title}</a>
+          <a href="/package/${pkg.id}">${pkg.title}</a>
         </h3>
 
         <p class="package-card-desc">${pkg.overview}</p>
@@ -464,7 +464,7 @@ function renderPackageCard(pkg) {
           </div>
 
           <div style="display: flex; gap: 0.5rem;">
-            <a href="#/package/${pkg.id}" class="btn btn-secondary btn-sm">
+            <a href="/package/${pkg.id}" class="btn btn-secondary btn-sm">
               Details
             </a>
             <button class="btn btn-gold btn-sm" onclick="openEnquiryModal({ packageId: '${pkg.id}', title: '${pkg.title}' })">
@@ -482,7 +482,7 @@ function renderDestinationCard(dest) {
   const formattedStarting = window.vayuStore.formatPrice(dest.startingPrice);
 
   return `
-    <div class="dest-card" onclick="window.location.hash='#/packages?dest=${dest.id}'">
+    <div class="dest-card" onclick="window.navigate('/packages?dest=${dest.id}')" role="button" tabindex="0" aria-label="View ${dest.name} packages" onkeydown="if(event.key==='Enter')window.navigate('/packages?dest=${dest.id}')">
       <img src="${dest.image}" alt="${dest.name}" class="dest-card-bg" loading="lazy" />
       <div class="dest-card-overlay"></div>
       <div class="dest-card-content">

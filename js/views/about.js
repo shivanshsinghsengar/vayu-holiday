@@ -9,7 +9,7 @@ async function renderAboutView() {
     <div class="package-detail-header">
       <div class="container">
         <div class="breadcrumbs">
-          <a href="#/">Home</a>
+          <a href="/">Home</a>
           <span class="breadcrumb-separator">/</span>
           <span style="color: var(--color-obsidian); font-weight: 600;">About Us</span>
         </div>
@@ -192,7 +192,7 @@ async function renderAboutView() {
             </div>
 
             <div style="display: flex; gap: 1rem;">
-              <a href="#/contact" class="btn btn-primary">Find Us on Map</a>
+              <a href="/contact" class="btn btn-primary">Find Us on Map</a>
               <button class="btn btn-gold" onclick="openEnquiryModal({ title: 'Schedule Office Consultation' })">
                 Schedule Meeting
               </button>
@@ -214,3 +214,4 @@ async function renderAboutView() {
     </section>
   `;
 }
+

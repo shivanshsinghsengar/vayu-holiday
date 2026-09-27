@@ -78,7 +78,7 @@ async function renderAdminView() {
         </nav>
 
         <div class="admin-sidebar-footer">
-          <a href="#/" class="btn btn-secondary btn-sm" style="color: var(--color-ivory); border-color: var(--border-dark);">
+          <a href="/" class="btn btn-secondary btn-sm" style="color: var(--color-ivory); border-color: var(--border-dark);">
             Live Site ↗
           </a>
           <button class="btn btn-secondary btn-sm" style="color: #f87171; border-color: rgba(239, 68, 68, 0.3);" onclick="handleAdminLogout()">
@@ -385,7 +385,7 @@ async function renderAdminPackagesTab() {
                 <td>
                   <div class="table-actions">
                     <button class="btn-table-action" onclick="openPackageEditorModal('${p.id}')">Edit</button>
-                    <a href="#/package/${p.id}" target="_blank" class="btn-table-action">View</a>
+                    <a href="/package/${p.id}" target="_blank" class="btn-table-action">View</a>
                     <button class="btn-table-action" style="color: #f87171;" onclick="handleDeletePackage('${p.id}')">Del</button>
                   </div>
                 </td>
@@ -478,7 +478,7 @@ async function renderAdminBlogsTab() {
                 <td>
                   <div class="table-actions">
                     <button class="btn-table-action" onclick="openBlogEditorModal('${b.id}')">Edit</button>
-                    <a href="#/blog/${b.slug}" target="_blank" class="btn-table-action">View</a>
+                    <a href="/blog/${b.slug}" target="_blank" class="btn-table-action">View</a>
                     <button class="btn-table-action" style="color: #f87171;" onclick="handleDeleteBlog('${b.id}')">Del</button>
                   </div>
                 </td>
@@ -662,7 +662,7 @@ function renderAdminLogin() {
         </div>
 
         <div style="margin-top: 1.5rem;">
-          <a href="#/" style="font-size: 0.85rem; color: var(--color-gold);">← Back to Public Website</a>
+          <a href="/" style="font-size: 0.85rem; color: var(--color-gold);">← Back to Public Website</a>
         </div>
       </div>
     </div>
@@ -690,7 +690,7 @@ async function handleAdminLoginSubmit(e) {
 async function handleAdminLogout() {
   await window.vayuStore.logoutAdmin();
   showToast("Logged Out", "Staff session ended.");
-  window.location.hash = "#/";
+  window.navigate('/');
 }
 
 async function handleUpdateEnquiryStatus(id, newStatus) {
@@ -1468,4 +1468,5 @@ async function handleSavePageSettingsForm(e) {
 
   showToast("SEO & Pages Updated", "Settings saved successfully.");
 }
+
 

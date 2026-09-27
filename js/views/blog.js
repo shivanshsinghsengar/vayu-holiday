@@ -9,7 +9,7 @@ async function renderBlogListView() {
     <div class="package-detail-header">
       <div class="container">
         <div class="breadcrumbs">
-          <a href="#/">Home</a>
+          <a href="/">Home</a>
           <span class="breadcrumb-separator">/</span>
           <span style="color: var(--color-obsidian); font-weight: 600;">Travel Stories</span>
         </div>
@@ -30,7 +30,7 @@ async function renderBlogListView() {
       <div class="container">
         <div class="blog-grid">
           ${blogs.map(b => `
-            <div class="blog-card" onclick="window.location.hash='#/blog/${b.slug}'">
+            <div class="blog-card" onclick="window.navigate('/blog/\')">
               <img src="${b.image}" alt="${b.title}" class="blog-card-img" loading="lazy" />
               <div class="blog-card-body">
                 <div class="blog-card-date">${b.category} • ${b.date} • ${b.readTime}</div>
@@ -58,7 +58,7 @@ async function renderSingleBlogView(slug) {
       <div class="container" style="padding: 6rem 1.5rem; text-align: center;">
         <h2 style="font-family: var(--font-serif); font-size: 2.2rem; margin-bottom: 1rem;">Article Not Found</h2>
         <p style="color: var(--color-text-muted); margin-bottom: 2rem;">The requested travel story could not be found.</p>
-        <a href="#/blog" class="btn btn-primary">Back to Travel Journal</a>
+        <a href="/blog" class="btn btn-primary">Back to Travel Journal</a>
       </div>
     `;
   }
@@ -83,9 +83,9 @@ async function renderSingleBlogView(slug) {
       <div class="package-detail-header">
         <div class="container-narrow">
           <div class="breadcrumbs">
-            <a href="#/">Home</a>
+            <a href="/">Home</a>
             <span class="breadcrumb-separator">/</span>
-            <a href="#/blog">Travel Stories</a>
+            <a href="/blog">Travel Stories</a>
             <span class="breadcrumb-separator">/</span>
             <span style="color: var(--color-obsidian); font-weight: 600;">${blog.category}</span>
           </div>
@@ -123,7 +123,7 @@ async function renderSingleBlogView(slug) {
         </div>
 
         <div style="margin-top: 3rem;">
-          <a href="#/blog" class="btn btn-secondary">
+          <a href="/blog" class="btn btn-secondary">
             ← Return to All Travel Stories
           </a>
         </div>
@@ -131,3 +131,4 @@ async function renderSingleBlogView(slug) {
     </article>
   `;
 }
+

@@ -12,7 +12,7 @@ function renderTermsView() {
     <div class="package-detail-header">
       <div class="container">
         <div class="breadcrumbs">
-          <a href="#/">Home</a>
+          <a href="/">Home</a>
           <span class="breadcrumb-separator">/</span>
           <span style="color: var(--color-obsidian); font-weight: 600;">Terms & Conditions</span>
         </div>
@@ -123,8 +123,8 @@ function renderTermsView() {
           </p>
 
           <div style="padding-top: 2rem; border-top: 1px solid var(--border-subtle); text-align: center;">
-            <a href="#/" class="btn btn-secondary">← Return to Homepage</a>
-            <a href="#/contact" class="btn btn-gold" style="margin-left: 1rem;">Contact Our Team</a>
+            <a href="/" class="btn btn-secondary">← Return to Homepage</a>
+            <a href="/contact" class="btn btn-gold" style="margin-left: 1rem;">Contact Our Team</a>
           </div>
         </div>
       </div>
@@ -142,7 +142,7 @@ function renderPrivacyView() {
     <div class="package-detail-header">
       <div class="container">
         <div class="breadcrumbs">
-          <a href="#/">Home</a>
+          <a href="/">Home</a>
           <span class="breadcrumb-separator">/</span>
           <span style="color: var(--color-obsidian); font-weight: 600;">Privacy Policy</span>
         </div>
@@ -253,8 +253,8 @@ function renderPrivacyView() {
           </p>
 
           <div style="padding-top: 2rem; border-top: 1px solid var(--border-subtle); text-align: center;">
-            <a href="#/" class="btn btn-secondary">← Return to Homepage</a>
-            <a href="#/terms" class="btn btn-gold" style="margin-left: 1rem;">View Terms & Conditions</a>
+            <a href="/" class="btn btn-secondary">← Return to Homepage</a>
+            <a href="/terms" class="btn btn-gold" style="margin-left: 1rem;">View Terms & Conditions</a>
           </div>
         </div>
       </div>
@@ -284,10 +284,10 @@ function render404View() {
         </p>
 
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-          <a href="#/" class="btn btn-primary btn-lg">
+          <a href="/" class="btn btn-primary btn-lg">
             ← Return to Homepage
           </a>
-          <a href="#/packages" class="btn btn-gold btn-lg">
+          <a href="/packages" class="btn btn-gold btn-lg">
             ${ICONS.plane} Explore Packages
           </a>
         </div>
@@ -304,3 +304,4 @@ function render404View() {
     </div>
   `;
 }
+

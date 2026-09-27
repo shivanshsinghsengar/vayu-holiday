@@ -44,7 +44,7 @@ async function renderHomeView() {
         </p>
 
         <div class="hero-actions" data-reveal>
-          <a href="#/packages" class="btn btn-gold btn-lg">
+          <a href="/packages" class="btn btn-gold btn-lg">
             Explore 2026 Holidays ${ICONS.arrowRight}
           </a>
           <button class="btn btn-outline-white btn-lg" onclick="openEnquiryModal({ title: 'Plan My Bespoke Journey' })">
@@ -215,7 +215,7 @@ async function renderHomeView() {
           ${packages.slice(0, 6).map(p => renderPackageCard(p)).join('')}
         </div>
         <div style="text-align:center;margin-top:3rem;">
-          <a href="#/packages" class="btn btn-primary btn-lg">
+          <a href="/packages" class="btn btn-primary btn-lg">
             View All 2026 Packages ${ICONS.arrowRight}
           </a>
         </div>
@@ -234,7 +234,7 @@ async function renderHomeView() {
         </div>
         <div class="experiences-grid">
           ${INITIAL_DATA.experiences.map(exp => `
-            <div class="experience-item" onclick="window.location.hash='#/packages?theme=${exp.id}'" role="button" tabindex="0" aria-label="${exp.title}" onkeydown="if(event.key==='Enter')window.location.hash='#/packages?theme=${exp.id}'">
+            <div class="experience-item" onclick="window.navigate('/packages?theme=\')" role="button" tabindex="0" aria-label="${exp.title}" onkeydown="if(event.key==='Enter')window.navigate('/packages?theme=\')">
               <img src="${exp.image}" alt="${exp.title}" loading="lazy" width="800" height="560" />
               <div class="experience-overlay">
                 <span class="badge badge-gold" style="width:fit-content;margin-bottom:0.65rem;">${exp.tagline}</span>
@@ -589,7 +589,7 @@ async function renderHomeView() {
               </div>
               <h3 class="service-card-title">${s.title}</h3>
               <p class="service-card-desc">${s.shortDesc}</p>
-              <a href="#/services/${s.slug}" class="service-card-link" aria-label="Learn more about ${s.title}">
+              <a href="/services/${s.slug}" class="service-card-link" aria-label="Learn more about ${s.title}">
                 Learn More ${ICONS.arrowRight}
               </a>
             </div>
@@ -682,11 +682,11 @@ async function renderHomeView() {
             <h2 class="section-title">Stories From The Road</h2>
             <p class="section-desc">Insider guides, visa tips, and destination essays by our travel curators.</p>
           </div>
-          <a href="#/blog" class="btn btn-secondary">View All Stories ${ICONS.arrowRight}</a>
+          <a href="/blog" class="btn btn-secondary">View All Stories ${ICONS.arrowRight}</a>
         </div>
         <div class="blog-grid">
           ${blogs.slice(0, 3).map(b => `
-            <article class="blog-card" onclick="window.location.hash='#/blog/${b.slug}'" role="button" tabindex="0" aria-label="Read: ${b.title}" onkeydown="if(event.key==='Enter')window.location.hash='#/blog/${b.slug}'">
+            <article class="blog-card" onclick="window.navigate('/blog/\')" role="button" tabindex="0" aria-label="Read: ${b.title}" onkeydown="if(event.key==='Enter')window.navigate('/blog/\')">
               <img src="${b.image}" alt="${b.title}" class="blog-card-img" loading="lazy" width="640" height="400" />
               <div class="blog-card-body">
                 <div class="blog-card-date">${b.category} · ${b.date} · ${b.readTime}</div>
@@ -812,5 +812,6 @@ async function filterDestinations(type, btn) {
 function executeHeroSearch() {
   const dest  = document.getElementById("heroSearchDest")?.value  || "";
   const theme = document.getElementById("heroSearchTheme")?.value || "";
-  window.location.hash = `#/packages?dest=${dest}&theme=${theme}`;
+  window.navigate('/packages?dest='+dest+'&theme='+theme);
 }
+
