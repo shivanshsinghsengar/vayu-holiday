@@ -170,14 +170,14 @@
     href="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80"
     fetchpriority="high" />
 
-  <!-- Preload Poppins 400 + 700 (critical text) -->
+  <!-- Preload Inter 400 + 500 (critical body text) -->
   <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" />
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" />
 
   <!-- =====================================================================
        FONTS (display=swap for performance)
   ====================================================================== -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- =====================================================================
        STYLESHEETS
@@ -234,7 +234,7 @@
   <!-- =====================================================================
        SCRIPTS
        Critical path: firebase → data → store → components (sync, needed before router)
-       Views + router + app: defer (non-blocking)
+        Views + router + app: defer (non-blocking)
   ====================================================================== -->
   <script src="js/firebase.js"></script>
   <script src="js/data.js"></script>
