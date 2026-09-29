@@ -361,7 +361,7 @@ function handleNewsletterSubmit(e) {
 }
 
 // --- Package Card Component ---
-function renderPackageCard(pkg) {
+window.renderPackageCard = function renderPackageCard(pkg) {
   const formattedPrice = window.vayuStore.formatPrice(pkg.price);
   const formattedOriginal = pkg.originalPrice ? window.vayuStore.formatPrice(pkg.originalPrice) : null;
 
@@ -426,7 +426,7 @@ function renderPackageCard(pkg) {
 }
 
 // --- Destination Card Component ---
-function renderDestinationCard(dest) {
+window.renderDestinationCard = function renderDestinationCard(dest) {
   const formattedStarting = window.vayuStore.formatPrice(dest.startingPrice);
 
   return `
