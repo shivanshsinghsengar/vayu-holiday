@@ -190,6 +190,7 @@
   <link rel="stylesheet" href="css/admin.css" />
   <link rel="stylesheet" href="css/mobile.css" />
   <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/animations.css" />
 
   <!-- =====================================================================
        FIREBASE SDK (compat v9 — works without bundler)
@@ -206,6 +207,22 @@
 <body>
   <!-- Skip-to-content (Accessibility) -->
   <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- =====================================================================
+       PRELOADER — Entry Animation (GenNext-inspired)
+  ====================================================================== -->
+  <div id="vayu-preloader" class="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-logo">
+        <div class="preloader-emblem">V</div>
+        <div class="preloader-brand">Vayu Holidays</div>
+      </div>
+      <div class="preloader-bar-wrap">
+        <div class="preloader-bar" id="preloaderBar"></div>
+      </div>
+      <div class="preloader-tagline">Your Journey. Beautifully Planned.</div>
+    </div>
+  </div>
 
   <!-- Root Single Page Application Mount Point -->
   <div id="app" role="main"></div>
