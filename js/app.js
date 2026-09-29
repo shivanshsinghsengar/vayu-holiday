@@ -208,11 +208,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // ── COOKIE CONSENT ─────────────────────────────────────────────────────────
   showCookieBanner();
 
-  // ── SERVICE WORKER ─────────────────────────────────────────────────────────
+  // ── SERVICE WORKER — force update old caches ───────────────────────────────
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("/sw.js")
-      .then(r => console.log("SW registered:", r.scope))
+      .then(reg => {
+        console.log("SW registered:", reg.scope);
+        // Force update immediately
+        reg.update();
+      })
       .catch(e => console.warn("SW failed:", e));
+
+    // When new SW takes over, reload to get fresh files
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      window.location.reload();
+    });
   }
 
   // ── FIREBASE AUTH ──────────────────────────────────────────────────────────

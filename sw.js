@@ -1,9 +1,10 @@
 /* ==========================================================================
    VAYU HOLIDAYS — SERVICE WORKER (PWA Offline Support)
    Strategy: Cache-First for static assets, Network-First for API calls
+   VERSION: 1.0.3 — force cache bust
    ========================================================================== */
 
-const CACHE_NAME = "vayu-holidays-v1.0.0";
+const CACHE_NAME = "vayu-holidays-v1.0.3";
 const OFFLINE_URL = "/offline.html";
 
 // Assets to pre-cache on install
