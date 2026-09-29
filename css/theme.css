@@ -752,11 +752,11 @@ img { display: block; max-width: 100%; height: auto; }
 .package-price-wrap { display: flex; flex-direction: column; }
 .price-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-ink-4); font-family: var(--font-body); }
 .price-amount {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 700;
   color: var(--c-ink);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 .price-per { font-size: 0.72rem; color: var(--c-ink-4); font-family: var(--font-body); }
 
