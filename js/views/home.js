@@ -3,6 +3,63 @@
    Philosophy: 80% whitespace · Restrained interactions · Editorial hierarchy
    ========================================================================== */
 
+// ── Local card renderers (self-contained, no external dependency) ────────────
+function renderPackageCard(pkg) {
+  const fmt = (p) => window.vayuStore.formatPrice(p);
+  const formattedPrice    = fmt(pkg.price);
+  const formattedOriginal = pkg.originalPrice ? fmt(pkg.originalPrice) : null;
+  return `
+    <div class="card package-card" data-package-id="${pkg.id}">
+      <div class="package-card-img-wrap">
+        <img src="${pkg.image}" alt="${pkg.title}" class="package-card-img" loading="lazy" width="600" height="375" />
+        <div class="package-card-top-badges">
+          <span class="badge ${pkg.category === 'domestic' ? 'badge-emerald' : 'badge-gold'}">
+            ${pkg.category === 'domestic' ? 'Incredible India' : 'International'}
+          </span>
+          <span class="badge badge-dark">${pkg.durationDays}D / ${pkg.durationNights}N</span>
+        </div>
+      </div>
+      <div class="package-card-body">
+        <div class="package-card-meta">
+          <span class="package-card-meta-item">${ICONS.mapPin} ${pkg.destinationName}</span>
+          <span class="package-card-meta-item" style="color:#b89758;font-weight:600;">${ICONS.star} ${pkg.rating}</span>
+        </div>
+        <h3 class="package-card-title"><a href="/package/${pkg.id}">${pkg.title}</a></h3>
+        <p class="package-card-desc">${pkg.overview}</p>
+        <div class="package-card-footer">
+          <div class="package-price-wrap">
+            <span class="price-label">Starting from</span>
+            <div style="display:flex;align-items:baseline;gap:.4rem;">
+              <span class="price-amount">${formattedPrice}</span>
+              ${formattedOriginal ? `<span style="text-decoration:line-through;font-size:.82rem;color:var(--c-ink-4);">${formattedOriginal}</span>` : ''}
+            </div>
+            <span class="price-per">per person · twin sharing</span>
+          </div>
+          <div style="display:flex;gap:.5rem;">
+            <a href="/package/${pkg.id}" class="btn btn-secondary btn-sm">Details</a>
+            <button class="btn btn-gold btn-sm" onclick="openEnquiryModal({ packageId: '${pkg.id}', title: '${pkg.title}' })">Get Quote</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderDestinationCard(dest) {
+  const formattedStarting = window.vayuStore.formatPrice(dest.startingPrice);
+  return `
+    <div class="dest-card" onclick="window.navigate('/packages?dest=${dest.id}')" role="button" tabindex="0" aria-label="View ${dest.name} packages" onkeydown="if(event.key==='Enter')window.navigate('/packages?dest=${dest.id}')">
+      <img src="${dest.image}" alt="${dest.name}" class="dest-card-bg" loading="lazy" />
+      <div class="dest-card-overlay"></div>
+      <div class="dest-card-content">
+        <span class="dest-card-tag">${dest.type === 'domestic' ? 'Incredible India' : 'International Escape'}</span>
+        <h3 class="dest-card-title">${dest.name}</h3>
+        <div class="dest-card-footer">
+          <span class="dest-card-count">${dest.packagesCount} Itineraries</span>
+          <span style="font-size:.82rem;color:#fff;">From <strong>${formattedStarting}</strong></span>
+        </div>
+      </div>
+    </div>`;
+}
 async function renderHomeView() {
   const company      = await window.vayuStore.getCompany();
   const destinations = await window.vayuStore.getDestinations();
