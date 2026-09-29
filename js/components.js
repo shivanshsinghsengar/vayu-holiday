@@ -1,5 +1,5 @@
-/* ==========================================================================
-   VAYU HOLIDAYS — REUSABLE UI COMPONENTS (Navbar, Footer, Cards, Modals, Toast)
+﻿/* ==========================================================================
+   VAYU HOLIDAYS â€” REUSABLE UI COMPONENTS (Navbar, Footer, Cards, Modals, Toast)
    ========================================================================== */
 
 // --- SVG Icons Helper ---
@@ -28,7 +28,7 @@ async function renderNavbar() {
   const waMsg = encodeURIComponent("Hello Vayu Holidays! I'd like to inquire about planning a luxury journey.");
 
   return `
-    <!-- Sticky Main Navbar — No top bar clutter -->
+    <!-- Sticky Main Navbar â€” No top bar clutter -->
     <header class="site-header" id="siteHeader" role="navigation" aria-label="Main navigation">
       <div class="container navbar">
 
@@ -87,10 +87,10 @@ async function renderNavbar() {
         <div class="nav-actions">
           <div class="currency-select-wrapper" title="Change currency">
             <select class="currency-select" id="currencySelect" onchange="vayuStore.setCurrency(this.value)" aria-label="Currency">
-              <option value="INR" ${currentCurrency === "INR" ? "selected" : ""}>₹ INR</option>
+              <option value="INR" ${currentCurrency === "INR" ? "selected" : ""}>â‚¹ INR</option>
               <option value="USD" ${currentCurrency === "USD" ? "selected" : ""}>$ USD</option>
-              <option value="EUR" ${currentCurrency === "EUR" ? "selected" : ""}>€ EUR</option>
-              <option value="GBP" ${currentCurrency === "GBP" ? "selected" : ""}>£ GBP</option>
+              <option value="EUR" ${currentCurrency === "EUR" ? "selected" : ""}>â‚¬ EUR</option>
+              <option value="GBP" ${currentCurrency === "GBP" ? "selected" : ""}>Â£ GBP</option>
               <option value="AED" ${currentCurrency === "AED" ? "selected" : ""}>AED</option>
             </select>
             <span class="currency-chevron" aria-hidden="true">${ICONS.chevronDown}</span>
@@ -166,195 +166,6 @@ async function renderNavbar() {
     </div>
   `;
 }
-
-  return `
-    <!-- Top Announcement Bar -->
-    <div class="top-bar" role="banner">
-      <div class="container top-bar-inner">
-        <div class="top-bar-left">
-          <a href="https://maps.google.com/?q=Raksha+Vihar+Airport+Road+Bhopal" target="_blank" rel="noopener" class="top-bar-item" aria-label="Office location">
-            ${ICONS.mapPin} Raksha Vihar, Airport Road, Bhopal
-          </a>
-          <a href="tel:${company.phone}" class="top-bar-item" aria-label="Call us">
-            ${ICONS.phone} ${company.phone}
-          </a>
-        </div>
-        <div class="top-bar-right">
-          <span class="top-bar-highlight">
-            ${ICONS.sparkles} 2026 Luxury Journeys — Enquire Now
-          </span>
-          <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" class="top-bar-wa" aria-label="WhatsApp us">
-            ${ICONS.whatsapp} WhatsApp
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sticky Main Navbar -->
-    <header class="site-header" id="siteHeader" role="navigation" aria-label="Main navigation">
-      <div class="container navbar">
-
-        <!-- Logo -->
-        <a href="/" class="brand-logo" aria-label="Vayu Holidays home">
-          <div class="brand-emblem" aria-hidden="true">V</div>
-          <div class="brand-text">
-            <span class="brand-name">Vayu Holidays</span>
-          </div>
-        </a>
-
-        <!-- Desktop Navigation -->
-        <nav class="nav-links" aria-label="Site navigation">
-          <div class="nav-item">
-            <a href="/packages" class="nav-link" aria-haspopup="true">
-              Holidays ${ICONS.chevronDown}
-            </a>
-            <div class="nav-dropdown" role="menu">
-              <a href="/packages" class="dropdown-link" role="menuitem">All Packages</a>
-              <a href="/domestic" class="dropdown-link" role="menuitem">
-                <span>Domestic India Tours</span>
-                <span class="dropdown-link-badge">Kashmir, Kerala+</span>
-              </a>
-              <a href="/international" class="dropdown-link" role="menuitem">
-                <span>International Escapes</span>
-                <span class="dropdown-link-badge">Dubai, Bali, Swiss+</span>
-              </a>
-              <a href="/honeymoon" class="dropdown-link" role="menuitem">Honeymoon Specials</a>
-              <a href="/group-tours" class="dropdown-link" role="menuitem">Guided Group Tours</a>
-              <a href="/mice" class="dropdown-link" role="menuitem">Corporate MICE</a>
-            </div>
-          </div>
-
-          <div class="nav-item">
-            <a href="/services/flights" class="nav-link" aria-haspopup="true">
-              Services ${ICONS.chevronDown}
-            </a>
-            <div class="nav-dropdown" style="min-width: 260px;" role="menu">
-              <a href="/services/flights" class="dropdown-link" role="menuitem">✈ Flight Bookings & Charters</a>
-              <a href="/services/hotels" class="dropdown-link" role="menuitem">🏨 Hotels & Luxury Resorts</a>
-              <a href="/services/visa" class="dropdown-link" role="menuitem">🛂 Visa Assistance (50+ Countries)</a>
-              <a href="/services/forex" class="dropdown-link" role="menuitem">💱 Forex & Multi-Currency Cards</a>
-              <a href="/services/insurance" class="dropdown-link" role="menuitem">🛡 Travel Insurance Cover</a>
-              <a href="/services/passport" class="dropdown-link" role="menuitem">📘 Passport Services</a>
-              <a href="/services/bus" class="dropdown-link" role="menuitem">🚌 Bus & Volvo Coaches</a>
-              <a href="/services/train" class="dropdown-link" role="menuitem">🚆 Train & Royal Rail</a>
-              <a href="/services/mice" class="dropdown-link" role="menuitem">🏢 Corporate MICE Logistics</a>
-            </div>
-          </div>
-
-          <div class="nav-item">
-            <a href="/about" class="nav-link">About Us</a>
-          </div>
-
-          <div class="nav-item">
-            <a href="/blog" class="nav-link">Journal</a>
-          </div>
-
-          <div class="nav-item">
-            <a href="/contact" class="nav-link">Contact</a>
-          </div>
-        </nav>
-
-        <!-- Nav Actions -->
-        <div class="nav-actions">
-          <!-- Currency Selector -->
-          <div class="currency-select-wrapper" title="Change currency">
-            <select class="currency-select" id="currencySelect" onchange="vayuStore.setCurrency(this.value)" aria-label="Select currency">
-              <option value="INR" ${currentCurrency === "INR" ? "selected" : ""}>₹ INR</option>
-              <option value="USD" ${currentCurrency === "USD" ? "selected" : ""}>$ USD</option>
-              <option value="EUR" ${currentCurrency === "EUR" ? "selected" : ""}>€ EUR</option>
-              <option value="GBP" ${currentCurrency === "GBP" ? "selected" : ""}>£ GBP</option>
-              <option value="AED" ${currentCurrency === "AED" ? "selected" : ""}>AED</option>
-            </select>
-            <span class="currency-chevron" aria-hidden="true">${ICONS.chevronDown}</span>
-          </div>
-
-          <!-- WhatsApp (Desktop) -->
-          <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" class="btn btn-whatsapp-nav" aria-label="Chat on WhatsApp">
-            ${ICONS.whatsapp} <span class="wa-label">WhatsApp</span>
-          </a>
-
-          <!-- Primary CTA -->
-          <button class="btn btn-gold btn-sm" onclick="openEnquiryModal({ title: 'Plan My Bespoke Journey' })" aria-label="Plan my trip">
-            ${ICONS.sparkles} Plan My Trip
-          </button>
-
-          <!-- Mobile Toggle -->
-          <button class="mobile-nav-toggle" id="mobileNavToggle" onclick="toggleMobileNav()" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileDrawer">
-            ${ICONS.menu}
-          </button>
-        </div>
-      </div>
-    </header>
-
-    <!-- Mobile Drawer Overlay -->
-    <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="toggleMobileNav()" aria-hidden="true"></div>
-
-    <!-- Mobile Drawer -->
-    <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation menu">
-      <div class="mobile-drawer-header">
-        <div>
-          <div class="brand-name" style="font-family:var(--font-serif);font-size:1.25rem;color:var(--color-obsidian);">Vayu Holidays</div>
-          <div style="font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-gold-dark);margin-top:2px;">Luxury Travel • Bhopal</div>
-        </div>
-        <button class="mobile-drawer-close" onclick="toggleMobileNav()" aria-label="Close menu">${ICONS.x}</button>
-      </div>
-
-      <nav class="mobile-nav-links" aria-label="Mobile navigation">
-        <a href="/" onclick="toggleMobileNav()">Home</a>
-        <a href="/packages" onclick="toggleMobileNav()">All Holiday Packages</a>
-        <a href="/domestic" onclick="toggleMobileNav()">Domestic Tours</a>
-        <a href="/international" onclick="toggleMobileNav()">International Tours</a>
-        <a href="/honeymoon" onclick="toggleMobileNav()">Honeymoon Escapes</a>
-        <a href="/group-tours" onclick="toggleMobileNav()">Group Tours</a>
-        <a href="/mice" onclick="toggleMobileNav()">Corporate MICE</a>
-        <div class="mobile-nav-divider"></div>
-        <a href="/services/visa" onclick="toggleMobileNav()">Visa Assistance</a>
-        <a href="/services/flights" onclick="toggleMobileNav()">Flight Bookings</a>
-        <a href="/services/forex" onclick="toggleMobileNav()">Forex & Currency</a>
-        <a href="/services/insurance" onclick="toggleMobileNav()">Travel Insurance</a>
-        <div class="mobile-nav-divider"></div>
-        <a href="/about" onclick="toggleMobileNav()">About Vayu Holidays</a>
-        <a href="/blog" onclick="toggleMobileNav()">Travel Journal</a>
-        <a href="/contact" onclick="toggleMobileNav()">Contact & Office</a>
-      </nav>
-
-      <div class="mobile-drawer-footer">
-        <button class="btn btn-gold" style="width:100%;" onclick="toggleMobileNav(); openEnquiryModal();">
-          ${ICONS.sparkles} Plan My Bespoke Trip
-        </button>
-        <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" class="btn btn-whatsapp" style="width:100%;justify-content:center;" onclick="toggleMobileNav()">
-          ${ICONS.whatsapp} Chat on WhatsApp
-        </a>
-        <div class="mobile-drawer-contact">
-          <a href="tel:${company.phone}">${ICONS.phone} ${company.phone}</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" class="floating-wa-btn" aria-label="Chat on WhatsApp" title="Chat with Vayu Holidays on WhatsApp">
-      ${ICONS.whatsapp}
-      <span class="floating-wa-pulse"></span>
-    </a>
-
-    <!-- Sticky Mobile CTA Bar -->
-    <div class="mobile-cta-bar" id="mobileCTABar" role="complementary" aria-label="Quick actions">
-      <a href="tel:${company.phone}" class="mobile-cta-btn mobile-cta-call" aria-label="Call us">
-        ${ICONS.phone}
-        <span>Call</span>
-      </a>
-      <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" class="mobile-cta-btn mobile-cta-wa" aria-label="WhatsApp">
-        ${ICONS.whatsapp}
-        <span>WhatsApp</span>
-      </a>
-      <button class="mobile-cta-btn mobile-cta-plan" onclick="openEnquiryModal()" aria-label="Plan my trip">
-        ${ICONS.sparkles}
-        <span>Plan Trip</span>
-      </button>
-    </div>
-  `;
-}
-
 // --- Footer Component ---
 async function renderFooter() {
   const company = await window.vayuStore.getCompany();
@@ -379,27 +190,27 @@ async function renderFooter() {
             </a>
 
             <p class="footer-desc">
-              Your Journey. Beautifully Planned. Bespoke luxury travel experiences, handcrafted itineraries, and dedicated 24/7 concierge — from Bhopal to the world.
+              Your Journey. Beautifully Planned. Bespoke luxury travel experiences, handcrafted itineraries, and dedicated 24/7 concierge â€” from Bhopal to the world.
             </p>
 
             <!-- Trust Badges -->
             <div class="footer-trust-badges">
               <div class="footer-trust-badge">
-                <span class="ftb-icon">★</span>
+                <span class="ftb-icon">â˜…</span>
                 <div>
                   <div class="ftb-val">4.9 / 5</div>
                   <div class="ftb-label">Guest Rating</div>
                 </div>
               </div>
               <div class="footer-trust-badge">
-                <span class="ftb-icon">✓</span>
+                <span class="ftb-icon">âœ“</span>
                 <div>
                   <div class="ftb-val">500+</div>
                   <div class="ftb-label">Trips Curated</div>
                 </div>
               </div>
               <div class="footer-trust-badge">
-                <span class="ftb-icon">⏰</span>
+                <span class="ftb-icon">â°</span>
                 <div>
                   <div class="ftb-val">24 / 7</div>
                   <div class="ftb-label">Concierge</div>
@@ -489,7 +300,7 @@ async function renderFooter() {
                 <div>
                   <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" style="color:#4ade80;">
                     ${company.whatsapp || "+91 98260 12345"}
-                    <span style="display:block;font-size:0.76rem;opacity:0.75;">Instant Reply · 9 AM – 9 PM</span>
+                    <span style="display:block;font-size:0.76rem;opacity:0.75;">Instant Reply Â· 9 AM â€“ 9 PM</span>
                   </a>
                 </div>
               </div>
@@ -521,7 +332,7 @@ async function renderFooter() {
         <!-- Footer Bottom -->
         <div class="footer-bottom">
           <div class="footer-bottom-left">
-            <span>© 2026 Vayu Holidays. All rights reserved.</span>
+            <span>Â© 2026 Vayu Holidays. All rights reserved.</span>
             <span class="footer-reg-info">GST: 23XXXXX0000X1ZX &nbsp;|&nbsp; IATA Accredited Agent</span>
           </div>
           <div class="footer-legal-links">
@@ -714,9 +525,9 @@ async function openEnquiryModal(prefill = {}) {
               <div class="form-group">
                 <label class="form-label">Approx Budget Preference</label>
                 <select name="budgetPerPerson" class="form-control">
-                  <option value="Comfort (₹25k - ₹45k / person)">Comfort (₹25k - ₹45k / person)</option>
-                  <option value="Luxury (₹45k - ₹85k / person)">Luxury (₹45k - ₹85k / person)</option>
-                  <option value="Ultra-Luxury (₹85k - ₹2 Lakh+ / person)">Ultra-Luxury (₹85k - ₹2 Lakh+ / person)</option>
+                  <option value="Comfort (â‚¹25k - â‚¹45k / person)">Comfort (â‚¹25k - â‚¹45k / person)</option>
+                  <option value="Luxury (â‚¹45k - â‚¹85k / person)">Luxury (â‚¹45k - â‚¹85k / person)</option>
+                  <option value="Ultra-Luxury (â‚¹85k - â‚¹2 Lakh+ / person)">Ultra-Luxury (â‚¹85k - â‚¹2 Lakh+ / person)</option>
                   <option value="Corporate / Group Quote">Corporate / Group Quote</option>
                 </select>
               </div>
@@ -830,7 +641,7 @@ function toggleMobileNav() {
 }
 
 // ==========================================================================
-// PRODUCTION ADDITIONS — Safe Guards & Utility Helpers
+// PRODUCTION ADDITIONS â€” Safe Guards & Utility Helpers
 // ==========================================================================
 
 /**
@@ -858,7 +669,7 @@ function formatWhatsAppNumber(phone) {
 }
 
 /**
- * Lazy image loader — add IntersectionObserver for images
+ * Lazy image loader â€” add IntersectionObserver for images
  * with data-src attribute (progressive loading).
  */
 function initLazyImages() {
@@ -930,7 +741,7 @@ function debounce(fn, delay = 300) {
 }
 
 /**
- * Back to top button — call after router renders each page.
+ * Back to top button â€” call after router renders each page.
  */
 function injectBackToTop() {
   const existing = document.getElementById("backToTopBtn");
