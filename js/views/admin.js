@@ -12,7 +12,10 @@ async function renderAdminView() {
     return renderAdminLogin();
   }
 
-  // 2. Render Full Dashboard Layout
+  // 2. Pre-resolve async tab content before building template
+  const initialTabContent = await renderAdminTabContent(currentAdminTab);
+
+  // 3. Render Full Dashboard Layout
   const company      = await store.getCompany();
   const packages     = await store.getPackages();
   const enquiries    = await store.getEnquiries();
@@ -106,7 +109,7 @@ async function renderAdminView() {
         </header>
 
         <div class="admin-body">
-          ${renderAdminTabContent(currentAdminTab)}
+          ${initialTabContent}
         </div>
       </main>
     </div>
