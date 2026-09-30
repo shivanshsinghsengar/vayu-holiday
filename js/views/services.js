@@ -3,8 +3,9 @@
    ========================================================================== */
 
 async function renderServiceDetailView(serviceSlug) {
-  const service = window.vayuStore.getServiceBySlug(serviceSlug);
-  const company = await window.vayuStore.getCompany();
+  const service  = window.vayuStore.getServiceBySlug(serviceSlug);
+  const company  = await window.vayuStore.getCompany();
+  const waNumber = (company.whatsapp || "919826012345").replace(/[^0-9]/g, "");
 
   if (!service) {
     return `
@@ -40,7 +41,7 @@ async function renderServiceDetailView(serviceSlug) {
             <button class="btn btn-gold" onclick="openEnquiryModal({ title: '${service.title} Inquiry' })">
               ${ICONS.sparkles} Inquire Now
             </button>
-            <a href="https://wa.me/919826012345?text=${encodeURIComponent(`Hello Vayu Holidays! I would like to inquire regarding ${service.title}.`)}" target="_blank" rel="noopener" class="btn btn-whatsapp">
+            <a href="https://wa.me/${waNumber}?text=${encodeURIComponent(`Hello Vayu Holidays! I would like to inquire regarding ${service.title}.`)}" target="_blank" rel="noopener" class="btn btn-whatsapp">
               ${ICONS.whatsapp} WhatsApp
             </a>
           </div>

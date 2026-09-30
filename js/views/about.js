@@ -3,7 +3,17 @@
    ========================================================================== */
 
 async function renderAboutView() {
-  const company = await window.vayuStore.getCompany();
+  const company      = await window.vayuStore.getCompany();
+  const pageSettings = await window.vayuStore.getPageSettings();
+  const leadership   = (company.leadership || []);
+  const waNumber     = (company.whatsapp || "919826012345").replace(/[^0-9]/g, "");
+
+  // Initials helper
+  const initials = (name) => name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+
+  const storyTitle = pageSettings.aboutStoryTitle || "Your Journey. Beautifully Planned.";
+  const storyBody  = pageSettings.aboutStoryBody  || "At Vayu Holidays, we believe that true luxury travel is never loud or cookie-cutter. It is found in unhurried mornings on misty tea estates, private sunset shikaras, seamless international airport transfers, and the absolute confidence that a dedicated concierge is always one message away.";
+  const storyBody2 = pageSettings.aboutStoryBody2 || `Headquartered at <strong>${company.office || 'Raksha Vihar, Vayu Residency, Airport Road, Bhopal'}</strong>, we serve discerning families, honeymoon couples, and corporate delegations across Madhya Pradesh and nationwide.`;
 
   return `
     <div class="package-detail-header">
@@ -32,12 +42,12 @@ async function renderAboutView() {
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; align-items: center;">
           <div>
             <span class="eyebrow">The Vayu Standard</span>
-            <h2 class="section-title">Your Journey. Beautifully Planned.</h2>
+            <h2 class="section-title">${storyTitle}</h2>
             <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-main); margin-bottom: 1.5rem;">
-              At Vayu Holidays, we believe that true luxury travel is never loud or cookie-cutter. It is found in unhurried mornings on misty tea estates, private sunset shikaras, seamless international airport transfers, and the absolute confidence that a dedicated concierge is always one message away.
+              ${storyBody}
             </p>
             <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-muted); margin-bottom: 2rem;">
-              Headquartered at <strong>Raksha Vihar, Vayu Residency, Airport Road in Bhopal</strong>, we serve discerning families, honeymoon couples, and corporate delegations across Madhya Pradesh and nationwide. We eliminate guesswork by delivering itemized proposals with zero hidden costs.
+              ${storyBody2}
             </p>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle);">
@@ -79,54 +89,23 @@ async function renderAboutView() {
           </p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem;">
-          <!-- Leader 1: Simran Singh Sengar -->
-          <div style="background: var(--color-cream); border: 1px solid var(--border-gold); border-radius: var(--radius-lg); padding: 2.5rem 2rem; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column;">
-            <div style="width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--color-obsidian) 0%, var(--color-slate-dark) 100%); color: var(--color-gold); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 2rem; font-weight: 700; margin: 0 auto 1.5rem; border: 2px solid var(--border-gold);">
-              SS
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2.5rem;">
+          ${leadership.map(leader => `
+            <div style="background: var(--color-cream); border: 1px solid var(--border-gold); border-radius: var(--radius-lg); padding: 2.5rem 2rem; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column;">
+              <div style="width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--color-obsidian) 0%, var(--color-slate-dark) 100%); color: var(--color-gold); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 2rem; font-weight: 700; margin: 0 auto 1.5rem; border: 2px solid var(--border-gold);">
+                ${initials(leader.name)}
+              </div>
+              <h3 style="font-family: var(--font-serif); font-size: 1.45rem; margin-bottom: 0.35rem; color: var(--color-obsidian);">
+                ${leader.name}
+              </h3>
+              <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-gold-dark); font-weight: 700; margin-bottom: 1.25rem;">
+                ${leader.role}
+              </div>
+              <p style="font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.7; flex-grow: 1;">
+                ${leader.bio}
+              </p>
             </div>
-            <h3 style="font-family: var(--font-serif); font-size: 1.45rem; margin-bottom: 0.35rem; color: var(--color-obsidian);">
-              Simran Singh Sengar
-            </h3>
-            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-gold-dark); font-weight: 700; margin-bottom: 1.25rem;">
-              Chairman
-            </div>
-            <p style="font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.7; flex-grow: 1;">
-              Providing strategic vision and ethical governance, Simran Singh Sengar steers Vayu Holidays with an unwavering commitment to transparent business standards and long-standing client relationships.
-            </p>
-          </div>
-
-          <!-- Leader 2: Shubham Vishwkarma -->
-          <div style="background: var(--color-cream); border: 1px solid var(--border-gold); border-radius: var(--radius-lg); padding: 2.5rem 2rem; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column;">
-            <div style="width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--color-obsidian) 0%, var(--color-slate-dark) 100%); color: var(--color-gold); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 2rem; font-weight: 700; margin: 0 auto 1.5rem; border: 2px solid var(--border-gold);">
-              SV
-            </div>
-            <h3 style="font-family: var(--font-serif); font-size: 1.45rem; margin-bottom: 0.35rem; color: var(--color-obsidian);">
-              Shubham Vishwkarma
-            </h3>
-            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-gold-dark); font-weight: 700; margin-bottom: 1.25rem;">
-              Managing Director & CEO
-            </div>
-            <p style="font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.7; flex-grow: 1;">
-              Driving daily operational excellence, airline and hotel alliances, and bespoke itinerary engineering. Shubham ensures that every guest journey reflects quiet elegance, punctuality, and concierge care.
-            </p>
-          </div>
-
-          <!-- Leader 3: Hardik Singh Sengar -->
-          <div style="background: var(--color-cream); border: 1px solid var(--border-gold); border-radius: var(--radius-lg); padding: 2.5rem 2rem; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column;">
-            <div style="width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--color-obsidian) 0%, var(--color-slate-dark) 100%); color: var(--color-gold); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 2rem; font-weight: 700; margin: 0 auto 1.5rem; border: 2px solid var(--border-gold);">
-              HS
-            </div>
-            <h3 style="font-family: var(--font-serif); font-size: 1.45rem; margin-bottom: 0.35rem; color: var(--color-obsidian);">
-              Hardik Singh Sengar
-            </h3>
-            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-gold-dark); font-weight: 700; margin-bottom: 1.25rem;">
-              Director
-            </div>
-            <p style="font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.7; flex-grow: 1;">
-              Leading strategic corporate partnerships, domestic route expansion across India, and specialized MICE offsites. Hardik works closely with our ground partners to guarantee pristine service delivery.
-            </p>
-          </div>
+          `).join('')}
         </div>
       </div>
     </section>
@@ -205,7 +184,7 @@ async function renderAboutView() {
             <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">
               Easily accessible from Raja Bhoj Airport Bhopal, VIP Road, and surrounding neighborhoods.
             </p>
-            <a href="https://wa.me/919826012345?text=${encodeURIComponent('Hello Vayu Holidays! I would like to schedule a visit to your Airport Road Bhopal office.')}" target="_blank" rel="noopener" class="btn btn-whatsapp" style="width: 100%;">
+            <a href="https://wa.me/${waNumber}?text=${encodeURIComponent('Hello Vayu Holidays! I would like to schedule a visit to your Airport Road Bhopal office.')}" target="_blank" rel="noopener" class="btn btn-whatsapp" style="width: 100%;">
               ${ICONS.whatsapp} WhatsApp For Directions
             </a>
           </div>

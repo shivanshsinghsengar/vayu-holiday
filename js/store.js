@@ -24,6 +24,7 @@ const LS = {
   TESTIMONIALS: "vayu_testimonials_2026",
   OFFERS:       "vayu_offers_2026",
   COMPANY:      "vayu_company_2026",
+  SERVICES:     "vayu_services_2026",
   CURRENCY:     "vayu_currency_pref",
   AUTH:         "vayu_admin_session_2026"
 };
@@ -385,6 +386,17 @@ class VayuStore {
     return t;
   }
 
+  async deleteTestimonial(id) {
+    if (this._useFirestore) {
+      try {
+        await this._db.collection("testimonials").doc(id).delete();
+      } catch (e) { console.warn("Firestore deleteTestimonial failed", e); }
+    }
+    let list = JSON.parse(localStorage.getItem(LS.TESTIMONIALS) || "[]");
+    list = list.filter(t => t.id !== id);
+    localStorage.setItem(LS.TESTIMONIALS, JSON.stringify(list));
+  }
+
   // ════════════════════════════════════════════════════════════════════════
   // OFFERS
   // ════════════════════════════════════════════════════════════════════════
@@ -489,10 +501,18 @@ class VayuStore {
   async getPageSettings() {
     const defaults = {
       heroHeadline:     "Your Journey. Beautifully Planned.",
-      heroSubtitle:     "Original, minimal luxury travel experiences from Bhopal to the world.",
+      heroSubtitle:     "Handcrafted itineraries, private sanctuaries, and dedicated 24/7 concierge — from Bhopal to the world.",
+      heroImage:        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=75",
       announcementText: "2026 Luxury Journeys Now Open",
       metaTitle:        "Vayu Holidays — Luxury Travel Agency & Tour Operator | Bhopal, India",
-      metaDescription:  "Bespoke holiday packages, flights, luxury hotels, visa, forex, and corporate MICE from Bhopal."
+      metaDescription:  "Bespoke holiday packages, flights, luxury hotels, visa, forex, and corporate MICE from Bhopal.",
+      trustTrips:       "500+",
+      trustRating:      "4.9★",
+      trustCountries:   "50+",
+      trustYears:       "8 yrs",
+      aboutStoryTitle:  "Your Journey. Beautifully Planned.",
+      aboutStoryBody:   "At Vayu Holidays, we believe that true luxury travel is never loud or cookie-cutter. It is found in unhurried mornings on misty tea estates, private sunset shikaras, seamless international airport transfers, and the absolute confidence that a dedicated concierge is always one message away.",
+      aboutStoryBody2:  "Headquartered at Raksha Vihar, Vayu Residency, Airport Road in Bhopal, we serve discerning families, honeymoon couples, and corporate delegations across Madhya Pradesh and nationwide."
     };
     if (this._useFirestore) {
       try {
@@ -514,10 +534,50 @@ class VayuStore {
   }
 
   // ════════════════════════════════════════════════════════════════════════
-  // SERVICES (static — from data.js, no DB needed)
+  // SERVICES — now DB-backed (editable from admin)
   // ════════════════════════════════════════════════════════════════════════
-  getServices()          { return INITIAL_DATA.services; }
-  getServiceBySlug(slug) { return INITIAL_DATA.services.find(s => s.slug === slug || s.id === slug); }
+  getServices() {
+    // Return from localStorage if seeded, else fall back to INITIAL_DATA
+    const stored = localStorage.getItem(LS.SERVICES);
+    if (stored) return JSON.parse(stored);
+    // Seed from INITIAL_DATA on first run
+    localStorage.setItem(LS.SERVICES, JSON.stringify(INITIAL_DATA.services));
+    return INITIAL_DATA.services;
+  }
+
+  getServiceBySlug(slug) {
+    return this.getServices().find(s => s.slug === slug || s.id === slug);
+  }
+
+  async saveService(service) {
+    const now = new Date().toISOString();
+    if (!service.id) {
+      service.id        = service.slug || "svc-" + Date.now();
+      service.createdAt = now;
+    }
+    service.updatedAt = now;
+    if (this._useFirestore) {
+      try {
+        await this._db.collection("services").doc(service.id).set(service, { merge: true });
+      } catch (e) { console.warn("Firestore saveService failed, using fallback", e); }
+    }
+    const list  = this.getServices();
+    const index = list.findIndex(s => s.id === service.id);
+    if (index !== -1) list[index] = { ...list[index], ...service };
+    else list.push(service);
+    localStorage.setItem(LS.SERVICES, JSON.stringify(list));
+    return service;
+  }
+
+  async deleteService(id) {
+    if (this._useFirestore) {
+      try {
+        await this._db.collection("services").doc(id).delete();
+      } catch (e) { console.warn("Firestore deleteService failed", e); }
+    }
+    const list = this.getServices().filter(s => s.id !== id);
+    localStorage.setItem(LS.SERVICES, JSON.stringify(list));
+  }
 
   // ════════════════════════════════════════════════════════════════════════
   // AUTHENTICATION — Firebase Auth (with localStorage session fallback)

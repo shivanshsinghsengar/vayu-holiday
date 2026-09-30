@@ -71,6 +71,10 @@ async function renderAdminView() {
             <span>${ICONS.plane}</span> Media Library (${window.vayuStore.getMedia().length})
           </div>
 
+          <div class="admin-nav-item ${currentAdminTab === 'services' ? 'active' : ''}" onclick="switchAdminTab('services')">
+            <span>${ICONS.sparkles}</span> Services (${window.vayuStore.getServices().length})
+          </div>
+
           <div class="admin-nav-item ${currentAdminTab === 'pages' ? 'active' : ''}" onclick="switchAdminTab('pages')">
             <span>${ICONS.calendar}</span> Pages & SEO
           </div>
@@ -126,6 +130,7 @@ function getAdminTabTitle(tab) {
     case "testimonials": return "Client Testimonials & Ratings";
     case "offers": return "Special Offers & Campaign Banners";
     case "media": return "Curated Media & Photography Library";
+    case "services": return "Travel Services Manager";
     case "pages": return "Pages, Hero Headline & SEO Settings";
     case "settings": return "Bhopal Office Profile & Governance";
     default: return "Dashboard";
@@ -151,6 +156,7 @@ async function renderAdminTabContent(tab) {
     case "testimonials": return await renderAdminTestimonialsTab();
     case "offers":       return await renderAdminOffersTab();
     case "media":        return await renderAdminMediaTab();
+    case "services":     return await renderAdminServicesTab();
     case "pages":        return await renderAdminPagesTab();
     case "settings":     return await renderAdminSettingsTab();
     default:             return await renderAdminDashboardTab();
@@ -514,6 +520,7 @@ async function renderAdminTestimonialsTab() {
               <th>Trip</th>
               <th>Rating</th>
               <th>Quote</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -523,7 +530,13 @@ async function renderAdminTestimonialsTab() {
                 <td>${t.location}</td>
                 <td>${t.trip}</td>
                 <td>★ ${t.rating}</td>
-                <td style="font-size: 0.82rem; max-width: 320px; color: var(--color-text-inverse-muted);">${t.quote}</td>
+                <td style="font-size:0.82rem;max-width:260px;color:var(--color-text-inverse-muted);">"${t.quote}"</td>
+                <td>
+                  <div class="table-actions">
+                    <button class="btn-table-action" onclick="openTestimonialEditorModal('${t.id}')">Edit</button>
+                    <button class="btn-table-action" style="color:#f87171;" onclick="handleDeleteTestimonial('${t.id}')">Del</button>
+                  </div>
+                </td>
               </tr>
             `).join('')}
           </tbody>
@@ -600,18 +613,46 @@ async function renderAdminSettingsTab() {
         </div>
 
         <div class="admin-card" style="padding: 1.75rem;">
-          <h4 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 0.5rem; color: #fff;">
-            Executive Governance
+          <h4 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 1rem; color: #fff;">
+            Leadership Team
           </h4>
-          <div style="font-size: 0.85rem; color: var(--color-text-inverse-muted); line-height: 1.6;">
-            <strong>Chairman:</strong> Simran Singh Sengar<br/>
-            <strong>MD & CEO:</strong> Shubham Vishwkarma<br/>
-            <strong>Director:</strong> Hardik Singh Sengar
-          </div>
+          <p style="font-size:0.82rem;color:var(--color-text-inverse-muted);margin-bottom:1rem;">
+            Edit names, roles and bios — auto-reflected on the About page.
+          </p>
+          <form onsubmit="handleSaveLeadershipForm(event)">
+            ${(company.leadership||[]).map((l,i)=>`
+              <div style="border:1px solid var(--border-dark);border-radius:8px;padding:1rem;margin-bottom:0.75rem;">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.5rem;">
+                  <input type="text" name="leader_name_${i}" class="form-control" value="${l.name}" placeholder="Name" style="background:#080C10;color:#fff;border-color:var(--border-dark);" />
+                  <input type="text" name="leader_role_${i}" class="form-control" value="${l.role}" placeholder="Role/Title" style="background:#080C10;color:#fff;border-color:var(--border-dark);" />
+                </div>
+                <textarea name="leader_bio_${i}" class="form-control" style="background:#080C10;color:#fff;border-color:var(--border-dark);min-height:60px;" placeholder="Bio...">${l.bio||''}</textarea>
+              </div>
+            `).join('')}
+            <input type="hidden" name="leaderCount" value="${(company.leadership||[]).length}" />
+            <button type="submit" class="btn btn-gold btn-sm" style="width:100%;margin-top:0.5rem;">Save Leadership</button>
+          </form>
         </div>
       </div>
     </div>
   `;
+}
+
+async function handleSaveLeadershipForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+  const count = parseInt(formData.get("leaderCount"), 10) || 0;
+  const leadership = [];
+  for (let i = 0; i < count; i++) {
+    leadership.push({
+      name: formData.get(`leader_name_${i}`) || '',
+      role: formData.get(`leader_role_${i}`) || '',
+      bio:  formData.get(`leader_bio_${i}`)  || ''
+    });
+  }
+  await window.vayuStore.updateCompany({ leadership });
+  showToast("Leadership Saved", "About page leadership updated.");
 }
 
 // --- Login Screen ---
@@ -770,84 +811,133 @@ function searchEnquiriesTable(term) {
 // --- Admin Modals for Package Editing & Enquiry Viewing ---
 function openPackageEditorModal(pkgId = null) {
   const pkg = pkgId ? window.vayuStore.getPackageById(pkgId) : {
-    title: "",
-    destinationName: "Kashmir, India",
-    destinationId: "kashmir",
-    category: "domestic",
-    experienceType: "luxury",
-    durationDays: 6,
-    durationNights: 5,
-    price: 35000,
-    originalPrice: 40000,
+    title: "", destinationName: "Kashmir, India", destinationId: "kashmir",
+    category: "domestic", experienceType: "luxury", durationDays: 6, durationNights: 5,
+    price: 35000, originalPrice: 40000, bestTime: "Apr–Oct",
     image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1200&q=80",
-    overview: "Original luxury itinerary crafted with private chauffeurs and handpicked verified stays.",
+    gallery: [], overview: "Original luxury itinerary crafted with private chauffeurs and handpicked verified stays.",
     highlights: ["Private transfers", "Luxury 4/5 star hotels", "Breakfast & Dinner included"],
-    itinerary: [
-      { day: 1, title: "Arrival & Welcome", description: "VIP reception and transfer to private luxury resort.", stay: "Luxury Resort", meals: "Dinner Included" }
-    ],
+    itinerary: [{ day: 1, title: "Arrival & Welcome", description: "VIP reception and transfer to private luxury resort.", stay: "Luxury Resort", meals: "Dinner Included" }],
     inclusions: ["Accommodation in handpicked properties", "Daily buffet breakfast", "Private AC vehicle"],
-    exclusions: ["Airfare", "Personal expenses"]
+    exclusions: ["Airfare", "Personal expenses"], hotelInfo: ""
   };
+
+  // Safe join helpers for textarea fields
+  const hlJoin  = (arr) => (arr || []).join('\n');
+  const incJoin = (arr) => (arr || []).join('\n');
+  const galJoin = (arr) => (arr || []).join('\n');
+  const itinVal = JSON.stringify(pkg.itinerary || [], null, 2)
+    .replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
   const modalHtml = `
     <div class="modal-overlay open" id="pkgEditorModal">
-      <div class="modal-dialog" style="max-width: 760px;">
+      <div class="modal-dialog" style="max-width:860px;">
         <div class="modal-header">
           <h3 class="modal-title">${pkgId ? 'Edit Holiday Package' : 'Create New Holiday Package'}</h3>
           <button class="modal-close-btn" onclick="document.getElementById('pkgEditorModal').remove()">${ICONS.x}</button>
         </div>
-
         <form onsubmit="handleSavePackageForm(event, '${pkgId || ''}')">
-          <div class="modal-body">
+          <div class="modal-body" style="max-height:72vh;overflow-y:auto;">
+
+            <!-- Basic Info -->
             <div class="form-group">
               <label class="form-label">Package Title *</label>
               <input type="text" name="title" class="form-control" value="${pkg.title}" required />
             </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
               <div class="form-group">
-                <label class="form-label">Destination Name</label>
+                <label class="form-label">Destination Name *</label>
                 <input type="text" name="destinationName" class="form-control" value="${pkg.destinationName}" required />
               </div>
               <div class="form-group">
                 <label class="form-label">Category</label>
                 <select name="category" class="form-control">
-                  <option value="domestic" ${pkg.category === 'domestic' ? 'selected' : ''}>Domestic (India)</option>
-                  <option value="international" ${pkg.category === 'international' ? 'selected' : ''}>International</option>
-                  <option value="honeymoon" ${pkg.category === 'honeymoon' ? 'selected' : ''}>Honeymoon Special</option>
-                  <option value="luxury" ${pkg.category === 'luxury' ? 'selected' : ''}>Ultra-Luxury</option>
-                  <option value="group" ${pkg.category === 'group' ? 'selected' : ''}>Guided Group</option>
-                  <option value="mice" ${pkg.category === 'mice' ? 'selected' : ''}>Corporate MICE</option>
+                  <option value="domestic"      ${pkg.category==='domestic'?'selected':''}>Domestic (India)</option>
+                  <option value="international" ${pkg.category==='international'?'selected':''}>International</option>
+                  <option value="honeymoon"     ${pkg.category==='honeymoon'?'selected':''}>Honeymoon Special</option>
+                  <option value="luxury"        ${pkg.category==='luxury'?'selected':''}>Ultra-Luxury</option>
+                  <option value="group"         ${pkg.category==='group'?'selected':''}>Guided Group</option>
+                  <option value="mice"          ${pkg.category==='mice'?'selected':''}>Corporate MICE</option>
                 </select>
               </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+            <!-- Pricing & Duration -->
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1rem;">
               <div class="form-group">
-                <label class="form-label">Duration (Days)</label>
+                <label class="form-label">Days *</label>
                 <input type="number" name="durationDays" class="form-control" value="${pkg.durationDays}" required />
               </div>
               <div class="form-group">
-                <label class="form-label">Duration (Nights)</label>
+                <label class="form-label">Nights *</label>
                 <input type="number" name="durationNights" class="form-control" value="${pkg.durationNights}" required />
               </div>
               <div class="form-group">
-                <label class="form-label">Price (INR) *</label>
+                <label class="form-label">Price ₹ *</label>
                 <input type="number" name="price" class="form-control" value="${pkg.price}" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Original Price ₹</label>
+                <input type="number" name="originalPrice" class="form-control" value="${pkg.originalPrice || ''}" />
               </div>
             </div>
 
+            <!-- Images -->
             <div class="form-group">
-              <label class="form-label">Hero Cover Image URL</label>
+              <label class="form-label">Hero Cover Image URL *</label>
               <input type="url" name="image" class="form-control" value="${pkg.image}" required />
             </div>
-
             <div class="form-group">
-              <label class="form-label">Overview & Description</label>
-              <textarea name="overview" class="form-control" required>${pkg.overview}</textarea>
+              <label class="form-label">Gallery Image URLs (one per line)</label>
+              <textarea name="gallery" class="form-control" style="min-height:80px;" placeholder="https://images.unsplash.com/...">${galJoin(pkg.gallery)}</textarea>
             </div>
-          </div>
 
+            <!-- Overview -->
+            <div class="form-group">
+              <label class="form-label">Overview & Description *</label>
+              <textarea name="overview" class="form-control" style="min-height:80px;" required>${pkg.overview}</textarea>
+            </div>
+
+            <!-- Highlights -->
+            <div class="form-group">
+              <label class="form-label">Highlights (one per line)</label>
+              <textarea name="highlights" class="form-control" style="min-height:80px;" placeholder="Private Dal Lake houseboat&#10;Gulmarg Gondola ride">${hlJoin(pkg.highlights)}</textarea>
+            </div>
+
+            <!-- Inclusions / Exclusions -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div class="form-group">
+                <label class="form-label">Inclusions (one per line)</label>
+                <textarea name="inclusions" class="form-control" style="min-height:100px;">${incJoin(pkg.inclusions)}</textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Exclusions (one per line)</label>
+                <textarea name="exclusions" class="form-control" style="min-height:100px;">${incJoin(pkg.exclusions)}</textarea>
+              </div>
+            </div>
+
+            <!-- Hotel info & Best Time -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div class="form-group">
+                <label class="form-label">Best Time to Travel</label>
+                <input type="text" name="bestTime" class="form-control" value="${pkg.bestTime || ''}" placeholder="e.g. April to October" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Hotel / Stay Info</label>
+                <input type="text" name="hotelInfo" class="form-control" value="${pkg.hotelInfo || ''}" placeholder="e.g. Khyber Resort or equivalent" />
+              </div>
+            </div>
+
+            <!-- Itinerary JSON -->
+            <div class="form-group">
+              <label class="form-label">Day-wise Itinerary (JSON array)</label>
+              <p style="font-size:0.78rem;color:var(--color-text-inverse-muted);margin-bottom:0.5rem;">
+                Format: [{"day":1,"title":"...","description":"...","stay":"...","meals":"..."}]
+              </p>
+              <textarea name="itinerary" class="form-control" style="min-height:140px;font-family:monospace;font-size:0.82rem;">${itinVal}</textarea>
+            </div>
+
+          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" onclick="document.getElementById('pkgEditorModal').remove()">Cancel</button>
             <button type="submit" class="btn btn-gold">Save Package</button>
@@ -856,7 +946,6 @@ function openPackageEditorModal(pkgId = null) {
       </div>
     </div>
   `;
-
   document.body.insertAdjacentHTML("beforeend", modalHtml);
 }
 
@@ -864,18 +953,32 @@ async function handleSavePackageForm(e, pkgId) {
   e.preventDefault();
   const form = e.target;
   const formData = new FormData(form);
+
+  // Parse multiline text fields into arrays
+  const toArr = (val) => val.split('\n').map(s => s.trim()).filter(Boolean);
+  let itinerary = [];
+  try { itinerary = JSON.parse(formData.get("itinerary") || "[]"); } catch { itinerary = []; }
+
   const pkgData = {
-    title: formData.get("title"),
+    title:           formData.get("title"),
     destinationName: formData.get("destinationName"),
-    destinationId: formData.get("destinationName").toLowerCase().split(' ')[0],
-    category: formData.get("category"),
-    durationDays: parseInt(formData.get("durationDays"), 10),
-    durationNights: parseInt(formData.get("durationNights"), 10),
-    price: parseInt(formData.get("price"), 10),
-    image: formData.get("image"),
-    overview: formData.get("overview"),
-    rating: 4.95,
-    reviewsCount: 42
+    destinationId:   formData.get("destinationName").toLowerCase().split(/[,\s]/)[0],
+    category:        formData.get("category"),
+    durationDays:    parseInt(formData.get("durationDays"), 10),
+    durationNights:  parseInt(formData.get("durationNights"), 10),
+    price:           parseInt(formData.get("price"), 10),
+    originalPrice:   parseInt(formData.get("originalPrice"), 10) || null,
+    image:           formData.get("image"),
+    gallery:         toArr(formData.get("gallery")),
+    overview:        formData.get("overview"),
+    highlights:      toArr(formData.get("highlights")),
+    inclusions:      toArr(formData.get("inclusions")),
+    exclusions:      toArr(formData.get("exclusions")),
+    bestTime:        formData.get("bestTime"),
+    hotelInfo:       formData.get("hotelInfo"),
+    itinerary,
+    rating:          pkgId ? (window.vayuStore.getPackageById(pkgId)?.rating || 4.95) : 4.95,
+    reviewsCount:    pkgId ? (window.vayuStore.getPackageById(pkgId)?.reviewsCount || 42) : 42
   };
   if (pkgId) pkgData.id = pkgId;
   await window.vayuStore.savePackage(pkgData);
@@ -1123,38 +1226,57 @@ async function handleSaveBlogForm(e, blogId) {
 }
 
 // --- Testimonial Editor Modal ---
-function openTestimonialEditorModal() {
+function openTestimonialEditorModal(testId = null) {
+  const t = testId ? (window.vayuStore.getTestimonials().find ? window.vayuStore.getTestimonials() : []) : null;
+  // We resolve synchronously from localStorage for the modal
+  const all = JSON.parse(localStorage.getItem("vayu_testimonials_2026") || "[]");
+  const existing = testId ? (all.find(x => x.id === testId) || {}) : {};
+
   const modalHtml = `
     <div class="modal-overlay open" id="testEditorModal">
       <div class="modal-dialog">
         <div class="modal-header">
-          <h3 class="modal-title">Add Client Review</h3>
+          <h3 class="modal-title">${testId ? 'Edit Client Review' : 'Add Client Review'}</h3>
           <button class="modal-close-btn" onclick="document.getElementById('testEditorModal').remove()">${ICONS.x}</button>
         </div>
-        <form onsubmit="handleSaveTestimonialForm(event)">
+        <form onsubmit="handleSaveTestimonialForm(event, '${testId || ''}')">
           <div class="modal-body">
             <div class="form-group">
               <label class="form-label">Client Name *</label>
-              <input type="text" name="name" class="form-control" placeholder="e.g. Dr. Rajesh Sharma" required />
+              <input type="text" name="name" class="form-control" value="${existing.name || ''}" placeholder="e.g. Dr. Rajesh Sharma" required />
             </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
               <div class="form-group">
                 <label class="form-label">Location</label>
-                <input type="text" name="location" class="form-control" placeholder="Bhopal, MP" required />
+                <input type="text" name="location" class="form-control" value="${existing.location || ''}" placeholder="Bhopal, MP" required />
               </div>
               <div class="form-group">
                 <label class="form-label">Trip Taken</label>
-                <input type="text" name="trip" class="form-control" placeholder="Kashmir 6D Tour" required />
+                <input type="text" name="trip" class="form-control" value="${existing.trip || ''}" placeholder="Kashmir 6D Tour" required />
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div class="form-group">
+                <label class="form-label">Rating (1–5)</label>
+                <select name="rating" class="form-control">
+                  <option value="5" ${(existing.rating||5)===5?'selected':''}>★★★★★ 5</option>
+                  <option value="4" ${existing.rating===4?'selected':''}>★★★★ 4</option>
+                  <option value="3" ${existing.rating===3?'selected':''}>★★★ 3</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Avatar Image URL</label>
+                <input type="url" name="avatar" class="form-control" value="${existing.avatar || ''}" placeholder="https://images.unsplash.com/..." />
               </div>
             </div>
             <div class="form-group">
               <label class="form-label">Review Quote *</label>
-              <textarea name="quote" class="form-control" placeholder="Client feedback quote..." required></textarea>
+              <textarea name="quote" class="form-control" placeholder="Client feedback quote..." required>${existing.quote || ''}</textarea>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" onclick="document.getElementById('testEditorModal').remove()">Cancel</button>
-            <button type="submit" class="btn btn-gold">Save Review</button>
+            <button type="submit" class="btn btn-gold">${testId ? 'Update Review' : 'Save Review'}</button>
           </div>
         </form>
       </div>
@@ -1163,19 +1285,31 @@ function openTestimonialEditorModal() {
   document.body.insertAdjacentHTML("beforeend", modalHtml);
 }
 
-async function handleSaveTestimonialForm(e) {
+async function handleSaveTestimonialForm(e, testId) {
   e.preventDefault();
   const form = e.target;
   const formData = new FormData(form);
-  await window.vayuStore.saveTestimonial({
-    name: formData.get("name"), location: formData.get("location"),
-    trip: formData.get("trip"), rating: 5,
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
-    quote: formData.get("quote")
-  });
+  const data = {
+    name:     formData.get("name"),
+    location: formData.get("location"),
+    trip:     formData.get("trip"),
+    rating:   parseInt(formData.get("rating"), 10) || 5,
+    avatar:   formData.get("avatar") || "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=200&q=80",
+    quote:    formData.get("quote")
+  };
+  if (testId) data.id = testId;
+  await window.vayuStore.saveTestimonial(data);
   document.getElementById("testEditorModal")?.remove();
   await switchAdminTab("testimonials");
-  showToast("Review Added", "Client testimonial logged.");
+  showToast(testId ? "Review Updated" : "Review Added", "Client testimonial saved.");
+}
+
+async function handleDeleteTestimonial(id) {
+  if (confirm(`Delete this testimonial?`)) {
+    await window.vayuStore.deleteTestimonial(id);
+    await switchAdminTab("testimonials");
+    showToast("Review Removed", id);
+  }
 }
 
 // --- Offers & Campaign Banners Tab ---
@@ -1411,48 +1545,236 @@ async function handleDeleteMedia(id) {
   }
 }
 
-// --- Pages & Hero Content Settings Tab ---
-async function renderAdminPagesTab() {
-  const pageSettings = await window.vayuStore.getPageSettings();
-
+// --- Services Manager Tab ---
+async function renderAdminServicesTab() {
+  const services = window.vayuStore.getServices();
   return `
     <div class="admin-card">
       <div class="admin-card-header">
-        <h3 class="admin-card-title">Homepage Hero & Global SEO Settings</h3>
+        <div>
+          <h3 class="admin-card-title">Travel Services Manager</h3>
+          <p style="font-size:0.82rem;color:var(--color-text-inverse-muted);">Edit service titles, descriptions, features and FAQs shown on service pages.</p>
+        </div>
+        <button class="btn btn-gold btn-sm" onclick="openServiceEditorModal()">+ Add Service</button>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr><th>Service</th><th>Slug</th><th>Short Description</th><th>Features</th><th>FAQs</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            ${services.map(s => `
+              <tr>
+                <td><strong>${s.title}</strong></td>
+                <td><code style="font-size:0.75rem;color:var(--color-gold);">${s.slug}</code></td>
+                <td style="font-size:0.82rem;max-width:220px;color:var(--color-text-inverse-muted);">${s.shortDesc}</td>
+                <td style="text-align:center;">${(s.features||[]).length}</td>
+                <td style="text-align:center;">${(s.faqs||[]).length}</td>
+                <td>
+                  <div class="table-actions">
+                    <button class="btn-table-action" onclick="openServiceEditorModal('${s.id}')">Edit</button>
+                    <button class="btn-table-action" style="color:#f87171;" onclick="handleDeleteService('${s.id}')">Del</button>
+                  </div>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
+function openServiceEditorModal(svcId = null) {
+  const all = window.vayuStore.getServices();
+  const svc = svcId ? (all.find(s => s.id === svcId) || {}) : {
+    title: "", slug: "", shortDesc: "", heroDesc: "", icon: "plane",
+    features: [], faqs: []
+  };
+  const featJoin = (arr) => (arr||[]).join('\n');
+  const faqsVal  = JSON.stringify(svc.faqs||[], null, 2).replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+  const modalHtml = `
+    <div class="modal-overlay open" id="svcEditorModal">
+      <div class="modal-dialog" style="max-width:780px;">
+        <div class="modal-header">
+          <h3 class="modal-title">${svcId ? 'Edit Service' : 'Add New Service'}</h3>
+          <button class="modal-close-btn" onclick="document.getElementById('svcEditorModal').remove()">${ICONS.x}</button>
+        </div>
+        <form onsubmit="handleSaveServiceForm(event,'${svcId||''}')">
+          <div class="modal-body" style="max-height:70vh;overflow-y:auto;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div class="form-group">
+                <label class="form-label">Service Title *</label>
+                <input type="text" name="title" class="form-control" value="${svc.title}" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">URL Slug (e.g. visa)</label>
+                <input type="text" name="slug" class="form-control" value="${svc.slug}" required placeholder="flights, hotels, visa..." />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Short Description (card preview)</label>
+              <textarea name="shortDesc" class="form-control" style="min-height:60px;">${svc.shortDesc}</textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Hero Page Description</label>
+              <textarea name="heroDesc" class="form-control" style="min-height:80px;">${svc.heroDesc}</textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Features (one per line)</label>
+              <textarea name="features" class="form-control" style="min-height:100px;" placeholder="Best route optimization&#10;24/7 rescheduling assistance">${featJoin(svc.features)}</textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">FAQs (JSON array)</label>
+              <p style="font-size:0.78rem;color:var(--color-text-muted);margin-bottom:0.4rem;">[{"q":"Question?","a":"Answer."}]</p>
+              <textarea name="faqs" class="form-control" style="min-height:120px;font-family:monospace;font-size:0.8rem;">${faqsVal}</textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="document.getElementById('svcEditorModal').remove()">Cancel</button>
+            <button type="submit" class="btn btn-gold">${svcId ? 'Update Service' : 'Add Service'}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  `;
+  document.body.insertAdjacentHTML("beforeend", modalHtml);
+}
+
+async function handleSaveServiceForm(e, svcId) {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+  const toArr = (v) => v.split('\n').map(s=>s.trim()).filter(Boolean);
+  let faqs = [];
+  try { faqs = JSON.parse(formData.get("faqs")||"[]"); } catch { faqs = []; }
+  const slug = formData.get("slug").trim().toLowerCase().replace(/[^a-z0-9-]/g,'');
+  const data = {
+    title:     formData.get("title"),
+    slug,
+    id:        svcId || slug,
+    shortDesc: formData.get("shortDesc"),
+    heroDesc:  formData.get("heroDesc"),
+    features:  toArr(formData.get("features")),
+    faqs
+  };
+  await window.vayuStore.saveService(data);
+  document.getElementById("svcEditorModal")?.remove();
+  await switchAdminTab("services");
+  showToast("Service Saved", data.title);
+}
+
+async function handleDeleteService(id) {
+  if (confirm(`Delete service "${id}"? This will remove it from service pages.`)) {
+    await window.vayuStore.deleteService(id);
+    await switchAdminTab("services");
+    showToast("Service Removed", id);
+  }
+}
+
+// --- Pages & Hero Content Settings Tab ---
+async function renderAdminPagesTab() {
+  const p = await window.vayuStore.getPageSettings();
+  const s = (k, v='') => `style="background:#080C10;color:#fff;border-color:var(--border-dark);"`;
+
+  return `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+
+      <!-- Hero & SEO -->
+      <div class="admin-card">
+        <div class="admin-card-header"><h3 class="admin-card-title">Hero Section & SEO</h3></div>
+        <form onsubmit="handleSavePageSettingsForm(event)" style="padding:1.75rem;">
+
+          <div class="form-group">
+            <label class="form-label" style="color:var(--color-ivory);">Hero Background Image URL</label>
+            <input type="url" name="heroImage" class="form-control" value="${p.heroImage || ''}" ${s()} placeholder="https://images.unsplash.com/..." />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" style="color:var(--color-ivory);">Hero Main Headline</label>
+            <input type="text" name="heroHeadline" class="form-control" value="${p.heroHeadline}" ${s()} required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" style="color:var(--color-ivory);">Hero Subtitle</label>
+            <textarea name="heroSubtitle" class="form-control" ${s()} style="background:#080C10;color:#fff;border-color:var(--border-dark);min-height:70px;" required>${p.heroSubtitle}</textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" style="color:var(--color-ivory);">Announcement Bar Text</label>
+            <input type="text" name="announcementText" class="form-control" value="${p.announcementText}" ${s()} required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" style="color:var(--color-ivory);">SEO Meta Title</label>
+            <input type="text" name="metaTitle" class="form-control" value="${p.metaTitle}" ${s()} required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" style="color:var(--color-ivory);">SEO Meta Description</label>
+            <textarea name="metaDescription" class="form-control" ${s()} style="background:#080C10;color:#fff;border-color:var(--border-dark);min-height:70px;" required>${p.metaDescription}</textarea>
+          </div>
+
+          <!-- Trust Metrics -->
+          <div style="border-top:1px solid var(--border-dark);padding-top:1.25rem;margin-top:1.25rem;">
+            <div style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-gold);margin-bottom:1rem;">Trust Bar Metrics</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div class="form-group">
+                <label class="form-label" style="color:var(--color-ivory);">Trips Curated</label>
+                <input type="text" name="trustTrips" class="form-control" value="${p.trustTrips||'500+'}" ${s()} />
+              </div>
+              <div class="form-group">
+                <label class="form-label" style="color:var(--color-ivory);">Average Rating</label>
+                <input type="text" name="trustRating" class="form-control" value="${p.trustRating||'4.9★'}" ${s()} />
+              </div>
+              <div class="form-group">
+                <label class="form-label" style="color:var(--color-ivory);">Countries Covered</label>
+                <input type="text" name="trustCountries" class="form-control" value="${p.trustCountries||'50+'}" ${s()} />
+              </div>
+              <div class="form-group">
+                <label class="form-label" style="color:var(--color-ivory);">Years of Excellence</label>
+                <input type="text" name="trustYears" class="form-control" value="${p.trustYears||'8 yrs'}" ${s()} />
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-gold" style="margin-top:1rem;width:100%;">Save Hero & SEO Settings</button>
+        </form>
       </div>
 
-      <form onsubmit="handleSavePageSettingsForm(event)" style="padding: 2rem;">
-        <div class="form-group">
-          <label class="form-label" style="color: var(--color-ivory);">Top Announcement Bar Text</label>
-          <input type="text" name="announcementText" class="form-control" value="${pageSettings.announcementText}" style="background: #080C10; color: #fff; border-color: var(--border-dark);" required />
-        </div>
+      <!-- About Page Content -->
+      <div class="admin-card">
+        <div class="admin-card-header"><h3 class="admin-card-title">About Page Content</h3></div>
+        <form onsubmit="handleSaveAboutSettingsForm(event)" style="padding:1.75rem;">
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
           <div class="form-group">
-            <label class="form-label" style="color: var(--color-ivory);">Homepage Main Headline</label>
-            <input type="text" name="heroHeadline" class="form-control" value="${pageSettings.heroHeadline}" style="background: #080C10; color: #fff; border-color: var(--border-dark);" required />
+            <label class="form-label" style="color:var(--color-ivory);">Story Section Title</label>
+            <input type="text" name="aboutStoryTitle" class="form-control" value="${p.aboutStoryTitle||''}" ${s()} placeholder="Your Journey. Beautifully Planned." />
           </div>
 
           <div class="form-group">
-            <label class="form-label" style="color: var(--color-ivory);">SEO Meta Title (Browser & Search)</label>
-            <input type="text" name="metaTitle" class="form-control" value="${pageSettings.metaTitle}" style="background: #080C10; color: #fff; border-color: var(--border-dark);" required />
+            <label class="form-label" style="color:var(--color-ivory);">Story Body Paragraph 1</label>
+            <textarea name="aboutStoryBody" class="form-control" ${s()} style="background:#080C10;color:#fff;border-color:var(--border-dark);min-height:110px;">${p.aboutStoryBody||''}</textarea>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label class="form-label" style="color: var(--color-ivory);">Homepage Hero Subtitle</label>
-          <textarea name="heroSubtitle" class="form-control" style="background: #080C10; color: #fff; border-color: var(--border-dark); min-height: 80px;" required>${pageSettings.heroSubtitle}</textarea>
-        </div>
+          <div class="form-group">
+            <label class="form-label" style="color:var(--color-ivory);">Story Body Paragraph 2</label>
+            <textarea name="aboutStoryBody2" class="form-control" ${s()} style="background:#080C10;color:#fff;border-color:var(--border-dark);min-height:90px;">${p.aboutStoryBody2||''}</textarea>
+          </div>
 
-        <div class="form-group">
-          <label class="form-label" style="color: var(--color-ivory);">Global SEO Meta Description</label>
-          <textarea name="metaDescription" class="form-control" style="background: #080C10; color: #fff; border-color: var(--border-dark); min-height: 70px;" required>${pageSettings.metaDescription}</textarea>
-        </div>
+          <div style="border-top:1px solid var(--border-dark);padding-top:1.25rem;margin-top:1.25rem;">
+            <div style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-gold);margin-bottom:1rem;">Leadership Team (edit in Office Settings)</div>
+            <p style="font-size:0.82rem;color:var(--color-text-inverse-muted);line-height:1.6;">
+              Leadership names, roles and bios are managed under the <strong style="color:#fff;">Office Settings</strong> tab → Leadership section.
+              Changes there auto-reflect on the About page.
+            </p>
+          </div>
 
-        <button type="submit" class="btn btn-gold" style="margin-top: 1rem;">
-          Save Hero & SEO Settings
-        </button>
-      </form>
+          <button type="submit" class="btn btn-gold" style="margin-top:1.5rem;width:100%;">Save About Page Content</button>
+        </form>
+      </div>
+
     </div>
   `;
 }
@@ -1462,14 +1784,32 @@ async function handleSavePageSettingsForm(e) {
   const form = e.target;
   const formData = new FormData(form);
   await window.vayuStore.savePageSettings({
-    announcementText: formData.get("announcementText"),
+    ...(await window.vayuStore.getPageSettings()),
+    heroImage:        formData.get("heroImage"),
     heroHeadline:     formData.get("heroHeadline"),
     heroSubtitle:     formData.get("heroSubtitle"),
+    announcementText: formData.get("announcementText"),
     metaTitle:        formData.get("metaTitle"),
-    metaDescription:  formData.get("metaDescription")
+    metaDescription:  formData.get("metaDescription"),
+    trustTrips:       formData.get("trustTrips"),
+    trustRating:      formData.get("trustRating"),
+    trustCountries:   formData.get("trustCountries"),
+    trustYears:       formData.get("trustYears")
   });
+  showToast("Hero & SEO Saved", "Homepage settings updated successfully.");
+}
 
-  showToast("SEO & Pages Updated", "Settings saved successfully.");
+async function handleSaveAboutSettingsForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+  await window.vayuStore.savePageSettings({
+    ...(await window.vayuStore.getPageSettings()),
+    aboutStoryTitle: formData.get("aboutStoryTitle"),
+    aboutStoryBody:  formData.get("aboutStoryBody"),
+    aboutStoryBody2: formData.get("aboutStoryBody2")
+  });
+  showToast("About Page Saved", "About page content updated successfully.");
 }
 
 

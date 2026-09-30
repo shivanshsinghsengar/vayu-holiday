@@ -3,8 +3,9 @@
    ========================================================================== */
 
 async function renderPackageDetailView(packageId) {
-  const pkg = await window.vayuStore.getPackageById(packageId);
-  const company = await window.vayuStore.getCompany();
+  const pkg      = await window.vayuStore.getPackageById(packageId);
+  const company  = await window.vayuStore.getCompany();
+  const waNumber = (company.whatsapp || "919826012345").replace(/[^0-9]/g, "");
 
   if (!pkg) {
     return `
@@ -307,7 +308,7 @@ async function renderPackageDetailView(packageId) {
               </button>
 
               <a 
-                href="https://wa.me/919826012345?text=${encodeURIComponent(`Hello Vayu Holidays! I would like to enquire about '${pkg.title}' (Ref: ${pkg.id}). Please share customized quotation and availability.`)}" 
+                href="https://wa.me/${waNumber}?text=${encodeURIComponent(`Hello Vayu Holidays! I would like to enquire about '${pkg.title}' (Ref: ${pkg.id}). Please share customized quotation and availability.`)}" 
                 target="_blank" 
                 rel="noopener" 
                 class="btn btn-whatsapp" 

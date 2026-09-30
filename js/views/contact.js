@@ -3,7 +3,8 @@
    ========================================================================== */
 
 async function renderContactView() {
-  const company = await window.vayuStore.getCompany();
+  const company  = await window.vayuStore.getCompany();
+  const waNumber = (company.whatsapp || "919826012345").replace(/[^0-9]/g, "");
 
   return `
     <div class="package-detail-header">
@@ -125,7 +126,7 @@ async function renderContactView() {
                   <div>
                     <strong style="color: var(--color-obsidian); font-size: 0.95rem;">Direct WhatsApp:</strong>
                     <div style="margin-top: 2px;">
-                      <a href="https://wa.me/919826012345?text=${encodeURIComponent(company.whatsappMessage)}" target="_blank" rel="noopener" style="color: #25D366; font-weight: 700;">
+                      <a href="https://wa.me/${waNumber}?text=${encodeURIComponent(company.whatsappMessage)}" target="_blank" rel="noopener" style="color: #25D366; font-weight: 700;">
                         ${company.whatsapp} (Instant Reply)
                       </a>
                     </div>

@@ -62,6 +62,7 @@ function renderDestinationCard(dest) {
 }
 async function renderHomeView() {
   const company      = await window.vayuStore.getCompany();
+  const pageSettings = await window.vayuStore.getPageSettings();
   const destinations = await window.vayuStore.getDestinations();
   const packages     = await window.vayuStore.getPackages();
   const services     = window.vayuStore.getServices();
@@ -69,6 +70,15 @@ async function renderHomeView() {
   const blogs        = await window.vayuStore.getBlogs();
   const waNumber     = (company.whatsapp || "919826012345").replace(/[^0-9]/g, "");
   const waMsg        = encodeURIComponent(company.whatsappMessage || "Hello Vayu Holidays! I'd like to inquire about a luxury holiday.");
+
+  // Page settings with fallbacks
+  const heroHeadline   = pageSettings.heroHeadline   || "Your Journey. Beautifully Planned.";
+  const heroSubtitle   = pageSettings.heroSubtitle   || "Handcrafted itineraries, private sanctuaries, and dedicated 24/7 concierge — from Bhopal to the world.";
+  const heroImage      = pageSettings.heroImage      || "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=75";
+  const trustTrips     = pageSettings.trustTrips     || "500+";
+  const trustRating    = pageSettings.trustRating    || "4.9★";
+  const trustCountries = pageSettings.trustCountries || "50+";
+  const trustYears     = pageSettings.trustYears     || "8 yrs";
 
   // Featured destinations for interactive section
   const featuredDests = destinations.filter(d => d.featured !== false).slice(0, 6);
@@ -80,7 +90,7 @@ async function renderHomeView() {
     ══════════════════════════════════════════════════════════════ -->
     <section class="hero-section" aria-label="Hero">
       <img
-        src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=75"
+        src="${heroImage}"
         alt="Luxury travel — Vayu Holidays"
         class="hero-bg-media"
         fetchpriority="high"
@@ -98,11 +108,11 @@ async function renderHomeView() {
           </div>
 
           <h1 class="hero-title">
-            Your Journey.<br/><em>Beautifully Planned.</em>
+            ${heroHeadline.includes('<br') ? heroHeadline : heroHeadline.replace('. ', '.<br/><em>').replace(/(<br\/>)?$/, heroHeadline.includes('<em>') ? '' : '</em>')}
           </h1>
 
           <p class="hero-subtitle">
-            Handcrafted itineraries, private sanctuaries, and dedicated 24/7 concierge — from Bhopal to the world.
+            ${heroSubtitle}
           </p>
 
           <div class="hero-actions">
@@ -614,22 +624,22 @@ async function renderHomeView() {
 
         <div class="trust-minimal-grid" data-reveal>
           <div class="trust-minimal-item">
-            <span class="trust-minimal-num">500+</span>
+            <span class="trust-minimal-num">${trustTrips}</span>
             <span class="trust-minimal-label">Trips Curated</span>
           </div>
           <div class="trust-minimal-sep" aria-hidden="true"></div>
           <div class="trust-minimal-item">
-            <span class="trust-minimal-num">4.9★</span>
+            <span class="trust-minimal-num">${trustRating}</span>
             <span class="trust-minimal-label">Average Rating</span>
           </div>
           <div class="trust-minimal-sep" aria-hidden="true"></div>
           <div class="trust-minimal-item">
-            <span class="trust-minimal-num">50+</span>
+            <span class="trust-minimal-num">${trustCountries}</span>
             <span class="trust-minimal-label">Countries Covered</span>
           </div>
           <div class="trust-minimal-sep" aria-hidden="true"></div>
           <div class="trust-minimal-item">
-            <span class="trust-minimal-num">8 yrs</span>
+            <span class="trust-minimal-num">${trustYears}</span>
             <span class="trust-minimal-label">Of Excellence</span>
           </div>
           <div class="trust-minimal-sep" aria-hidden="true"></div>
@@ -866,7 +876,7 @@ async function submitPlannerWizard(e) {
   setTimeout(() => {
     const waText = encodeURIComponent(`Hello Vayu Holidays! I just submitted a trip plan for "${enquiry.destination}" (${enquiry.travelMonth}). Traveler: ${enquiry.name} (${enquiry.phone}). Please share my quotation.`);
     if (confirm('Open WhatsApp to connect with your Vayu Holidays concierge?')) {
-      window.open(`https://wa.me/919826012345?text=${waText}`, '_blank');
+      window.open(`https://wa.me/${waNumber}?text=${waText}`, '_blank');
     }
   }, 800);
 }
