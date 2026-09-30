@@ -353,3 +353,16 @@ function animateCounter(el) {
   requestAnimationFrame(tick);
 }
 
+
+// ── REMOVE NETLIFY BADGE ──────────────────────────────────────────────────────
+(function removeNetlifyBadge() {
+  const kill = () => {
+    document.querySelectorAll(
+      '[data-netlify-deploy-id], .netlify-badge, ' +
+      'a[href*="app.netlify.com"], a[href*="netlify.com/products"], ' +
+      'iframe[src*="netlify"]'
+    ).forEach(el => el.remove());
+  };
+  kill();
+  new MutationObserver(kill).observe(document.body, { childList: true, subtree: true });
+})();

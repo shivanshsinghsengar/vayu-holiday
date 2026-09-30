@@ -92,10 +92,10 @@ async function renderNavbar() {
         <div class="nav-actions">
           <div class="currency-select-wrapper" title="Change currency">
             <select class="currency-select" id="currencySelect" onchange="vayuStore.setCurrency(this.value)" aria-label="Currency">
-              <option value="INR" ${currentCurrency === "INR" ? "selected" : ""}>&#x20B9; INR</option>
+              <option value="INR" ${currentCurrency === "INR" ? "selected" : ""}>\u20B9 INR</option>
               <option value="USD" ${currentCurrency === "USD" ? "selected" : ""}>$ USD</option>
-              <option value="EUR" ${currentCurrency === "EUR" ? "selected" : ""}>&#x20AC; EUR</option>
-              <option value="GBP" ${currentCurrency === "GBP" ? "selected" : ""}>&#xA3; GBP</option>
+              <option value="EUR" ${currentCurrency === "EUR" ? "selected" : ""}>\u20AC EUR</option>
+              <option value="GBP" ${currentCurrency === "GBP" ? "selected" : ""}>\u00A3 GBP</option>
               <option value="AED" ${currentCurrency === "AED" ? "selected" : ""}>AED</option>
             </select>
             <span class="currency-chevron" aria-hidden="true">${ICONS.chevronDown}</span>
