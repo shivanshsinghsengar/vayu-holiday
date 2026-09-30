@@ -1,5 +1,5 @@
-﻿/* ==========================================================================
-   VAYU HOLIDAYS â€” REUSABLE UI COMPONENTS (Navbar, Footer, Cards, Modals, Toast)
+﻿﻿/* ==========================================================================
+   VAYU HOLIDAYS "” REUSABLE UI COMPONENTS (Navbar, Footer, Cards, Modals, Toast)
    ========================================================================== */
 
 // --- SVG Icons Helper ---
@@ -33,7 +33,7 @@ async function renderNavbar() {
   const waMsg = encodeURIComponent("Hello Vayu Holidays! I'd like to inquire about planning a luxury journey.");
 
   return `
-    <!-- Sticky Main Navbar â€” No top bar clutter -->
+    <!-- Sticky Main Navbar "” No top bar clutter -->
     <header class="site-header" id="siteHeader" role="navigation" aria-label="Main navigation">
       <div class="container navbar">
 
@@ -92,10 +92,10 @@ async function renderNavbar() {
         <div class="nav-actions">
           <div class="currency-select-wrapper" title="Change currency">
             <select class="currency-select" id="currencySelect" onchange="vayuStore.setCurrency(this.value)" aria-label="Currency">
-              <option value="INR" ${currentCurrency === "INR" ? "selected" : ""}>â‚¹ INR</option>
+              <option value="INR" ${currentCurrency === "INR" ? "selected" : ""}>&#x20B9; INR</option>
               <option value="USD" ${currentCurrency === "USD" ? "selected" : ""}>$ USD</option>
-              <option value="EUR" ${currentCurrency === "EUR" ? "selected" : ""}>â‚¬ EUR</option>
-              <option value="GBP" ${currentCurrency === "GBP" ? "selected" : ""}>Â£ GBP</option>
+              <option value="EUR" ${currentCurrency === "EUR" ? "selected" : ""}>&#x20AC; EUR</option>
+              <option value="GBP" ${currentCurrency === "GBP" ? "selected" : ""}>&#xA3; GBP</option>
               <option value="AED" ${currentCurrency === "AED" ? "selected" : ""}>AED</option>
             </select>
             <span class="currency-chevron" aria-hidden="true">${ICONS.chevronDown}</span>
@@ -195,27 +195,27 @@ async function renderFooter() {
             </a>
 
             <p class="footer-desc">
-              Your Journey. Beautifully Planned. Bespoke luxury travel experiences, handcrafted itineraries, and dedicated 24/7 concierge â€” from Bhopal to the world.
+              Your Journey. Beautifully Planned. Bespoke luxury travel experiences, handcrafted itineraries, and dedicated 24/7 concierge "” from Bhopal to the world.
             </p>
 
             <!-- Trust Badges -->
             <div class="footer-trust-badges">
               <div class="footer-trust-badge">
-                <span class="ftb-icon">â˜…</span>
+                <span class="ftb-icon">★</span>
                 <div>
                   <div class="ftb-val">4.9 / 5</div>
                   <div class="ftb-label">Guest Rating</div>
                 </div>
               </div>
               <div class="footer-trust-badge">
-                <span class="ftb-icon">âœ“</span>
+                <span class="ftb-icon">✓</span>
                 <div>
                   <div class="ftb-val">500+</div>
                   <div class="ftb-label">Trips Curated</div>
                 </div>
               </div>
               <div class="footer-trust-badge">
-                <span class="ftb-icon">â°</span>
+                <span class="ftb-icon">⏰</span>
                 <div>
                   <div class="ftb-val">24 / 7</div>
                   <div class="ftb-label">Concierge</div>
@@ -305,7 +305,7 @@ async function renderFooter() {
                 <div>
                   <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" style="color:#4ade80;">
                     ${company.whatsapp || "+91 98260 12345"}
-                    <span style="display:block;font-size:0.76rem;opacity:0.75;">Instant Reply Â· 9 AM â€“ 9 PM</span>
+                    <span style="display:block;font-size:0.76rem;opacity:0.75;">Instant Reply · 9 AM "“ 9 PM</span>
                   </a>
                 </div>
               </div>
@@ -337,7 +337,7 @@ async function renderFooter() {
         <!-- Footer Bottom -->
         <div class="footer-bottom">
           <div class="footer-bottom-left">
-            <span>Â© 2026 Vayu Holidays. All rights reserved.</span>
+            <span>© 2026 Vayu Holidays. All rights reserved.</span>
             <span class="footer-reg-info">GST: 23XXXXX0000X1ZX &nbsp;|&nbsp; IATA Accredited Agent</span>
           </div>
           <div class="footer-legal-links">
@@ -530,9 +530,9 @@ async function openEnquiryModal(prefill = {}) {
               <div class="form-group">
                 <label class="form-label">Approx Budget Preference</label>
                 <select name="budgetPerPerson" class="form-control">
-                  <option value="Comfort (â‚¹25k - â‚¹45k / person)">Comfort (â‚¹25k - â‚¹45k / person)</option>
-                  <option value="Luxury (â‚¹45k - â‚¹85k / person)">Luxury (â‚¹45k - â‚¹85k / person)</option>
-                  <option value="Ultra-Luxury (â‚¹85k - â‚¹2 Lakh+ / person)">Ultra-Luxury (â‚¹85k - â‚¹2 Lakh+ / person)</option>
+                  <option value="Comfort (Rs.25k - Rs.45k / person)">Comfort (&#x20B9;25k - &#x20B9;45k / person)</option>
+                  <option value="Luxury (Rs.45k - Rs.85k / person)">Luxury (&#x20B9;45k - &#x20B9;85k / person)</option>
+                  <option value="Ultra-Luxury (Rs.85k - Rs.2 Lakh+ / person)">Ultra-Luxury (&#x20B9;85k - &#x20B9;2 Lakh+ / person)</option>
                   <option value="Corporate / Group Quote">Corporate / Group Quote</option>
                 </select>
               </div>
@@ -646,7 +646,7 @@ function toggleMobileNav() {
 }
 
 // ==========================================================================
-// PRODUCTION ADDITIONS â€” Safe Guards & Utility Helpers
+// PRODUCTION ADDITIONS "” Safe Guards & Utility Helpers
 // ==========================================================================
 
 /**
@@ -674,7 +674,7 @@ function formatWhatsAppNumber(phone) {
 }
 
 /**
- * Lazy image loader â€” add IntersectionObserver for images
+ * Lazy image loader "” add IntersectionObserver for images
  * with data-src attribute (progressive loading).
  */
 function initLazyImages() {
@@ -746,7 +746,7 @@ function debounce(fn, delay = 300) {
 }
 
 /**
- * Back to top button â€” call after router renders each page.
+ * Back to top button "” call after router renders each page.
  */
 function injectBackToTop() {
   const existing = document.getElementById("backToTopBtn");

@@ -1381,3 +1381,14 @@ a[href*="netlify.com"][style*="position: fixed"] {
   visibility: hidden !important;
   opacity: 0 !important;
 }
+
+/* ── Hide Netlify "Powered by" badge ─────────────────────────────────────── */
+[data-netlify-deploy-id],
+.netlify-badge,
+a[href*="netlify.com"][style*="position:fixed"],
+a[href*="app.netlify.com"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
