@@ -19,9 +19,9 @@ const SITE = {
 // ── Per-route SEO metadata ──────────────────────────────────────────────────
 const ROUTE_META = {
   "/": {
-    title:       "Vayu Holidays — Luxury Travel Agency & Tour Operator | Bhopal",
-    description: "Vayu Holidays — Bhopal's most trusted luxury travel agency. Bespoke holiday packages to Kashmir, Kerala, Dubai, Bali, Switzerland & Maldives. 500+ trips. 4.9★ rated. 24/7 concierge.",
-    image:       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
+    title:       "Vayu Holidays — Luxury Travel Agency | Bhopal",
+    description: "Bhopal's most trusted luxury travel agency. Bespoke holiday packages to Kashmir, Kerala, Dubai, Bali & Switzerland. Visa, forex, flights & 24/7 concierge.",
+    image:       "https://www.vayuholidays.com/icons/og-image.jpg"
   },
   "/packages": {
     title:       "Holiday Packages 2026 — Luxury Tours | Vayu Holidays Bhopal",
