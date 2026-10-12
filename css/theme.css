@@ -271,6 +271,10 @@ img { display: block; max-width: 100%; height: auto; }
   cursor: pointer;
   transition: border-color 0.2s ease;
 }
+.currency-select option {
+  background: #1a1a1a;
+  color: #ffffff;
+}
 .currency-select:hover, .currency-select:focus {
   border-color: rgba(255,255,255,0.6);
   outline: none;
