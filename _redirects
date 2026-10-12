@@ -1,3 +1,1 @@
-# Vayu Holidays — Netlify Redirect Rules
-# SPA fallback: all routes serve index.html (200 = rewrite, not redirect)
-/*    /index.html   200
+/* /index.html 200
