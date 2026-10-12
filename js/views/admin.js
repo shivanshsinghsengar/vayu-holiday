@@ -669,26 +669,24 @@ function renderAdminLogin() {
 
         <form onsubmit="handleAdminLoginSubmit(event)">
           <div class="form-group" style="text-align: left;">
-            <label class="form-label" style="color: var(--color-ivory);">Staff Email / ID</label>
+            <label class="form-label" style="color: var(--color-ivory);">Staff Email</label>
             <input 
               type="text" 
               id="adminUsername" 
               class="form-control" 
-              placeholder="admin@vayuholidays.com" 
-              value="admin@vayuholidays.com" 
+              placeholder="Enter your email"
               style="background: #080C10; color: #fff; border-color: var(--border-dark);" 
               required 
             />
           </div>
 
           <div class="form-group" style="text-align: left;">
-            <label class="form-label" style="color: var(--color-ivory);">Access PIN / Password</label>
+            <label class="form-label" style="color: var(--color-ivory);">Password</label>
             <input 
               type="password" 
               id="adminPassword" 
               class="form-control" 
-              placeholder="••••••••" 
-              value="vayu2026" 
+              placeholder="••••••••"
               style="background: #080C10; color: #fff; border-color: var(--border-dark);" 
               required 
             />
@@ -698,12 +696,6 @@ function renderAdminLogin() {
             Authenticate & Enter Portal
           </button>
         </form>
-
-        <div class="admin-login-hints">
-          <strong>Demo Staff Credentials:</strong><br/>
-          User: <code>admin@vayuholidays.com</code><br/>
-          Pass: <code>vayu2026</code>
-        </div>
 
         <div style="margin-top: 1.5rem;">
           <a href="/" style="font-size: 0.85rem; color: var(--color-gold);">← Back to Public Website</a>

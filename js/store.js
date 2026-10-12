@@ -613,7 +613,7 @@ class VayuStore {
     // Fallback: legacy hardcoded credentials
     if (
       (username === "admin@vayuholidays.com" || username === "admin") &&
-      password === "vayu2026"
+      password === "Vayu@Admin2026#"
     ) {
       sessionStorage.setItem(LS.AUTH, "true");
       return true;
