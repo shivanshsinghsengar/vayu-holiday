@@ -122,16 +122,16 @@ img { display: block; max-width: 100%; height: auto; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: transparent;
-  border-bottom: 1px solid transparent;
+  background: #111111;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   transition: background 0.4s var(--ease-out),
               border-color 0.4s var(--ease-out),
               backdrop-filter 0.4s var(--ease-out);
 }
 
 .site-header.scrolled {
-  background: rgba(250, 250, 248, 0.92);
-  border-bottom-color: var(--c-border);
+  background: rgba(17, 17, 17, 0.97);
+  border-bottom-color: rgba(255,255,255,0.1);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
@@ -156,8 +156,8 @@ img { display: block; max-width: 100%; height: auto; }
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--c-ink);
-  color: var(--c-bg);
+  background: #ffffff;
+  color: #111111;
   border: none;
   box-shadow: none;
   display: flex;
@@ -178,7 +178,7 @@ img { display: block; max-width: 100%; height: auto; }
   font-size: 1.15rem;
   font-weight: 400;
   letter-spacing: 0.08em;
-  color: var(--c-ink);
+  color: #ffffff;
   line-height: 1;
   text-transform: uppercase;
 }
@@ -193,7 +193,7 @@ img { display: block; max-width: 100%; height: auto; }
   font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 450;
-  color: var(--c-ink-3);
+  color: rgba(255,255,255,0.80);
   letter-spacing: 0.01em;
   display: inline-flex;
   align-items: center;
@@ -203,8 +203,8 @@ img { display: block; max-width: 100%; height: auto; }
   transition: color 0.2s ease, background 0.2s ease;
 }
 .nav-link:hover, .nav-link.active {
-  color: var(--c-ink);
-  background: var(--c-bg-subtle);
+  color: #ffffff;
+  background: rgba(255,255,255,0.10);
 }
 .nav-link::after { display: none; }
 
@@ -262,19 +262,19 @@ img { display: block; max-width: 100%; height: auto; }
 .currency-select {
   appearance: none;
   background: transparent;
-  border: 1px solid var(--c-border);
+  border: 1px solid rgba(255,255,255,0.25);
   border-radius: var(--radius-sm);
   padding: 0.4rem 1.6rem 0.4rem 0.7rem;
   font-size: 0.8rem;
   font-family: var(--font-body);
-  color: var(--c-ink-3);
+  color: rgba(255,255,255,0.85);
   cursor: pointer;
   transition: border-color 0.2s ease;
 }
 .currency-select:hover, .currency-select:focus {
-  border-color: var(--c-ink);
+  border-color: rgba(255,255,255,0.6);
   outline: none;
-  color: var(--c-ink);
+  color: #ffffff;
 }
 .currency-chevron {
   position: absolute;
