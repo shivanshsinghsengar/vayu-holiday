@@ -4,6 +4,7 @@
 
 async function renderContactView() {
   const company  = await window.vayuStore.getCompany();
+  const branches = await window.vayuStore.getBranches();
   const waNumber = (company.whatsapp || "919826012345").replace(/[^0-9]/g, "");
 
   return `
@@ -169,7 +170,7 @@ async function renderContactView() {
     </section>
 
     <!-- REGIONAL BRANCHES -->
-    ${(company.branches && company.branches.length > 0) ? `
+    ${(branches && branches.length > 0) ? `
     <section class="section section-sand" style="padding-top:3rem;padding-bottom:4rem;">
       <div class="container">
         <div class="section-header text-center" style="margin-bottom:2.5rem;">
@@ -178,7 +179,7 @@ async function renderContactView() {
           <p class="section-desc">Walk in or call your nearest Vayu Holidays branch for a personal consultation.</p>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem;">
-          ${company.branches.map(b => `
+          ${branches.map(b => `
             <div style="background:var(--color-cream);border:1px solid var(--border-gold);border-radius:var(--radius-lg);padding:1.75rem;display:flex;flex-direction:column;gap:0.75rem;">
               <div style="display:flex;align-items:center;gap:0.5rem;color:var(--color-gold-dark);">${ICONS.mapPin}
                 <strong style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-gold-dark);">${b.city}</strong>

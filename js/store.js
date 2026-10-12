@@ -534,6 +534,31 @@ class VayuStore {
   }
 
   // ════════════════════════════════════════════════════════════════════════
+  // BRANCHES — Regional office locations
+  // ════════════════════════════════════════════════════════════════════════
+  async getBranches() {
+    const company = await this.getCompany();
+    return company.branches || [];
+  }
+
+  async saveBranch(branch) {
+    const company = await this.getCompany();
+    const branches = company.branches || [];
+    if (!branch.id) branch.id = "branch-" + Date.now();
+    const index = branches.findIndex(b => b.id === branch.id);
+    if (index !== -1) branches[index] = { ...branches[index], ...branch };
+    else branches.push(branch);
+    await this.updateCompany({ branches });
+    return branch;
+  }
+
+  async deleteBranch(id) {
+    const company = await this.getCompany();
+    const branches = (company.branches || []).filter(b => b.id !== id);
+    await this.updateCompany({ branches });
+  }
+
+  // ════════════════════════════════════════════════════════════════════════
   // SERVICES — now DB-backed (editable from admin)
   // ════════════════════════════════════════════════════════════════════════
   getServices() {

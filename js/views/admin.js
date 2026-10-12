@@ -75,6 +75,10 @@ async function renderAdminView() {
             <span>${ICONS.sparkles}</span> Services (${window.vayuStore.getServices().length})
           </div>
 
+          <div class="admin-nav-item ${currentAdminTab === 'branches' ? 'active' : ''}" onclick="switchAdminTab('branches')">
+            <span>${ICONS.mapPin}</span> Branch Offices
+          </div>
+
           <div class="admin-nav-item ${currentAdminTab === 'pages' ? 'active' : ''}" onclick="switchAdminTab('pages')">
             <span>${ICONS.calendar}</span> Pages & SEO
           </div>
@@ -131,6 +135,7 @@ function getAdminTabTitle(tab) {
     case "offers": return "Special Offers & Campaign Banners";
     case "media": return "Curated Media & Photography Library";
     case "services": return "Travel Services Manager";
+    case "branches": return "Regional Branch Offices";
     case "pages": return "Pages, Hero Headline & SEO Settings";
     case "settings": return "Bhopal Office Profile & Governance";
     default: return "Dashboard";
@@ -157,6 +162,7 @@ async function renderAdminTabContent(tab) {
     case "offers":       return await renderAdminOffersTab();
     case "media":        return await renderAdminMediaTab();
     case "services":     return await renderAdminServicesTab();
+    case "branches":     return await renderAdminBranchesTab();
     case "pages":        return await renderAdminPagesTab();
     case "settings":     return await renderAdminSettingsTab();
     default:             return await renderAdminDashboardTab();
@@ -1662,6 +1668,130 @@ async function handleDeleteService(id) {
     await window.vayuStore.deleteService(id);
     await switchAdminTab("services");
     showToast("Service Removed", id);
+  }
+}
+
+// --- Branches Manager Tab ---
+async function renderAdminBranchesTab() {
+  const branches = await window.vayuStore.getBranches();
+  return `
+    <div class="admin-card">
+      <div class="admin-card-header">
+        <div>
+          <h3 class="admin-card-title">Regional Branch Offices</h3>
+          <p style="font-size:0.82rem;color:var(--color-text-inverse-muted);">Manage Vayu Holidays branch locations shown on the Contact page.</p>
+        </div>
+        <button class="btn btn-gold btn-sm" onclick="openBranchEditorModal()">+ Add Branch</button>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Branch Name</th>
+              <th>City</th>
+              <th>Address</th>
+              <th>Phone</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${branches.length === 0 ? `<tr><td colspan="5" style="text-align:center;color:var(--color-text-inverse-muted);padding:2rem;">No branches added yet.</td></tr>` : ''}
+            ${branches.map(b => `
+              <tr>
+                <td><strong>${b.name}</strong></td>
+                <td>${b.city}</td>
+                <td style="font-size:0.82rem;max-width:240px;color:var(--color-text-inverse-muted);">${b.address}</td>
+                <td>${b.phone || '—'}</td>
+                <td>
+                  <div class="table-actions">
+                    <button class="btn-table-action" onclick="openBranchEditorModal('${b.id}')">Edit</button>
+                    <button class="btn-table-action" style="color:#f87171;" onclick="handleDeleteBranch('${b.id}')">Del</button>
+                  </div>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
+function openBranchEditorModal(branchId = null) {
+  // Resolve from localStorage synchronously
+  const company = JSON.parse(localStorage.getItem("vayu_company_2026") || "{}");
+  const branches = company.branches || [];
+  const b = branchId ? (branches.find(x => x.id === branchId) || {}) : {};
+
+  const modalHtml = `
+    <div class="modal-overlay open" id="branchEditorModal">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h3 class="modal-title">${branchId ? 'Edit Branch Office' : 'Add New Branch Office'}</h3>
+          <button class="modal-close-btn" onclick="document.getElementById('branchEditorModal').remove()">${ICONS.x}</button>
+        </div>
+        <form onsubmit="handleSaveBranchForm(event, '${branchId || ''}')">
+          <div class="modal-body">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div class="form-group">
+                <label class="form-label">Branch Name *</label>
+                <input type="text" name="name" class="form-control" value="${b.name || ''}" placeholder="e.g. Ava Hotel – Sector 45" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">City *</label>
+                <input type="text" name="city" class="form-control" value="${b.city || ''}" placeholder="e.g. Gurugram" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Full Address *</label>
+              <textarea name="address" class="form-control" style="min-height:80px;" placeholder="Plot No., Street, Area, City, State – PIN" required>${b.address || ''}</textarea>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div class="form-group">
+                <label class="form-label">Phone Number</label>
+                <input type="text" name="phone" class="form-control" value="${b.phone || ''}" placeholder="+91 98260 12345" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Google Maps URL</label>
+                <input type="url" name="mapUrl" class="form-control" value="${b.mapUrl || ''}" placeholder="https://maps.google.com/..." />
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="document.getElementById('branchEditorModal').remove()">Cancel</button>
+            <button type="submit" class="btn btn-gold">${branchId ? 'Update Branch' : 'Add Branch'}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  `;
+  document.body.insertAdjacentHTML("beforeend", modalHtml);
+}
+
+async function handleSaveBranchForm(e, branchId) {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+  const data = {
+    name:    formData.get("name"),
+    city:    formData.get("city"),
+    address: formData.get("address"),
+    phone:   formData.get("phone"),
+    mapUrl:  formData.get("mapUrl")
+  };
+  if (branchId) data.id = branchId;
+  await window.vayuStore.saveBranch(data);
+  document.getElementById("branchEditorModal")?.remove();
+  await switchAdminTab("branches");
+  showToast("Branch Saved", data.name);
+}
+
+async function handleDeleteBranch(id) {
+  if (confirm("Delete this branch office?")) {
+    await window.vayuStore.deleteBranch(id);
+    await switchAdminTab("branches");
+    showToast("Branch Removed", id);
   }
 }
 
