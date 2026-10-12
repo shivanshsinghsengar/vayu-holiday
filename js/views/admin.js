@@ -22,6 +22,8 @@ async function renderAdminView() {
   const destinations = await store.getDestinations();
   const blogs        = await store.getBlogs();
   const testimonials = await store.getTestimonials();
+  const offers       = await store.getOffers();
+  const media        = await store.getMedia();
 
   const newEnquiriesCount = enquiries.filter(e => e.status === "New").length;
 
@@ -64,11 +66,11 @@ async function renderAdminView() {
           </div>
 
           <div class="admin-nav-item ${currentAdminTab === 'offers' ? 'active' : ''}" onclick="switchAdminTab('offers')">
-            <span>${ICONS.sparkles}</span> Offers & Banners (${window.vayuStore.getOffers().length})
+            <span>${ICONS.sparkles}</span> Offers & Banners (${offers.length})
           </div>
 
           <div class="admin-nav-item ${currentAdminTab === 'media' ? 'active' : ''}" onclick="switchAdminTab('media')">
-            <span>${ICONS.plane}</span> Media Library (${window.vayuStore.getMedia().length})
+            <span>${ICONS.plane}</span> Media Library (${media.length})
           </div>
 
           <div class="admin-nav-item ${currentAdminTab === 'services' ? 'active' : ''}" onclick="switchAdminTab('services')">
