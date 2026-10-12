@@ -547,9 +547,13 @@ class VayuStore {
   // ════════════════════════════════════════════════════════════════════════
   async getBranches() {
     const company = await this.getCompany();
-    // If company in localStorage has no branches, fall back to INITIAL_DATA
-    if (company.branches && company.branches.length > 0) return company.branches;
-    return INITIAL_DATA.company.branches || [];
+    // Use company.branches if set, else always fall back to INITIAL_DATA
+    const stored = company.branches || [];
+    if (stored.length > 0) return stored;
+    // Patch into localStorage so future calls work
+    const patched = { ...company, branches: INITIAL_DATA.company.branches || [] };
+    localStorage.setItem(LS.COMPANY, JSON.stringify(patched));
+    return patched.branches;
   }
 
   async saveBranch(branch) {
