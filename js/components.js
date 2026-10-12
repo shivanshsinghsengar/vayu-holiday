@@ -90,15 +90,19 @@ async function renderNavbar() {
 
         <!-- Actions -->
         <div class="nav-actions">
-          <div class="currency-select-wrapper" title="Change currency">
-            <select class="currency-select" id="currencySelect" onchange="vayuStore.setCurrency(this.value)" aria-label="Currency">
-              <option value="INR" ${currentCurrency === "INR" ? "selected" : ""}>₹ INR</option>
-              <option value="USD" ${currentCurrency === "USD" ? "selected" : ""}>$ USD</option>
-              <option value="EUR" ${currentCurrency === "EUR" ? "selected" : ""}>€ EUR</option>
-              <option value="GBP" ${currentCurrency === "GBP" ? "selected" : ""}>£ GBP</option>
-              <option value="AED" ${currentCurrency === "AED" ? "selected" : ""}>AED</option>
-            </select>
-            <span class="currency-chevron" aria-hidden="true">${ICONS.chevronDown}</span>
+          <!-- Custom Currency Dropdown -->
+          <div class="currency-select-wrapper" title="Change currency" id="currencyDropdown">
+            <button class="currency-select" onclick="toggleCurrencyDropdown(event)" type="button" aria-label="Currency">
+              <span id="currencyLabel">${currentCurrency === 'INR' ? '₹ INR' : currentCurrency === 'USD' ? '$ USD' : currentCurrency === 'EUR' ? '€ EUR' : currentCurrency === 'GBP' ? '£ GBP' : 'AED'}</span>
+              ${ICONS.chevronDown}
+            </button>
+            <div class="currency-options" id="currencyOptions">
+              <div class="currency-option" onclick="selectCurrency('INR','₹ INR')">₹ INR</div>
+              <div class="currency-option" onclick="selectCurrency('USD','$ USD')">$ USD</div>
+              <div class="currency-option" onclick="selectCurrency('EUR','€ EUR')">€ EUR</div>
+              <div class="currency-option" onclick="selectCurrency('GBP','£ GBP')">£ GBP</div>
+              <div class="currency-option" onclick="selectCurrency('AED','AED')">AED</div>
+            </div>
           </div>
 
           <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" class="btn-whatsapp-nav" aria-label="WhatsApp">
@@ -788,4 +792,25 @@ window.addEventListener("hashchange", () => {
 window.addEventListener("load", () => {
   initLazyImages();
   injectBackToTop();
+});
+
+// --- Custom Currency Dropdown ---
+function toggleCurrencyDropdown(e) {
+  e.stopPropagation();
+  const opts = document.getElementById("currencyOptions");
+  if (opts) opts.classList.toggle("open");
+}
+
+function selectCurrency(code, label) {
+  vayuStore.setCurrency(code);
+  const lbl = document.getElementById("currencyLabel");
+  if (lbl) lbl.textContent = label;
+  const opts = document.getElementById("currencyOptions");
+  if (opts) opts.classList.remove("open");
+}
+
+// Close dropdown when clicking outside
+document.addEventListener("click", function() {
+  const opts = document.getElementById("currencyOptions");
+  if (opts) opts.classList.remove("open");
 });
