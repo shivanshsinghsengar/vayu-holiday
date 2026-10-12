@@ -15,6 +15,40 @@ const INITIAL_DATA = {
     email: "concierge@vayuholidays.com",
     supportEmail: "travel@vayuholidays.com",
     hours: "Mon - Sat: 9:30 AM – 7:30 PM | 24/7 VIP Traveler Support",
+    branches: [
+      {
+        id: "gurugram-ava",
+        name: "Ava Hotel – Sector 45",
+        city: "Gurugram",
+        address: "Plot No. 2010, Block A, Greenwood City, Opposite Chimes 61, Sector 45, Gurugram, Haryana – 122003",
+        phone: "+91 98260 12345",
+        mapUrl: "https://www.google.com/maps/search/?api=1&query=Ava+Hotel+Sector+45+Greenwood+City+Gurugram+Haryana"
+      },
+      {
+        id: "gurugram-mehmaan",
+        name: "Mehmaan Manor – Sector 57",
+        city: "Gurugram",
+        address: "Building No. G-219, G-Block, Sushant Lok-2, Sector 57, Gurugram, Haryana – 122011",
+        phone: "+91 98260 12345",
+        mapUrl: "https://www.google.com/maps/search/?api=1&query=Mehmaan+Manor+Sushant+Lok+2+Sector+57+Gurugram"
+      },
+      {
+        id: "zirakpur-ava",
+        name: "Ava Hotel – Zirakpur",
+        city: "Zirakpur",
+        address: "Ambala-Chandigarh Expressway (NH-22), Adjoining Paras Downtown Square Mall, Zirakpur, Punjab – 140603",
+        phone: "+91 98260 12345",
+        mapUrl: "https://www.google.com/maps/search/?api=1&query=Ava+Hotel+Zirakpur+NH-22+Paras+Downtown+Square+Mall"
+      },
+      {
+        id: "mathura-priya",
+        name: "Priya Nagari",
+        city: "Mathura",
+        address: "Mathura Bypass, NH-2, Near Highway Thana (Police Station), Mathura, Uttar Pradesh – 281001",
+        phone: "+91 98260 12345",
+        mapUrl: "https://www.google.com/maps/search/?api=1&query=Mathura+Bypass+NH2+Highway+Thana+Mathura+UP"
+      }
+    ],
     leadership: [
       {
         name: "Simran Singh Sengar",

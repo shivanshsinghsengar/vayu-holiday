@@ -167,6 +167,36 @@ async function renderContactView() {
         </div>
       </div>
     </section>
+
+    <!-- REGIONAL BRANCHES -->
+    ${(company.branches && company.branches.length > 0) ? `
+    <section class="section section-sand" style="padding-top:3rem;padding-bottom:4rem;">
+      <div class="container">
+        <div class="section-header text-center" style="margin-bottom:2.5rem;">
+          <span class="eyebrow">Pan-India Presence</span>
+          <h2 class="section-title" style="font-size:1.85rem;">Regional Branch Offices</h2>
+          <p class="section-desc">Walk in or call your nearest Vayu Holidays branch for a personal consultation.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem;">
+          ${company.branches.map(b => `
+            <div style="background:var(--color-cream);border:1px solid var(--border-gold);border-radius:var(--radius-lg);padding:1.75rem;display:flex;flex-direction:column;gap:0.75rem;">
+              <div style="display:flex;align-items:center;gap:0.5rem;color:var(--color-gold-dark);">${ICONS.mapPin}
+                <strong style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-gold-dark);">${b.city}</strong>
+              </div>
+              <h3 style="font-family:var(--font-display);font-size:1.15rem;color:var(--color-obsidian);margin:0;">${b.name}</h3>
+              <p style="font-size:0.88rem;color:var(--color-text-muted);line-height:1.6;margin:0;">${b.address}</p>
+              <div style="display:flex;gap:0.75rem;margin-top:auto;padding-top:0.75rem;border-top:1px solid var(--border-subtle);">
+                <a href="tel:${b.phone}" style="font-size:0.82rem;color:var(--color-obsidian);font-weight:600;text-decoration:none;">${ICONS.phone} ${b.phone}</a>
+              </div>
+              <a href="${b.mapUrl}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" style="width:100%;justify-content:center;font-size:0.8rem;">
+                View on Map ${ICONS.arrowRight}
+              </a>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+    ` : ''}
   `;
 }
 
