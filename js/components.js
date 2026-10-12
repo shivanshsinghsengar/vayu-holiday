@@ -109,6 +109,10 @@ async function renderNavbar() {
             ${ICONS.whatsapp} <span class="wa-label">WhatsApp</span>
           </a>
 
+          <a href="/admin" class="btn btn-secondary btn-sm" style="font-size:0.78rem;padding:0.45rem 0.9rem;border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);">
+            Admin
+          </a>
+
           <button class="btn btn-gold btn-sm" onclick="openEnquiryModal({ title: 'Plan My Journey' })" aria-label="Plan my trip">
             Plan My Trip
           </button>
