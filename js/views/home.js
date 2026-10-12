@@ -103,7 +103,7 @@ async function renderHomeView() {
 
           <div class="hero-eyebrow-wrap">
             <span class="hero-eyebrow">
-              Bespoke Travel Agency &nbsp;&middot;&nbsp; Bhopal, India
+              Vayu Holidays &nbsp;&middot;&nbsp; Bhopal, India
             </span>
           </div>
 
