@@ -67,6 +67,15 @@ class VayuStore {
     if (!localStorage.getItem(LS.CURRENCY)) {
       localStorage.setItem(LS.CURRENCY, "INR");
     }
+
+    // ── Migration: patch branches into existing company data if missing ──
+    try {
+      const stored = JSON.parse(localStorage.getItem(LS.COMPANY) || "{}");
+      if (!stored.branches || stored.branches.length === 0) {
+        stored.branches = INITIAL_DATA.company.branches || [];
+        localStorage.setItem(LS.COMPANY, JSON.stringify(stored));
+      }
+    } catch(e) { /* silent */ }
   }
 
   // ════════════════════════════════════════════════════════════════════════
@@ -538,7 +547,9 @@ class VayuStore {
   // ════════════════════════════════════════════════════════════════════════
   async getBranches() {
     const company = await this.getCompany();
-    return company.branches || [];
+    // If company in localStorage has no branches, fall back to INITIAL_DATA
+    if (company.branches && company.branches.length > 0) return company.branches;
+    return INITIAL_DATA.company.branches || [];
   }
 
   async saveBranch(branch) {
