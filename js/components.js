@@ -39,10 +39,7 @@ async function renderNavbar() {
 
         <!-- Logo -->
         <a href="/" class="brand-logo" aria-label="Vayu Holidays home">
-          <div class="brand-emblem" aria-hidden="true">V</div>
-          <div class="brand-text">
-            <span class="brand-name">Vayu Holidays</span>
-          </div>
+          <img src="/icons/logo.png.jpeg" alt="Vayu Holidays" class="brand-logo-img" style="height:52px;width:auto;object-fit:contain;filter:brightness(0) invert(1);" />
         </a>
 
         <!-- Desktop Navigation -->
@@ -128,7 +125,9 @@ async function renderNavbar() {
     <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="toggleMobileNav()" aria-hidden="true"></div>
     <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation">
       <div class="mobile-drawer-header">
-        <span style="font-family:var(--font-display);font-size:1.15rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:var(--c-ink);">Vayu Holidays</span>
+        <span style="font-family:var(--font-display);font-size:1.15rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:var(--c-ink);">
+          <img src="/icons/logo.png.jpeg" alt="Vayu Holidays" style="height:40px;width:auto;object-fit:contain;" />
+        </span>
         <button class="mobile-drawer-close" onclick="toggleMobileNav()" aria-label="Close menu">${ICONS.x}</button>
       </div>
 
@@ -195,11 +194,7 @@ async function renderFooter() {
           <!-- Col 1: Brand -->
           <div class="footer-brand">
             <a href="/" class="brand-logo footer-brand-logo" aria-label="Vayu Holidays home">
-              <div class="brand-emblem" style="width:38px;height:38px;font-size:1.1rem;" aria-hidden="true">V</div>
-              <div class="brand-text">
-                <span class="brand-name" style="font-size:1.15rem;color:#fff;">Vayu Holidays</span>
-                <span class="brand-tagline" style="color:var(--color-gold);">Travel Agency & Tour Operator</span>
-              </div>
+              <img src="/icons/logo.png.jpeg" alt="Vayu Holidays" style="height:48px;width:auto;object-fit:contain;filter:brightness(0) invert(1);" />
             </a>
 
             <p class="footer-desc">
