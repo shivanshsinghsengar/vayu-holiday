@@ -142,7 +142,7 @@ async function renderHomeView() {
                 onblur="setTimeout(()=>document.getElementById('destSuggestions').style.display='none',200)"
                 aria-label="Search destination"
               />
-              <div id="destSuggestions" style="display:none;position:absolute;top:calc(100% + 4px);left:0;min-width:320px;width:max-content;max-width:420px;background:#1a1a1a;border:1px solid rgba(255,255,255,0.15);border-radius:12px;z-index:9999;max-height:260px;overflow-y:auto;box-shadow:0 16px 40px rgba(0,0,0,0.6);"></div>
+              <div id="destSuggestions" style="display:none;position:absolute;top:calc(100% + 4px);left:0;min-width:360px;width:max-content;max-width:460px;background:#1a1a1a;border:1px solid rgba(255,255,255,0.15);border-radius:12px;z-index:9999;max-height:260px;overflow-y:auto;box-shadow:0 16px 40px rgba(0,0,0,0.6);"></div>
             </div>
 
             <!-- Travel Month -->

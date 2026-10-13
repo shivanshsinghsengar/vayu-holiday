@@ -539,8 +539,9 @@ img { display: block; max-width: 100%; height: auto; }
   align-items: flex-end;
   background: var(--c-dark);
   color: var(--c-bg);
-  overflow: hidden;
+  overflow: visible;
   padding: 0;
+  padding-bottom: 3.5rem;
 }
 
 .hero-bg-media {
@@ -554,6 +555,7 @@ img { display: block; max-width: 100%; height: auto; }
   transition: transform 14s linear;
   transform: scale(1.04);
   will-change: transform;
+  clip-path: inset(0);
 }
 
 .hero-section:hover .hero-bg-media { transform: scale(1.0); }
@@ -652,6 +654,7 @@ img { display: block; max-width: 100%; height: auto; }
   align-items: center;
   max-width: 900px;
   margin-top: var(--space-7);
+  margin-bottom: -2.5rem;
   overflow: visible;
   position: relative;
   z-index: 10;
