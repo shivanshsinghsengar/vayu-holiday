@@ -39,7 +39,7 @@ async function renderNavbar() {
 
         <!-- Logo -->
         <a href="/" class="brand-logo" aria-label="Vayu Holidays home">
-          <img src="/icons/logo.png.jpeg" alt="Vayu Holidays" class="brand-logo-img" style="height:52px;width:auto;object-fit:contain;filter:brightness(0) invert(1);" />
+          <img src="/icons/logo.png.jpeg" alt="Vayu Holidays" class="brand-logo-img" style="height:48px;width:auto;object-fit:contain;mix-blend-mode:screen;" />
         </a>
 
         <!-- Desktop Navigation -->
@@ -194,7 +194,7 @@ async function renderFooter() {
           <!-- Col 1: Brand -->
           <div class="footer-brand">
             <a href="/" class="brand-logo footer-brand-logo" aria-label="Vayu Holidays home">
-              <img src="/icons/logo.png.jpeg" alt="Vayu Holidays" style="height:48px;width:auto;object-fit:contain;filter:brightness(0) invert(1);" />
+              <img src="/icons/logo.png.jpeg" alt="Vayu Holidays" style="height:48px;width:auto;object-fit:contain;mix-blend-mode:screen;" />
             </a>
 
             <p class="footer-desc">
