@@ -2,42 +2,45 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // PUBLIC READ — packages, destinations, blogs, testimonials, offers
-    match /packages/{doc} {
-      allow read: if true;
-      allow write: if request.auth != null;
-    }
-    match /destinations/{doc} {
-      allow read: if true;
-      allow write: if request.auth != null;
-    }
-    match /blogs/{doc} {
-      allow read: if true;
-      allow write: if request.auth != null;
-    }
-    match /testimonials/{doc} {
-      allow read: if true;
-      allow write: if request.auth != null;
-    }
-    match /offers/{doc} {
-      allow read: if true;
-      allow write: if request.auth != null;
-    }
-
-    // ENQUIRIES — anyone can create (website leads), only admin can read/update/delete
-    match /enquiries/{doc} {
+    // ── Enquiries — anyone can create (website leads), only auth can read/delete
+    match /enquiries/{docId} {
       allow create: if true;
       allow read, update, delete: if request.auth != null;
     }
 
-    // SETTINGS — public read (company info shown on site), admin write
-    match /settings/{doc} {
+    // ── Packages, Destinations, Blogs, Testimonials, Offers, Media
+    // Public can read, only authenticated admin can write
+    match /packages/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    match /destinations/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    match /blogs/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    match /testimonials/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    match /offers/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    match /media/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    match /services/{docId} {
       allow read: if true;
       allow write: if request.auth != null;
     }
 
-    // MEDIA — admin only
-    match /media/{doc} {
+    // ── Settings (company info, page settings) — public read, auth write
+    match /settings/{docId} {
       allow read: if true;
       allow write: if request.auth != null;
     }
