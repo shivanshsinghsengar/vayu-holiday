@@ -48,7 +48,7 @@ function renderDestinationCard(dest) {
   const formattedStarting = window.vayuStore.formatPrice(dest.startingPrice);
   return `
     <div class="dest-card" onclick="window.navigate('/packages?dest=${dest.id}')" role="button" tabindex="0" aria-label="View ${dest.name} packages" onkeydown="if(event.key==='Enter')window.navigate('/packages?dest=${dest.id}')">
-      <img src="${dest.image}" alt="${dest.name}" class="dest-card-bg" loading="lazy" />
+      <img src="${dest.image}" alt="${dest.name}" class="dest-card-bg" loading="lazy" width="800" height="600" />
       <div class="dest-card-overlay"></div>
       <div class="dest-card-content">
         <span class="dest-card-tag">${dest.type === 'domestic' ? 'Incredible India' : 'International Escape'}</span>
@@ -204,7 +204,8 @@ async function renderHomeView() {
               src="${featuredDests[0]?.image || 'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1400&q=80'}"
               alt="${featuredDests[0]?.name || 'Destination'}"
               id="destMainImg"
-              loading="lazy"
+              width="800" height="600"
+              fetchpriority="low"
             />
             <div class="dest-showcase-overlay">
               <div class="dest-showcase-tag" id="destMainTag">${featuredDests[0]?.type === 'domestic' ? 'Incredible India' : 'International'}</div>

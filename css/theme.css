@@ -1806,3 +1806,29 @@ a[href*="netlify.com"][style*="position: fixed"] {
   .how-steps-grid { grid-template-columns: 1fr !important; }
   .blog-grid { grid-template-columns: 1fr !important; }
 }
+
+/* ── PERFORMANCE — GPU promotion for animated elements ─────────────────── */
+.package-card,
+.dest-card,
+.blog-card,
+.testimonial-card {
+  will-change: transform;
+  contain: layout style;
+}
+.floating-wa-btn {
+  will-change: transform;
+}
+.hero-bg-media {
+  will-change: transform, opacity;
+}
+/* Smooth image rendering */
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
+/* Reduce animation on low-end devices */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

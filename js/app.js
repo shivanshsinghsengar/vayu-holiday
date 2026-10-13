@@ -179,8 +179,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300);
   };
 
-  // Hide after 1.6s minimum (feels premium, not too long)
-  const minTime  = 1600;
+  // Hide after 0.8s minimum — feels premium without blocking LCP
+  const minTime  = 800;
   const started  = Date.now();
   window.addEventListener("load", () => {
     const elapsed = Date.now() - started;

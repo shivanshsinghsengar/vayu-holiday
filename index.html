@@ -169,14 +169,14 @@
     href="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80"
     fetchpriority="high" />
 
-  <!-- Preload Plus Jakarta Sans 400 + 500 (critical body text) -->
+  <!-- Preload Plus Jakarta Sans + Playfair Display -->
   <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" />
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;600&display=swap" />
 
   <!-- =====================================================================
-       FONTS (display=swap for performance)
+       FONTS — trimmed to essential weights only
   ====================================================================== -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <!-- =====================================================================
        STYLESHEETS
@@ -192,11 +192,11 @@
   <link rel="stylesheet" href="css/animations.css" />
 
   <!-- =====================================================================
-       FIREBASE SDK (compat v9 — works without bundler)
+       FIREBASE SDK — defer so they don't block rendering
   ====================================================================== -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js" defer></script>
 
   <!-- =====================================================================
        EMAILJS SDK (async, non-blocking)

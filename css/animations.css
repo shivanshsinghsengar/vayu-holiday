@@ -292,10 +292,10 @@ body.page-ready .hero-bg-media {
 
 /* Destination list item */
 .dest-list-item {
-  transition: background 0.2s ease, padding-left 0.25s ease;
+  transition: background 0.2s ease, transform 0.25s ease;
 }
-.dest-list-item:hover { padding-left: 1.5rem; }
-.dest-list-item.active { padding-left: 1.5rem; }
+.dest-list-item:hover { transform: translateX(0.5rem); }
+.dest-list-item.active { transform: translateX(0.5rem); }
 
 /* ═══════════════════════════════════════════════════════════════════════
    8. BUTTON HOVER — MAGNETIC FEEL
@@ -323,7 +323,6 @@ body.page-ready .hero-bg-media {
 .site-header {
   transition: background 0.45s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.45s ease,
-              backdrop-filter 0.45s ease,
               box-shadow 0.45s ease;
 }
 
