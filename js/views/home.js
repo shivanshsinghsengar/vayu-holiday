@@ -384,32 +384,69 @@ async function renderHomeView() {
               <p style="font-size:0.9rem;color:var(--c-ink-3);margin-bottom:1.25rem;font-family:var(--font-body);">What kind of journey are you envisioning?</p>
               <div class="options-grid" id="plannerThemeGrid">
                 <div class="option-card selected" onclick="selectPlannerOption('theme','Honeymoon & Romance',this)">
-                  <div class="option-icon">💍</div>
+                  <div class="option-icon">
+                    <svg viewBox="0 0 64 64" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M32 56S12 40 12 24a12 12 0 0 1 20-9 12 12 0 0 1 20 9c0 16-20 32-20 32z" fill="#f87171" stroke="#c0392b" stroke-width="2"/>
+                      <path d="M32 56S12 40 12 24" stroke="#fff" stroke-width="1.5" opacity="0.3"/>
+                    </svg>
+                  </div>
                   <div class="option-title">Honeymoon</div>
                   <div class="option-desc">Private villas, romance</div>
                 </div>
                 <div class="option-card" onclick="selectPlannerOption('theme','Ultra-Luxury',this)">
-                  <div class="option-icon">👑</div>
+                  <div class="option-icon">
+                    <svg viewBox="0 0 64 64" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <polygon points="32,8 38,24 56,24 42,36 48,52 32,42 16,52 22,36 8,24 26,24" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+                    </svg>
+                  </div>
                   <div class="option-title">Ultra-Luxury</div>
                   <div class="option-desc">5-star, butler service</div>
                 </div>
                 <div class="option-card" onclick="selectPlannerOption('theme','Family Retreat',this)">
-                  <div class="option-icon">👨‍👩‍👧</div>
+                  <div class="option-icon">
+                    <svg viewBox="0 0 64 64" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="22" cy="18" r="7" fill="#60a5fa" stroke="#2563eb" stroke-width="2"/>
+                      <circle cx="42" cy="18" r="7" fill="#f472b6" stroke="#db2777" stroke-width="2"/>
+                      <circle cx="32" cy="36" r="5" fill="#86efac" stroke="#16a34a" stroke-width="2"/>
+                      <path d="M10 56c0-8 5-13 12-13h20c7 0 12 5 12 13" stroke="#64748b" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </div>
                   <div class="option-title">Family</div>
                   <div class="option-desc">All-ages friendly</div>
                 </div>
                 <div class="option-card" onclick="selectPlannerOption('theme','Group Tour',this)">
-                  <div class="option-icon">🌍</div>
+                  <div class="option-icon">
+                    <svg viewBox="0 0 64 64" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="32" cy="32" r="22" fill="#34d399" stroke="#059669" stroke-width="2"/>
+                      <ellipse cx="32" cy="32" rx="10" ry="22" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+                      <line x1="10" y1="32" x2="54" y2="32" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+                    </svg>
+                  </div>
                   <div class="option-title">Group Tour</div>
                   <div class="option-desc">Fixed departures</div>
                 </div>
                 <div class="option-card" onclick="selectPlannerOption('theme','Adventure',this)">
-                  <div class="option-icon">⛰️</div>
+                  <div class="option-icon">
+                    <svg viewBox="0 0 64 64" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <polygon points="32,6 58,56 6,56" fill="#818cf8" stroke="#4f46e5" stroke-width="2"/>
+                      <polygon points="20,56 40,24 56,56" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.5"/>
+                      <circle cx="32" cy="48" r="3" fill="#fff"/>
+                    </svg>
+                  </div>
                   <div class="option-title">Adventure</div>
                   <div class="option-desc">Mountains, nature</div>
                 </div>
                 <div class="option-card" onclick="selectPlannerOption('theme','Corporate MICE',this)">
-                  <div class="option-icon">🏢</div>
+                  <div class="option-icon">
+                    <svg viewBox="0 0 64 64" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="16" y="8" width="32" height="48" rx="3" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+                      <rect x="20" y="16" width="8" height="6" rx="1" fill="#fff"/>
+                      <rect x="32" y="16" width="8" height="6" rx="1" fill="#fff"/>
+                      <rect x="20" y="28" width="8" height="6" rx="1" fill="#fff"/>
+                      <rect x="32" y="28" width="8" height="6" rx="1" fill="#fff"/>
+                      <rect x="24" y="42" width="16" height="14" rx="1" fill="#475569"/>
+                    </svg>
+                  </div>
                   <div class="option-title">Corporate</div>
                   <div class="option-desc">MICE & retreats</div>
                 </div>
