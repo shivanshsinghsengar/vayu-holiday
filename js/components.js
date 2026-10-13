@@ -39,7 +39,7 @@ async function renderNavbar() {
 
         <!-- Logo -->
         <a href="/" class="brand-logo" aria-label="Vayu Holidays home">
-          <img src="/icons/logo.png.jpeg" alt="Vayu Holidays" class="brand-logo-img" style="height:48px;width:auto;object-fit:contain;mix-blend-mode:screen;" />
+          <img src="/icons/logo-dark.jpg" alt="Vayu Holidays" class="brand-logo-img" style="height:56px;width:auto;object-fit:contain;" />
         </a>
 
         <!-- Desktop Navigation -->
@@ -125,8 +125,8 @@ async function renderNavbar() {
     <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="toggleMobileNav()" aria-hidden="true"></div>
     <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation">
       <div class="mobile-drawer-header">
-        <span style="font-family:var(--font-display);font-size:1.15rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:var(--c-ink);">
-          <img src="/icons/logo.png.jpeg" alt="Vayu Holidays" style="height:40px;width:auto;object-fit:contain;" />
+        <span style="display:flex;align-items:center;">
+          <img src="/icons/logo-dark.jpg" alt="Vayu Holidays" style="height:40px;width:auto;object-fit:contain;" />
         </span>
         <button class="mobile-drawer-close" onclick="toggleMobileNav()" aria-label="Close menu">${ICONS.x}</button>
       </div>
@@ -194,7 +194,7 @@ async function renderFooter() {
           <!-- Col 1: Brand -->
           <div class="footer-brand">
             <a href="/" class="brand-logo footer-brand-logo" aria-label="Vayu Holidays home">
-              <img src="/icons/logo.png.jpeg" alt="Vayu Holidays" style="height:48px;width:auto;object-fit:contain;mix-blend-mode:screen;" />
+              <img src="/icons/logo-dark.jpg" alt="Vayu Holidays" style="height:56px;width:auto;object-fit:contain;" />
             </a>
 
             <p class="footer-desc">
