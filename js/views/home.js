@@ -329,7 +329,11 @@ async function renderHomeView() {
 
           <div class="bespoke-visual">
             <img
-              src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=900&q=75"
+              src="https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=900&q=75"
+              alt="Luxury private travel — Vayu Holidays"
+              loading="lazy" width="900" height="1200"
+              style="border-radius:var(--radius-lg);width:100%;aspect-ratio:3/4;object-fit:cover;"
+            />
               alt="Private luxury travel experience"
               loading="lazy"
               style="border-radius:var(--radius-lg);width:100%;aspect-ratio:3/4;object-fit:cover;"
