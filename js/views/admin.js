@@ -1427,6 +1427,7 @@ function openOfferEditorModal(offerId = null) {
                   ${existing.bannerImage ? `<img src="${existing.bannerImage}" style="max-height:120px;border-radius:8px;margin-bottom:0.5rem;" />` : `
                   <div style="font-size:2rem;margin-bottom:0.5rem;">🖼️</div>
                   <div style="font-size:0.88rem;color:var(--color-text-inverse-muted);">Drag & drop banner image here<br/>or click to upload</div>
+                  <div style="font-size:0.72rem;color:var(--color-gold);margin-top:0.5rem;">Recommended: <strong>1200 × 400px</strong> (3:1 ratio)</div>
                   `}
                 </div>
                 <input type="file" id="offerImageFileInput" accept="image/*" style="display:none;" onchange="handleOfferImageFileSelect(event)" />
@@ -1503,10 +1504,26 @@ function _readOfferImageFile(file) {
   const reader = new FileReader();
   reader.onload = (ev) => {
     const dataUrl = ev.target.result;
-    const preview = document.getElementById('offerDropPreview');
-    const urlInput = document.getElementById('offerBannerImageUrl');
-    if (preview) preview.innerHTML = `<img src="${dataUrl}" style="max-height:120px;border-radius:8px;" />`;
-    if (urlInput) urlInput.value = dataUrl;
+    // Check image dimensions
+    const img = new Image();
+    img.onload = () => {
+      const w = img.naturalWidth;
+      const h = img.naturalHeight;
+      const ratio = w / h;
+      const preview = document.getElementById('offerDropPreview');
+      const urlInput = document.getElementById('offerBannerImageUrl');
+      let warning = '';
+      if (w < 1200 || h < 300) {
+        warning = `<div style="background:#f87171;color:#fff;border-radius:6px;padding:0.5rem 0.75rem;font-size:0.78rem;margin-top:0.5rem;">⚠️ Image too small (${w}×${h}px). Recommended: <strong>1200×400px</strong> minimum for best quality.</div>`;
+      } else if (ratio < 2 || ratio > 6) {
+        warning = `<div style="background:#f59e0b;color:#fff;border-radius:6px;padding:0.5rem 0.75rem;font-size:0.78rem;margin-top:0.5rem;">⚠️ Image ratio (${w}×${h}px) may not look ideal. Best ratio is <strong>3:1 to 5:1</strong> (e.g. 1200×400px).</div>`;
+      } else {
+        warning = `<div style="background:#34d399;color:#fff;border-radius:6px;padding:0.5rem 0.75rem;font-size:0.78rem;margin-top:0.5rem;">✓ Good dimensions (${w}×${h}px) — banner will look great!</div>`;
+      }
+      if (preview) preview.innerHTML = `<img src="${dataUrl}" style="max-height:120px;border-radius:8px;" />${warning}`;
+      if (urlInput) urlInput.value = dataUrl;
+    };
+    img.src = dataUrl;
   };
   reader.readAsDataURL(file);
 }

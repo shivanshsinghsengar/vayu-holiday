@@ -302,19 +302,20 @@ async function renderHomeView() {
               flex-wrap:wrap;
               position:relative;
               overflow:hidden;
+              min-height:120px;
             ">
-              ${offer.bannerImage ? `<div style="position:absolute;inset:0;background:rgba(0,0,0,0.5);border-radius:var(--radius-lg);"></div>` : ''}
-              <div style="position:relative;z-index:1;">
-                <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;opacity:0.75;margin-bottom:0.35rem;font-family:var(--font-body);">Special Offer</div>
-                <h3 style="font-family:var(--font-display);font-size:1.35rem;font-weight:600;margin-bottom:0.35rem;">${offer.title}</h3>
-                <p style="font-size:0.9rem;opacity:0.85;font-family:var(--font-body);margin-bottom:0.5rem;">${offer.discount}</p>
+              ${offer.bannerImage ? `<div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.45) 60%,rgba(0,0,0,0.2) 100%);border-radius:var(--radius-lg);"></div>` : ''}
+              <div style="position:relative;z-index:1;max-width:65%;">
+                <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;opacity:0.8;margin-bottom:0.35rem;font-family:var(--font-body);">Special Offer</div>
+                <h3 style="font-family:var(--font-display);font-size:1.35rem;font-weight:700;margin-bottom:0.35rem;text-shadow:0 1px 4px rgba(0,0,0,0.4);">${offer.title}</h3>
+                <p style="font-size:0.9rem;opacity:0.9;font-family:var(--font-body);margin-bottom:0.6rem;text-shadow:0 1px 3px rgba(0,0,0,0.3);">${offer.discount}</p>
                 <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
-                  <code style="background:rgba(255,255,255,0.15);padding:0.25rem 0.75rem;border-radius:6px;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;">${offer.code}</code>
-                  <span style="font-size:0.78rem;opacity:0.65;">${offer.validity}</span>
+                  <code style="background:rgba(255,255,255,0.2);backdrop-filter:blur(4px);padding:0.25rem 0.75rem;border-radius:6px;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;border:1px solid rgba(255,255,255,0.25);">${offer.code}</code>
+                  <span style="font-size:0.78rem;opacity:0.7;">${offer.validity}</span>
                 </div>
               </div>
               <div style="position:relative;z-index:1;flex-shrink:0;">
-                <button class="btn btn-white btn-sm" onclick="openEnquiryModal({title:'${offer.title}'})">
+                <button class="btn btn-white btn-sm" onclick="openEnquiryModal({title:'${offer.title}'})" style="font-weight:700;white-space:nowrap;">
                   Claim Offer ${ICONS.arrowRight}
                 </button>
               </div>
