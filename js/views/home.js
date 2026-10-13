@@ -102,9 +102,7 @@ async function renderHomeView() {
         <div class="hero-inner">
 
           <div class="hero-eyebrow-wrap">
-            <span class="hero-eyebrow">
-              Vayu Holidays &nbsp;&middot;&nbsp; Bhopal, India
-            </span>
+            <img src="/icons/logo-dark.jpg" alt="Vayu Holidays" style="height:72px;width:auto;object-fit:contain;margin-bottom:1.5rem;" />
           </div>
 
           <h1 class="hero-title">
