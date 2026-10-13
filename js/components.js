@@ -75,8 +75,7 @@ async function renderNavbar() {
               <a href="/services/forex"     class="dropdown-link" role="menuitem">Forex & Travel Cards</a>
               <a href="/services/insurance" class="dropdown-link" role="menuitem">Travel Insurance</a>
               <a href="/services/passport"  class="dropdown-link" role="menuitem">Passport Services</a>
-              <a href="/services/bus"       class="dropdown-link" role="menuitem">Bus & Coaches</a>
-              <a href="/services/train"     class="dropdown-link" role="menuitem">Train & Rail</a>
+              <a href="/services/bus"       class="dropdown-link" role="menuitem">Train & Bus</a>
             </div>
           </div>
 

@@ -366,3 +366,86 @@ function animateCounter(el) {
   kill();
   new MutationObserver(kill).observe(document.body, { childList: true, subtree: true });
 })();
+
+// ── MOBILE DRAWER SWIPE-TO-CLOSE ─────────────────────────────────────────────
+// Allows swiping right to close the navigation drawer on touch devices
+(function initDrawerSwipe() {
+  let startX = 0;
+  let startY = 0;
+  let isDragging = false;
+
+  document.addEventListener("touchstart", (e) => {
+    const drawer = document.getElementById("mobileDrawer");
+    if (!drawer || !drawer.classList.contains("open")) return;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    isDragging = true;
+  }, { passive: true });
+
+  document.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+    const drawer = document.getElementById("mobileDrawer");
+    if (!drawer || !drawer.classList.contains("open")) return;
+
+    const dx = e.touches[0].clientX - startX;
+    const dy = Math.abs(e.touches[0].clientY - startY);
+
+    // Only horizontal swipe (not vertical scroll)
+    if (dx > 0 && dy < 60 && dx > dy) {
+      const progress = Math.min(dx / 200, 1);
+      drawer.style.transform = `translateX(${dx}px)`;
+      drawer.style.transition = "none";
+      const overlay = document.getElementById("mobileDrawerOverlay");
+      if (overlay) overlay.style.opacity = String(1 - progress * 0.8);
+    }
+  }, { passive: true });
+
+  document.addEventListener("touchend", (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+
+    const drawer = document.getElementById("mobileDrawer");
+    if (!drawer || !drawer.classList.contains("open")) return;
+
+    const dx = e.changedTouches[0].clientX - startX;
+    drawer.style.transition = "";
+
+    if (dx > 80) {
+      // Swipe far enough — close drawer
+      drawer.style.transform = "";
+      if (typeof toggleMobileNav === "function") toggleMobileNav();
+    } else {
+      // Snap back
+      drawer.style.transform = "";
+      const overlay = document.getElementById("mobileDrawerOverlay");
+      if (overlay) overlay.style.opacity = "";
+    }
+  }, { passive: true });
+})();
+
+// ── SCROLL REVEAL — MOBILE-OPTIMISED THRESHOLDS ───────────────────────────────
+// On mobile, elements are taller relative to viewport, so use lower threshold
+(function patchScrollRevealForMobile() {
+  if (typeof IntersectionObserver === "undefined") return;
+  if (window.innerWidth > 768) return; // only on mobile
+
+  // Re-observe with mobile-friendly threshold (5% vs 10% for desktop)
+  const mobileObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          mobileObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.05, rootMargin: "0px 0px -20px 0px" }
+  );
+
+  // Wait for content to render, then re-observe unrevealed items
+  setTimeout(() => {
+    document.querySelectorAll(
+      ".reveal:not(.revealed), [data-reveal]:not(.revealed)"
+    ).forEach(el => mobileObserver.observe(el));
+  }, 600);
+})();

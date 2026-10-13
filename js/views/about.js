@@ -13,7 +13,7 @@ async function renderAboutView() {
 
   const storyTitle = pageSettings.aboutStoryTitle || "Your Journey. Beautifully Planned.";
   const storyBody  = pageSettings.aboutStoryBody  || "At Vayu Holidays, we believe that true luxury travel is never loud or cookie-cutter. It is found in unhurried mornings on misty tea estates, private sunset shikaras, seamless international airport transfers, and the absolute confidence that a dedicated concierge is always one message away.";
-  const storyBody2 = pageSettings.aboutStoryBody2 || `Headquartered at <strong>${company.office || 'Raksha Vihar, Vayu Residency, Airport Road, Bhopal'}</strong>, we serve discerning families, honeymoon couples, and corporate delegations across Madhya Pradesh and nationwide.`;
+  const storyBody2 = pageSettings.aboutStoryBody2 || `Headquartered at <strong>${company.office || 'Raksha Vihar, Vayu Pride Residency, Airport Road, Bhopal'}</strong>, we serve discerning families, honeymoon couples, and corporate delegations across Madhya Pradesh and nationwide.`;
 
   return `
     <div class="package-detail-header">
@@ -180,7 +180,7 @@ async function renderAboutView() {
 
           <div style="background: var(--color-sand); border-radius: var(--radius-lg); padding: 2rem; border: 1px solid var(--border-subtle); text-align: center;">
             <div style="color: var(--color-gold-dark); margin-bottom: 1rem;">${ICONS.mapPin}</div>
-            <h4 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 0.5rem;">Vayu Residency, Airport Road</h4>
+            <h4 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 0.5rem;">Vayu Pride Residency, Airport Road</h4>
             <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">
               Easily accessible from Raja Bhoj Airport Bhopal, VIP Road, and surrounding neighborhoods.
             </p>

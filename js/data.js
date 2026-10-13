@@ -8,7 +8,7 @@ const INITIAL_DATA = {
     name: "Vayu Holidays",
     tagline: "Your Journey. Beautifully Planned.",
     type: "Travel Agency & Tour Operator",
-    office: "Raksha Vihar, Vayu Residency, Airport Road, Bhopal, Madhya Pradesh, India - 462030",
+    office: "Raksha Vihar, Vayu Pride Residency, Airport Road, Bhopal, Madhya Pradesh, India - 462030",
     phone: "+91 755 492 8899",
     whatsapp: "+91 98260 12345",
     whatsappMessage: "Hello Vayu Holidays Concierge, I would like to inquire about planning a luxury journey.",

@@ -9,7 +9,7 @@ const SITE = {
   name:        "Vayu Holidays",
   phone:       "+91-755-492-8899",
   whatsapp:    "+91-98260-12345",
-  address:     "Raksha Vihar, Vayu Residency, Airport Road, Bhopal, Madhya Pradesh 462030, India",
+  address:     "Raksha Vihar, Vayu Pride Residency, Airport Road, Bhopal, Madhya Pradesh 462030, India",
   logo:        "https://www.vayuholidays.com/icons/icon-512.png",
   defaultImg:  "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
   rating:      4.9,
@@ -193,7 +193,7 @@ function schemaOrg() {
     "email": "concierge@vayuholidays.com",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Raksha Vihar, Vayu Residency, Airport Road",
+      "streetAddress": "Raksha Vihar, Vayu Pride Residency, Airport Road",
       "addressLocality": "Bhopal",
       "addressRegion": "Madhya Pradesh",
       "postalCode": "462030",
@@ -236,7 +236,7 @@ function schemaPackage(pkg) {
 
 const HOME_FAQS = [
   { q: "What services does Vayu Holidays offer?",             a: "Bespoke holiday packages, flight bookings, hotel reservations, visa assistance for 50+ countries, forex, travel insurance, Volvo bus & train ticketing, and corporate MICE — all from our Bhopal office." },
-  { q: "Where is Vayu Holidays located?",                     a: "Raksha Vihar, Vayu Residency, Airport Road, Bhopal, Madhya Pradesh, India — 462030." },
+  { q: "Where is Vayu Holidays located?",                     a: "Raksha Vihar, Vayu Pride Residency, Airport Road, Bhopal, Madhya Pradesh, India — 462030." },
   { q: "How do I book a holiday package with Vayu Holidays?", a: "Submit an enquiry via our website, WhatsApp us on +91 98260 12345, or call +91 755 492 8899. Our travel manager shares an itemized quotation within 2 hours." },
   { q: "Do you offer customized honeymoon packages?",         a: "Yes. All itineraries including honeymoon packages are fully customizable — private villas, specific airlines, dietary preferences, celebration amenities." },
   { q: "Does Vayu Holidays assist with Schengen visa?",       a: "Yes. Our dedicated visa desk has a 99% first-time approval rate for Schengen, UAE, UK, USA, and 50+ other country visas." }

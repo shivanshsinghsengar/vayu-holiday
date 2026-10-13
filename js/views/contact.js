@@ -152,7 +152,7 @@ async function renderContactView() {
                 ${ICONS.plane} Convenient Airport Road Location
               </div>
               <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">
-                Located on Airport Road, near Raksha Vihar & Vayu Residency, just 10 minutes from Bhopal Airport. Easy parking available.
+                Located on Airport Road, near Raksha Vihar & Vayu Pride Residency, just 10 minutes from Bhopal Airport. Easy parking available.
               </p>
               <a 
                 href="https://www.google.com/maps/search/?api=1&query=Raksha+Vihar+Vayu+Residency+Airport+Road+Bhopal+Madhya+Pradesh" 
