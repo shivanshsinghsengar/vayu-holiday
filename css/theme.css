@@ -652,6 +652,9 @@ img { display: block; max-width: 100%; height: auto; }
   align-items: center;
   max-width: 900px;
   margin-top: var(--space-7);
+  overflow: visible;
+  position: relative;
+  z-index: 10;
 }
 .search-field {
   padding: 0.7rem 1.1rem;

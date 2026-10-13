@@ -129,7 +129,7 @@ async function renderHomeView() {
           <div class="hero-search-bar" role="search" aria-label="Journey finder">
 
             <!-- Destination Typeahead -->
-            <div class="search-field" id="destSearchField" style="position:relative;">
+            <div class="search-field" id="destSearchField" style="position:relative;z-index:100;">
               <span class="search-field-label">${ICONS.mapPin} Where to?</span>
               <input
                 type="text"
@@ -142,7 +142,7 @@ async function renderHomeView() {
                 onblur="setTimeout(()=>document.getElementById('destSuggestions').style.display='none',200)"
                 aria-label="Search destination"
               />
-              <div id="destSuggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:0 0 12px 12px;z-index:999;max-height:220px;overflow-y:auto;"></div>
+              <div id="destSuggestions" style="display:none;position:absolute;top:calc(100% + 4px);left:0;min-width:320px;width:max-content;max-width:420px;background:#1a1a1a;border:1px solid rgba(255,255,255,0.15);border-radius:12px;z-index:9999;max-height:260px;overflow-y:auto;box-shadow:0 16px 40px rgba(0,0,0,0.6);"></div>
             </div>
 
             <!-- Travel Month -->
@@ -1065,13 +1065,13 @@ function showDestSuggestions(query) {
     ? DEST_SUGGESTIONS
     : DEST_SUGGESTIONS.filter(d => d.label.toLowerCase().includes(q) || d.value.includes(q));
   box.innerHTML = filtered.length === 0
-    ? '<div style="padding:0.75rem 1rem;font-size:0.85rem;color:rgba(255,255,255,0.5);">No match \u2014 try "Custom Destination"</div>'
+    ? '<div style="padding:0.75rem 1rem;font-size:0.85rem;color:rgba(255,255,255,0.5);">No match — try "Custom Destination"</div>'
     : filtered.map(d =>
         '<div onclick="selectDestSuggestion(\'' + d.label + '\',\'' + d.value + '\')" ' +
-        'style="padding:0.65rem 1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.06);transition:background 0.15s ease;" ' +
+        'style="padding:0.7rem 1.1rem;cursor:pointer;display:flex;flex-direction:column;gap:0.15rem;border-bottom:1px solid rgba(255,255,255,0.06);transition:background 0.15s ease;" ' +
         'onmouseover="this.style.background=\'rgba(197,168,112,0.15)\'" onmouseout="this.style.background=\'transparent\'">' +
-        '<span style="font-size:0.9rem;font-weight:600;color:#fff;">' + d.label + '</span>' +
-        '<span style="font-size:0.72rem;color:rgba(255,255,255,0.45);">' + d.tag + '</span>' +
+        '<span style="font-size:0.88rem;font-weight:600;color:#fff;white-space:nowrap;">' + d.label + '</span>' +
+        '<span style="font-size:0.72rem;color:rgba(255,255,255,0.4);white-space:nowrap;">' + d.tag + '</span>' +
         '</div>'
       ).join('');
   box.style.display = 'block';
