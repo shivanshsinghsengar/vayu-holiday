@@ -334,10 +334,6 @@ async function renderHomeView() {
               loading="lazy" width="900" height="1200"
               style="border-radius:var(--radius-lg);width:100%;aspect-ratio:3/4;object-fit:cover;"
             />
-              alt="Private luxury travel experience"
-              loading="lazy"
-              style="border-radius:var(--radius-lg);width:100%;aspect-ratio:3/4;object-fit:cover;"
-            />
             <div class="bespoke-stat-card">
               <div style="font-family:var(--font-display);font-size:2.5rem;font-weight:300;color:var(--c-ink);line-height:1;">100%</div>
               <div style="font-size:0.82rem;font-family:var(--font-body);color:var(--c-ink-3);margin-top:0.25rem;">Fully Customizable</div>
