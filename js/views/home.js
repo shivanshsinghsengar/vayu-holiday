@@ -102,7 +102,7 @@ async function renderHomeView() {
         <div class="hero-inner">
 
           <div class="hero-eyebrow-wrap">
-            <img src="/icons/logo-dark.jpg" alt="Vayu Holidays" style="height:72px;width:auto;object-fit:contain;margin-bottom:1.5rem;" />
+            <img src="/icons/nobg.png" alt="Vayu Holidays" style="height:90px;width:auto;object-fit:contain;margin-bottom:1.5rem;drop-shadow(0 2px 8px rgba(0,0,0,0.3));" />
           </div>
 
           <h1 class="hero-title">
