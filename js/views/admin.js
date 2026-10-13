@@ -1313,8 +1313,8 @@ async function handleDeleteTestimonial(id) {
 }
 
 // --- Offers & Campaign Banners Tab ---
-function renderAdminOffersTab() {
-  const offers = window.vayuStore.getOffers();
+async function renderAdminOffersTab() {
+  const offers = await window.vayuStore.getOffers();
 
   return `
     <div class="admin-card">
@@ -1447,8 +1447,8 @@ async function handleDeleteOffer(id) {
 }
 
 // --- Media Library Tab ---
-function renderAdminMediaTab() {
-  const media = window.vayuStore.getMedia();
+async function renderAdminMediaTab() {
+  const media = await window.vayuStore.getMedia();
 
   return `
     <div class="admin-card">
