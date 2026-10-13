@@ -58,8 +58,8 @@ function initFirebase() {
     _auth = firebase.auth();
     _firebaseReady = true;
 
-    // Enable offline persistence (Firestore cache)
-    _db.enablePersistence({ synchronizeTabs: true })
+    // Enable offline persistence (single tab — avoids lease conflicts)
+    _db.enablePersistence({ synchronizeTabs: false })
       .then(() => console.log("✅ Firestore offline persistence enabled"))
       .catch(err => {
         if (err.code === "failed-precondition") {
