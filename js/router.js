@@ -423,6 +423,9 @@ class VayuRouter {
 
       this._updateActiveNavLink(path);
       if (typeof trackPageView === "function") trackPageView(path);
+      // Re-init scroll reveal + counters after every page render
+      if (typeof initScrollReveal === "function") setTimeout(initScrollReveal, 100);
+      if (typeof initCounters === "function") setTimeout(initCounters, 300);
 
     } catch (err) {
       console.error("Router error:", err);

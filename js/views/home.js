@@ -641,17 +641,17 @@ async function renderHomeView() {
         </div>
 
         <div class="how-steps-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;">
-          <div class="how-step-card" data-reveal>
+          <div class="how-step-card reveal">
             <div class="how-step-badge" aria-hidden="true">1</div>
             <h3 class="how-step-title">Share Your Vision</h3>
             <p style="font-size:0.9rem;color:var(--c-ink-3);line-height:1.75;font-family:var(--font-body);">Tell us your destination, dates, and preferences via our planner, form, or WhatsApp.</p>
           </div>
-          <div class="how-step-card" data-reveal>
+          <div class="how-step-card reveal">
             <div class="how-step-badge" aria-hidden="true">2</div>
             <h3 class="how-step-title">Receive Your Proposal</h3>
             <p style="font-size:0.9rem;color:var(--c-ink-3);line-height:1.75;font-family:var(--font-body);">Within 2–4 hours, a senior specialist crafts an itemized day-wise itinerary with transparent pricing.</p>
           </div>
-          <div class="how-step-card" data-reveal>
+          <div class="how-step-card" reveal>
             <div class="how-step-badge" aria-hidden="true">3</div>
             <h3 class="how-step-title">Travel in Peace</h3>
             <p style="font-size:0.9rem;color:var(--c-ink-3);line-height:1.75;font-family:var(--font-body);">Confirmed vouchers, e-tickets, visa clearance. 24/7 concierge support throughout your journey.</p>
@@ -668,11 +668,11 @@ async function renderHomeView() {
     <section class="section section-sand" aria-label="Trust metrics">
       <div class="container" style="max-width:900px;text-align:center;">
 
-        <p style="font-family:var(--font-display);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:300;color:var(--c-ink);line-height:1.5;margin-bottom:var(--space-9);" data-reveal>
+        <p style="font-family:var(--font-display);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:300;color:var(--c-ink);line-height:1.5;margin-bottom:var(--space-9);" reveal>
           "Trusted by families, couples, and executives<br/>who value extraordinary journeys."
         </p>
 
-        <div class="trust-minimal-grid" data-reveal>
+        <div class="trust-minimal-grid" reveal>
           <div class="trust-minimal-item">
             <span class="trust-minimal-num">${trustTrips}</span>
             <span class="trust-minimal-label">Trips Curated</span>
