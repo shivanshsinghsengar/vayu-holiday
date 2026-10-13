@@ -30,17 +30,17 @@ async function renderBlogListView() {
       <div class="container">
         <div class="blog-grid">
           ${blogs.map(b => `
-            <div class="blog-card" onclick="window.navigate('/blog/\')">
-              <img src="${b.image}" alt="${b.title}" class="blog-card-img" loading="lazy" />
+            <div class="blog-card" onclick="window.navigate('/blog/${b.slug}')">
+              <img src="${b.image}" alt="${b.title}" class="blog-card-img" loading="lazy" width="640" height="400" />
               <div class="blog-card-body">
-                <div class="blog-card-date">${b.category} • ${b.date} • ${b.readTime}</div>
+                <div class="blog-card-date">${b.category} · ${b.date} · ${b.readTime}</div>
                 <h3 class="blog-card-title">${b.title}</h3>
                 <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 1.5rem; line-height: 1.6;">
                   ${b.excerpt}
                 </p>
-                <div style="display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.88rem; font-weight: 700; color: var(--color-gold-dark);">
+                <a href="/blog/${b.slug}" onclick="event.stopPropagation();" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.88rem;font-weight:700;color:var(--color-gold-dark);text-decoration:none;">
                   Read Complete Story ${ICONS.arrowRight}
-                </div>
+                </a>
               </div>
             </div>
           `).join('')}
