@@ -528,7 +528,20 @@ async function openEnquiryModal(prefill = {}) {
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
               <div class="form-group">
                 <label class="form-label">Number of Travelers</label>
-                <input type="text" name="travelers" class="form-control" placeholder="e.g. 2 Adults, 1 Child" value="2 Adults" />
+                <select name="travelers" class="form-control">
+                  <option value="1 Adult">1 Adult</option>
+                  <option value="2 Adults" selected>2 Adults</option>
+                  <option value="3 Adults">3 Adults</option>
+                  <option value="4 Adults">4 Adults</option>
+                  <option value="2 Adults, 1 Child">2 Adults, 1 Child</option>
+                  <option value="2 Adults, 2 Children">2 Adults, 2 Children</option>
+                  <option value="2 Adults, 3 Children">2 Adults, 3 Children</option>
+                  <option value="3 Adults, 1 Child">3 Adults, 1 Child</option>
+                  <option value="3 Adults, 2 Children">3 Adults, 2 Children</option>
+                  <option value="4 Adults, 2 Children">4 Adults, 2 Children</option>
+                  <option value="Group (5+ Adults)">Group (5+ Adults)</option>
+                  <option value="Group with Kids">Group with Kids (5+ Adults + Children)</option>
+                </select>
               </div>
               <div class="form-group">
                 <label class="form-label">Approx Budget Preference</label>
