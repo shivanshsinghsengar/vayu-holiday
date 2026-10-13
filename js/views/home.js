@@ -80,6 +80,9 @@ async function renderHomeView() {
   const trustCountries = pageSettings.trustCountries || "50+";
   const trustYears     = pageSettings.trustYears     || "8 yrs";
 
+  const offers        = await window.vayuStore.getOffers();
+  const activeOffers  = (offers || []).filter(o => o.active !== false);
+
   // Featured destinations for interactive section
   const featuredDests = destinations.filter(d => d.featured !== false).slice(0, 6);
 
@@ -277,6 +280,50 @@ async function renderHomeView() {
 
       </div>
     </section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════
+         OFFERS & BANNERS — Dynamic from Admin
+    ══════════════════════════════════════════════════════════════ -->
+    ${activeOffers.length > 0 ? `
+    <section class="section" style="padding-top:0;padding-bottom:var(--space-10);" aria-label="Special offers">
+      <div class="container">
+        <div style="display:flex;flex-direction:column;gap:1.25rem;">
+          ${activeOffers.map(offer => `
+            <div style="
+              background:${offer.bannerImage ? `url('${offer.bannerImage}') center/cover no-repeat` : (offer.bannerBg || '#111111')};
+              color:${offer.bannerText || '#ffffff'};
+              border-radius:var(--radius-lg);
+              padding:2rem 2.5rem;
+              display:flex;
+              align-items:center;
+              justify-content:space-between;
+              gap:1.5rem;
+              flex-wrap:wrap;
+              position:relative;
+              overflow:hidden;
+            ">
+              ${offer.bannerImage ? `<div style="position:absolute;inset:0;background:rgba(0,0,0,0.5);border-radius:var(--radius-lg);"></div>` : ''}
+              <div style="position:relative;z-index:1;">
+                <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;opacity:0.75;margin-bottom:0.35rem;font-family:var(--font-body);">Special Offer</div>
+                <h3 style="font-family:var(--font-display);font-size:1.35rem;font-weight:600;margin-bottom:0.35rem;">${offer.title}</h3>
+                <p style="font-size:0.9rem;opacity:0.85;font-family:var(--font-body);margin-bottom:0.5rem;">${offer.discount}</p>
+                <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+                  <code style="background:rgba(255,255,255,0.15);padding:0.25rem 0.75rem;border-radius:6px;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;">${offer.code}</code>
+                  <span style="font-size:0.78rem;opacity:0.65;">${offer.validity}</span>
+                </div>
+              </div>
+              <div style="position:relative;z-index:1;flex-shrink:0;">
+                <button class="btn btn-white btn-sm" onclick="openEnquiryModal({title:'${offer.title}'})">
+                  Claim Offer ${ICONS.arrowRight}
+                </button>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+    ` : ''}
 
 
     <!-- ══════════════════════════════════════════════════════════════

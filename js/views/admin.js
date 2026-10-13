@@ -1368,17 +1368,18 @@ async function renderAdminOffersTab() {
 }
 
 function openOfferEditorModal(offerId = null) {
-  const offer = offerId ? window.vayuStore.getOffers().find(o => o.id === offerId) : {
-    title: "",
-    code: "VAYU2026",
+  const offer = offerId ? (window.vayuStore.getOffers().find ? window.vayuStore.getOffers() : []) : null;
+  const all = JSON.parse(localStorage.getItem("vayu_offers_2026") || "[]");
+  const existing = offerId ? (all.find(o => o.id === offerId) || {}) : {
+    title: "", code: "VAYU2026",
     discount: "Save ₹5,000 on International Bookings",
     validity: "Valid for bookings made 30 days prior to travel",
-    active: true
+    active: true, bannerImage: "", bannerBg: "#111111", bannerText: "#ffffff"
   };
 
   const modalHtml = `
     <div class="modal-overlay open" id="offerEditorModal">
-      <div class="modal-dialog">
+      <div class="modal-dialog" style="max-width:680px;">
         <div class="modal-header">
           <h3 class="modal-title">${offerId ? 'Edit Offer' : 'Create Special Offer'}</h3>
           <button class="modal-close-btn" onclick="document.getElementById('offerEditorModal').remove()">${ICONS.x}</button>
@@ -1387,28 +1388,68 @@ function openOfferEditorModal(offerId = null) {
           <div class="modal-body">
             <div class="form-group">
               <label class="form-label">Offer Title *</label>
-              <input type="text" name="title" class="form-control" value="${offer.title}" placeholder="e.g. Early Bird Festive Privilege" required />
+              <input type="text" name="title" class="form-control" value="${existing.title}" placeholder="e.g. Early Bird Festive Privilege" required />
             </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
               <div class="form-group">
                 <label class="form-label">Coupon Code</label>
-                <input type="text" name="code" class="form-control" value="${offer.code}" required />
+                <input type="text" name="code" class="form-control" value="${existing.code}" required />
               </div>
               <div class="form-group">
                 <label class="form-label">Status</label>
                 <select name="active" class="form-control">
-                  <option value="true" ${offer.active ? 'selected' : ''}>Active</option>
-                  <option value="false" ${!offer.active ? 'selected' : ''}>Paused / Inactive</option>
+                  <option value="true" ${existing.active !== false ? 'selected' : ''}>Active</option>
+                  <option value="false" ${existing.active === false ? 'selected' : ''}>Paused / Inactive</option>
                 </select>
               </div>
             </div>
             <div class="form-group">
               <label class="form-label">Discount & Benefits Description</label>
-              <input type="text" name="discount" class="form-control" value="${offer.discount}" required />
+              <input type="text" name="discount" class="form-control" value="${existing.discount}" required />
             </div>
             <div class="form-group">
               <label class="form-label">Validity Terms</label>
-              <input type="text" name="validity" class="form-control" value="${offer.validity}" required />
+              <input type="text" name="validity" class="form-control" value="${existing.validity}" required />
+            </div>
+
+            <!-- Banner Image Section -->
+            <div style="border-top:1px solid var(--border-dark);padding-top:1.25rem;margin-top:0.5rem;">
+              <div style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-gold);margin-bottom:1rem;">Banner Image (shown on website)</div>
+
+              <!-- Drag & Drop Zone -->
+              <div id="offerDropZone"
+                style="border:2px dashed rgba(197,168,128,0.4);border-radius:12px;padding:2rem;text-align:center;cursor:pointer;background:rgba(197,168,128,0.05);transition:border-color 0.2s ease;"
+                ondragover="event.preventDefault();this.style.borderColor='#C5A870';"
+                ondragleave="this.style.borderColor='rgba(197,168,128,0.4)';"
+                ondrop="handleOfferImageDrop(event)"
+                onclick="document.getElementById('offerImageFileInput').click()">
+                <div id="offerDropPreview">
+                  ${existing.bannerImage ? `<img src="${existing.bannerImage}" style="max-height:120px;border-radius:8px;margin-bottom:0.5rem;" />` : `
+                  <div style="font-size:2rem;margin-bottom:0.5rem;">🖼️</div>
+                  <div style="font-size:0.88rem;color:var(--color-text-inverse-muted);">Drag & drop banner image here<br/>or click to upload</div>
+                  `}
+                </div>
+                <input type="file" id="offerImageFileInput" accept="image/*" style="display:none;" onchange="handleOfferImageFileSelect(event)" />
+              </div>
+
+              <div class="form-group" style="margin-top:1rem;">
+                <label class="form-label">Or paste Image URL directly</label>
+                <input type="url" name="bannerImage" id="offerBannerImageUrl" class="form-control"
+                  value="${existing.bannerImage || ''}"
+                  placeholder="https://images.unsplash.com/..."
+                  oninput="document.getElementById('offerDropPreview').innerHTML = this.value ? '<img src=\\''+this.value+'\\' style=\\'max-height:120px;border-radius:8px;\\' />' : ''" />
+              </div>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div class="form-group">
+                  <label class="form-label">Banner Background Color</label>
+                  <input type="color" name="bannerBg" class="form-control" value="${existing.bannerBg || '#111111'}" style="height:42px;padding:4px;" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Banner Text Color</label>
+                  <input type="color" name="bannerText" class="form-control" value="${existing.bannerText || '#ffffff'}" style="height:42px;padding:4px;" />
+                </div>
+              </div>
             </div>
           </div>
           <div class="modal-footer">
@@ -1427,15 +1468,47 @@ async function handleSaveOfferForm(e, offerId) {
   const form = e.target;
   const formData = new FormData(form);
   const offerData = {
-    title: formData.get("title"), code: formData.get("code"),
-    discount: formData.get("discount"), validity: formData.get("validity"),
-    active: formData.get("active") === "true"
+    title:       formData.get("title"),
+    code:        formData.get("code"),
+    discount:    formData.get("discount"),
+    validity:    formData.get("validity"),
+    active:      formData.get("active") === "true",
+    bannerImage: formData.get("bannerImage") || "",
+    bannerBg:    formData.get("bannerBg") || "#111111",
+    bannerText:  formData.get("bannerText") || "#ffffff"
   };
   if (offerId) offerData.id = offerId;
   await window.vayuStore.saveOffer(offerData);
   document.getElementById("offerEditorModal")?.remove();
   await switchAdminTab("offers");
   showToast("Offer Saved", offerData.title);
+}
+
+// --- Offer Image Drag & Drop Handlers ---
+function handleOfferImageDrop(e) {
+  e.preventDefault();
+  document.getElementById('offerDropZone').style.borderColor = 'rgba(197,168,128,0.4)';
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) {
+    _readOfferImageFile(file);
+  }
+}
+
+function handleOfferImageFileSelect(e) {
+  const file = e.target.files[0];
+  if (file) _readOfferImageFile(file);
+}
+
+function _readOfferImageFile(file) {
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    const dataUrl = ev.target.result;
+    const preview = document.getElementById('offerDropPreview');
+    const urlInput = document.getElementById('offerBannerImageUrl');
+    if (preview) preview.innerHTML = `<img src="${dataUrl}" style="max-height:120px;border-radius:8px;" />`;
+    if (urlInput) urlInput.value = dataUrl;
+  };
+  reader.readAsDataURL(file);
 }
 
 async function handleDeleteOffer(id) {
