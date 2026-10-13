@@ -639,64 +639,74 @@ img { display: block; max-width: 100%; height: auto; }
 
 /* Hero search bar — clean minimal */
 .hero-search-bar {
-  background: rgba(250,250,248,0.97);
-  border: none;
-  border-radius: var(--radius-lg);
-  padding: 0.5rem 0.65rem 0.5rem 0;
-  box-shadow: 0 8px 32px rgba(15,15,14,0.25);
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
   display: grid;
   grid-template-columns: 1.2fr 1fr 1fr 1fr auto;
   gap: 0;
   align-items: center;
-  max-width: 860px;
+  max-width: 900px;
   margin-top: var(--space-7);
 }
 .search-field {
-  padding: 0.55rem 1rem;
-  border-right: 1px solid var(--c-border);
+  padding: 0.7rem 1.1rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.2rem;
+  transition: background 0.2s ease;
 }
+.search-field:hover { background: rgba(255,255,255,0.05); }
 .search-field:last-of-type { border-right: none; }
 .search-field-label {
-  font-size: 0.65rem;
-  font-weight: 600;
+  font-size: 0.62rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--c-ink);
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.5);
   display: flex; align-items: center; gap: 0.3rem;
 }
 .search-field-select,
 .search-field-input {
   border: none;
   background: transparent;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-family: var(--font-body);
-  font-weight: 500;
-  color: var(--c-ink);
+  font-weight: 600;
+  color: #ffffff;
   cursor: pointer;
   padding: 0;
   width: 100%;
 }
+.search-field-select option { background: #1a1a1a; color: #fff; }
 .search-field-select:focus,
 .search-field-input:focus { outline: none; }
 .search-submit-btn {
-  height: 46px;
-  padding: 0 1.5rem;
-  border-radius: var(--radius-md);
-  background: var(--c-ink);
-  color: var(--c-bg);
+  height: 52px;
+  padding: 0 1.75rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #C5A870 0%, #b8956a 100%);
+  color: #111;
   border: none;
   font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 0.84rem;
+  font-weight: 700;
+  font-size: 0.88rem;
   cursor: pointer;
-  display: flex; align-items: center; gap: 0.45rem;
-  transition: background 0.2s ease, transform 0.2s ease;
+  display: flex; align-items: center; gap: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(197,168,112,0.35);
+  margin: 0.35rem;
 }
-.search-submit-btn:hover { background: var(--c-dark-2); transform: none; }
+.search-submit-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(197,168,112,0.5);
+}
 
 /* ═══════════════════════════════════════════════════════════════════════
    BADGES — MINIMAL
@@ -1831,4 +1841,1035 @@ img {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MOBILE-FIRST PRIORITY OVERRIDES
+   Goal: Every interaction, layout, and typography choice is designed
+   for a phone screen first, then progressively enhanced for larger screens.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── 1. SAFE AREA & SCROLL FOUNDATION ─────────────────────────────────── */
+html {
+  /* Prevent overscroll bounce on iOS, allow momentum scrolling */
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+body {
+  /* Honour iPhone/Android notch & home-indicator safe areas */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* When mobile CTA bar is visible, add its height + safe area */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px));
+  }
+  .mobile-cta-bar {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    height: calc(58px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* ── 2. UNIVERSAL TOUCH TARGETS ────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* All tappable elements ≥ 44px (WCAG 2.5.5 + Apple HIG) */
+  a, button, [role="button"], input[type="submit"], input[type="button"],
+  input[type="checkbox"], input[type="radio"], select, .btn,
+  .nav-link, .dropdown-link, .footer-link, .tab-btn, .mobile-cta-btn {
+    min-height: 44px;
+  }
+
+  /* Remove iOS tap highlight flicker */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Restore subtle feedback on action elements only */
+  a:active, button:active, [role="button"]:active {
+    opacity: 0.82;
+  }
+}
+
+/* ── 3. NAVBAR — REFINED FOR MOBILE ────────────────────────────────────── */
+@media (max-width: 768px) {
+  .site-header {
+    /* Remove blur on low-end phones for performance */
+    background: #111111;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .navbar {
+    height: 60px;
+    padding: 0 1rem;
+    gap: 0.5rem;
+  }
+
+  /* Logo: show image only, right-size it */
+  .brand-logo-img {
+    height: 44px !important;
+  }
+
+  /* Hide admin button on mobile — clutter */
+  .navbar .btn-secondary[href="/admin"] {
+    display: none;
+  }
+
+  /* Hide currency on mobile */
+  .currency-select-wrapper {
+    display: none !important;
+  }
+
+  /* Hamburger toggle: bigger tap area */
+  .mobile-nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    color: #ffffff;
+    border-radius: var(--radius-sm);
+    transition: background 0.2s ease;
+  }
+  .mobile-nav-toggle:active { background: rgba(255,255,255,0.1); }
+
+  /* Plan My Trip button — compact & visible */
+  .navbar .btn-gold {
+    padding: 0.55rem 1rem;
+    font-size: 0.8rem;
+    min-height: 40px;
+  }
+}
+
+/* ── 4. MOBILE DRAWER — FULL-SCREEN, COMFORTABLE ───────────────────────── */
+@media (max-width: 768px) {
+  .mobile-drawer {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    background: var(--c-bg);
+  }
+
+  .mobile-drawer-header {
+    padding: 1rem 1.25rem;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--c-border);
+    position: sticky;
+    top: 0;
+    background: var(--c-bg);
+    z-index: 1;
+  }
+
+  .mobile-nav-links {
+    padding: 0.5rem 0;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  .mobile-nav-links a {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    padding: 0.9rem 1.5rem;
+    border-bottom: 1px solid var(--c-border);
+    display: flex;
+    align-items: center;
+    min-height: 52px;
+    color: var(--c-ink);
+    transition: background 0.15s ease;
+  }
+  .mobile-nav-links a:hover,
+  .mobile-nav-links a:active { background: var(--c-bg-subtle); padding-left: 1.75rem; }
+
+  .mobile-drawer-footer {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid var(--c-border);
+    gap: 0.65rem;
+    /* Stick to bottom above safe area */
+    padding-bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+    background: var(--c-bg);
+  }
+
+  .mobile-drawer-footer .btn {
+    min-height: 52px;
+    font-size: 0.95rem;
+    border-radius: var(--radius-md);
+  }
+
+  .mobile-drawer-contact {
+    font-size: 0.9rem;
+  }
+  .mobile-drawer-contact a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+/* ── 5. HERO — MOBILE READABILITY ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 100svh;
+    min-height: 100dvh; /* dynamic viewport height — hides browser chrome */
+    align-items: center; /* centre vertically — easier to read than bottom-anchored */
+    padding: 0;
+  }
+
+  .hero-overlay {
+    /* Stronger gradient for text legibility */
+    background: linear-gradient(
+      180deg,
+      rgba(15,15,14,0.30) 0%,
+      rgba(15,15,14,0.55) 40%,
+      rgba(15,15,14,0.90) 100%
+    );
+  }
+
+  .hero-content {
+    padding: 4rem 0 2.5rem;
+    width: 100%;
+  }
+
+  .hero-inner {
+    padding: 0 1.25rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    margin-bottom: 1rem;
+  }
+
+  .hero-eyebrow-wrap {
+    margin-bottom: 1rem;
+  }
+
+  /* Fluid title — comfortable at every phone width */
+  .hero-title {
+    font-size: clamp(2.2rem, 9vw, 3.4rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+    max-width: 100%;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(250,250,248,0.78);
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-bottom: 1.5rem;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 52px;
+    font-size: 0.95rem;
+    border-radius: var(--radius-md);
+  }
+
+  /* Hide search bar on mobile hero — it's moved to a dedicated section */
+  .hero-search-bar {
+    display: none;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 380px) {
+  .hero-title { font-size: 2rem; }
+  .hero-inner { padding: 0 1rem; }
+}
+
+/* ── 6. MOBILE CTA BAR — PROMINENT & ACCESSIBLE ────────────────────────── */
+@media (max-width: 768px) {
+  .mobile-cta-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.6fr;
+    background: #ffffff;
+    border-top: 1px solid rgba(15,15,14,0.1);
+    box-shadow: 0 -4px 24px rgba(15,15,14,0.10);
+    z-index: 95;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* Extend behind iPhone home indicator */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .mobile-cta-btn {
+    padding: 0.7rem 0.5rem;
+    gap: 0.2rem;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    min-height: 54px;
+  }
+
+  .mobile-cta-btn svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .mobile-cta-call {
+    color: var(--c-ink-2);
+    background: transparent;
+  }
+  .mobile-cta-call:active { background: var(--c-bg-subtle); }
+
+  .mobile-cta-wa {
+    color: #16a34a;
+    background: transparent;
+    border-left: 1px solid rgba(15,15,14,0.08);
+    border-right: 1px solid rgba(15,15,14,0.08);
+  }
+  .mobile-cta-wa:active { background: #f0fdf4; }
+
+  .mobile-cta-plan {
+    background: var(--c-ink);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border-radius: 0;
+  }
+  .mobile-cta-plan:active { background: var(--c-dark-2); }
+
+  /* Floating WA — above the CTA bar */
+  .floating-wa-btn {
+    bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+    right: 1rem;
+    width: 48px;
+    height: 48px;
+  }
+
+  /* Back-to-top — above the CTA bar */
+  #backToTopBtn {
+    bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+    right: 1rem !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+/* ── 7. CARD IMAGES — ASPECT RATIO CONSISTENCY ON MOBILE ───────────────── */
+@media (max-width: 768px) {
+  /* Package cards: taller on mobile for impact */
+  .package-card-img-wrap {
+    aspect-ratio: 16 / 10;
+  }
+
+  .package-card-body {
+    padding: 1.1rem 1rem;
+  }
+
+  .package-card-title {
+    font-size: 1.15rem;
+    line-height: 1.3;
+  }
+
+  .package-card-desc {
+    font-size: 0.85rem;
+    -webkit-line-clamp: 2;
+    margin-bottom: 0.85rem;
+  }
+
+  .package-card-footer {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+    padding-top: 0.85rem;
+  }
+
+  .package-card-footer > div:last-child {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .package-card-footer .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.82rem;
+    white-space: normal;
+  }
+
+  /* Destination cards: fixed height for scroll predictability */
+  .dest-card {
+    aspect-ratio: 3 / 2;
+    height: auto;
+  }
+
+  .dest-card-title {
+    font-size: 1.45rem;
+  }
+
+  /* Blog cards: consistent height */
+  .blog-card-img-wrap {
+    aspect-ratio: 16 / 9;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .blog-card-title {
+    font-size: 1.1rem;
+    line-height: 1.35;
+  }
+
+  .blog-card-body {
+    padding: 1rem;
+  }
+}
+
+/* ── 8. SECTION SPACING — TIGHTER ON MOBILE ─────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --space-12: 4.5rem;
+    --space-11: 3.5rem;
+    --space-10: 3rem;
+    --space-9:  2.5rem;
+    --space-8:  2rem;
+  }
+
+  .section { padding: 3rem 0; }
+  .section-sm { padding: 2rem 0; }
+
+  .section-header {
+    margin-bottom: 1.75rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 6vw, 2.1rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .section-desc {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    max-width: 100%;
+  }
+
+  .eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.65rem;
+  }
+
+  .container,
+  .container-narrow,
+  .container-wide {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .section { padding: 2.5rem 0; }
+  .container,
+  .container-narrow,
+  .container-wide {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* ── 9. GRIDS — PROPER STACKING ON MOBILE ───────────────────────────────── */
+@media (max-width: 768px) {
+  .packages-grid,
+  .destinations-grid,
+  .experiences-grid,
+  .services-grid,
+  .how-steps-grid,
+  .testimonials-grid,
+  .blog-grid,
+  .pillars-grid,
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Wider minmax cards still get single col treatment */
+  .packages-grid     { gap: 1.25rem; }
+  .testimonials-grid { gap: 1rem; }
+  .blog-grid         { gap: 1rem; }
+
+  /* Experience items: shorter on mobile */
+  .experience-item { height: 260px; }
+  .experience-overlay { padding: 1.25rem; }
+  .experience-title { font-size: 1.4rem; }
+}
+
+/* ── 10. FORMS — iOS ZOOM PREVENTION & COMFORT ──────────────────────────── */
+@media (max-width: 768px) {
+  /* Must be 16px to prevent iOS auto-zoom on focus */
+  input, select, textarea,
+  .form-control,
+  .search-field-input,
+  .search-field-select {
+    font-size: 16px !important;
+  }
+
+  .form-control {
+    min-height: 48px;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+  }
+
+  select.form-control {
+    background-image: none;
+    padding-right: 2.5rem;
+  }
+
+  textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  /* Form groups: always 1 column */
+  .form-group {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ── 11. MODALS — BOTTOM SHEET ON MOBILE ────────────────────────────────── */
+@media (max-width: 768px) {
+  .modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal-dialog {
+    max-width: 100%;
+    width: 100%;
+    max-height: 92dvh; /* dynamic viewport height */
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    margin: 0;
+    overflow-y: auto;
+    /* Smooth momentum scroll inside modal */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .modal-header {
+    padding: 1.1rem 1.25rem 1rem;
+    position: sticky;
+    top: 0;
+    background: var(--c-bg);
+    z-index: 2;
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  .modal-title {
+    font-size: 1.25rem;
+  }
+
+  .modal-body {
+    padding: 1.25rem;
+  }
+
+  .modal-footer {
+    padding: 1rem 1.25rem;
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    position: sticky;
+    bottom: 0;
+    background: var(--c-bg);
+    border-top: 1px solid var(--c-border);
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 50px;
+  }
+
+  /* All grids inside modal → single column */
+  .modal-body [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── 12. BUTTONS — CONSISTENT MOBILE SIZING ─────────────────────────────── */
+@media (max-width: 768px) {
+  .btn {
+    min-height: 48px;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    border-radius: var(--radius-md);
+  }
+
+  .btn-sm {
+    min-height: 40px;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.82rem;
+  }
+
+  .btn-lg {
+    min-height: 54px;
+    padding: 0.9rem 1.75rem;
+    font-size: 0.95rem;
+  }
+
+  /* Disable button hover lifts on touch — prevents stuck states */
+  .btn-primary:hover,
+  .btn-gold:hover,
+  .btn-white:hover,
+  .btn-whatsapp:hover {
+    transform: none;
+  }
+}
+
+/* ── 13. FOOTER — COMPACT & SCANNABLE ON MOBILE ─────────────────────────── */
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 3rem 0 1.5rem;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-desc {
+    max-width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .footer-col-title {
+    font-size: 0.65rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .footer-link {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .footer-links {
+    gap: 0.55rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.65rem;
+    padding-bottom: 1rem;
+    font-size: 0.75rem;
+  }
+
+  .footer-legal-links {
+    justify-content: center;
+    gap: 0.5rem 0.85rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-newsletter-form {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-newsletter-input,
+  .footer-newsletter-btn {
+    width: 100%;
+    border-radius: var(--radius-sm);
+    min-height: 46px;
+  }
+
+  .footer-leadership-box {
+    margin-top: 1.25rem;
+  }
+}
+
+/* ── 14. PACKAGE DETAIL — MOBILE OPTIMISED ──────────────────────────────── */
+@media (max-width: 768px) {
+  .package-detail-header {
+    padding: 1.5rem 0 1rem;
+  }
+
+  .package-detail-title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    line-height: 1.15;
+  }
+
+  .package-detail-meta-row {
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: flex-start;
+    font-size: 0.82rem;
+  }
+
+  .package-gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 0.4rem;
+    height: auto;
+    border-radius: var(--radius-md);
+    margin: 1.25rem 0 2rem;
+  }
+
+  .gallery-item:first-child {
+    grid-column: span 2;
+    height: 220px;
+  }
+
+  .gallery-item {
+    height: 140px;
+  }
+
+  .package-facts-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: var(--radius-md);
+  }
+
+  .fact-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .package-layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sticky-quote-card {
+    position: static;
+    padding: 1.25rem;
+    margin-top: 1.5rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .quote-price-val {
+    font-size: 1.75rem;
+  }
+
+  .quote-actions .btn {
+    min-height: 50px;
+  }
+
+  .inclusions-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .timeline-day-header {
+    padding: 0.9rem 1rem;
+    min-height: 52px;
+  }
+
+  .day-title {
+    font-size: 0.95rem;
+  }
+}
+
+/* ── 15. TRUST METRICS — HORIZONTAL SCROLL ON MOBILE ───────────────────── */
+@media (max-width: 768px) {
+  .trust-minimal-grid {
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+  }
+  .trust-minimal-grid::-webkit-scrollbar { display: none; }
+
+  .trust-minimal-item {
+    min-width: 110px;
+    padding: 1.25rem 1rem;
+  }
+
+  .trust-minimal-num {
+    font-size: 1.75rem;
+  }
+
+  .trust-minimal-label {
+    font-size: 0.65rem;
+    text-align: center;
+  }
+
+  /* Old trust-bar grid */
+  .trust-metrics-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .trust-metric-val {
+    font-size: 1.5rem;
+  }
+
+  .trust-metric-label {
+    font-size: 0.6rem;
+  }
+}
+
+/* ── 16. TABS — HORIZONTAL SCROLL ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .tab-group {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 0.35rem;
+    padding-bottom: 2px; /* avoid clipping box-shadow on active */
+  }
+  .tab-group::-webkit-scrollbar { display: none; }
+
+  .tab-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    min-height: 40px;
+    padding: 0.5rem 1rem;
+    font-size: 0.82rem;
+  }
+}
+
+/* ── 17. COOKIE BANNER — ABOVE CTA BAR ──────────────────────────────────── */
+@media (max-width: 768px) {
+  .cookie-banner {
+    bottom: calc(66px + env(safe-area-inset-bottom, 0px));
+    left: 0.75rem;
+    right: 0.75rem;
+    width: auto;
+    transform: none;
+    border-radius: var(--radius-md);
+  }
+
+  .cookie-banner-inner {
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .cookie-banner-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .cookie-banner-actions .btn {
+    justify-content: center;
+    min-height: 44px;
+  }
+}
+
+/* ── 18. HOVER EFFECTS — DISABLED ON TOUCH ──────────────────────────────── */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove all hover lift/scale transforms — they stick on touch */
+  .card:hover,
+  .package-card:hover,
+  .dest-card:hover,
+  .service-card:hover,
+  .pillar-card:hover,
+  .blog-card:hover,
+  .why-card:hover,
+  .how-step-card:hover,
+  .testimonial-card:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .dest-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Show brief active state as feedback */
+  .card:active,
+  .package-card:active,
+  .dest-card:active,
+  .blog-card:active {
+    opacity: 0.93;
+    transform: scale(0.99);
+    transition: opacity 0.1s ease, transform 0.1s ease;
+  }
+
+  /* Package card image — no zoom on hover */
+  .package-card:hover .package-card-img { transform: none; }
+  .dest-card:hover .dest-card-bg { transform: none; }
+  .blog-card:hover .blog-card-img { transform: none; }
+}
+
+/* ── 19. LANDSCAPE PHONE ─────────────────────────────────────────────────── */
+@media (max-width: 900px) and (max-height: 500px) {
+  .hero-section {
+    min-height: 100vw;
+    align-items: center;
+    padding: 3rem 0 5rem;
+  }
+  .hero-title { font-size: clamp(1.6rem, 5vw, 2rem); line-height: 1.1; }
+  .hero-subtitle { display: none; }
+  .hero-search-bar { display: none; }
+  .hero-actions { flex-direction: row; flex-wrap: wrap; }
+  .hero-actions .btn { width: auto; min-height: 44px; }
+}
+
+/* ── 20. PERFORMANCE — REDUCE REPAINTS ON MOBILE ────────────────────────── */
+@media (max-width: 768px) {
+  /* Remove heavy animations that cause jank on lower-end phones */
+  .hero-bg-media {
+    animation: none;
+    transform: none;
+  }
+
+  .hero-section:hover .hero-bg-media {
+    transform: none;
+  }
+
+  /* Contain layout for card grids — reduces relayout scope */
+  .packages-grid,
+  .destinations-grid,
+  .blog-grid {
+    contain: layout;
+  }
+}
+
+/* ── 21. TYPOGRAPHY — MOBILE READING COMFORT ─────────────────────────────── */
+@media (max-width: 768px) {
+  p {
+    font-size: 0.96rem;
+    line-height: 1.75;
+  }
+
+  h2 { font-size: clamp(1.6rem, 5.5vw, 2rem); }
+  h3 { font-size: clamp(1.2rem, 4vw, 1.5rem); }
+  h4 { font-size: 1.05rem; }
+
+  /* Wider line-length = harder to read on narrow screens */
+  .section-desc, .footer-desc, p {
+    max-width: 100%;
+  }
+}
+
+/* ── 22. TRIP PLANNER — MOBILE UX ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .planner-steps-nav {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .step-label {
+    font-size: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .planner-body {
+    padding: 1.25rem 1rem;
+  }
+
+  .options-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+  }
+
+  .option-card {
+    padding: 0.9rem 0.65rem;
+  }
+
+  .option-icon { font-size: 1.5rem; }
+  .option-title { font-size: 0.85rem; }
+
+  .planner-controls {
+    flex-direction: column-reverse;
+    gap: 0.65rem;
+  }
+
+  .planner-controls .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 50px;
+  }
+}
+
+/* ── 23. SERVICES PAGE — INLINE GRID OVERRIDE ───────────────────────────── */
+@media (max-width: 768px) {
+  /* Override any inline grid-template-columns from JS-rendered HTML */
+  [style*="grid-template-columns: 2fr 1fr"],
+  [style*="grid-template-columns: 1.5fr 1fr"],
+  [style*="grid-template-columns: 1.2fr 1fr"],
+  [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns: repeat(3, 1fr)"],
+  [style*="grid-template-columns: 1fr 1fr 1fr"],
+  [style*="grid-template-columns: repeat(2, 1fr)"],
+  [style*="grid-template-columns: repeat(4, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Keep 2-col for small option grids */
+  .options-grid[style*="grid-template-columns"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Un-stick any sticky sidebars */
+  [style*="position: sticky"],
+  [style*="position:sticky"] {
+    position: static !important;
+    margin-top: 1.5rem;
+  }
+}
+
+/* ── 24. SCROLL BEHAVIOUR — SMOOTH AND CLIPPED ──────────────────────────── */
+@media (max-width: 768px) {
+  /* Sections with horizontal content should scroll smoothly */
+  .tab-group,
+  .partner-badges-row,
+  .trust-minimal-grid {
+    scroll-snap-type: x mandatory;
+    scroll-padding: 1.25rem;
+  }
+
+  /* Prevent images from overflowing their containers */
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Hide any accidentally visible horizontal overflow */
+  .section,
+  .container,
+  .container-narrow,
+  .container-wide {
+    overflow-x: clip;
+  }
+}
+
+/* ── 25. VERY SMALL PHONES (≤ 360px) ─────────────────────────────────────── */
+@media (max-width: 360px) {
+  .hero-title { font-size: 1.85rem; }
+  .section-title { font-size: 1.5rem; }
+
+  .brand-logo-img { height: 38px !important; }
+
+  .mobile-cta-btn { font-size: 0.58rem; }
+  .mobile-cta-btn svg { width: 20px; height: 20px; }
+
+  .package-card-body { padding: 0.85rem; }
+  .package-card-title { font-size: 1rem; }
+
+  .options-grid { gap: 0.4rem; }
+  .option-card { padding: 0.75rem 0.4rem; }
+  .option-desc { display: none; }
+
+  .modal-body { padding: 0.85rem; }
+  .modal-header { padding: 0.85rem; }
 }

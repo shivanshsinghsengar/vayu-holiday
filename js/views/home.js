@@ -125,7 +125,7 @@ async function renderHomeView() {
             </button>
           </div>
 
-          <!-- Journey finder — minimal -->
+          <!-- Journey finder — Bold Card Design -->
           <div class="hero-search-bar" role="search" aria-label="Journey finder">
             <div class="search-field">
               <span class="search-field-label">${ICONS.mapPin} Destination</span>
