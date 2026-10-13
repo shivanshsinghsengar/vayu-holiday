@@ -125,54 +125,70 @@ async function renderHomeView() {
             </button>
           </div>
 
-          <!-- Journey finder — Bold Card Design -->
+          <!-- Journey finder — Typeahead Search Design -->
           <div class="hero-search-bar" role="search" aria-label="Journey finder">
-            <div class="search-field">
-              <span class="search-field-label">${ICONS.mapPin} Destination</span>
-              <select class="search-field-select" id="heroSearchDest" aria-label="Select destination">
-                <option value="">All Destinations</option>
-                <option value="kashmir">Kashmir</option>
-                <option value="kerala">Kerala</option>
-                <option value="rajasthan">Rajasthan</option>
-                <option value="dubai">Dubai & UAE</option>
-                <option value="bali">Bali</option>
-                <option value="switzerland">Switzerland</option>
-                <option value="maldives">Maldives</option>
-              </select>
+
+            <!-- Destination Typeahead -->
+            <div class="search-field" id="destSearchField" style="position:relative;">
+              <span class="search-field-label">${ICONS.mapPin} Where to?</span>
+              <input
+                type="text"
+                class="search-field-input"
+                id="heroSearchDest"
+                placeholder="Type a destination..."
+                autocomplete="off"
+                oninput="showDestSuggestions(this.value)"
+                onfocus="showDestSuggestions(this.value)"
+                onblur="setTimeout(()=>document.getElementById('destSuggestions').style.display='none',200)"
+                aria-label="Search destination"
+              />
+              <div id="destSuggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:0 0 12px 12px;z-index:999;max-height:220px;overflow-y:auto;"></div>
             </div>
+
+            <!-- Travel Month -->
             <div class="search-field">
-              <span class="search-field-label">${ICONS.calendar} Travel Month</span>
+              <span class="search-field-label">${ICONS.calendar} When?</span>
               <select class="search-field-select" id="heroSearchMonth" aria-label="Select month">
-                <option value="">Any Month</option>
-                <option value="oct">October 2026</option>
-                <option value="nov">November 2026</option>
-                <option value="dec">December 2026</option>
-                <option value="jan">January 2027</option>
-                <option value="feb">February 2027</option>
+                <option value="">Pick a month</option>
+                <option value="oct">Oct 2026</option>
+                <option value="nov">Nov 2026</option>
+                <option value="dec">Dec 2026</option>
+                <option value="jan">Jan 2027</option>
+                <option value="feb">Feb 2027</option>
+                <option value="mar">Mar 2027</option>
+                <option value="apr">Apr 2027</option>
+                <option value="may">May 2027</option>
               </select>
             </div>
+
+            <!-- Experience -->
             <div class="search-field">
-              <span class="search-field-label">${ICONS.sparkles} Experience</span>
+              <span class="search-field-label">${ICONS.sparkles} Trip Type</span>
               <select class="search-field-select" id="heroSearchTheme" aria-label="Select experience">
-                <option value="">All Themes</option>
-                <option value="honeymoon">Honeymoon</option>
-                <option value="luxury">Ultra-Luxury</option>
-                <option value="family">Family</option>
-                <option value="group">Group Tours</option>
-                <option value="mice">Corporate MICE</option>
+                <option value="">Any Style</option>
+                <option value="honeymoon">💑 Honeymoon</option>
+                <option value="luxury">👑 Ultra-Luxury</option>
+                <option value="family">👨‍👩‍👧 Family</option>
+                <option value="group">🌍 Group Tour</option>
+                <option value="adventure">⛰️ Adventure</option>
+                <option value="mice">🏢 Corporate MICE</option>
               </select>
             </div>
+
+            <!-- Duration -->
             <div class="search-field">
               <span class="search-field-label">${ICONS.clock} Duration</span>
               <select class="search-field-select" id="heroSearchDuration" aria-label="Select duration">
-                <option value="">Any Duration</option>
-                <option value="4-6">4–6 Days</option>
-                <option value="7-9">7–9 Days</option>
-                <option value="10+">10+ Days</option>
+                <option value="">How long?</option>
+                <option value="3-5">Weekend (3–5 Days)</option>
+                <option value="4-6">Short (4–6 Days)</option>
+                <option value="7-9">Classic (7–9 Days)</option>
+                <option value="10+">Grand Tour (10+ Days)</option>
               </select>
             </div>
+
             <button class="search-submit-btn" onclick="executeHeroSearch()">
-              ${ICONS.plane} Find
+              ${ICONS.plane} Search
             </button>
           </div>
 
@@ -1022,3 +1038,69 @@ function executeHeroSearch() {
   const theme = document.getElementById('heroSearchTheme')?.value || '';
   window.navigate('/packages?dest=' + dest + '&theme=' + theme);
 }
+
+// ── Destination Typeahead ────────────────────────────────────────────────────
+const DEST_SUGGESTIONS = [
+  { label: 'Kashmir & Gulmarg',  value: 'kashmir',      tag: 'Domestic \u00b7 From \u20b936,500' },
+  { label: 'Kerala Backwaters',  value: 'kerala',       tag: 'Domestic \u00b7 From \u20b929,500' },
+  { label: 'Royal Rajasthan',    value: 'rajasthan',    tag: 'Domestic \u00b7 From \u20b944,000' },
+  { label: 'Dubai & Abu Dhabi',  value: 'dubai',        tag: 'International \u00b7 From \u20b959,900' },
+  { label: 'Bali & Nusa Penida', value: 'bali',         tag: 'International \u00b7 From \u20b952,500' },
+  { label: 'Swiss Alps',         value: 'switzerland',  tag: 'International \u00b7 From \u20b91,75,000' },
+  { label: 'The Maldives',       value: 'maldives',     tag: 'International \u00b7 From \u20b91,18,000' },
+  { label: 'Vietnam & Indochina',value: 'vietnam',      tag: 'International \u00b7 From \u20b952,000' },
+  { label: 'Himachal Pradesh',   value: 'himachal',     tag: 'Domestic \u00b7 From \u20b928,000' },
+  { label: 'Andaman Islands',    value: 'andaman',      tag: 'Domestic \u00b7 From \u20b932,000' },
+  { label: 'Thailand',           value: 'thailand',     tag: 'International \u00b7 From \u20b945,000' },
+  { label: 'Singapore',          value: 'singapore',    tag: 'International \u00b7 From \u20b968,000' },
+  { label: 'Europe Tour',        value: 'europe',       tag: 'International \u00b7 From \u20b91,45,000' },
+  { label: 'Custom Destination', value: 'custom',       tag: 'Tell us your dream \u2756' }
+];
+
+function showDestSuggestions(query) {
+  const box = document.getElementById('destSuggestions');
+  if (!box) return;
+  const q = (query || '').toLowerCase().trim();
+  const filtered = q.length === 0
+    ? DEST_SUGGESTIONS
+    : DEST_SUGGESTIONS.filter(d => d.label.toLowerCase().includes(q) || d.value.includes(q));
+  box.innerHTML = filtered.length === 0
+    ? '<div style="padding:0.75rem 1rem;font-size:0.85rem;color:rgba(255,255,255,0.5);">No match \u2014 try "Custom Destination"</div>'
+    : filtered.map(d =>
+        '<div onclick="selectDestSuggestion(\'' + d.label + '\',\'' + d.value + '\')" ' +
+        'style="padding:0.65rem 1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.06);transition:background 0.15s ease;" ' +
+        'onmouseover="this.style.background=\'rgba(197,168,112,0.15)\'" onmouseout="this.style.background=\'transparent\'">' +
+        '<span style="font-size:0.9rem;font-weight:600;color:#fff;">' + d.label + '</span>' +
+        '<span style="font-size:0.72rem;color:rgba(255,255,255,0.45);">' + d.tag + '</span>' +
+        '</div>'
+      ).join('');
+  box.style.display = 'block';
+}
+
+function selectDestSuggestion(label, value) {
+  const input = document.getElementById('heroSearchDest');
+  const box   = document.getElementById('destSuggestions');
+  if (input) { input.value = label; input.dataset.value = value; }
+  if (box)   box.style.display = 'none';
+}
+
+function executeHeroSearch() {
+  const destInput = document.getElementById('heroSearchDest');
+  const dest  = (destInput && (destInput.dataset.value || destInput.value) || '').toLowerCase().split(' ')[0];
+  const theme = document.getElementById('heroSearchTheme')?.value || '';
+  const month = document.getElementById('heroSearchMonth')?.value || '';
+  window.navigate('/packages?dest=' + dest + '&theme=' + theme + '&month=' + month);
+}
+
+// Animated placeholder cycling — makes users want to type
+(function initSearchPlaceholder() {
+  const places = ['Kashmir...', 'Maldives...', 'Bali...', 'Switzerland...', 'Kerala...', 'Dubai...', 'Rajasthan...'];
+  let i = 0;
+  setInterval(function() {
+    const inp = document.getElementById('heroSearchDest');
+    if (inp && document.activeElement !== inp) {
+      i = (i + 1) % places.length;
+      inp.setAttribute('placeholder', 'Try "' + places[i] + '"');
+    }
+  }, 2200);
+})();
