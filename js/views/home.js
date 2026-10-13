@@ -885,13 +885,6 @@ async function submitPlannerWizard(e) {
   switchPlannerStep(1);
   e.target.reset();
   if (btn) { btn.disabled = false; btn.innerHTML = '✦ Get My Quotation'; }
-
-  setTimeout(() => {
-    const waText = encodeURIComponent(`Hello Vayu Holidays! I just submitted a trip plan for "${enquiry.destination}" (${enquiry.travelMonth}). Traveler: ${enquiry.name} (${enquiry.phone}). Please share my quotation.`);
-    if (confirm('Open WhatsApp to connect with your Vayu Holidays concierge?')) {
-      window.open(`https://wa.me/${waNumber}?text=${waText}`, '_blank');
-    }
-  }, 800);
 }
 
 async function filterDestinations(type, btn) {

@@ -610,16 +610,6 @@ async function handleEnquirySubmit(e) {
     `Thank you, ${enquiry.name}. Your quotation reference is logged. Our concierge is preparing your itemized travel plan.`
   );
 
-  // Optional: Prompt WhatsApp connect
-  setTimeout(() => {
-    const waText = encodeURIComponent(
-      `Hello Vayu Holidays Concierge! I just submitted an inquiry for "${enquiry.destination}". Traveler: ${enquiry.name} (${enquiry.phone}), Month: ${enquiry.travelMonth}, Travelers: ${enquiry.travelers}. Please share quotation details.`
-    );
-    const waUrl = `https://wa.me/919826012345?text=${waText}`;
-    if (confirm("Would you like to open WhatsApp to connect directly with your dedicated Vayu Holidays concierge right now?")) {
-      window.open(waUrl, "_blank");
-    }
-  }, 900);
 }
 
 // --- Toast System ---
