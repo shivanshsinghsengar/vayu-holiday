@@ -306,9 +306,8 @@ body.page-ready .hero-bg-media {
 }
 
 .marquee-track {
-  display: flex;
+  display: inline-flex;
   flex-shrink: 0;
-  min-width: 100%;
   white-space: nowrap;
   animation: marquee 42s linear infinite;
   will-change: transform;
