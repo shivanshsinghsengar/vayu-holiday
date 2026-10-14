@@ -144,8 +144,9 @@
 }
 
 .badge-emerald {
-  background: rgba(30, 61, 52, 0.1);
-  color: #1a5643;
+  background: rgba(255, 255, 255, 0.92);
+  color: #1a3d2a;
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 /* --- Cards --- */
