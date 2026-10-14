@@ -108,6 +108,14 @@ body.page-ready .hero-bg-media {
   font-size: 0.85em;
 }
 
+/* Hero logo image (nobg.png) */
+.hero-logo-img {
+  height: 160px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 24px rgba(0,0,0,0.45));
+}
+
 /* ── Hero headline with display serif + shimmering gold italic ── */
 .hero-title {
   font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;

@@ -112,12 +112,9 @@ async function renderHomeView() {
       <div class="hero-content">
         <div class="hero-inner">
 
-          <!-- Gold pill badge -->
+          <!-- Hero Logo -->
           <div class="hero-eyebrow-wrap">
-            <span class="hero-badge-pill">
-              <span class="hero-badge-star">✦</span>
-              BHOPAL'S #1 BESPOKE LUXURY CONCIERGE
-            </span>
+            <img src="/icons/nobg.png" alt="Vayu Holidays" class="hero-logo-img" />
           </div>
 
           <!-- Main headline with gold italic gradient on key words -->
