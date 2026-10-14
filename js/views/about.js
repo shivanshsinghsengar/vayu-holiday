@@ -178,15 +178,21 @@ async function renderAboutView() {
             </div>
           </div>
 
-          <div style="background: var(--color-sand); border-radius: var(--radius-lg); padding: 2rem; border: 1px solid var(--border-subtle); text-align: center;">
-            <div style="color: var(--color-gold-dark); margin-bottom: 1rem;">${ICONS.mapPin}</div>
-            <h4 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 0.5rem;">Vayu Pride Residency, Airport Road</h4>
-            <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">
-              Easily accessible from Raja Bhoj Airport Bhopal, VIP Road, and surrounding neighborhoods.
-            </p>
-            <a href="https://wa.me/${waNumber}?text=${encodeURIComponent('Hello Vayu Holidays! I would like to schedule a visit to your Airport Road Bhopal office.')}" target="_blank" rel="noopener" class="btn btn-whatsapp" style="width: 100%;">
-              ${ICONS.whatsapp} WhatsApp For Directions
-            </a>
+          <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-gold); box-shadow: var(--shadow-lg); position: relative;">
+            <img
+              src="/icons/headquater.png"
+              alt="Vayu Holidays Headquarters — Raksha Vihar, Airport Road, Bhopal"
+              style="width: 100%; height: 280px; object-fit: cover; display: block;"
+            />
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(10,13,18,0.88) 0%, transparent 100%); padding: 1.5rem 1.25rem 1.25rem;">
+              <h4 style="font-family: var(--font-serif); font-size: 1.2rem; color: #fff; margin-bottom: 0.3rem;">Vayu Pride Residency, Airport Road</h4>
+              <p style="font-size: 0.82rem; color: rgba(255,255,255,0.72); margin-bottom: 1rem;">
+                Easily accessible from Raja Bhoj Airport Bhopal, VIP Road, and surrounding neighborhoods.
+              </p>
+              <a href="https://wa.me/${waNumber}?text=${encodeURIComponent('Hello Vayu Holidays! I would like to schedule a visit to your Airport Road Bhopal office.')}" target="_blank" rel="noopener" class="btn btn-whatsapp" style="width: 100%; justify-content: center;">
+                ${ICONS.whatsapp} WhatsApp For Directions
+              </a>
+            </div>
           </div>
         </div>
       </div>
