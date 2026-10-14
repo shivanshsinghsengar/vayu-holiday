@@ -216,12 +216,7 @@ async function renderHomeView() {
     ══════════════════════════════════════════════════════════════ -->
     <div class="marquee-strip" aria-label="Destinations ticker" aria-hidden="true">
       <div class="marquee-track">
-        <span class="marquee-content">
-          KASHMIR LUXURY ESCAPES &nbsp;✦&nbsp; SWITZERLAND ALPINE TOURS &nbsp;✦&nbsp; MALDIVES OVERWATER VILLAS &nbsp;✦&nbsp; DUBAI VIP CONCIERGE &nbsp;✦&nbsp; BALI PRIVATE POOL VILLAS &nbsp;✦&nbsp; SCHENGEN VISA ASSISTANCE &nbsp;✦&nbsp; KERALA BACKWATER RETREATS &nbsp;✦&nbsp; RAJASTHAN HERITAGE PALACES &nbsp;✦&nbsp; VIETNAM &amp; INDOCHINA TOURS &nbsp;✦&nbsp; CORPORATE MICE &amp; INCENTIVES &nbsp;&nbsp;
-        </span>
-        <span class="marquee-content" aria-hidden="true">
-          KASHMIR LUXURY ESCAPES &nbsp;✦&nbsp; SWITZERLAND ALPINE TOURS &nbsp;✦&nbsp; MALDIVES OVERWATER VILLAS &nbsp;✦&nbsp; DUBAI VIP CONCIERGE &nbsp;✦&nbsp; BALI PRIVATE POOL VILLAS &nbsp;✦&nbsp; SCHENGEN VISA ASSISTANCE &nbsp;✦&nbsp; KERALA BACKWATER RETREATS &nbsp;✦&nbsp; RAJASTHAN HERITAGE PALACES &nbsp;✦&nbsp; VIETNAM &amp; INDOCHINA TOURS &nbsp;✦&nbsp; CORPORATE MICE &amp; INCENTIVES &nbsp;&nbsp;
-        </span>
+        <span class="marquee-content">KASHMIR LUXURY ESCAPES &nbsp;✦&nbsp; SWITZERLAND ALPINE TOURS &nbsp;✦&nbsp; MALDIVES OVERWATER VILLAS &nbsp;✦&nbsp; DUBAI VIP CONCIERGE &nbsp;✦&nbsp; BALI PRIVATE POOL VILLAS &nbsp;✦&nbsp; SCHENGEN VISA ASSISTANCE &nbsp;✦&nbsp; KERALA BACKWATER RETREATS &nbsp;✦&nbsp; RAJASTHAN HERITAGE PALACES &nbsp;✦&nbsp; VIETNAM &amp; INDOCHINA TOURS &nbsp;✦&nbsp; CORPORATE MICE &amp; INCENTIVES &nbsp;&nbsp;&nbsp;&nbsp;</span><span class="marquee-content" aria-hidden="true">KASHMIR LUXURY ESCAPES &nbsp;✦&nbsp; SWITZERLAND ALPINE TOURS &nbsp;✦&nbsp; MALDIVES OVERWATER VILLAS &nbsp;✦&nbsp; DUBAI VIP CONCIERGE &nbsp;✦&nbsp; BALI PRIVATE POOL VILLAS &nbsp;✦&nbsp; SCHENGEN VISA ASSISTANCE &nbsp;✦&nbsp; KERALA BACKWATER RETREATS &nbsp;✦&nbsp; RAJASTHAN HERITAGE PALACES &nbsp;✦&nbsp; VIETNAM &amp; INDOCHINA TOURS &nbsp;✦&nbsp; CORPORATE MICE &amp; INCENTIVES &nbsp;&nbsp;&nbsp;&nbsp;</span>
       </div>
     </div>
 
