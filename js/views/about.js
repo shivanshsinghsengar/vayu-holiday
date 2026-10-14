@@ -64,9 +64,9 @@ async function renderAboutView() {
 
           <div style="position: relative;">
             <img 
-              src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=1000&q=80" 
-              alt="Vayu Holidays Luxury Destination" 
-              style="border-radius: var(--radius-xl); border: 1px solid var(--border-gold); box-shadow: var(--shadow-xl); width: 100%;" 
+              src="/icons/headquator.png" 
+              alt="Vayu Holidays Headquarters — Raksha Vihar, Airport Road, Bhopal" 
+              style="border-radius: var(--radius-xl); border: 1px solid var(--border-gold); box-shadow: var(--shadow-xl); width: 100%; object-fit: cover;" 
             />
             <div style="position: absolute; bottom: -25px; right: -25px; background: var(--color-obsidian); color: var(--color-ivory); padding: 1.5rem 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-gold); max-width: 280px; box-shadow: var(--shadow-lg);">
               <div style="color: var(--color-gold); font-size: 1.25rem; margin-bottom: 0.5rem;">${ICONS.shield}</div>
@@ -180,7 +180,7 @@ async function renderAboutView() {
 
           <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-gold); box-shadow: var(--shadow-lg); position: relative;">
             <img
-              src="/icons/headquater.png"
+              src="/icons/headquator.png"
               alt="Vayu Holidays Headquarters — Raksha Vihar, Airport Road, Bhopal"
               style="width: 100%; height: 280px; object-fit: cover; display: block;"
             />
