@@ -163,20 +163,23 @@
   <link rel="dns-prefetch" href="https://cdn.emailjs.com" />
   <link rel="dns-prefetch" href="https://www.gstatic.com" />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
 
   <!-- Preload hero image (LCP) -->
   <link rel="preload" as="image"
     href="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80"
     fetchpriority="high" />
 
-  <!-- Preload Poppins + DM Sans -->
+  <!-- Preload luxury fonts -->
   <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" />
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" />
 
   <!-- =====================================================================
-       FONTS — Poppins (headings) + DM Sans (body) — clean travel brand style
+       FONTS — Cormorant Garamond & Playfair Display (luxury display)
+                + DM Sans (body) + Poppins (UI)
   ====================================================================== -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <!-- =====================================================================
        STYLESHEETS
@@ -202,24 +205,63 @@
        EMAILJS SDK (async, non-blocking)
   ====================================================================== -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+
+  <!-- =====================================================================
+       GSAP + ScrollTrigger — motion engine for luxury animations
+  ====================================================================== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <!-- =====================================================================
+       LENIS — buttery inertial smooth scroll
+  ====================================================================== -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
 </head>
 <body>
   <!-- Skip-to-content (Accessibility) -->
   <a href="#mainContent" class="skip-link">Skip to main content</a>
 
   <!-- =====================================================================
-       PRELOADER — Entry Animation (GenNext-inspired)
+       PRELOADER — Cinematic Split-Curtain Reveal
   ====================================================================== -->
   <div id="vayu-preloader" class="preloader" aria-hidden="true">
+    <!-- Split curtain panels -->
+    <div class="preloader-curtain preloader-curtain--left"></div>
+    <div class="preloader-curtain preloader-curtain--right"></div>
+
+    <!-- Central content -->
     <div class="preloader-inner">
       <div class="preloader-logo">
-        <img src="/icons/logo-dark.jpg" alt="Vayu Holidays" style="height:80px;width:auto;object-fit:contain;" />
+        <img src="/icons/logo-dark.jpg" alt="Vayu Holidays" class="preloader-logo-img" />
       </div>
-      <div class="preloader-bar-wrap">
-        <div class="preloader-bar" id="preloaderBar"></div>
+
+      <!-- Progress system -->
+      <div class="preloader-progress-wrap">
+        <!-- Plane icon that slides across the bar -->
+        <div class="preloader-plane-track">
+          <div class="preloader-plane-icon" id="preloaderPlane" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="preloader-bar-wrap">
+          <div class="preloader-bar" id="preloaderBar"></div>
+        </div>
+        <div class="preloader-counter" id="preloaderCounter">00%</div>
       </div>
+
       <div class="preloader-tagline">Your Journey. Beautifully Planned.</div>
     </div>
+
+    <!-- Ambient gold glow -->
+    <div class="preloader-glow" aria-hidden="true"></div>
+  </div>
+
+  <!-- Custom luxury cursor -->
+  <div id="vayuCursor" class="vayu-cursor" aria-hidden="true">
+    <div class="vayu-cursor-ring"></div>
+    <div class="vayu-cursor-dot"></div>
   </div>
 
   <!-- Root Single Page Application Mount Point -->

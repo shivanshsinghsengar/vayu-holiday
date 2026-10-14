@@ -1,57 +1,92 @@
 /* ==========================================================================
-   VAYU HOLIDAYS — DESIGN SYSTEM
-   Philosophy: Aman calm · Apple precision · Aesop restraint
-   Typeface: Cormorant Garamond (display) + Inter (body)
-   Palette: Near-white base · True black type · Warm stone accent
+   VAYU HOLIDAYS — LUXURY DESIGN SYSTEM v2
+   Philosophy: Aman calm · Cartier precision · Aesop restraint
+   Typeface: Cormorant Garamond / Playfair Display (display) · DM Sans (body)
+   Palette: Deep Obsidian · Champagne Gold · Pearl White · Glassmorphic surfaces
    ========================================================================== */
 
 :root {
 
   /* ── TYPOGRAPHY ─────────────────────────────────────────────────────── */
-  --font-display: 'Poppins', 'Segoe UI', sans-serif;
-  --font-body:    'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-sans:    'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-serif:   'Poppins', 'Georgia', sans-serif;
-  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+  --font-display:  'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-serif:    'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-body:     'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans:     'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-ui:       'Poppins', 'Segoe UI', sans-serif;
+  --font-mono:     'JetBrains Mono', 'Fira Code', monospace;
 
-  /* ── BASE PALETTE ───────────────────────────────────────────────────── */
+  /* ── LUXURY COLOUR TOKENS ───────────────────────────────────────────── */
 
-  /* True backgrounds — slightly warm, never cold-white */
-  --c-bg:          #FAFAF8;   /* warm near-white — base canvas */
-  --c-bg-subtle:   #F5F4F1;   /* sections, cards, inset areas */
-  --c-bg-muted:    #EEECE8;   /* borders, dividers, disabled */
+  /* Deep Obsidian — primary dark surfaces */
+  --obsidian:          #0A0D12;
+  --obsidian-mid:      #111520;
+  --obsidian-light:    #1A1F2E;
+  --obsidian-muted:    #232838;
 
-  /* Ink — editorial black hierarchy */
-  --c-ink:         #0F0F0E;   /* primary text — near-black */
-  --c-ink-2:       #3A3A37;   /* secondary text */
-  --c-ink-3:       #6B6B66;   /* tertiary / muted captions */
-  --c-ink-4:       #9B9A95;   /* placeholder, disabled */
+  /* Champagne Gold — the single prestige accent */
+  --gold:              #D4AF37;
+  --gold-light:        #F3E5AB;
+  --gold-pale:         #FBF5DC;
+  --gold-dark:         #A8891A;
+  --gold-dim:          rgba(212, 175, 55, 0.18);
+  --gold-glow:         rgba(212, 175, 55, 0.35);
+  --gold-shimmer:      linear-gradient(105deg, transparent 20%, rgba(243,229,171,0.55) 50%, transparent 80%);
 
-  /* Accent — warm stone/sand (single restrained luxury accent) */
-  --c-accent:      #B8A99A;   /* warm stone — the only accent */
-  --c-accent-dark: #8C7B6E;   /* darker for hover states */
-  --c-accent-pale: #F2EDE8;   /* accent tint for backgrounds */
+  /* Pearl White — base canvas surfaces */
+  --pearl:             #F9F8F6;
+  --pearl-warm:        #F5F3EF;
+  --pearl-stone:       #EDE9E3;
 
-  /* Dark surfaces — footer, hero overlays */
-  --c-dark:        #111110;   /* deep dark for contrast sections */
-  --c-dark-2:      #1C1C1A;   /* slightly lighter dark */
-  --c-dark-muted:  rgba(255,255,255,0.55);  /* text on dark bg */
-  --c-dark-faint:  rgba(255,255,255,0.25);  /* subtle on dark */
+  /* Glassmorphic surfaces */
+  --glass-surface:     rgba(255, 255, 255, 0.06);
+  --glass-surface-md:  rgba(255, 255, 255, 0.10);
+  --glass-surface-lg:  rgba(255, 255, 255, 0.16);
+  --glass-dark:        rgba(10, 13, 18, 0.72);
+  --glass-dark-heavy:  rgba(10, 13, 18, 0.88);
+  --glass-border:      rgba(255, 255, 255, 0.12);
+  --glass-border-gold: rgba(212, 175, 55, 0.25);
+  --glass-blur:        blur(20px);
+  --glass-blur-sm:     blur(12px);
+  --glass-blur-lg:     blur(32px);
 
-  /* Borders */
-  --c-border:      rgba(15,15,14,0.08);    /* default border */
-  --c-border-mid:  rgba(15,15,14,0.14);    /* medium border */
-  --c-border-dark: rgba(255,255,255,0.10); /* border on dark bg */
+  /* Specular highlight gradient border (1px) */
+  --specular-border:   linear-gradient(135deg,
+    rgba(255,255,255,0.20) 0%,
+    rgba(212,175,55,0.15) 40%,
+    rgba(255,255,255,0.06) 100%);
 
-  /* Legacy aliases — keeps existing CSS working */
+  /* ── BASE PALETTE (light mode — existing pages) ──────────────────────  */
+  --c-bg:          #FAFAF8;
+  --c-bg-subtle:   #F5F4F1;
+  --c-bg-muted:    #EEECE8;
+
+  --c-ink:         #0F0F0E;
+  --c-ink-2:       #3A3A37;
+  --c-ink-3:       #6B6B66;
+  --c-ink-4:       #9B9A95;
+
+  --c-accent:      #B8A99A;
+  --c-accent-dark: #8C7B6E;
+  --c-accent-pale: #F2EDE8;
+
+  --c-dark:        #111110;
+  --c-dark-2:      #1C1C1A;
+  --c-dark-muted:  rgba(255,255,255,0.55);
+  --c-dark-faint:  rgba(255,255,255,0.25);
+
+  --c-border:      rgba(15,15,14,0.08);
+  --c-border-mid:  rgba(15,15,14,0.14);
+  --c-border-dark: rgba(255,255,255,0.10);
+
+  /* ── LEGACY ALIASES — keeps existing CSS working ─────────────────────  */
   --color-ivory:          var(--c-bg);
   --color-cream:          var(--c-bg);
   --color-sand:           var(--c-bg-subtle);
   --color-sand-dark:      var(--c-bg-muted);
   --color-stone:          var(--c-bg-muted);
   --color-bg:             var(--c-bg-subtle);
-  --color-obsidian:       var(--c-dark);
-  --color-obsidian-light: var(--c-dark-2);
+  --color-obsidian:       var(--obsidian);
+  --color-obsidian-light: var(--obsidian-light);
   --color-slate-dark:     #2A2A28;
   --color-slate-medium:   var(--c-ink-2);
   --color-slate-light:    var(--c-ink-3);
@@ -61,10 +96,10 @@
   --color-primary-pale:   var(--c-bg-subtle);
   --color-primary-muted:  rgba(15,15,14,0.06);
   --color-accent:         var(--c-accent);
-  --color-gold:           var(--c-accent);
-  --color-gold-light:     #D4C4B5;
-  --color-gold-dark:      var(--c-accent-dark);
-  --color-gold-muted:     rgba(184,169,154,0.15);
+  --color-gold:           var(--gold);
+  --color-gold-light:     var(--gold-light);
+  --color-gold-dark:      var(--gold-dark);
+  --color-gold-muted:     var(--gold-dim);
   --color-text-main:      var(--c-ink);
   --color-text-muted:     var(--c-ink-3);
   --color-text-light:     var(--c-ink-4);
@@ -73,26 +108,34 @@
   --color-white:          #FFFFFF;
   --border-subtle:        var(--c-border);
   --border-medium:        var(--c-border-mid);
-  --border-gold:          rgba(184,169,154,0.35);
+  --border-gold:          rgba(212,175,55,0.30);
   --border-dark:          var(--c-border-dark);
   --border-dark-subtle:   rgba(255,255,255,0.06);
   --bg-glass-light:       rgba(250,250,248,0.94);
-  --bg-glass-dark:        rgba(17,17,16,0.88);
+  --bg-glass-dark:        rgba(10,13,18,0.88);
   --color-terracotta:       var(--c-ink);
   --color-terracotta-hover: var(--c-dark);
   --color-emerald-deep:     #1A3D2A;
   --color-azure-subtle:     #1A2E40;
 
   /* ── SHADOWS ─────────────────────────────────────────────────────────  */
-  /* Extremely restrained — almost invisible */
-  --shadow-xs:   0 1px 2px rgba(15,15,14,0.04);
-  --shadow-sm:   0 2px 6px rgba(15,15,14,0.06);
-  --shadow-md:   0 4px 16px rgba(15,15,14,0.07);
-  --shadow-lg:   0 12px 36px rgba(15,15,14,0.08);
-  --shadow-xl:   0 24px 56px rgba(15,15,14,0.09);
-  --shadow-card: 0 1px 3px rgba(15,15,14,0.05);
-  --shadow-primary: 0 4px 16px rgba(15,15,14,0.14);
-  --shadow-accent:  0 4px 16px rgba(184,169,154,0.20);
+  --shadow-xs:       0 1px 2px rgba(15,15,14,0.04);
+  --shadow-sm:       0 2px 6px rgba(15,15,14,0.06);
+  --shadow-md:       0 4px 16px rgba(15,15,14,0.07);
+  --shadow-lg:       0 12px 36px rgba(15,15,14,0.08);
+  --shadow-xl:       0 24px 56px rgba(15,15,14,0.09);
+  --shadow-card:     0 1px 3px rgba(15,15,14,0.05);
+  --shadow-primary:  0 4px 16px rgba(15,15,14,0.14);
+  --shadow-accent:   0 4px 16px rgba(184,169,154,0.20);
+
+  /* Gold glow shadows for buttons and cards */
+  --shadow-gold-sm:  0 2px 12px rgba(212,175,55,0.25);
+  --shadow-gold-md:  0 4px 24px rgba(212,175,55,0.35);
+  --shadow-gold-lg:  0 8px 40px rgba(212,175,55,0.45);
+  --shadow-obsidian: 0 24px 64px rgba(10,13,18,0.55);
+
+  /* Card 3D tilt spotlight shadow */
+  --shadow-card-tilt: 0 20px 60px rgba(10,13,18,0.30), 0 0 0 1px rgba(255,255,255,0.06);
 
   /* ── RADIUS ──────────────────────────────────────────────────────────  */
   --radius-xs:   3px;
@@ -103,31 +146,51 @@
   --radius-2xl:  28px;
   --radius-full: 9999px;
 
-  /* ── TRANSITIONS ─────────────────────────────────────────────────────  */
-  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* ── MOTION — Ultra-smooth Luxury Bezier Curves ──────────────────────  */
+  --ease-luxury:     cubic-bezier(0.16, 1, 0.3, 1);     /* signature silky decel */
+  --ease-out:        cubic-bezier(0.16, 1, 0.3, 1);     /* alias */
+  --ease-in-out:     cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1); /* gentle overshoot */
+  --ease-expo:       cubic-bezier(0.19, 1, 0.22, 1);    /* dramatic expo out */
+  --ease-magnetic:   cubic-bezier(0.23, 1, 0.32, 1);    /* magnetic pull feel */
 
   --transition-fast:   all 0.18s var(--ease-in-out);
-  --transition-smooth: all 0.32s var(--ease-out);
-  --transition-slow:   all 0.55s var(--ease-out);
+  --transition-smooth: all 0.32s var(--ease-luxury);
+  --transition-slow:   all 0.55s var(--ease-luxury);
+  --transition-reveal: all 0.75s var(--ease-luxury);
 
   /* ── SPACING SCALE ───────────────────────────────────────────────────  */
-  --space-1:  0.25rem;   /*  4px */
-  --space-2:  0.5rem;    /*  8px */
-  --space-3:  0.75rem;   /* 12px */
-  --space-4:  1rem;      /* 16px */
-  --space-5:  1.5rem;    /* 24px */
-  --space-6:  2rem;      /* 32px */
-  --space-7:  3rem;      /* 48px */
-  --space-8:  4rem;      /* 64px */
-  --space-9:  6rem;      /* 96px */
-  --space-10: 8rem;      /* 128px */
-  --space-11: 10rem;     /* 160px */
-  --space-12: 14rem;     /* 224px */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.5rem;
+  --space-6:  2rem;
+  --space-7:  3rem;
+  --space-8:  4rem;
+  --space-9:  6rem;
+  --space-10: 8rem;
+  --space-11: 10rem;
+  --space-12: 14rem;
 
   /* ── LAYOUT ──────────────────────────────────────────────────────────  */
   --container-max:    1240px;
   --container-narrow: 960px;
   --container-wide:   1440px;
+
+  /* ── CURSOR ──────────────────────────────────────────────────────────  */
+  --cursor-size:        12px;
+  --cursor-ring-size:   36px;
+  --cursor-ring-color:  rgba(212, 175, 55, 0.7);
+  --cursor-dot-color:   #D4AF37;
+
+  /* ── Z-INDEX SCALE ───────────────────────────────────────────────────  */
+  --z-below:    -1;
+  --z-base:      1;
+  --z-raised:   10;
+  --z-overlay:  100;
+  --z-modal:    500;
+  --z-toast:    800;
+  --z-cursor:   900;
+  --z-preloader: 9999;
 }

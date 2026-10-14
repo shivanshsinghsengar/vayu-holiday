@@ -242,6 +242,176 @@ const HOME_FAQS = [
   { q: "Does Vayu Holidays assist with Schengen visa?",       a: "Yes. Our dedicated visa desk has a 99% first-time approval rate for Schengen, UAE, UK, USA, and 50+ other country visas." }
 ];
 
+// ── Lenis smooth-scroll helper ───────────────────────────────────────────────
+// Safely scrolls to top via Lenis if available, falls back to native.
+function _lenisScrollTop() {
+  if (window._vayuLenis && typeof window._vayuLenis.scrollTo === "function") {
+    window._vayuLenis.scrollTo(0, { immediate: true });
+  } else {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }
+}
+
+// ── Post-render motion re-initialization ────────────────────────────────────
+// Called after every route render to re-bind GSAP ScrollTrigger,
+// Intersection Observers, counters, 3D card tilt, and magnetic buttons.
+function _reinitMotion() {
+  // 1. Refresh GSAP ScrollTrigger so new elements register correctly
+  if (window.ScrollTrigger) {
+    window.ScrollTrigger.refresh();
+  }
+
+  // 2. Re-init IntersectionObserver scroll reveals
+  if (typeof initScrollReveal === "function") {
+    setTimeout(initScrollReveal, 80);
+  }
+
+  // 3. Re-init number counters
+  if (typeof initCounters === "function") {
+    setTimeout(initCounters, 280);
+  }
+
+  // 4. Re-init 3D card tilt + magnetic buttons
+  setTimeout(() => {
+    _init3DCards();
+    _initMagneticButtons();
+    _initFlightPathAnimations();
+  }, 120);
+}
+
+// ── 3D card tilt (perspective rotateX/Y + mouse-x/y spotlight) ──────────────
+function _init3DCards() {
+  document.querySelectorAll(".package-card, .card-3d").forEach(card => {
+    if (card._tiltBound) return; // prevent double-binding
+    card._tiltBound = true;
+
+    card.addEventListener("mousemove", (e) => {
+      const rect   = card.getBoundingClientRect();
+      const cx     = rect.left + rect.width  / 2;
+      const cy     = rect.top  + rect.height / 2;
+      const dx     = (e.clientX - cx) / (rect.width  / 2); // -1 → 1
+      const dy     = (e.clientY - cy) / (rect.height / 2); // -1 → 1
+      const maxRot = 8; // degrees
+
+      // Set CSS custom properties for spotlight
+      const mouseXPct = ((e.clientX - rect.left) / rect.width  * 100).toFixed(1);
+      const mouseYPct = ((e.clientY - rect.top)  / rect.height * 100).toFixed(1);
+      card.style.setProperty("--mouse-x", mouseXPct + "%");
+      card.style.setProperty("--mouse-y", mouseYPct + "%");
+
+      // Apply 3D rotation — use GSAP if available for smoothness
+      if (window.gsap) {
+        window.gsap.to(card, {
+          rotateY: dx * maxRot,
+          rotateX: -dy * maxRot,
+          duration: 0.18,
+          ease: "power2.out",
+          transformPerspective: 1000,
+          overwrite: "auto"
+        });
+      } else {
+        card.style.transform =
+          `perspective(1000px) rotateX(${(-dy * maxRot).toFixed(2)}deg) rotateY(${(dx * maxRot).toFixed(2)}deg)`;
+      }
+    });
+
+    card.addEventListener("mouseleave", () => {
+      if (window.gsap) {
+        window.gsap.to(card, {
+          rotateY: 0, rotateX: 0,
+          duration: 0.55,
+          ease: "elastic.out(1, 0.5)",
+          overwrite: "auto"
+        });
+      } else {
+        card.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
+      }
+      card.style.removeProperty("--mouse-x");
+      card.style.removeProperty("--mouse-y");
+    });
+  });
+}
+
+// ── Magnetic button pull physics ─────────────────────────────────────────────
+function _initMagneticButtons() {
+  document.querySelectorAll(".btn-gold, [data-magnetic]").forEach(btn => {
+    if (btn._magnetBound) return;
+    btn._magnetBound = true;
+
+    btn.addEventListener("mousemove", (e) => {
+      const rect   = btn.getBoundingClientRect();
+      const cx     = rect.left + rect.width  / 2;
+      const cy     = rect.top  + rect.height / 2;
+      const dx     = (e.clientX - cx) * 0.30;
+      const dy     = (e.clientY - cy) * 0.30;
+
+      if (window.gsap) {
+        window.gsap.to(btn, {
+          x: dx, y: dy,
+          duration: 0.35,
+          ease: "power2.out",
+          overwrite: "auto"
+        });
+      } else {
+        btn.style.transform = `translate(${dx}px, ${dy}px) translateY(-3px) scale(1.02)`;
+      }
+    });
+
+    btn.addEventListener("mouseleave", () => {
+      if (window.gsap) {
+        window.gsap.to(btn, {
+          x: 0, y: 0,
+          duration: 0.55,
+          ease: "elastic.out(1, 0.5)",
+          overwrite: "auto"
+        });
+      } else {
+        btn.style.transform = "";
+      }
+    });
+  });
+}
+
+// ── SVG Flight Path draw-on-scroll ───────────────────────────────────────────
+function _initFlightPathAnimations() {
+  if (!window.gsap || !window.ScrollTrigger) return;
+
+  document.querySelectorAll(".flight-path-line").forEach(line => {
+    if (line._gsapBound) return;
+    line._gsapBound = true;
+
+    const totalLength = line.getTotalLength ? line.getTotalLength() : 800;
+    line.style.strokeDasharray  = totalLength;
+    line.style.strokeDashoffset = totalLength;
+
+    window.gsap.to(line, {
+      strokeDashoffset: 0,
+      ease: "none",
+      scrollTrigger: {
+        trigger: line.closest(".flight-path-container") || line,
+        start:   "top 85%",
+        end:     "bottom 20%",
+        scrub:   1.5
+      }
+    });
+
+    // Plane icon follows scroll along path
+    const plane = line.closest(".flight-path-container")?.querySelector(".flight-path-plane");
+    if (plane) {
+      window.gsap.to(plane, {
+        motionPath: { path: line, align: line, alignOrigin: [0.5, 0.5], autoRotate: true },
+        ease: "none",
+        scrollTrigger: {
+          trigger: line.closest(".flight-path-container") || line,
+          start: "top 85%",
+          end:   "bottom 20%",
+          scrub: 1.5
+        }
+      });
+    }
+  });
+}
+
 // ── MAIN ROUTER ──────────────────────────────────────────────────────────────
 class VayuRouter {
   constructor() {
@@ -259,10 +429,15 @@ class VayuRouter {
     // Query string
     const qs = window.location.search;
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // ── Lenis-aware scroll to top ──────────────────────────────────────
+    _lenisScrollTop();
 
     const app = document.getElementById("app");
     if (!app) return;
+
+    // ── Page-out transition on existing content ────────────────────────
+    await this._animateOut(app);
+
     app.innerHTML = this._loadingSkeleton();
 
     try {
@@ -421,11 +596,14 @@ class VayuRouter {
       const footer = await renderFooter();
       app.innerHTML = `${navbar}<main id="mainContent" role="main">${pageContent}</main>${footer}`;
 
+      // ── Page-in transition ─────────────────────────────────────────
+      this._animateIn(app);
+
       this._updateActiveNavLink(path);
       if (typeof trackPageView === "function") trackPageView(path);
-      // Re-init scroll reveal + counters after every page render
-      if (typeof initScrollReveal === "function") setTimeout(initScrollReveal, 100);
-      if (typeof initCounters === "function") setTimeout(initCounters, 300);
+
+      // ── Re-initialize all motion & scroll systems ──────────────────
+      _reinitMotion();
 
     } catch (err) {
       console.error("Router error:", err);
@@ -439,15 +617,68 @@ class VayuRouter {
     }
   }
 
+  // ── Animate existing content out before navigation ──────────────────────
+  async _animateOut(app) {
+    // Skip on first load (app is empty or just the skeleton)
+    if (!app.children.length || app.querySelector(".skeleton-luxury")) return;
+
+    return new Promise(resolve => {
+      // Check if user prefers reduced motion
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        resolve(); return;
+      }
+
+      if (window.gsap) {
+        window.gsap.to(app, {
+          opacity: 0,
+          y: -16,
+          filter: "blur(6px)",
+          duration: 0.28,
+          ease: "power2.in",
+          onComplete: () => {
+            app.style.opacity = "";
+            app.style.transform = "";
+            app.style.filter = "";
+            resolve();
+          }
+        });
+      } else {
+        app.classList.add("page-transition-out");
+        setTimeout(() => {
+          app.classList.remove("page-transition-out");
+          resolve();
+        }, 290);
+      }
+    });
+  }
+
+  // ── Animate new content in after render ─────────────────────────────────
+  _animateIn(app) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    if (window.gsap) {
+      window.gsap.fromTo(app,
+        { opacity: 0, y: 24, filter: "blur(8px)" },
+        { opacity: 1, y: 0,  filter: "blur(0px)",
+          duration: 0.55,
+          ease: "power3.out",
+          clearProps: "filter,y"
+        }
+      );
+    } else {
+      app.classList.remove("page-transition-in");
+      // Force reflow to restart animation
+      void app.offsetWidth;
+      app.classList.add("page-transition-in");
+      setTimeout(() => app.classList.remove("page-transition-in"), 600);
+    }
+  }
+
   _loadingSkeleton() {
     return `
-      <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#F8F9FC;">
-        <div style="text-align:center;">
-          <div style="width:44px;height:44px;border-radius:50%;border:3px solid #E2E8F0;border-top-color:#111;animation:spin 0.75s linear infinite;margin:0 auto 1rem;"></div>
-          <p style="font-family:'Poppins',sans-serif;font-size:0.95rem;color:#94A3B8;font-weight:500;">Loading…</p>
-        </div>
+      <div class="skeleton-luxury" role="status" aria-label="Loading">
+        <div class="skeleton-luxury-spinner"></div>
       </div>
-      <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
     `;
   }
 

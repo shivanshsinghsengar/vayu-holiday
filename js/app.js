@@ -151,50 +151,162 @@ window.addEventListener("DOMContentLoaded", () => {
 // ─── DOM READY ────────────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ── PRELOADER ──────────────────────────────────────────────────────────────
-  const preloader  = document.getElementById("vayu-preloader");
-  const preBar     = document.getElementById("preloaderBar");
-  let   barWidth   = 0;
+  // ── LENIS SMOOTH SCROLL INITIALIZATION ─────────────────────────────────────
+  // Waits for Lenis CDN script to be available (loaded with defer)
+  function initLenis() {
+    if (typeof Lenis === "undefined") {
+      // Retry up to 5 times if Lenis hasn't parsed yet
+      if (!initLenis._retries) initLenis._retries = 0;
+      if (initLenis._retries < 5) {
+        initLenis._retries++;
+        setTimeout(initLenis, 300);
+      }
+      return;
+    }
+    const lenis = new Lenis({
+      duration:   1.2,
+      easing:     t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // expo ease
+      direction:  "vertical",
+      smoothWheel: true,
+      smoothTouch: false,
+      touchMultiplier: 2
+    });
+    window._vayuLenis = lenis;
 
-  // Animate progress bar
+    // Connect Lenis RAF to GSAP ticker when GSAP is ready
+    function connectGSAP() {
+      if (window.gsap) {
+        window.gsap.ticker.add((time) => lenis.raf(time * 1000));
+        window.gsap.ticker.lagSmoothing(0);
+        if (window.ScrollTrigger) {
+          lenis.on("scroll", window.ScrollTrigger.update);
+        }
+      } else {
+        // Fallback: own RAF loop
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+      }
+    }
+    // GSAP is loaded with defer — give it a moment
+    setTimeout(connectGSAP, 400);
+  }
+  initLenis();
+
+  // ── CUSTOM LUXURY CURSOR ────────────────────────────────────────────────────
+  function initCursor() {
+    const cursor = document.getElementById("vayuCursor");
+    if (!cursor) return;
+    // Only active on devices that support hover (not touch-only)
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      cursor.style.display = "none";
+      return;
+    }
+
+    const dot  = cursor.querySelector(".vayu-cursor-dot");
+    const ring = cursor.querySelector(".vayu-cursor-ring");
+    if (!dot || !ring) return;
+
+    let mouseX = -100, mouseY = -100;
+    let ringX  = -100, ringY  = -100;
+    let raf;
+
+    // Snap dot directly; ring lags slightly
+    document.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.transform   = `translate(${mouseX}px, ${mouseY}px)`;
+    }, { passive: true });
+
+    // Lag the ring with lerp
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.15;
+      ringY += (mouseY - ringY) * 0.15;
+      ring.style.transform = `translate(${ringX - mouseX}px, ${ringY - mouseY}px) translate(-50%, -50%)`;
+      raf = requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Hover expand on interactive elements
+    const interactiveSelector = "a, button, [role='button'], .package-card, .dest-card, .btn, input, select, textarea, label, .nav-link";
+    document.addEventListener("mouseover", (e) => {
+      if (e.target.closest(interactiveSelector)) {
+        cursor.classList.add("cursor-hover");
+      }
+    }, { passive: true });
+    document.addEventListener("mouseout", (e) => {
+      if (e.target.closest(interactiveSelector)) {
+        cursor.classList.remove("cursor-hover");
+      }
+    }, { passive: true });
+
+    // Click pulse
+    document.addEventListener("mousedown", () => cursor.classList.add("cursor-click"),  { passive: true });
+    document.addEventListener("mouseup",   () => cursor.classList.remove("cursor-click"), { passive: true });
+  }
+  initCursor();
+
+  // ── PRELOADER ──────────────────────────────────────────────────────────────
+  const preloader = document.getElementById("vayu-preloader");
+  const preBar    = document.getElementById("preloaderBar");
+  const preCount  = document.getElementById("preloaderCounter");
+  const prePlane  = document.getElementById("preloaderPlane");
+  let   barWidth  = 0;
+
+  // Animate progress bar + counter + plane
   const barInterval = setInterval(() => {
     barWidth += Math.random() * 18 + 8;
     if (barWidth >= 100) {
       barWidth = 100;
       clearInterval(barInterval);
     }
-    if (preBar) preBar.style.width = barWidth + "%";
-  }, 120);
+    const pct = Math.round(barWidth);
+    if (preBar)   preBar.style.width = barWidth + "%";
+    if (preCount) preCount.textContent = String(pct).padStart(2, "0") + "%";
+    if (prePlane) prePlane.style.left  = barWidth + "%";
+  }, 110);
 
-  // Hide preloader after minimum display time
+  // Hide preloader with cinematic curtain reveal
   const hidePreloader = () => {
     clearInterval(barInterval);
-    if (preBar) preBar.style.width = "100%";
+    if (preBar)   preBar.style.width = "100%";
+    if (preCount) preCount.textContent = "100%";
+    if (prePlane) prePlane.style.left  = "100%";
+
+    // Small hold so user sees 100%
     setTimeout(() => {
       if (preloader) preloader.classList.add("hide");
       document.body.classList.add("page-ready");
+
+      // After curtain finishes (0.9s), mark as gone & scale down hero BG
+      setTimeout(() => {
+        if (preloader) preloader.classList.add("gone");
+        // Hero BG scale-down is handled by CSS animation heroBgReveal
+      }, 950);
+
       // Start scroll reveal after page is ready
-      setTimeout(initScrollReveal, 200);
-      setTimeout(initCounters, 800);
-    }, 300);
+      setTimeout(initScrollReveal, 250);
+      setTimeout(initCounters,     900);
+    }, 320);
   };
 
-  // Hide after 0.8s minimum — feels premium without blocking LCP
-  const minTime  = 800;
-  const started  = Date.now();
+  const minTime = 900;
+  const started = Date.now();
   window.addEventListener("load", () => {
     const elapsed = Date.now() - started;
     const wait    = Math.max(0, minTime - elapsed);
     setTimeout(hidePreloader, wait);
   });
-  // Safety fallback — always hide after 3s
-  setTimeout(hidePreloader, 3000);
+  // Safety fallback
+  setTimeout(hidePreloader, 3500);
 
   // ── STICKY HEADER ──────────────────────────────────────────────────────────
   window.addEventListener("scroll", () => {
     const h = document.getElementById("siteHeader");
     if (h) h.classList.toggle("scrolled", window.scrollY > 40);
-  });
+  }, { passive: true });
 
   // ── ESC CLOSES MODALS ──────────────────────────────────────────────────────
   document.addEventListener("keydown", e => {
@@ -213,12 +325,10 @@ document.addEventListener("DOMContentLoaded", () => {
     navigator.serviceWorker.register("/sw.js")
       .then(reg => {
         console.log("SW registered:", reg.scope);
-        // Force update immediately
         reg.update();
       })
       .catch(e => console.warn("SW failed:", e));
 
-    // When new SW takes over, reload to get fresh files
     navigator.serviceWorker.addEventListener("controllerchange", () => {
       window.location.reload();
     });
@@ -228,7 +338,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFirebaseAuthListener();
 
   // ── GA4 PAGE TRACKING ──────────────────────────────────────────────────────
-  window.addEventListener('popstate', () => trackPageView(window.location.pathname));
+  window.addEventListener("popstate", () => trackPageView(window.location.pathname));
 
   // ── MOBILE NAV ARIA ────────────────────────────────────────────────────────
   const mobileToggle = document.getElementById("mobileNavToggle");
@@ -239,7 +349,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Re-run animations after router renders new page
+  // Re-run animations after router renders new page (hash/popstate fallback)
   window.addEventListener("hashchange", () => {
     setTimeout(() => { initScrollReveal(); initCounters(); }, 250);
   });
@@ -247,7 +357,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => { initScrollReveal(); initCounters(); }, 250);
   });
 
-  console.log("%cVayu Holidays 2026 ✈️", "color:#B8A99A;font-size:16px;font-weight:300;font-family:'Cormorant Garamond',serif;");
+  console.log("%cVayu Holidays 2026 ✈️", "color:#D4AF37;font-size:16px;font-weight:300;font-family:'Cormorant Garamond',serif;");
 });
 
 // ── SCROLL REVEAL ─────────────────────────────────────────────────────────────
