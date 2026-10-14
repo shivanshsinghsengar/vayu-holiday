@@ -280,10 +280,10 @@ body.page-ready .hero-bg-media {
   overflow: hidden;
   padding: 0;
   height: 46px;
-  display: flex;
-  align-items: center;
+  line-height: 46px;
   position: relative;
   z-index: 5;
+  width: 100%;
 }
 
 /* Fade edges */
@@ -307,7 +307,7 @@ body.page-ready .hero-bg-media {
 
 .marquee-track {
   display: inline-flex;
-  flex-shrink: 0;
+  align-items: center;
   white-space: nowrap;
   animation: marquee 42s linear infinite;
   will-change: transform;
