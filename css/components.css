@@ -169,37 +169,150 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  border-radius: 24px !important;
+  background: linear-gradient(160deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%);
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  will-change: transform, box-shadow;
+  transition: box-shadow 0.35s cubic-bezier(0.16,1,0.3,1),
+              border-color 0.35s ease;
 }
 
+.package-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212, 175, 55, 0.60) !important;
+  box-shadow:
+    0 0 0 1px rgba(212, 175, 55, 0.35),
+    0 20px 60px rgba(10, 13, 18, 0.45),
+    0 8px 24px rgba(212, 175, 55, 0.18) !important;
+}
+
+/* JS-driven tilt — 3D stays smooth via inline style, hover override removed */
+.package-card.is-tilting {
+  transition: none; /* instant during mousemove */
+}
+
+/* Image wrapper — taller, 280px enforced */
 .package-card-img-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: 280px;
   overflow: hidden;
-  background-color: var(--color-sand-dark);
+  flex-shrink: 0;
+  background-color: var(--obsidian, #0A0D12);
 }
 
 .package-card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 }
 
 .package-card:hover .package-card-img {
-  transform: scale(1.06);
+  transform: scale(1.1) rotate(1deg);
 }
 
-.package-card-top-badges {
+/* Dark gradient at image bottom */
+.package-card-img-gradient {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  right: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 2;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 35%,
+    rgba(10,13,18,0.75) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
 }
+
+/* Frosted-glass price badge — top right */
+.package-card-price-badge {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.package-card-price-float {
+  background: rgba(10, 13, 18, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.40);
+  border-radius: 10px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--gold-light, #F3E5AB);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.package-card-discount-tag {
+  background: linear-gradient(135deg, #D4AF37 0%, #AA771C 100%);
+  color: #0A0D12;
+  border-radius: 6px;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Duration pill — bottom left of image */
+.package-card-duration-pill {
+  position: absolute;
+  bottom: 0.85rem;
+  left: 0.85rem;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(10, 13, 18, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.90);
+  letter-spacing: 0.04em;
+}
+.package-card-duration-pill svg { color: var(--gold, #D4AF37); }
+
+/* Category badge — top left */
+.package-card-cat-badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  z-index: 3;
+}
+
+/* Radial spotlight via ::before, following --mouse-x / --mouse-y */
+.package-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    circle 260px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(212, 175, 55, 0.10) 0%,
+    transparent 70%
+  );
+  transition: opacity 0.3s ease;
+}
+.package-card:hover::before { opacity: 1; }
 
 .package-card-body {
   padding: 1.5rem;

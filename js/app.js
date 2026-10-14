@@ -151,8 +151,7 @@ window.addEventListener("DOMContentLoaded", () => {
 // ─── DOM READY ────────────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ── LENIS SMOOTH SCROLL INITIALIZATION ─────────────────────────────────────
-  // Waits for Lenis CDN script to be available (loaded with defer)
+  // ── LENIS SMOOTH SCROLL INITIALIZATION ─────────────────────────────────────  // Waits for Lenis CDN script to be available (loaded with defer)
   function initLenis() {
     if (typeof Lenis === "undefined") {
       // Retry up to 5 times if Lenis hasn't parsed yet
@@ -195,59 +194,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   initLenis();
 
-  // ── CUSTOM LUXURY CURSOR ────────────────────────────────────────────────────
-  function initCursor() {
-    const cursor = document.getElementById("vayuCursor");
-    if (!cursor) return;
-    // Only active on devices that support hover (not touch-only)
-    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-      cursor.style.display = "none";
-      return;
-    }
-
-    const dot  = cursor.querySelector(".vayu-cursor-dot");
-    const ring = cursor.querySelector(".vayu-cursor-ring");
-    if (!dot || !ring) return;
-
-    let mouseX = -100, mouseY = -100;
-    let ringX  = -100, ringY  = -100;
-    let raf;
-
-    // Snap dot directly; ring lags slightly
-    document.addEventListener("mousemove", (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      cursor.style.transform   = `translate(${mouseX}px, ${mouseY}px)`;
-    }, { passive: true });
-
-    // Lag the ring with lerp
-    function animateRing() {
-      ringX += (mouseX - ringX) * 0.15;
-      ringY += (mouseY - ringY) * 0.15;
-      ring.style.transform = `translate(${ringX - mouseX}px, ${ringY - mouseY}px) translate(-50%, -50%)`;
-      raf = requestAnimationFrame(animateRing);
-    }
-    animateRing();
-
-    // Hover expand on interactive elements
-    const interactiveSelector = "a, button, [role='button'], .package-card, .dest-card, .btn, input, select, textarea, label, .nav-link";
-    document.addEventListener("mouseover", (e) => {
-      if (e.target.closest(interactiveSelector)) {
-        cursor.classList.add("cursor-hover");
-      }
-    }, { passive: true });
-    document.addEventListener("mouseout", (e) => {
-      if (e.target.closest(interactiveSelector)) {
-        cursor.classList.remove("cursor-hover");
-      }
-    }, { passive: true });
-
-    // Click pulse
-    document.addEventListener("mousedown", () => cursor.classList.add("cursor-click"),  { passive: true });
-    document.addEventListener("mouseup",   () => cursor.classList.remove("cursor-click"), { passive: true });
-  }
-  initCursor();
-
   // ── PRELOADER ──────────────────────────────────────────────────────────────
   const preloader = document.getElementById("vayu-preloader");
   const preBar    = document.getElementById("preloaderBar");
@@ -287,8 +233,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 950);
 
       // Start scroll reveal after page is ready
-      setTimeout(initScrollReveal, 250);
-      setTimeout(initCounters,     900);
+      setTimeout(() => {
+        if (typeof initScrollAnimations === "function") initScrollAnimations();
+        else if (typeof initScrollReveal === "function") initScrollReveal();
+      }, 250);
+      setTimeout(initCounters, 900);
     }, 320);
   };
 
@@ -351,10 +300,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Re-run animations after router renders new page (hash/popstate fallback)
   window.addEventListener("hashchange", () => {
-    setTimeout(() => { initScrollReveal(); initCounters(); }, 250);
+    setTimeout(() => {
+      if (typeof initScrollAnimations === "function") initScrollAnimations();
+      else if (typeof initScrollReveal === "function") initScrollReveal();
+      initCounters();
+    }, 250);
   });
   window.addEventListener("popstate", () => {
-    setTimeout(() => { initScrollReveal(); initCounters(); }, 250);
+    setTimeout(() => {
+      if (typeof initScrollAnimations === "function") initScrollAnimations();
+      else if (typeof initScrollReveal === "function") initScrollReveal();
+      initCounters();
+    }, 250);
   });
 
   console.log("%cVayu Holidays 2026 ✈️", "color:#D4AF37;font-size:16px;font-weight:300;font-family:'Cormorant Garamond',serif;");

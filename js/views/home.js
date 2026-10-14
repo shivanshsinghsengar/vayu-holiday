@@ -89,9 +89,11 @@ async function renderHomeView() {
   return `
 
     <!-- ══════════════════════════════════════════════════════════════
-         HERO — FULLSCREEN EDITORIAL
+         HERO — CINEMATIC FULLSCREEN EDITORIAL
     ══════════════════════════════════════════════════════════════ -->
     <section class="hero-section" aria-label="Hero">
+
+      <!-- Background image with Ken Burns zoom-out -->
       <img
         src="${heroImage}"
         alt="Luxury travel — Vayu Holidays"
@@ -99,17 +101,28 @@ async function renderHomeView() {
         fetchpriority="high"
         width="1920" height="1080"
       />
+
+      <!-- Layered overlays: radial vignette + bottom gradient -->
       <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-vignette" aria-hidden="true"></div>
+
+      <!-- Ambient animated mesh glow -->
+      <div class="hero-ambient-glow" aria-hidden="true"></div>
 
       <div class="hero-content">
         <div class="hero-inner">
 
-          <div class="hero-eyebrow-wrap" style="display:flex;justify-content:center;width:100%;margin-bottom:2rem;">
-            <img src="/icons/nobg.png" alt="Vayu Holidays" style="height:180px;width:auto;object-fit:contain;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.4));" />
+          <!-- Gold pill badge -->
+          <div class="hero-eyebrow-wrap">
+            <span class="hero-badge-pill">
+              <span class="hero-badge-star">✦</span>
+              BHOPAL'S #1 BESPOKE LUXURY CONCIERGE
+            </span>
           </div>
 
+          <!-- Main headline with gold italic gradient on key words -->
           <h1 class="hero-title">
-            ${heroHeadline.includes('<br') ? heroHeadline : heroHeadline.replace('. ', '.<br/><em>').replace(/(<br\/>)?$/, heroHeadline.includes('<em>') ? '' : '</em>')}
+            Your Journey.<br/><em class="hero-title-em">Beautifully</em> Planned.
           </h1>
 
           <p class="hero-subtitle">
@@ -125,27 +138,25 @@ async function renderHomeView() {
             </button>
           </div>
 
-          <!-- Journey finder — Typeahead Search Design -->
+          <!-- Frosted Glass Dock Search Bar -->
           <div class="hero-search-bar" role="search" aria-label="Journey finder">
 
-            <!-- Destination Typeahead -->
             <div class="search-field" id="destSearchField" style="position:relative;z-index:100;">
               <span class="search-field-label">${ICONS.mapPin} Where to?</span>
               <input
                 type="text"
                 class="search-field-input"
                 id="heroSearchDest"
-                placeholder="Type a destination..."
+                placeholder='Try "Kashmir..."'
                 autocomplete="off"
                 oninput="showDestSuggestions(this.value)"
                 onfocus="showDestSuggestions(this.value)"
-                onblur="setTimeout(()=>document.getElementById('destSuggestions').style.display='none',200)"
+                onblur="setTimeout(()=>{ const b=document.getElementById('destSuggestions'); if(b) b.style.display='none'; },200)"
                 aria-label="Search destination"
               />
-              <div id="destSuggestions" style="display:none;position:absolute;top:calc(100% + 4px);left:0;min-width:360px;width:max-content;max-width:460px;background:#1a1a1a;border:1px solid rgba(255,255,255,0.15);border-radius:12px;z-index:9999;max-height:260px;overflow-y:auto;box-shadow:0 16px 40px rgba(0,0,0,0.6);"></div>
+              <div id="destSuggestions" style="display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;width:max-content;max-width:440px;background:rgba(14,18,28,0.96);backdrop-filter:blur(20px);border:1px solid rgba(212,175,55,0.25);border-radius:14px;z-index:9999;max-height:260px;overflow-y:auto;box-shadow:0 20px 50px rgba(0,0,0,0.7);"></div>
             </div>
 
-            <!-- Travel Month -->
             <div class="search-field">
               <span class="search-field-label">${ICONS.calendar} When?</span>
               <select class="search-field-select" id="heroSearchMonth" aria-label="Select month">
@@ -161,7 +172,6 @@ async function renderHomeView() {
               </select>
             </div>
 
-            <!-- Experience -->
             <div class="search-field">
               <span class="search-field-label">${ICONS.sparkles} Trip Type</span>
               <select class="search-field-select" id="heroSearchTheme" aria-label="Select experience">
@@ -175,7 +185,6 @@ async function renderHomeView() {
               </select>
             </div>
 
-            <!-- Duration -->
             <div class="search-field">
               <span class="search-field-label">${ICONS.clock} Duration</span>
               <select class="search-field-select" id="heroSearchDuration" aria-label="Select duration">
@@ -192,9 +201,32 @@ async function renderHomeView() {
             </button>
           </div>
 
+          <!-- Floating trust stats row -->
+          <div class="hero-trust-row">
+            <span class="trust-badge-item">${ICONS.star} ${trustRating} Rating</span>
+            <span class="trust-badge-item">${ICONS.check} ${trustTrips} Trips Curated</span>
+            <span class="trust-badge-item">${ICONS.shield} ${trustCountries} Countries</span>
+            <span class="trust-badge-item">${ICONS.clock} 24 / 7 Concierge</span>
+          </div>
+
         </div>
       </div>
     </section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════
+         MARQUEE TICKER — Infinite scrolling luxury strip
+    ══════════════════════════════════════════════════════════════ -->
+    <div class="marquee-strip" aria-label="Destinations ticker" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-content">
+          KASHMIR LUXURY ESCAPES &nbsp;✦&nbsp; SWITZERLAND ALPINE TOURS &nbsp;✦&nbsp; MALDIVES OVERWATER VILLAS &nbsp;✦&nbsp; DUBAI VIP CONCIERGE &nbsp;✦&nbsp; BALI PRIVATE POOL VILLAS &nbsp;✦&nbsp; SCHENGEN VISA ASSISTANCE &nbsp;✦&nbsp; KERALA BACKWATER RETREATS &nbsp;✦&nbsp; RAJASTHAN HERITAGE PALACES &nbsp;✦&nbsp; VIETNAM &amp; INDOCHINA TOURS &nbsp;✦&nbsp; CORPORATE MICE &amp; INCENTIVES &nbsp;&nbsp;
+        </span>
+        <span class="marquee-content" aria-hidden="true">
+          KASHMIR LUXURY ESCAPES &nbsp;✦&nbsp; SWITZERLAND ALPINE TOURS &nbsp;✦&nbsp; MALDIVES OVERWATER VILLAS &nbsp;✦&nbsp; DUBAI VIP CONCIERGE &nbsp;✦&nbsp; BALI PRIVATE POOL VILLAS &nbsp;✦&nbsp; SCHENGEN VISA ASSISTANCE &nbsp;✦&nbsp; KERALA BACKWATER RETREATS &nbsp;✦&nbsp; RAJASTHAN HERITAGE PALACES &nbsp;✦&nbsp; VIETNAM &amp; INDOCHINA TOURS &nbsp;✦&nbsp; CORPORATE MICE &amp; INCENTIVES &nbsp;&nbsp;
+        </span>
+      </div>
+    </div>
 
 
     <!-- ══════════════════════════════════════════════════════════════

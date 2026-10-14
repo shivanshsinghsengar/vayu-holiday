@@ -261,10 +261,8 @@ function _reinitMotion() {
     window.ScrollTrigger.refresh();
   }
 
-  // 2. Re-init IntersectionObserver scroll reveals
-  if (typeof initScrollReveal === "function") {
-    setTimeout(initScrollReveal, 80);
-  }
+  // 2. Primary scroll reveal + staggered animations — MUST run for every SPA render
+  initScrollAnimations();
 
   // 3. Re-init number counters
   if (typeof initCounters === "function") {
@@ -279,6 +277,108 @@ function _reinitMotion() {
   }, 120);
 }
 
+// ── CORE: SPA-safe scroll-reveal with staggered entrance ─────────────────────
+// This is the function that was MISSING — called after EVERY #app innerHTML update.
+function initScrollAnimations() {
+  if (typeof IntersectionObserver === "undefined") {
+    // Fallback for old browsers — just show everything
+    document.querySelectorAll(
+      ".reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-fade, [data-reveal], " +
+      ".package-card, .service-card, .testimonial-card, .blog-card, .dest-card, " +
+      ".section-header, .how-step-card, .pillar-card, .dest-list-item, .option-card"
+    ).forEach(el => {
+      el.style.opacity = "1";
+      el.style.transform = "none";
+    });
+    return;
+  }
+
+  // Kill old observer instances to prevent memory leaks on repeated calls
+  if (window._vayuScrollObserver) {
+    window._vayuScrollObserver.disconnect();
+  }
+  if (window._vayuScrollObserverMobile) {
+    window._vayuScrollObserverMobile.disconnect();
+  }
+
+  const isMobile = window.innerWidth < 768;
+  const threshold = isMobile ? 0.05 : 0.10;
+  const rootMargin = isMobile ? "0px 0px -20px 0px" : "0px 0px -48px 0px";
+
+  window._vayuScrollObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          window._vayuScrollObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold, rootMargin }
+  );
+
+  // Observe all standard reveal classes
+  document.querySelectorAll(
+    ".reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-fade, [data-reveal]"
+  ).forEach(el => {
+    if (!el.classList.contains("revealed")) {
+      window._vayuScrollObserver.observe(el);
+    }
+  });
+
+  // Auto-stagger all major card grids — adds .reveal + staggered delay per child
+  const STAGGER_SELECTORS = [
+    ".packages-grid",
+    ".destinations-grid",
+    ".services-grid",
+    ".testimonials-grid",
+    ".blog-grid",
+    ".how-steps-grid",
+    ".why-grid",
+    ".pillars-grid",
+    ".options-grid"
+  ];
+
+  STAGGER_SELECTORS.forEach(selector => {
+    document.querySelectorAll(selector).forEach(grid => {
+      Array.from(grid.children).forEach((child, i) => {
+        if (!child.classList.contains("revealed")) {
+          // Reset to hidden state for re-animation
+          child.classList.remove("revealed");
+          child.classList.add("reveal");
+          child.style.transitionDelay = `${(i * 0.08).toFixed(2)}s`;
+          window._vayuScrollObserver.observe(child);
+        }
+      });
+    });
+  });
+
+  // Standalone cards not in grids (e.g. manually placed)
+  document.querySelectorAll(
+    ".package-card:not(.revealed), .service-card:not(.revealed), " +
+    ".testimonial-card:not(.revealed), .blog-card:not(.revealed), " +
+    ".how-step-card:not(.revealed), .pillar-card:not(.revealed)"
+  ).forEach(card => {
+    if (!card.classList.contains("reveal")) {
+      card.classList.add("reveal");
+      window._vayuScrollObserver.observe(card);
+    }
+  });
+
+  // Section headers
+  document.querySelectorAll(".section-header:not(.revealed)").forEach(el => {
+    if (!el.classList.contains("reveal")) {
+      el.classList.add("reveal");
+      window._vayuScrollObserver.observe(el);
+    }
+  });
+
+  // Also run the legacy initScrollReveal if present
+  if (typeof initScrollReveal === "function") {
+    setTimeout(initScrollReveal, 80);
+  }
+}
+
 // ── 3D card tilt (perspective rotateX/Y + mouse-x/y spotlight) ──────────────
 function _init3DCards() {
   document.querySelectorAll(".package-card, .card-3d").forEach(card => {
@@ -286,27 +386,28 @@ function _init3DCards() {
     card._tiltBound = true;
 
     card.addEventListener("mousemove", (e) => {
-      const rect   = card.getBoundingClientRect();
-      const cx     = rect.left + rect.width  / 2;
-      const cy     = rect.top  + rect.height / 2;
-      const dx     = (e.clientX - cx) / (rect.width  / 2); // -1 → 1
-      const dy     = (e.clientY - cy) / (rect.height / 2); // -1 → 1
-      const maxRot = 8; // degrees
+      const rect = card.getBoundingClientRect();
+      const cx   = rect.left + rect.width  / 2;
+      const cy   = rect.top  + rect.height / 2;
+      const dx   = (e.clientX - cx) / (rect.width  / 2); // -1 → 1
+      const dy   = (e.clientY - cy) / (rect.height / 2); // -1 → 1
+      const maxRot = 6;
 
-      // Set CSS custom properties for spotlight
-      const mouseXPct = ((e.clientX - rect.left) / rect.width  * 100).toFixed(1);
-      const mouseYPct = ((e.clientY - rect.top)  / rect.height * 100).toFixed(1);
-      card.style.setProperty("--mouse-x", mouseXPct + "%");
-      card.style.setProperty("--mouse-y", mouseYPct + "%");
+      // CSS custom props for spotlight
+      const pctX = ((e.clientX - rect.left) / rect.width  * 100).toFixed(1);
+      const pctY = ((e.clientY - rect.top)  / rect.height * 100).toFixed(1);
+      card.style.setProperty("--mouse-x", pctX + "%");
+      card.style.setProperty("--mouse-y", pctY + "%");
 
-      // Apply 3D rotation — use GSAP if available for smoothness
+      card.classList.add("is-tilting");
+
       if (window.gsap) {
         window.gsap.to(card, {
           rotateY: dx * maxRot,
           rotateX: -dy * maxRot,
-          duration: 0.18,
-          ease: "power2.out",
           transformPerspective: 1000,
+          duration: 0.15,
+          ease: "power2.out",
           overwrite: "auto"
         });
       } else {
@@ -316,18 +417,20 @@ function _init3DCards() {
     });
 
     card.addEventListener("mouseleave", () => {
+      card.classList.remove("is-tilting");
+      card.style.removeProperty("--mouse-x");
+      card.style.removeProperty("--mouse-y");
+
       if (window.gsap) {
         window.gsap.to(card, {
           rotateY: 0, rotateX: 0,
-          duration: 0.55,
+          duration: 0.6,
           ease: "elastic.out(1, 0.5)",
           overwrite: "auto"
         });
       } else {
         card.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
       }
-      card.style.removeProperty("--mouse-x");
-      card.style.removeProperty("--mouse-y");
     });
   });
 }
@@ -690,3 +793,6 @@ class VayuRouter {
 }
 
 window.vayuRouter = new VayuRouter();
+
+// Export initScrollAnimations globally so app.js DOMContentLoaded can call it too
+window.initScrollAnimations = initScrollAnimations;
