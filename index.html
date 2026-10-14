@@ -271,6 +271,33 @@
   <div id="toastContainer" class="toast-container" role="status" aria-live="polite"></div>
 
   <!-- =====================================================================
+       RATING DIALOG — appears after 5 seconds, once per session
+  ====================================================================== -->
+  <div id="ratingDialogBackdrop" class="rating-dialog-backdrop" style="display:none;" aria-hidden="true">
+    <div class="rating-dialog" id="ratingDialog" role="dialog" aria-modal="true" aria-label="Rate your experience">
+      <button class="rating-dialog-close" onclick="closeRatingDialog()" aria-label="Close">&#x2715;</button>
+
+      <div id="ratingDialogBody">
+        <div class="rating-dialog-eyebrow">Vayu Holidays</div>
+        <div class="rating-dialog-title">Enjoying your visit?</div>
+        <div class="rating-dialog-sub">Tap a star to rate your experience</div>
+
+        <div class="rating-stars-row" id="ratingStarsRow" role="group" aria-label="Star rating">
+          <button class="rating-star-btn" data-val="1" onclick="handleStarClick(1)" aria-label="1 star">★</button>
+          <button class="rating-star-btn" data-val="2" onclick="handleStarClick(2)" aria-label="2 stars">★</button>
+          <button class="rating-star-btn" data-val="3" onclick="handleStarClick(3)" aria-label="3 stars">★</button>
+          <button class="rating-star-btn" data-val="4" onclick="handleStarClick(4)" aria-label="4 stars">★</button>
+          <button class="rating-star-btn" data-val="5" onclick="handleStarClick(5)" aria-label="5 stars">★</button>
+        </div>
+
+        <button class="rating-submit-btn" id="ratingSubmitBtn" onclick="submitRating()" disabled>
+          Submit Rating
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
        COOKIE CONSENT BANNER
   ====================================================================== -->
   <!-- Cookie consent — visibility:hidden avoids layout shift (CLS fix) -->

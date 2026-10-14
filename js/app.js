@@ -516,3 +516,53 @@ function animateCounter(el) {
     ).forEach(el => mobileObserver.observe(el));
   }, 600);
 })();
+
+// ── RATING DIALOG ─────────────────────────────────────────────────────────────
+(function initRatingDialog() {
+  // Only show once per browser session
+  if (sessionStorage.getItem("vayu_rating_shown")) return;
+
+  let selectedRating = 0;
+
+  // Show after 5 seconds
+  setTimeout(() => {
+    const backdrop = document.getElementById("ratingDialogBackdrop");
+    if (!backdrop) return;
+    sessionStorage.setItem("vayu_rating_shown", "1");
+    backdrop.style.display = "flex";
+    backdrop.removeAttribute("aria-hidden");
+  }, 5000);
+
+  window.handleStarClick = function(val) {
+    selectedRating = val;
+    document.querySelectorAll(".rating-star-btn").forEach(btn => {
+      btn.classList.toggle("active", parseInt(btn.dataset.val) <= val);
+    });
+    const submitBtn = document.getElementById("ratingSubmitBtn");
+    if (submitBtn) submitBtn.disabled = false;
+  };
+
+  window.submitRating = function() {
+    const body = document.getElementById("ratingDialogBody");
+    if (!body) return;
+    body.innerHTML = `
+      <div class="rating-thankyou">
+        <div class="rating-thankyou-icon">🙏</div>
+        <div class="rating-thankyou-text">Thank you for rating us!</div>
+        <div class="rating-thankyou-sub">Your feedback means the world to us.</div>
+      </div>
+    `;
+    setTimeout(() => closeRatingDialog(), 2200);
+  };
+
+  window.closeRatingDialog = function() {
+    const dialog = document.getElementById("ratingDialog");
+    const backdrop = document.getElementById("ratingDialogBackdrop");
+    if (!dialog || !backdrop) return;
+    dialog.classList.add("hide");
+    setTimeout(() => {
+      backdrop.style.display = "none";
+      backdrop.setAttribute("aria-hidden", "true");
+    }, 320);
+  };
+})();
