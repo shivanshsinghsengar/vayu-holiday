@@ -28,9 +28,11 @@ if (typeof ICONS === "undefined") {
 // --- Navbar Component ---
 async function renderNavbar() {
   const company = await window.vayuStore.getCompany();
+  const pageSettings = await window.vayuStore.getPageSettings();
   const currentCurrency = window.vayuStore.getCurrency();
   const waNumber = (company.whatsapp || "+91 98260 12345").replace(/[^0-9]/g, "");
   const waMsg = encodeURIComponent("Hello Vayu Holidays! I'd like to inquire about planning a luxury journey.");
+  const showJournal = pageSettings.showJournal !== false;
 
   return `
     <!-- Sticky Main Navbar "” No top bar clutter -->
@@ -80,7 +82,7 @@ async function renderNavbar() {
           </div>
 
           <a href="/about"   class="nav-link">About</a>
-          <a href="/blog"    class="nav-link">Journal</a>
+          ${showJournal ? `<a href="/blog" class="nav-link">Journal</a>` : ''}
           <a href="/contact" class="nav-link">Contact</a>
         </nav>
 
@@ -141,7 +143,7 @@ async function renderNavbar() {
         <a href="/services/visa" onclick="toggleMobileNav()">Visa Assistance</a>
         <a href="/services/forex" onclick="toggleMobileNav()">Forex & Currency</a>
         <a href="/about"        onclick="toggleMobileNav()">About Us</a>
-        <a href="/blog"         onclick="toggleMobileNav()">Travel Journal</a>
+        ${showJournal ? `<a href="/blog" onclick="toggleMobileNav()">Travel Journal</a>` : ''}
         <a href="/contact"      onclick="toggleMobileNav()">Contact</a>
       </nav>
 

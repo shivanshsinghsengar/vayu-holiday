@@ -572,6 +572,8 @@ async function renderAdminTestimonialsTab() {
 // 7. Settings Tab
 async function renderAdminSettingsTab() {
   const company = await window.vayuStore.getCompany();
+  const pageSettings = await window.vayuStore.getPageSettings();
+  const showJournal = pageSettings.showJournal !== false;
 
   return `
     <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 2rem;">
@@ -633,6 +635,38 @@ async function renderAdminSettingsTab() {
           <button class="btn btn-secondary btn-sm" style="color: #f87171; border-color: rgba(239, 68, 68, 0.4); width: 100%;" onclick="handleResetStore()">
             Reset All Store Data to Default
           </button>
+        </div>
+
+        <div class="admin-card" style="padding: 1.75rem; margin-top: 0;">
+          <h4 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 0.5rem; color: #fff;">
+            Navigation Settings
+          </h4>
+          <p style="font-size: 0.85rem; color: var(--color-text-inverse-muted); margin-bottom: 1.5rem;">
+            Show or hide sections in the website navigation.
+          </p>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:1rem;background:rgba(255,255,255,0.04);border:1px solid var(--border-dark);border-radius:10px;">
+            <div>
+              <div style="color:#fff;font-weight:600;font-size:0.95rem;">Journal / Blog Tab</div>
+              <div style="color:var(--color-text-inverse-muted);font-size:0.8rem;">Show "Journal" link in navbar</div>
+            </div>
+            <button
+              onclick="handleToggleJournal(${showJournal})"
+              style="
+                width:52px;height:28px;border-radius:999px;border:none;cursor:pointer;
+                position:relative;transition:background 0.3s;
+                background:${showJournal ? '#D4AF37' : 'rgba(255,255,255,0.15)'};
+              "
+              title="${showJournal ? 'Click to hide Journal' : 'Click to show Journal'}"
+            >
+              <span style="
+                position:absolute;top:3px;
+                left:${showJournal ? '26px' : '3px'};
+                width:22px;height:22px;border-radius:50%;
+                background:#fff;transition:left 0.3s;
+                display:block;
+              "></span>
+            </button>
+          </div>
         </div>
 
         <div class="admin-card" style="padding: 1.75rem;">
@@ -826,6 +860,14 @@ async function handleResetStore() {
     await switchAdminTab("dashboard");
     showToast("Reset Complete", "All data restored to 2026 clean defaults.");
   }
+}
+
+async function handleToggleJournal(currentState) {
+  const settings = await window.vayuStore.getPageSettings();
+  settings.showJournal = !currentState;
+  await window.vayuStore.savePageSettings(settings);
+  await switchAdminTab("settings");
+  showToast(settings.showJournal ? "Journal Visible" : "Journal Hidden", settings.showJournal ? "Journal tab is now visible in navbar." : "Journal tab is now hidden from navbar.");
 }
 
 function searchEnquiriesTable(term) {

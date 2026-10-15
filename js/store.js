@@ -519,6 +519,7 @@ class VayuStore {
       trustRating:      "4.9★",
       trustCountries:   "50+",
       trustYears:       "8 yrs",
+      showJournal:      true,
       aboutStoryTitle:  "Your Journey. Beautifully Planned.",
       aboutStoryBody:   "At Vayu Holidays, we believe that true luxury travel is never loud or cookie-cutter. It is found in unhurried mornings on misty tea estates, private sunset shikaras, seamless international airport transfers, and the absolute confidence that a dedicated concierge is always one message away.",
       aboutStoryBody2:  "Headquartered at Raksha Vihar, Vayu Pride Residency, Airport Road in Bhopal, we serve discerning families, honeymoon couples, and corporate delegations across Madhya Pradesh and nationwide."
