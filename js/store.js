@@ -530,7 +530,9 @@ class VayuStore {
         if (snap.exists) return { ...defaults, ...snap.data() };
       } catch (e) { console.warn("Firestore getPageSettings failed, using fallback", e); }
     }
-    return JSON.parse(localStorage.getItem("vayu_pagesettings_2026") || JSON.stringify(defaults));
+    const stored = JSON.parse(localStorage.getItem("vayu_pagesettings_2026") || "{}");
+    // Always merge with latest defaults so new keys are picked up
+    return { ...defaults, ...stored };
   }
 
   async savePageSettings(settings) {
