@@ -509,7 +509,7 @@ class VayuStore {
   // ════════════════════════════════════════════════════════════════════════
   async getPageSettings() {
     const defaults = {
-      heroHeadline:     "Your Journey. Beautifully Planned.",
+      heroHeadline:     "Your Journey, Beautifully Planned.",
       heroSubtitle:     "Journeys designed around you, with handpicked stays and a personal concierge by your side, day and night.",
       heroImage:        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=75",
       announcementText: "2026 Luxury Journeys Now Open",

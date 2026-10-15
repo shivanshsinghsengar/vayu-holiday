@@ -72,7 +72,7 @@ async function renderHomeView() {
   const waMsg        = encodeURIComponent(company.whatsappMessage || "Hello Vayu Holidays! I'd like to inquire about a luxury holiday.");
 
   // Page settings with fallbacks
-  const heroHeadline   = pageSettings.heroHeadline   || "Your Journey. Beautifully Planned.";
+  const heroHeadline   = pageSettings.heroHeadline   || "Your Journey, Beautifully Planned.";
   const heroSubtitle   = pageSettings.heroSubtitle   || "Journeys designed around you, with handpicked stays and a personal concierge by your side, day and night.";
   const heroImage      = pageSettings.heroImage      || "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=75";
   const trustTrips     = pageSettings.trustTrips     || "500+";
