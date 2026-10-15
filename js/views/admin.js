@@ -482,16 +482,31 @@ async function renderAdminBlogsTab() {
               <th>Category</th>
               <th>Date</th>
               <th>Read Time</th>
+              <th>Status</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             ${blogs.map(b => `
-              <tr>
+              <tr style="${b.published === false ? 'opacity:0.5;' : ''}">
                 <td><strong>${b.title}</strong></td>
                 <td><span class="badge badge-dark">${b.category}</span></td>
                 <td>${b.date}</td>
                 <td>${b.readTime}</td>
+                <td>
+                  <button
+                    onclick="handleToggleBlogPublish('${b.id}', ${b.published === false ? 'true' : 'false'})"
+                    style="
+                      display:inline-flex;align-items:center;gap:0.4rem;
+                      padding:0.3rem 0.75rem;border-radius:999px;font-size:0.75rem;font-weight:600;cursor:pointer;border:none;
+                      background:${b.published === false ? 'rgba(239,68,68,0.15)' : 'rgba(34,197,94,0.15)'};
+                      color:${b.published === false ? '#f87171' : '#4ade80'};
+                    "
+                  >
+                    <span style="width:7px;height:7px;border-radius:50%;background:${b.published === false ? '#f87171' : '#4ade80'};display:inline-block;"></span>
+                    ${b.published === false ? 'Hidden' : 'Published'}
+                  </button>
+                </td>
                 <td>
                   <div class="table-actions">
                     <button class="btn-table-action" onclick="openBlogEditorModal('${b.id}')">Edit</button>
@@ -772,6 +787,21 @@ async function handleDeleteBlog(id) {
     await switchAdminTab("blogs");
     showToast("Story Removed", id);
   }
+}
+
+async function handleToggleBlogPublish(id, newState) {
+  const blogs = JSON.parse(localStorage.getItem("vayu_blogs_2026") || "[]");
+  const blog = blogs.find(b => b.id === id);
+  if (!blog) return;
+  blog.published = newState === true || newState === "true";
+  localStorage.setItem("vayu_blogs_2026", JSON.stringify(blogs));
+  if (window.vayuStore._useFirestore) {
+    try {
+      window.vayuStore._db.collection("blogs").doc(id).update({ published: blog.published });
+    } catch(e) {}
+  }
+  await switchAdminTab("blogs");
+  showToast(blog.published ? "Story Published" : "Story Hidden", blog.title);
 }
 
 async function handleSaveSettings(e) {

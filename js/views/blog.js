@@ -3,7 +3,8 @@
    ========================================================================== */
 
 async function renderBlogListView() {
-  const blogs = await window.vayuStore.getBlogs();
+  const allBlogs = await window.vayuStore.getBlogs();
+  const blogs = allBlogs.filter(b => b.published !== false);
 
   return `
     <div class="package-detail-header">
