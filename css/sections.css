@@ -278,11 +278,9 @@ body.page-ready .hero-bg-media {
   border-top: 1px solid rgba(212, 175, 55, 0.22);
   border-bottom: 1px solid rgba(212, 175, 55, 0.22);
   overflow: hidden;
-  padding: 0;
   height: 46px;
   position: relative;
   z-index: 5;
-  width: 100%;
 }
 
 /* Fade edges */
@@ -306,11 +304,9 @@ body.page-ready .hero-bg-media {
 
 .marquee-track {
   display: flex;
-  flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
   height: 46px;
-  width: max-content;
   animation: marquee 42s linear infinite;
   will-change: transform;
 }
@@ -320,8 +316,8 @@ body.page-ready .hero-bg-media {
 }
 
 @keyframes marquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 .marquee-content {
