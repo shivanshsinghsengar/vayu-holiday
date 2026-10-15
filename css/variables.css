@@ -56,9 +56,9 @@
     rgba(255,255,255,0.06) 100%);
 
   /* ── BASE PALETTE (light mode — existing pages) ──────────────────────  */
-  --c-bg:          #FAFAF8;
-  --c-bg-subtle:   #F5F4F1;
-  --c-bg-muted:    #EEECE8;
+  --c-bg:          #FFFFFF;
+  --c-bg-subtle:   #F8F8F8;
+  --c-bg-muted:    #F0F0F0;
 
   --c-ink:         #0F0F0E;
   --c-ink-2:       #3A3A37;
@@ -79,11 +79,11 @@
   --c-border-dark: rgba(255,255,255,0.10);
 
   /* ── LEGACY ALIASES — keeps existing CSS working ─────────────────────  */
-  --color-ivory:          var(--c-bg);
-  --color-cream:          var(--c-bg);
-  --color-sand:           var(--c-bg-subtle);
-  --color-sand-dark:      var(--c-bg-muted);
-  --color-stone:          var(--c-bg-muted);
+  --color-ivory:          #FFFFFF;
+  --color-cream:          #FFFFFF;
+  --color-sand:           #F8F8F8;
+  --color-sand-dark:      #F0F0F0;
+  --color-stone:          #F0F0F0;
   --color-bg:             var(--c-bg-subtle);
   --color-obsidian:       var(--obsidian);
   --color-obsidian-light: var(--obsidian-light);

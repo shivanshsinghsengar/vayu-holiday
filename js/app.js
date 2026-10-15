@@ -163,12 +163,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     const lenis = new Lenis({
-      duration:   1.2,
-      easing:     t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // expo ease
+      duration:   1.4,
+      easing:     t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       direction:  "vertical",
       smoothWheel: true,
       smoothTouch: false,
-      touchMultiplier: 2
+      touchMultiplier: 2,
+      infinite: false,
     });
     window._vayuLenis = lenis;
 
