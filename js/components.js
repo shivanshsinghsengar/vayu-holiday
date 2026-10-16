@@ -41,7 +41,7 @@ async function renderNavbar() {
 
         <!-- Logo -->
         <a href="/" class="brand-logo" aria-label="Vayu Holidays home">
-          <img src="/icons/nob.png" alt="Vayu Holidays" class="brand-logo-img" style="height:64px;width:auto;object-fit:contain;" />
+          <img src="/icons/nob.png" alt="Vayu Holidays" class="brand-logo-img" style="height:80px;width:auto;object-fit:contain;" />
         </a>
 
         <!-- Desktop Navigation -->
