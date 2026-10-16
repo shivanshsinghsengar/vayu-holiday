@@ -466,7 +466,8 @@ window.renderPackageCard = function renderPackageCard(pkg) {
   return `
     <div class="card package-card" data-package-id="${pkg.id}">
       <div class="package-card-img-wrap">
-        <img src="${pkg.image}" alt="${pkg.title}" class="package-card-img" loading="lazy" width="600" height="400" />
+        <img src="${pkg.image}" alt="${pkg.title}" class="package-card-img" loading="lazy" width="600" height="400"
+          onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=600&q=80';" />
 
         <!-- Dark gradient over image bottom -->
         <div class="package-card-img-gradient" aria-hidden="true"></div>

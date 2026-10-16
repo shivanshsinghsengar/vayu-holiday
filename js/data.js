@@ -1085,9 +1085,9 @@ const INITIAL_DATA = {
       originalPrice: null,
       rating: 4.7,
       reviewsCount: 0,
-      image: "https://images.unsplash.com/photo-1582560475093-ba66accbc7f4?auto=format&fit=crop&w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1200&q=80",
       gallery: [
-        "https://images.unsplash.com/photo-1582560475093-ba66accbc7f4?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1591017403286-fd8493524e1e?auto=format&fit=crop&w=800&q=80",
         "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80"
       ],
@@ -1476,11 +1476,11 @@ const INITIAL_DATA = {
       originalPrice: null,
       rating: 4.75,
       reviewsCount: 0,
-      image: "https://images.unsplash.com/photo-1559494007-9f5847c49d94?auto=format&fit=crop&w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
       gallery: [
-        "https://images.unsplash.com/photo-1559494007-9f5847c49d94?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80"
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"
       ],
       tag: "Scenic Getaway",
       highlights: [
@@ -1639,12 +1639,12 @@ const INITIAL_DATA = {
       originalPrice: 28999,
       rating: 4.95,
       reviewsCount: 96,
-      image: "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=1000&q=80",
+      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80",
       gallery: [
-        "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=1000&q=80",
-        "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80",
-        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80",
-        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80"
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80",
+        "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=400&q=80"
       ],
       tag: "Featured Island Escape",
       highlights: [
@@ -1719,12 +1719,12 @@ const INITIAL_DATA = {
       originalPrice: 8499,
       rating: 4.92,
       reviewsCount: 142,
-      image: "https://images.unsplash.com/photo-1627894483216-2138af692e32?w=1000&q=80",
+      image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1000&q=80",
       gallery: [
-        "https://images.unsplash.com/photo-1627894483216-2138af692e32?w=1000&q=80",
-        "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?w=400&q=80",
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80",
-        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80"
+        "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1000&q=80",
+        "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80"
       ],
       tag: "Spiritual Bestseller",
       highlights: [
@@ -1790,12 +1790,12 @@ const INITIAL_DATA = {
       originalPrice: 16999,
       rating: 4.88,
       reviewsCount: 110,
-      image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=1000&q=80",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1000&q=80",
       gallery: [
-        "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=1000&q=80",
-        "https://images.unsplash.com/photo-1477414348463-c0eb7f1359b6?w=400&q=80",
-        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&q=80",
-        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80"
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1000&q=80",
+        "https://images.unsplash.com/photo-1477414348463-c0eb7f1359b6?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=400&q=80"
       ],
       tag: "Mountain Adventure Favorite",
       highlights: [
@@ -1965,12 +1965,12 @@ const INITIAL_DATA = {
       originalPrice: 19500,
       rating: 4.94,
       reviewsCount: 89,
-      image: "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?w=1000&q=80",
+      image: "https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1000&q=80",
       gallery: [
-        "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?w=1000&q=80",
-        "https://images.unsplash.com/photo-1627894483216-2138af692e32?w=400&q=80",
-        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80",
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80"
+        "https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1000&q=80",
+        "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80"
       ],
       tag: "Heritage & Spiritual Special",
       highlights: [

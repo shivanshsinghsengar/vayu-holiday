@@ -81,7 +81,8 @@ async function renderPackageDetailView(packageId) {
         <div class="package-gallery-grid">
           ${(pkg.gallery && pkg.gallery.length > 0 ? pkg.gallery : [pkg.image, pkg.image, pkg.image]).slice(0, 4).map((img, idx) => `
             <div class="gallery-item" onclick="window.open('${img}', '_blank')">
-              <img src="${img}" alt="${pkg.title} Photo ${idx + 1}" loading="lazy" />
+              <img src="${img}" alt="${pkg.title} Photo ${idx + 1}" loading="lazy"
+                onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=600&q=80';" />
             </div>
           `).join('')}
         </div>
