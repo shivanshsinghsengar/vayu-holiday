@@ -44,7 +44,7 @@ async function renderContactView() {
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                 <div class="form-group">
                   <label class="form-label">Full Name *</label>
-                  <input type="text" name="name" class="form-control" placeholder="e.g. Ananya Rathore" required />
+                  <input type="text" name="name" class="form-control" placeholder="Your name" required />
                 </div>
                 <div class="form-group">
                   <label class="form-label">Phone / WhatsApp *</label>
@@ -55,38 +55,16 @@ async function renderContactView() {
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                 <div class="form-group">
                   <label class="form-label">Email Address *</label>
-                  <input type="email" name="email" class="form-control" placeholder="name@domain.com" required />
+                  <input type="email" name="email" class="form-control" placeholder="you@email.com" required />
                 </div>
                 <div class="form-group">
-                  <label class="form-label">Travel Subject / Destination</label>
-                  <input type="text" name="destination" class="form-control" placeholder="e.g. Kashmir / Switzerland / Flight desk" required />
+                  <label class="form-label">Your City *</label>
+                  <input type="text" name="destination" class="form-control" placeholder="Bhopal, Indore, Delhi..." required />
                 </div>
-              </div>
-
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                <div class="form-group">
-                  <label class="form-label">Estimated Month</label>
-                  <select name="travelMonth" class="form-control">
-                    <option value="October 2026">October 2026</option>
-                    <option value="November 2026">November 2026</option>
-                    <option value="December 2026">December 2026</option>
-                    <option value="Early 2027">Early 2027</option>
-                    <option value="Immediate / Emergency Travel">Immediate / Emergency Travel</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Travelers Count</label>
-                  <input type="text" name="travelers" class="form-control" placeholder="e.g. 2 Adults, 2 Kids" value="2 Adults" />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">Your Message or Custom Requests</label>
-                <textarea name="notes" class="form-control" placeholder="Tell us about your preferred hotel style, duration, departure city, or any specific wishlist..."></textarea>
               </div>
 
               <button type="submit" class="btn btn-gold btn-lg" style="width: 100%; margin-top: 0.75rem;">
-                ${ICONS.sparkles} Submit Travel Inquiry
+                ${ICONS.sparkles} Send Inquiry
               </button>
             </form>
           </div>

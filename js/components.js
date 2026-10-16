@@ -460,116 +460,53 @@ window.renderDestinationCard = function renderDestinationCard(dest) {
   `;
 }
 
-// --- Interactive Bespoke Quotation Modal ---
+// --- Enquiry Modal ---
 async function openEnquiryModal(prefill = {}) {
   const company = await window.vayuStore.getCompany();
-  const packages = await window.vayuStore.getPackages();
+  const waNumber = (company.whatsapp || "919826012345").replace(/[^0-9]/g, "");
 
   const modalHtml = `
     <div class="modal-overlay open" id="enquiryModalOverlay">
-      <div class="modal-dialog">
+      <div class="modal-dialog" style="max-width:480px;">
         <div class="modal-header">
           <div>
-            <span class="eyebrow" style="margin-bottom: 0.25rem;">Phase 1 Tailored Quotation</span>
-            <h3 class="modal-title">${prefill.title || 'Plan Your Bespoke Journey'}</h3>
+            <h3 class="modal-title">${prefill.title || 'Plan My Trip'}</h3>
+            <p style="font-size:0.82rem;color:var(--color-text-muted);margin-top:0.25rem;">We'll call you back within 2 hours.</p>
           </div>
           <button class="modal-close-btn" onclick="closeEnquiryModal()">${ICONS.x}</button>
         </div>
 
         <form id="enquiryModalForm" onsubmit="handleEnquirySubmit(event)">
-          <div class="modal-body">
-            <p style="font-size: 0.92rem; margin-bottom: 1.5rem; color: var(--color-text-muted);">
-              Share your journey vision. Our Bhopal headquarters concierge will design a complete, transparent, itemized quotation and reach out within 2 hours.
-            </p>
+          <div class="modal-body" style="padding-top:1rem;">
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
               <div class="form-group">
                 <label class="form-label">Full Name *</label>
-                <input type="text" name="name" class="form-control" placeholder="e.g. Dr. Rajesh Sharma" required />
+                <input type="text" name="name" class="form-control" placeholder="Your name" required />
               </div>
               <div class="form-group">
-                <label class="form-label">WhatsApp / Phone *</label>
+                <label class="form-label">Phone / WhatsApp *</label>
                 <input type="tel" name="phone" class="form-control" placeholder="+91 98260 00000" required />
               </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
               <div class="form-group">
-                <label class="form-label">Email Address *</label>
-                <input type="email" name="email" class="form-control" placeholder="name@example.com" required />
+                <label class="form-label">Email *</label>
+                <input type="email" name="email" class="form-control" placeholder="you@email.com" required />
               </div>
               <div class="form-group">
-                <label class="form-label">Departure City</label>
-                <input type="text" name="departureCity" class="form-control" placeholder="Bhopal, Indore, Delhi..." />
-              </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-              <div class="form-group">
-                <label class="form-label">Destination / Package</label>
-                <select name="packageId" class="form-control">
-                  <option value="">-- Select Destination or Itinerary --</option>
-                  ${packages.map(p => `
-                    <option value="${p.id}" ${prefill.packageId === p.id ? 'selected' : ''}>
-                      ${p.title} (${p.destinationName})
-                    </option>
-                  `).join('')}
-                  <option value="custom" ${!prefill.packageId ? 'selected' : ''}>Custom Itinerary (Any Destination)</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">Tentative Travel Month</label>
-                <select name="travelMonth" class="form-control">
-                  <option value="October 2026">October 2026</option>
-                  <option value="November 2026">November 2026</option>
-                  <option value="December 2026">December 2026</option>
-                  <option value="January 2027">January 2027</option>
-                  <option value="February 2027">February 2027</option>
-                  <option value="Summer 2027">Summer 2027</option>
-                </select>
+                <label class="form-label">Your City *</label>
+                <input type="text" name="departureCity" class="form-control" placeholder="Bhopal, Indore..." required />
               </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-              <div class="form-group">
-                <label class="form-label">Number of Travelers</label>
-                <select name="travelers" class="form-control">
-                  <option value="1 Adult">1 Adult</option>
-                  <option value="2 Adults" selected>2 Adults</option>
-                  <option value="3 Adults">3 Adults</option>
-                  <option value="4 Adults">4 Adults</option>
-                  <option value="2 Adults, 1 Child">2 Adults, 1 Child</option>
-                  <option value="2 Adults, 2 Children">2 Adults, 2 Children</option>
-                  <option value="2 Adults, 3 Children">2 Adults, 3 Children</option>
-                  <option value="3 Adults, 1 Child">3 Adults, 1 Child</option>
-                  <option value="3 Adults, 2 Children">3 Adults, 2 Children</option>
-                  <option value="4 Adults, 2 Children">4 Adults, 2 Children</option>
-                  <option value="Group (5+ Adults)">Group (5+ Adults)</option>
-                  <option value="Group with Kids">Group with Kids (5+ Adults + Children)</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Approx Budget Preference</label>
-                <select name="budgetPerPerson" class="form-control">
-                  <option value="Comfort (Rs.25k - Rs.45k / person)">Comfort (&#x20B9;25k - &#x20B9;45k / person)</option>
-                  <option value="Luxury (Rs.45k - Rs.85k / person)">Luxury (&#x20B9;45k - &#x20B9;85k / person)</option>
-                  <option value="Ultra-Luxury (Rs.85k - Rs.2 Lakh+ / person)">Ultra-Luxury (&#x20B9;85k - &#x20B9;2 Lakh+ / person)</option>
-                  <option value="Corporate / Group Quote">Corporate / Group Quote</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Special Preferences or Requests</label>
-              <textarea name="notes" class="form-control" placeholder="Specify hotel rating preference, flight requirements, honeymoon amenities, vegetarian meals, or custom sightseeing..."></textarea>
-            </div>
           </div>
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" onclick="closeEnquiryModal()">Cancel</button>
             <button type="submit" class="btn btn-gold">
-              ${ICONS.sparkles} Submit Quotation Request
+              ${ICONS.sparkles} Get Free Quote
             </button>
           </div>
         </form>
@@ -579,7 +516,6 @@ async function openEnquiryModal(prefill = {}) {
 
   const existing = document.getElementById("enquiryModalOverlay");
   if (existing) existing.remove();
-
   document.body.insertAdjacentHTML("beforeend", modalHtml);
 }
 
@@ -594,28 +530,21 @@ async function handleEnquirySubmit(e) {
   const formData = new FormData(form);
 
   const enquiry = {
-    name: formData.get("name"),
-    phone: formData.get("phone"),
-    email: formData.get("email"),
-    departureCity: formData.get("departureCity") || "Bhopal",
-    packageId: formData.get("packageId") || "custom",
-    destination: form.packageId.options[form.packageId.selectedIndex]?.text || "Custom Journey",
-    travelMonth: formData.get("travelMonth"),
-    travelers: formData.get("travelers"),
-    budgetPerPerson: formData.get("budgetPerPerson"),
-    notes: formData.get("notes") || "No additional notes."
+    name:          formData.get("name"),
+    phone:         formData.get("phone"),
+    email:         formData.get("email"),
+    departureCity: formData.get("departureCity"),
+    packageId:     "custom",
+    destination:   "Custom Journey",
+    travelMonth:   "Not specified",
+    travelers:     "Not specified",
+    budgetPerPerson: "Not specified",
+    notes:         "No additional notes."
   };
 
-  // Save to Firestore + localStorage
-  const saved = await window.vayuStore.addEnquiry(enquiry);
-
+  await window.vayuStore.addEnquiry(enquiry);
   closeEnquiryModal();
-
-  showToast(
-    "Quotation Requested!",
-    `Thank you, ${enquiry.name}. Your quotation reference is logged. Our concierge is preparing your itemized travel plan.`
-  );
-
+  showToast("Request Sent!", `Thank you ${enquiry.name}, our team will call you within 2 hours.`);
 }
 
 // --- Toast System ---
