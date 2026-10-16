@@ -1466,7 +1466,7 @@ div[style*="z-index: 9999"][style*="position: fixed"] a[href*="netlify"] {
   transform:translateX(-50%) translateY(6px);
   opacity:0;visibility:hidden;pointer-events:none;
   transition:opacity .18s,transform .18s,visibility .18s;
-  z-index:910;
+  z-index:9999;
 }
 .vn-dropdown.vn-open {
   opacity:1;visibility:visible;pointer-events:auto;
@@ -1531,11 +1531,12 @@ div[style*="z-index: 9999"][style*="position: fixed"] a[href*="netlify"] {
 
 /* DD Scrim */
 .vn-dd-scrim {
-  position:fixed;inset:0;z-index:899;
-  background:rgba(0,0,0,.25);
-  opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s;pointer-events:none;
+  position:fixed;inset:0;z-index:850;
+  background:rgba(0,0,0,.20);
+  opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s;
+  pointer-events:none;
 }
-.vn-dd-scrim.vn-show { opacity:1;visibility:visible;pointer-events:auto; }
+.vn-dd-scrim.vn-show { opacity:1;visibility:visible; }
 
 /* Actions */
 .vn-actions { display:flex;align-items:center;gap:.6rem;justify-content:flex-end; }
