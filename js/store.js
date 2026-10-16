@@ -51,7 +51,7 @@ class VayuStore {
   // ─── INIT localStorage with seed data (fallback mode) ───────────────────
   _initLocalStorage() {
     // ── Data version bump: increment VAYU_DATA_VERSION when seed data changes ──
-    const VAYU_DATA_VERSION = "v2026_dedup_final";
+    const VAYU_DATA_VERSION = "v2026_unique_images";
     const storedVersion = localStorage.getItem("vayu_data_version");
     if (storedVersion !== VAYU_DATA_VERSION) {
       // Seed data changed — refresh packages and destinations from latest INITIAL_DATA
