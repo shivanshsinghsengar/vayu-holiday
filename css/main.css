@@ -1532,7 +1532,7 @@ div[style*="z-index: 9999"][style*="position: fixed"] a[href*="netlify"] {
 /* DD Scrim */
 .vn-dd-scrim {
   position:fixed;inset:0;z-index:899;
-  background:rgba(0,0,0,.42);backdrop-filter:blur(2px);
+  background:rgba(0,0,0,.25);
   opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s;pointer-events:none;
 }
 .vn-dd-scrim.vn-show { opacity:1;visibility:visible;pointer-events:auto; }
