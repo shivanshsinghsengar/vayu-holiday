@@ -892,7 +892,7 @@ function openVnDrop(ni) {
 }
 
 // Attach hover + click on each vn-item
-document.addEventListener("DOMContentLoaded", function initVnDropdowns() {
+function initVnDropdowns() {
   document.querySelectorAll(".vn-item[id^='vni-']").forEach(ni => {
     ni.addEventListener("mouseenter", () => {
       clearTimeout(_vnCloseTimer);
@@ -913,7 +913,8 @@ document.addEventListener("DOMContentLoaded", function initVnDropdowns() {
   const scrim = document.getElementById("vnDdScrim");
   if (scrim) scrim.addEventListener("click", closeAllDropdowns);
   document.addEventListener("keydown", e => { if (e.key === "Escape") { closeAllDropdowns(); closeVnDrawer(); } });
-});
+}
+document.addEventListener("DOMContentLoaded", initVnDropdowns);
 
 // ── Mobile Drawer ───────────────────────────────────────────────────
 function toggleVnDrawer() {

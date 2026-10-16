@@ -274,6 +274,8 @@ function _reinitMotion() {
     _init3DCards();
     _initMagneticButtons();
     _initFlightPathAnimations();
+    if (typeof initVnDropdowns === "function") initVnDropdowns();
+    if (typeof initVnScroll === "function") initVnScroll();
   }, 120);
 }
 
