@@ -34,147 +34,226 @@ async function renderNavbar() {
   const waMsg = encodeURIComponent("Hello Vayu Holidays! I'd like to inquire about planning a luxury journey.");
   const showJournal = pageSettings.showJournal !== false;
 
+  const currLabel = currentCurrency === 'INR' ? '₹ INR' : currentCurrency === 'USD' ? '$ USD' : currentCurrency === 'EUR' ? '€ EUR' : currentCurrency === 'GBP' ? '£ GBP' : 'AED';
+
   return `
-    <!-- Sticky Main Navbar "” No top bar clutter -->
-    <header class="site-header" id="siteHeader" role="navigation" aria-label="Main navigation">
-      <div class="container navbar">
-
-        <!-- Logo -->
-        <a href="/" class="brand-logo" aria-label="Vayu Holidays home">
-          <img src="/icons/nob.png" alt="Vayu Holidays" class="brand-logo-img" style="height:80px;width:auto;object-fit:contain;" />
-        </a>
-
-        <!-- Desktop Navigation -->
-        <nav class="nav-links" aria-label="Site navigation">
-          <div class="nav-item">
-            <a href="/packages" class="nav-link" aria-haspopup="true">
-              Holidays ${ICONS.chevronDown}
-            </a>
-            <div class="nav-dropdown" role="menu">
-              <a href="/packages" class="dropdown-link" role="menuitem">All Packages</a>
-              <a href="/domestic" class="dropdown-link" role="menuitem">
-                Domestic India
-                <span class="dropdown-link-badge">Kashmir, Kerala+</span>
-              </a>
-              <a href="/international" class="dropdown-link" role="menuitem">
-                International
-                <span class="dropdown-link-badge">Dubai, Bali, Swiss+</span>
-              </a>
-              <a href="/honeymoon" class="dropdown-link" role="menuitem">Honeymoon</a>
-              <a href="/group-tours" class="dropdown-link" role="menuitem">Group Tours</a>
-              <a href="/mice" class="dropdown-link" role="menuitem">Corporate MICE</a>
-            </div>
-          </div>
-
-          <div class="nav-item">
-            <a href="/services/flights" class="nav-link" aria-haspopup="true">
-              Services ${ICONS.chevronDown}
-            </a>
-            <div class="nav-dropdown" style="min-width: 240px;" role="menu">
-              <a href="/services/flights"   class="dropdown-link" role="menuitem">Flights & Charters</a>
-              <a href="/services/hotels"    class="dropdown-link" role="menuitem">Hotels & Resorts</a>
-              <a href="/services/visa"      class="dropdown-link" role="menuitem">Visa Assistance</a>
-              <a href="/services/forex"     class="dropdown-link" role="menuitem">Forex & Travel Cards</a>
-              <a href="/services/insurance" class="dropdown-link" role="menuitem">Travel Insurance</a>
-              <a href="/services/passport"  class="dropdown-link" role="menuitem">Passport Services</a>
-              <a href="/services/bus"       class="dropdown-link" role="menuitem">Train & Bus</a>
-            </div>
-          </div>
-
-          <a href="/about"   class="nav-link">About</a>
-          ${showJournal ? `<a href="/blog" class="nav-link">Journal</a>` : ''}
-          <a href="/contact" class="nav-link">Contact</a>
-        </nav>
-
-        <!-- Actions -->
-        <div class="nav-actions">
-          <!-- Custom Currency Dropdown -->
-          <div class="currency-select-wrapper" title="Change currency" id="currencyDropdown">
-            <button class="currency-select" onclick="toggleCurrencyDropdown(event)" type="button" aria-label="Currency">
-              <span id="currencyLabel">${currentCurrency === 'INR' ? '₹ INR' : currentCurrency === 'USD' ? '$ USD' : currentCurrency === 'EUR' ? '€ EUR' : currentCurrency === 'GBP' ? '£ GBP' : 'AED'}</span>
-              ${ICONS.chevronDown}
-            </button>
-            <div class="currency-options" id="currencyOptions">
-              <div class="currency-option" onclick="selectCurrency('INR','₹ INR')">₹ INR</div>
-              <div class="currency-option" onclick="selectCurrency('USD','$ USD')">$ USD</div>
-              <div class="currency-option" onclick="selectCurrency('EUR','€ EUR')">€ EUR</div>
-              <div class="currency-option" onclick="selectCurrency('GBP','£ GBP')">£ GBP</div>
-              <div class="currency-option" onclick="selectCurrency('AED','AED')">AED</div>
-            </div>
-          </div>
-
-          <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" class="btn-whatsapp-nav" aria-label="WhatsApp">
-            ${ICONS.whatsapp} <span class="wa-label">WhatsApp</span>
-          </a>
-
-          <a href="/admin" class="btn btn-secondary btn-sm" style="font-size:0.78rem;padding:0.45rem 0.9rem;border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);">
-            Admin
-          </a>
-
-          <button class="btn btn-gold btn-sm" onclick="openEnquiryModal({ title: 'Plan My Journey' })" aria-label="Plan my trip">
-            Plan My Trip
-          </button>
-
-          <button class="mobile-nav-toggle" id="mobileNavToggle" onclick="toggleMobileNav()" aria-label="Open menu" aria-expanded="false" aria-controls="mobileDrawer">
-            ${ICONS.menu}
-          </button>
-        </div>
+    <!-- Utility Bar -->
+    <div class="vn-util-bar">
+      <div class="vn-util-left">
+        <span>24/7 Concierge</span>
+        <span>Bhopal's trusted luxury travel agency</span>
       </div>
-    </header>
-
-    <!-- Mobile Drawer -->
-    <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="toggleMobileNav()" aria-hidden="true"></div>
-    <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation">
-      <div class="mobile-drawer-header">
-        <span style="display:flex;align-items:center;">
-          <img src="/icons/nob.png" alt="Vayu Holidays" style="height:48px;width:auto;object-fit:contain;" />
-        </span>
-        <button class="mobile-drawer-close" onclick="toggleMobileNav()" aria-label="Close menu">${ICONS.x}</button>
-      </div>
-
-      <nav class="mobile-nav-links" aria-label="Mobile navigation">
-        <a href="/"             onclick="toggleMobileNav()">Home</a>
-        <a href="/packages"     onclick="toggleMobileNav()">All Packages</a>
-        <a href="/domestic"     onclick="toggleMobileNav()">Domestic Tours</a>
-        <a href="/international" onclick="toggleMobileNav()">International</a>
-        <a href="/honeymoon"    onclick="toggleMobileNav()">Honeymoon</a>
-        <a href="/group-tours"  onclick="toggleMobileNav()">Group Tours</a>
-        <a href="/mice"         onclick="toggleMobileNav()">Corporate MICE</a>
-        <a href="/services/visa" onclick="toggleMobileNav()">Visa Assistance</a>
-        <a href="/services/forex" onclick="toggleMobileNav()">Forex & Currency</a>
-        <a href="/about"        onclick="toggleMobileNav()">About Us</a>
-        ${showJournal ? `<a href="/blog" onclick="toggleMobileNav()">Travel Journal</a>` : ''}
-        <a href="/contact"      onclick="toggleMobileNav()">Contact</a>
-      </nav>
-
-      <div class="mobile-drawer-footer">
-        <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="toggleMobileNav(); openEnquiryModal();">
-          Plan My Journey
-        </button>
-        <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" class="btn btn-whatsapp" style="width:100%;justify-content:center;" onclick="toggleMobileNav()">
-          ${ICONS.whatsapp} Chat on WhatsApp
-        </a>
-        <div class="mobile-drawer-contact">
-          <a href="tel:${company.phone}">${ICONS.phone} ${company.phone}</a>
-        </div>
+      <div class="vn-util-right">
+        <a href="tel:${company.phone}">${company.phone}</a>
+        <span class="vn-util-hours">${company.hours}</span>
       </div>
     </div>
 
+    <!-- Main Header -->
+    <header class="vn-header" id="siteHeader" role="banner">
+      <div class="vn-main-bar">
+
+        <!-- Logo -->
+        <a href="/" class="vn-logo" aria-label="Vayu Holidays home">
+          <img src="/icons/nob.png" alt="Vayu Holidays" style="height:72px;width:auto;object-fit:contain;" />
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="vn-nav" aria-label="Main navigation">
+
+          <!-- Services -->
+          <div class="vn-item" id="vni-services">
+            <button class="vn-btn" aria-haspopup="true" aria-expanded="false" id="vnbtn-services">
+              Services
+              <svg class="vn-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg>
+            </button>
+            <div class="vn-dropdown" id="vnd-services">
+              <div class="vn-card vn-card-services">
+                <div class="vn-svc-grid">
+                  <a href="/services/visa" class="vn-svc-row" onclick="closeAllDropdowns()">
+                    <div class="vn-svc-icon">🛂</div>
+                    <div><div class="vn-svc-title">Visa Assistance</div><div class="vn-svc-desc">50+ countries · fast processing</div></div>
+                  </a>
+                  <a href="/services/forex" class="vn-svc-row" onclick="closeAllDropdowns()">
+                    <div class="vn-svc-icon">💱</div>
+                    <div><div class="vn-svc-title">Forex & Travel Cards</div><div class="vn-svc-desc">Best rates · doorstep delivery</div></div>
+                  </a>
+                  <a href="/services/flights" class="vn-svc-row" onclick="closeAllDropdowns()">
+                    <div class="vn-svc-icon">✈️</div>
+                    <div><div class="vn-svc-title">Flights & Charters</div><div class="vn-svc-desc">Domestic & international fares</div></div>
+                  </a>
+                  <a href="/services/hotels" class="vn-svc-row" onclick="closeAllDropdowns()">
+                    <div class="vn-svc-icon">🏨</div>
+                    <div><div class="vn-svc-title">Hotels & Resorts</div><div class="vn-svc-desc">Handpicked 4★ & 5★ stays</div></div>
+                  </a>
+                  <a href="/services/insurance" class="vn-svc-row" onclick="closeAllDropdowns()">
+                    <div class="vn-svc-icon">🛡️</div>
+                    <div><div class="vn-svc-title">Travel Insurance</div><div class="vn-svc-desc">Cashless global cover</div></div>
+                  </a>
+                  <a href="/services/passport" class="vn-svc-row" onclick="closeAllDropdowns()">
+                    <div class="vn-svc-icon">📘</div>
+                    <div><div class="vn-svc-title">Passport Services</div><div class="vn-svc-desc">Fresh · renewal · Tatkaal</div></div>
+                  </a>
+                </div>
+                <div class="vn-dd-footer">
+                  <span>Looking for a holiday package?</span>
+                  <a href="/packages" onclick="closeAllDropdowns()">Explore Holidays →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Holidays -->
+          <div class="vn-item" id="vni-holidays">
+            <button class="vn-btn" aria-haspopup="true" aria-expanded="false" id="vnbtn-holidays">
+              Holidays
+              <svg class="vn-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg>
+            </button>
+            <div class="vn-dropdown" id="vnd-holidays">
+              <div class="vn-card vn-card-holidays">
+                <a href="/domestic" class="vn-hol-row" onclick="closeAllDropdowns()">
+                  <div class="vn-hol-thumb" style="background:linear-gradient(135deg,#1a4a3a,#2d7a5f)">🏔️</div>
+                  <div class="vn-hol-info">
+                    <div class="vn-hol-title">Domestic India</div>
+                    <div class="vn-hol-dest">Kashmir · Kerala · Goa · Rajasthan</div>
+                  </div>
+                  <svg class="vn-hol-arrow" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg>
+                </a>
+                <a href="/international" class="vn-hol-row" onclick="closeAllDropdowns()">
+                  <div class="vn-hol-thumb" style="background:linear-gradient(135deg,#1a2d4a,#2d5f7a)">🌍</div>
+                  <div class="vn-hol-info">
+                    <div class="vn-hol-title">International</div>
+                    <div class="vn-hol-dest">Dubai · Bali · Switzerland · Maldives</div>
+                  </div>
+                  <svg class="vn-hol-arrow" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg>
+                </a>
+                <a href="/honeymoon" class="vn-hol-row" onclick="closeAllDropdowns()">
+                  <div class="vn-hol-thumb" style="background:linear-gradient(135deg,#4a1a2d,#7a2d5f)">💑</div>
+                  <div class="vn-hol-info">
+                    <div class="vn-hol-title">Honeymoon</div>
+                    <div class="vn-hol-dest">Maldives · Bali · Kashmir</div>
+                  </div>
+                  <svg class="vn-hol-arrow" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg>
+                </a>
+                <a href="/group-tours" class="vn-hol-row" onclick="closeAllDropdowns()">
+                  <div class="vn-hol-thumb" style="background:linear-gradient(135deg,#2d3a1a,#5f7a2d)">👥</div>
+                  <div class="vn-hol-info">
+                    <div class="vn-hol-title">Group Tours</div>
+                    <div class="vn-hol-dest">Fixed departures · guided</div>
+                  </div>
+                  <svg class="vn-hol-arrow" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <a href="/about" class="vn-btn vn-link" onclick="closeAllDropdowns()">About</a>
+          ${showJournal ? `<a href="/blog" class="vn-btn vn-link" onclick="closeAllDropdowns()">Journal</a>` : ''}
+          <a href="/contact" class="vn-btn vn-link" onclick="closeAllDropdowns()">Contact</a>
+        </nav>
+
+        <!-- Actions -->
+        <div class="vn-actions">
+          <!-- Currency -->
+          <div class="vn-currency-wrap" id="vnCurrencyWrap">
+            <button class="vn-currency-btn" onclick="toggleVnCurrency(event)" aria-label="Currency">
+              <span id="vnCurrLabel">${currLabel}</span>
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg>
+            </button>
+            <div class="vn-currency-dd" id="vnCurrencyDd">
+              <div onclick="selectCurrency('INR','₹ INR')">₹ INR</div>
+              <div onclick="selectCurrency('USD','$ USD')">$ USD</div>
+              <div onclick="selectCurrency('EUR','€ EUR')">€ EUR</div>
+              <div onclick="selectCurrency('GBP','£ GBP')">£ GBP</div>
+              <div onclick="selectCurrency('AED','AED')">AED</div>
+            </div>
+          </div>
+
+          <!-- WhatsApp -->
+          <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" class="vn-wa-btn" aria-label="WhatsApp">
+            ${ICONS.whatsapp}
+          </a>
+
+          <!-- Plan My Trip CTA -->
+          <button class="vn-cta-btn" onclick="openEnquiryModal({ title: 'Plan My Trip' })">
+            Plan My Trip
+          </button>
+
+          <!-- Hamburger -->
+          <button class="vn-hamburger" id="vnHamburger" onclick="toggleVnDrawer()" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- DD Scrim -->
+    <div class="vn-dd-scrim" id="vnDdScrim" onclick="closeAllDropdowns()"></div>
+
+    <!-- Mobile Drawer -->
+    <div class="vn-mob-scrim" id="vnMobScrim" onclick="toggleVnDrawer()"></div>
+    <aside class="vn-drawer" id="vnDrawer" aria-label="Mobile navigation" aria-hidden="true">
+      <div class="vn-drawer-head">
+        <img src="/icons/nob.png" alt="Vayu Holidays" style="height:44px;width:auto;object-fit:contain;" />
+        <button class="vn-drawer-close" onclick="toggleVnDrawer()" aria-label="Close">
+          ${ICONS.x}
+        </button>
+      </div>
+
+      <div class="vn-drawer-body">
+        <!-- Services accordion -->
+        <button class="vn-drawer-acc-btn" onclick="toggleVnAcc('vnAccServices', this)">
+          Services <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg>
+        </button>
+        <div class="vn-drawer-acc" id="vnAccServices">
+          <a href="/services/visa"      onclick="toggleVnDrawer()"><span>🛂</span> Visa Assistance</a>
+          <a href="/services/forex"     onclick="toggleVnDrawer()"><span>💱</span> Forex & Cards</a>
+          <a href="/services/flights"   onclick="toggleVnDrawer()"><span>✈️</span> Flights</a>
+          <a href="/services/hotels"    onclick="toggleVnDrawer()"><span>🏨</span> Hotels & Resorts</a>
+          <a href="/services/insurance" onclick="toggleVnDrawer()"><span>🛡️</span> Insurance</a>
+        </div>
+
+        <button class="vn-drawer-acc-btn" onclick="toggleVnAcc('vnAccHolidays', this)">
+          Holidays <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg>
+        </button>
+        <div class="vn-drawer-acc" id="vnAccHolidays">
+          <a href="/domestic"      onclick="toggleVnDrawer()"><span>🏔️</span> Domestic India</a>
+          <a href="/international" onclick="toggleVnDrawer()"><span>🌍</span> International</a>
+          <a href="/honeymoon"     onclick="toggleVnDrawer()"><span>💑</span> Honeymoon</a>
+          <a href="/group-tours"   onclick="toggleVnDrawer()"><span>👥</span> Group Tours</a>
+          <a href="/mice"          onclick="toggleVnDrawer()"><span>💼</span> Corporate MICE</a>
+        </div>
+
+        <div class="vn-drawer-sep"></div>
+        <a href="/about"   class="vn-drawer-link" onclick="toggleVnDrawer()">About</a>
+        ${showJournal ? `<a href="/blog" class="vn-drawer-link" onclick="toggleVnDrawer()">Journal</a>` : ''}
+        <a href="/contact" class="vn-drawer-link" onclick="toggleVnDrawer()">Contact</a>
+      </div>
+
+      <div class="vn-drawer-footer">
+        <button class="vn-drawer-cta" onclick="toggleVnDrawer(); openEnquiryModal();">✦ Plan My Trip</button>
+        <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" class="vn-drawer-wa" onclick="toggleVnDrawer()">
+          ${ICONS.whatsapp} WhatsApp Us
+        </a>
+      </div>
+    </aside>
+
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" class="floating-wa-btn" aria-label="WhatsApp" title="Chat on WhatsApp">
+    <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" class="floating-wa-btn" aria-label="WhatsApp">
       ${ICONS.whatsapp}
     </a>
 
-    <!-- Mobile CTA Bar -->
-    <div class="mobile-cta-bar" id="mobileCTABar" role="complementary" aria-label="Quick actions">
-      <a href="tel:${company.phone}" class="mobile-cta-btn mobile-cta-call" aria-label="Call">
+    <!-- Mobile Bottom Bar -->
+    <div class="vn-mob-bar" role="complementary">
+      <a href="tel:${company.phone}" class="vn-mob-btn">
         ${ICONS.phone}<span>Call</span>
       </a>
-      <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" class="mobile-cta-btn mobile-cta-wa" aria-label="WhatsApp">
+      <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" class="vn-mob-btn vn-mob-wa">
         ${ICONS.whatsapp}<span>WhatsApp</span>
       </a>
-      <button class="mobile-cta-btn mobile-cta-plan" onclick="openEnquiryModal()" aria-label="Plan trip">
-        ${ICONS.sparkles}<span>Plan Trip</span>
+      <button class="vn-mob-btn vn-mob-gold" onclick="openEnquiryModal()">
+        ${ICONS.sparkles}<span>Enquire</span>
       </button>
     </div>
   `;
@@ -750,4 +829,152 @@ function selectCurrency(code, label) {
 document.addEventListener("click", function() {
   const opts = document.getElementById("currencyOptions");
   if (opts) opts.classList.remove("open");
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// NEW NAVBAR (vn-*) — Dropdown, Drawer, Scroll behaviour
+// ═══════════════════════════════════════════════════════════════════
+
+// ── Scroll: hide-on-down / show-on-up + at-top glass ────────────────
+(function initVnScroll() {
+  const header = document.getElementById("siteHeader");
+  if (!header) return;
+  let lastY = 0, ticking = false, anyOpen = false;
+
+  function updateHeader() {
+    const y = window.scrollY;
+    if (y < 20) {
+      header.classList.remove("vn-scrolled", "vn-hide");
+    } else {
+      header.classList.add("vn-scrolled");
+      if (!anyOpen) {
+        if (y > lastY + 4) header.classList.add("vn-hide");
+        else if (y < lastY - 4) header.classList.remove("vn-hide");
+      }
+    }
+    lastY = y;
+    ticking = false;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) { requestAnimationFrame(updateHeader); ticking = true; }
+  }, { passive: true });
+
+  window._vnSetAnyOpen = (v) => { anyOpen = v; if (!v) header.classList.remove("vn-hide"); };
+  updateHeader();
+})();
+
+// ── Dropdown logic ──────────────────────────────────────────────────
+let _vnCloseTimer = null;
+
+function closeAllDropdowns() {
+  document.querySelectorAll(".vn-item").forEach(ni => {
+    const btn = ni.querySelector(".vn-btn[aria-expanded]");
+    const dd  = ni.querySelector(".vn-dropdown");
+    if (btn) btn.setAttribute("aria-expanded", "false");
+    if (dd)  dd.classList.remove("vn-open");
+  });
+  const scrim = document.getElementById("vnDdScrim");
+  if (scrim) scrim.classList.remove("vn-show");
+  if (window._vnSetAnyOpen) window._vnSetAnyOpen(false);
+}
+
+function openVnDrop(ni) {
+  closeAllDropdowns();
+  const btn = ni.querySelector(".vn-btn[aria-expanded]");
+  const dd  = ni.querySelector(".vn-dropdown");
+  if (!btn || !dd) return;
+  btn.setAttribute("aria-expanded", "true");
+  dd.classList.add("vn-open");
+  const scrim = document.getElementById("vnDdScrim");
+  if (scrim) scrim.classList.add("vn-show");
+  if (window._vnSetAnyOpen) window._vnSetAnyOpen(true);
+}
+
+// Attach hover + click on each vn-item
+document.addEventListener("DOMContentLoaded", function initVnDropdowns() {
+  document.querySelectorAll(".vn-item[id^='vni-']").forEach(ni => {
+    ni.addEventListener("mouseenter", () => {
+      clearTimeout(_vnCloseTimer);
+      openVnDrop(ni);
+    });
+    ni.addEventListener("mouseleave", () => {
+      _vnCloseTimer = setTimeout(() => closeAllDropdowns(), 150);
+    });
+    const btn = ni.querySelector(".vn-btn[aria-expanded]");
+    if (btn) {
+      btn.addEventListener("click", () => {
+        const isOpen = btn.getAttribute("aria-expanded") === "true";
+        isOpen ? closeAllDropdowns() : openVnDrop(ni);
+      });
+    }
+  });
+
+  const scrim = document.getElementById("vnDdScrim");
+  if (scrim) scrim.addEventListener("click", closeAllDropdowns);
+  document.addEventListener("keydown", e => { if (e.key === "Escape") { closeAllDropdowns(); closeVnDrawer(); } });
+});
+
+// ── Mobile Drawer ───────────────────────────────────────────────────
+function toggleVnDrawer() {
+  const drawer = document.getElementById("vnDrawer");
+  if (!drawer) return;
+  drawer.classList.contains("vn-open") ? closeVnDrawer() : openVnDrawer();
+}
+
+function openVnDrawer() {
+  const drawer  = document.getElementById("vnDrawer");
+  const scrim   = document.getElementById("vnMobScrim");
+  const burger  = document.getElementById("vnHamburger");
+  if (drawer)  { drawer.classList.add("vn-open"); drawer.setAttribute("aria-hidden","false"); }
+  if (scrim)   scrim.classList.add("vn-show");
+  if (burger)  { burger.classList.add("vn-open"); burger.setAttribute("aria-expanded","true"); }
+  document.body.style.overflow = "hidden";
+  if (window._vnSetAnyOpen) window._vnSetAnyOpen(true);
+}
+
+function closeVnDrawer() {
+  const drawer  = document.getElementById("vnDrawer");
+  const scrim   = document.getElementById("vnMobScrim");
+  const burger  = document.getElementById("vnHamburger");
+  if (drawer)  { drawer.classList.remove("vn-open"); drawer.setAttribute("aria-hidden","true"); }
+  if (scrim)   scrim.classList.remove("vn-show");
+  if (burger)  { burger.classList.remove("vn-open"); burger.setAttribute("aria-expanded","false"); }
+  document.body.style.overflow = "";
+  if (window._vnSetAnyOpen) window._vnSetAnyOpen(false);
+}
+
+// ── Drawer Accordion ────────────────────────────────────────────────
+function toggleVnAcc(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const isOpen = el.classList.contains("vn-open");
+  document.querySelectorAll(".vn-drawer-acc").forEach(a => a.classList.remove("vn-open"));
+  document.querySelectorAll(".vn-drawer-acc-btn").forEach(b => b.classList.remove("vn-acc-open"));
+  if (!isOpen) {
+    el.classList.add("vn-open");
+    if (btn) btn.classList.add("vn-acc-open");
+  }
+}
+
+// ── Currency dropdown (new navbar) ──────────────────────────────────
+function toggleVnCurrency(e) {
+  e.stopPropagation();
+  const dd = document.getElementById("vnCurrencyDd");
+  if (dd) dd.classList.toggle("vn-open");
+}
+
+// Override selectCurrency to also update new navbar label
+const _origSelectCurrency = window.selectCurrency;
+window.selectCurrency = function(code, label) {
+  if (_origSelectCurrency) _origSelectCurrency(code, label);
+  const lbl = document.getElementById("vnCurrLabel");
+  if (lbl) lbl.textContent = label;
+  const dd = document.getElementById("vnCurrencyDd");
+  if (dd) dd.classList.remove("vn-open");
+};
+
+document.addEventListener("click", () => {
+  const dd = document.getElementById("vnCurrencyDd");
+  if (dd) dd.classList.remove("vn-open");
 });
