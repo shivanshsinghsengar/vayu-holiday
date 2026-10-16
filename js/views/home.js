@@ -151,7 +151,7 @@ async function renderHomeView() {
                 onblur="setTimeout(()=>{ const b=document.getElementById('destSuggestions'); if(b) b.style.display='none'; },200)"
                 aria-label="Search destination"
               />
-              <div id="destSuggestions" style="display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;width:max-content;max-width:440px;background:rgba(14,18,28,0.96);backdrop-filter:blur(20px);border:1px solid rgba(212,175,55,0.25);border-radius:14px;z-index:9999;max-height:260px;overflow-y:auto;box-shadow:0 20px 50px rgba(0,0,0,0.7);"></div>
+              <div id="destSuggestions" style="display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;width:max-content;max-width:440px;background:rgba(14,18,28,0.96);backdrop-filter:blur(20px);border:1px solid rgba(212,175,55,0.25);border-radius:14px;z-index:99999;max-height:260px;overflow-y:auto;box-shadow:0 20px 50px rgba(0,0,0,0.7);"></div>
             </div>
 
             <button class="search-submit-btn" onclick="executeHeroSearch()">

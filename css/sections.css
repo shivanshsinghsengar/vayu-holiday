@@ -280,7 +280,7 @@ body.page-ready .hero-bg-media {
   overflow: hidden;
   height: 46px;
   position: relative;
-  z-index: 5;
+  z-index: 1;
 }
 
 /* Fade edges */
