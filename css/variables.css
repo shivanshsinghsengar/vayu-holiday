@@ -33,9 +33,9 @@
   --gold-shimmer:      linear-gradient(105deg, transparent 20%, rgba(243,229,171,0.55) 50%, transparent 80%);
 
   /* Pearl White — base canvas surfaces */
-  --pearl:             #F9F8F6;
-  --pearl-warm:        #F5F3EF;
-  --pearl-stone:       #EDE9E3;
+  --pearl:             #F8F8F8;
+  --pearl-warm:        #F5F5F5;
+  --pearl-stone:       #EFEFEF;
 
   /* Glassmorphic surfaces */
   --glass-surface:     rgba(255, 255, 255, 0.06);
@@ -65,9 +65,9 @@
   --c-ink-3:       #6B6B66;
   --c-ink-4:       #9B9A95;
 
-  --c-accent:      #B8A99A;
+  --c-accent:      #B0A8A0;
   --c-accent-dark: #8C7B6E;
-  --c-accent-pale: #F2EDE8;
+  --c-accent-pale: #F5F5F5;
 
   --c-dark:        #111110;
   --c-dark-2:      #1C1C1A;
@@ -103,7 +103,7 @@
   --color-text-main:      var(--c-ink);
   --color-text-muted:     var(--c-ink-3);
   --color-text-light:     var(--c-ink-4);
-  --color-text-inverse:   #FAFAF8;
+  --color-text-inverse:   #FFFFFF;
   --color-text-inverse-muted: var(--c-dark-muted);
   --color-white:          #FFFFFF;
   --border-subtle:        var(--c-border);
@@ -111,7 +111,7 @@
   --border-gold:          rgba(212,175,55,0.30);
   --border-dark:          var(--c-border-dark);
   --border-dark-subtle:   rgba(255,255,255,0.06);
-  --bg-glass-light:       rgba(250,250,248,0.94);
+  --bg-glass-light:       rgba(255,255,255,0.96);
   --bg-glass-dark:        rgba(10,13,18,0.88);
   --color-terracotta:       var(--c-ink);
   --color-terracotta-hover: var(--c-dark);
