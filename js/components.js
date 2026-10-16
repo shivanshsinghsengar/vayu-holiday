@@ -894,13 +894,26 @@ function openVnDrop(ni) {
 // Attach hover + click on each vn-item
 function initVnDropdowns() {
   document.querySelectorAll(".vn-item[id^='vni-']").forEach(ni => {
+    const dd = ni.querySelector(".vn-dropdown");
+
     ni.addEventListener("mouseenter", () => {
       clearTimeout(_vnCloseTimer);
       openVnDrop(ni);
     });
     ni.addEventListener("mouseleave", () => {
-      _vnCloseTimer = setTimeout(() => closeAllDropdowns(), 150);
+      _vnCloseTimer = setTimeout(() => closeAllDropdowns(), 200);
     });
+
+    // Keep open when hovering inside dropdown card
+    if (dd) {
+      dd.addEventListener("mouseenter", () => {
+        clearTimeout(_vnCloseTimer);
+      });
+      dd.addEventListener("mouseleave", () => {
+        _vnCloseTimer = setTimeout(() => closeAllDropdowns(), 200);
+      });
+    }
+
     const btn = ni.querySelector(".vn-btn[aria-expanded]");
     if (btn) {
       btn.addEventListener("click", () => {

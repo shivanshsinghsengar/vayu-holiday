@@ -1472,8 +1472,8 @@ div[style*="z-index: 9999"][style*="position: fixed"] a[href*="netlify"] {
   opacity:1;visibility:visible;pointer-events:auto;
   transform:translateX(-50%) translateY(0);
 }
-/* hover bridge */
-.vn-item::after { content:'';position:absolute;bottom:-8px;left:-8px;right:-8px;height:14px; }
+/* hover bridge — bigger gap coverage */
+.vn-item::after { content:'';position:absolute;bottom:-14px;left:-16px;right:-16px;height:20px;background:transparent; }
 
 .vn-card {
   background:#171717;border:1px solid rgba(255,255,255,.09);
