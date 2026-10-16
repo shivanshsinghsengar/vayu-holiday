@@ -94,6 +94,18 @@ async function renderNavbar() {
                     <div class="vn-svc-icon">📘</div>
                     <div><div class="vn-svc-title">Passport Services</div><div class="vn-svc-desc">Fresh · renewal · Tatkal</div></div>
                   </a>
+                  <a href="/services/bus" class="vn-svc-row" onclick="closeAllDropdowns()">
+                    <div class="vn-svc-icon">🚌</div>
+                    <div><div class="vn-svc-title">Bus & Coach Booking</div><div class="vn-svc-desc">Volvo · sleeper · group charters</div></div>
+                  </a>
+                  <a href="/services/train" class="vn-svc-row" onclick="closeAllDropdowns()">
+                    <div class="vn-svc-icon">🚆</div>
+                    <div><div class="vn-svc-title">Train Ticketing</div><div class="vn-svc-desc">IRCTC · Tatkal · luxury trains</div></div>
+                  </a>
+                  <a href="/services/mice" class="vn-svc-row" onclick="closeAllDropdowns()">
+                    <div class="vn-svc-icon">🏢</div>
+                    <div><div class="vn-svc-title">Corporate MICE</div><div class="vn-svc-desc">Meetings · incentives · offsites</div></div>
+                  </a>
                 </div>
                 <div class="vn-dd-footer">
                   <span>Looking for a holiday package?</span>
@@ -204,6 +216,10 @@ async function renderNavbar() {
           <a href="/services/flights"   onclick="toggleVnDrawer()"><span>✈️</span> Flights</a>
           <a href="/services/hotels"    onclick="toggleVnDrawer()"><span>🏨</span> Hotels & Resorts</a>
           <a href="/services/insurance" onclick="toggleVnDrawer()"><span>🛡️</span> Insurance</a>
+          <a href="/services/passport"  onclick="toggleVnDrawer()"><span>📘</span> Passport Services</a>
+          <a href="/services/bus"       onclick="toggleVnDrawer()"><span>🚌</span> Bus & Coach</a>
+          <a href="/services/train"     onclick="toggleVnDrawer()"><span>🚆</span> Train Ticketing</a>
+          <a href="/services/mice"      onclick="toggleVnDrawer()"><span>🏢</span> Corporate MICE</a>
         </div>
 
         <button class="vn-drawer-acc-btn" onclick="toggleVnAcc('vnAccHolidays', this)">

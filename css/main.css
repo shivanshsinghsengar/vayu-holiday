@@ -1483,8 +1483,8 @@ div[style*="z-index: 9999"][style*="position: fixed"] a[href*="netlify"] {
 }
 
 /* Services card */
-.vn-card-services { min-width:500px; }
-.vn-svc-grid { display:grid;grid-template-columns:1fr 1fr;gap:2px;padding:6px; }
+.vn-card-services { min-width:580px; }
+.vn-svc-grid { display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;padding:6px; }
 .vn-svc-row {
   display:flex;align-items:center;gap:.85rem;
   padding:.8rem 1rem;border-radius:10px;text-decoration:none;
