@@ -127,14 +127,6 @@ async function renderNavbar() {
                   </div>
                   <svg class="vn-hol-arrow" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg>
                 </a>
-                <a href="/honeymoon" class="vn-hol-row" onclick="closeAllDropdowns()">
-                  <div class="vn-hol-thumb" style="background:linear-gradient(135deg,#4a1a2d,#7a2d5f)">💑</div>
-                  <div class="vn-hol-info">
-                    <div class="vn-hol-title">Honeymoon</div>
-                    <div class="vn-hol-dest">Maldives · Bali · Kashmir</div>
-                  </div>
-                  <svg class="vn-hol-arrow" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg>
-                </a>
                 <a href="/group-tours" class="vn-hol-row" onclick="closeAllDropdowns()">
                   <div class="vn-hol-thumb" style="background:linear-gradient(135deg,#2d3a1a,#5f7a2d)">👥</div>
                   <div class="vn-hol-info">
@@ -220,7 +212,6 @@ async function renderNavbar() {
         <div class="vn-drawer-acc" id="vnAccHolidays">
           <a href="/domestic"      onclick="toggleVnDrawer()"><span>🏔️</span> Domestic India</a>
           <a href="/international" onclick="toggleVnDrawer()"><span>🌍</span> International</a>
-          <a href="/honeymoon"     onclick="toggleVnDrawer()"><span>💑</span> Honeymoon</a>
           <a href="/group-tours"   onclick="toggleVnDrawer()"><span>👥</span> Group Tours</a>
           <a href="/mice"          onclick="toggleVnDrawer()"><span>💼</span> Corporate MICE</a>
         </div>

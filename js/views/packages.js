@@ -92,7 +92,10 @@ async function renderPackagesView(filterType = "all") {
 
         <!-- PACKAGES GRID -->
         <div class="packages-grid" id="packagesCatalogGrid">
-          ${packages.map(p => renderPackageCard(p)).join('')}
+          ${packages.filter(p => {
+            if (initialCategory === 'all') return true;
+            return p.category === initialCategory || p.experienceType === initialCategory;
+          }).map(p => renderPackageCard(p)).join('')}
         </div>
 
         <!-- NO RESULTS MESSAGE -->
