@@ -1914,7 +1914,7 @@ function openBranchEditorModal(branchId = null) {
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
               <div class="form-group">
                 <label class="form-label">Phone Number</label>
-                <input type="text" name="phone" class="form-control" value="${b.phone || ''}" placeholder="+91 98260 12345" />
+                <input type="text" name="phone" class="form-control" value="${b.phone || ''}" placeholder="+91 888 975 4969" />
               </div>
               <div class="form-group">
                 <label class="form-label">Google Maps URL</label>

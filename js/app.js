@@ -52,8 +52,8 @@ async function sendEnquiryEmail(enquiry) {
       travel_month: sanitizeInput(enquiry.travelMonth),
       travelers:    sanitizeInput(enquiry.travelers),
       enquiry_id:   sanitizeInput(enquiry.id || "N/A"),
-      office_phone: "+91 755 492 8899",
-      whatsapp:     "+91 98260 12345"
+      office_phone: "+91 888 975 4969",
+      whatsapp:     "+91 888 975 4969"
     });
     return true;
   } catch (err) {

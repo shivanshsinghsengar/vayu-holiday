@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    VAYU HOLIDAYS — ABOUT US VIEW (Heritage, Leadership & Bhopal Headquarters)
    ========================================================================== */
 
@@ -6,14 +6,14 @@ async function renderAboutView() {
   const company      = await window.vayuStore.getCompany();
   const pageSettings = await window.vayuStore.getPageSettings();
   const leadership   = (company.leadership || []);
-  const waNumber     = (company.whatsapp || "919826012345").replace(/[^0-9]/g, "");
+  const waNumber     = (company.whatsapp || "918889754969").replace(/[^0-9]/g, "");
 
   // Initials helper
   const initials = (name) => name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
 
   const storyTitle = pageSettings.aboutStoryTitle || "Your Journey. Beautifully Planned.";
   const storyBody  = pageSettings.aboutStoryBody  || "At Vayu Holidays, we believe that true luxury travel is never loud or cookie-cutter. It is found in unhurried mornings on misty tea estates, private sunset shikaras, seamless international airport transfers, and the absolute confidence that a dedicated concierge is always one message away.";
-  const storyBody2 = pageSettings.aboutStoryBody2 || `Headquartered at <strong>${company.office || 'Raksha Vihar, Vayu Pride Residency, Airport Road, Bhopal'}</strong>, we serve discerning families, honeymoon couples, and corporate delegations across Madhya Pradesh and nationwide.`;
+  const storyBody2 = pageSettings.aboutStoryBody2 || `Headquartered at <strong>${company.office || 'Vayu Pride Residency, Raksha Vihar, Bhopal'}</strong>, we serve discerning families, honeymoon couples, and corporate delegations across Madhya Pradesh and nationwide.`;
 
   return `
     <div class="package-detail-header">
@@ -65,7 +65,7 @@ async function renderAboutView() {
           <div style="position: relative;">
             <img 
               src="/icons/headquator.png" 
-              alt="Vayu Holidays Headquarters — Raksha Vihar, Airport Road, Bhopal" 
+              alt="Vayu Holidays Headquarters — Vayu Pride Residency, Raksha Vihar, Bhopal" 
               style="border-radius: var(--radius-xl); border: 1px solid var(--border-gold); box-shadow: var(--shadow-xl); width: 100%; object-fit: cover;" 
             />
             <div style="position: absolute; bottom: -25px; right: -25px; background: var(--color-obsidian); color: var(--color-ivory); padding: 1.5rem 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-gold); max-width: 280px; box-shadow: var(--shadow-lg);">
@@ -181,7 +181,7 @@ async function renderAboutView() {
           <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-gold); box-shadow: var(--shadow-lg); position: relative;">
             <img
               src="/icons/headquator.png"
-              alt="Vayu Holidays Headquarters — Raksha Vihar, Airport Road, Bhopal"
+              alt="Vayu Holidays Headquarters — Vayu Pride Residency, Raksha Vihar, Bhopal"
               style="width: 100%; height: 280px; object-fit: cover; display: block;"
             />
             <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(10,13,18,0.88) 0%, transparent 100%); padding: 1.5rem 1.25rem 1.25rem;">

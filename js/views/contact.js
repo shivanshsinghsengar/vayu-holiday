@@ -1,11 +1,11 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    VAYU HOLIDAYS — CONTACT US VIEW (Bhopal Headquarters & Consultation)
    ========================================================================== */
 
 async function renderContactView() {
   const company  = await window.vayuStore.getCompany();
   const branches = await window.vayuStore.getBranches();
-  const waNumber = (company.whatsapp || "919826012345").replace(/[^0-9]/g, "");
+  const waNumber = (company.whatsapp || "918889754969").replace(/[^0-9]/g, "");
 
   return `
     <div class="package-detail-header">

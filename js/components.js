@@ -30,7 +30,7 @@ async function renderNavbar() {
   const company = await window.vayuStore.getCompany();
   const pageSettings = await window.vayuStore.getPageSettings();
   const currentCurrency = window.vayuStore.getCurrency();
-  const waNumber = (company.whatsapp || "+91 98260 12345").replace(/[^0-9]/g, "");
+  const waNumber = (company.whatsapp || "+91 888 975 4969").replace(/[^0-9]/g, "");
   const waMsg = encodeURIComponent("Hello Vayu Holidays! I'd like to inquire about planning a luxury journey.");
   const showJournal = pageSettings.showJournal !== false;
 
@@ -92,7 +92,7 @@ async function renderNavbar() {
                   </a>
                   <a href="/services/passport" class="vn-svc-row" onclick="closeAllDropdowns()">
                     <div class="vn-svc-icon">📘</div>
-                    <div><div class="vn-svc-title">Passport Services</div><div class="vn-svc-desc">Fresh · renewal · Tatkaal</div></div>
+                    <div><div class="vn-svc-title">Passport Services</div><div class="vn-svc-desc">Fresh · renewal · Tatkal</div></div>
                   </a>
                 </div>
                 <div class="vn-dd-footer">
@@ -252,7 +252,7 @@ async function renderNavbar() {
 // --- Footer Component ---
 async function renderFooter() {
   const company = await window.vayuStore.getCompany();
-  const waNumber = (company.whatsapp || "+91 98260 12345").replace(/[^0-9]/g, "");
+  const waNumber = (company.whatsapp || "+91 888 975 4969").replace(/[^0-9]/g, "");
   const waMsg = encodeURIComponent(company.whatsappMessage || "Hello Vayu Holidays! I'd like to inquire about a holiday.");
 
   return `
@@ -269,7 +269,7 @@ async function renderFooter() {
             </a>
 
             <p class="footer-desc">
-              Your Journey. Beautifully Planned. Bespoke luxury travel experiences, handcrafted itineraries, and dedicated 24/7 concierge "” from Bhopal to the world.
+              Your Journey. Beautifully Planned. Bespoke luxury travel experiences, handcrafted itineraries, and dedicated 24/7 concierge - from Bhopal to the world.
             </p>
 
             <!-- Trust Badges -->
@@ -378,8 +378,8 @@ async function renderFooter() {
                 <span class="footer-contact-icon" style="color:#25D366;" aria-hidden="true">${ICONS.whatsapp}</span>
                 <div>
                   <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" style="color:#4ade80;">
-                    ${company.whatsapp || "+91 98260 12345"}
-                    <span style="display:block;font-size:0.76rem;opacity:0.75;">Instant Reply · 9 AM "“ 9 PM</span>
+                    ${company.whatsapp || "+91 888 975 4969"}
+                    <span style="display:block;font-size:0.76rem;opacity:0.75;">Instant Reply - 9 AM to 9 PM</span>
                   </a>
                 </div>
               </div>
@@ -412,7 +412,7 @@ async function renderFooter() {
         <div class="footer-bottom">
           <div class="footer-bottom-left">
             <span>© 2026 Vayu Holidays. All rights reserved.</span>
-            <span class="footer-reg-info">GST: 23XXXXX0000X1ZX &nbsp;|&nbsp; IATA Accredited Agent</span>
+            <span class="footer-reg-info">IATA Accredited Agent</span>
           </div>
           <div class="footer-legal-links">
             <a href="/terms">Terms & Conditions</a>
@@ -533,7 +533,7 @@ window.renderDestinationCard = function renderDestinationCard(dest) {
 // --- Enquiry Modal ---
 async function openEnquiryModal(prefill = {}) {
   const company = await window.vayuStore.getCompany();
-  const waNumber = (company.whatsapp || "919826012345").replace(/[^0-9]/g, "");
+  const waNumber = (company.whatsapp || "918889754969").replace(/[^0-9]/g, "");
 
   const modalHtml = `
     <div class="modal-overlay open" id="enquiryModalOverlay">

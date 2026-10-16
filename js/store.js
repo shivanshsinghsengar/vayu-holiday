@@ -50,6 +50,16 @@ class VayuStore {
 
   // ─── INIT localStorage with seed data (fallback mode) ───────────────────
   _initLocalStorage() {
+    // ── Data version bump: increment VAYU_DATA_VERSION when seed data changes ──
+    const VAYU_DATA_VERSION = "v2026_10pkg";
+    const storedVersion = localStorage.getItem("vayu_data_version");
+    if (storedVersion !== VAYU_DATA_VERSION) {
+      // Seed data changed — refresh packages and destinations from latest INITIAL_DATA
+      localStorage.setItem(LS.PACKAGES, JSON.stringify(INITIAL_DATA.packages));
+      localStorage.setItem(LS.DESTINATIONS, JSON.stringify(INITIAL_DATA.destinations));
+      localStorage.setItem("vayu_data_version", VAYU_DATA_VERSION);
+    }
+
     const sets = [
       [LS.PACKAGES,     INITIAL_DATA.packages],
       [LS.DESTINATIONS, INITIAL_DATA.destinations],
@@ -522,7 +532,7 @@ class VayuStore {
       showJournal:      true,
       aboutStoryTitle:  "Your Journey. Beautifully Planned.",
       aboutStoryBody:   "At Vayu Holidays, we believe that true luxury travel is never loud or cookie-cutter. It is found in unhurried mornings on misty tea estates, private sunset shikaras, seamless international airport transfers, and the absolute confidence that a dedicated concierge is always one message away.",
-      aboutStoryBody2:  "Headquartered at Raksha Vihar, Vayu Pride Residency, Airport Road in Bhopal, we serve discerning families, honeymoon couples, and corporate delegations across Madhya Pradesh and nationwide."
+      aboutStoryBody2:  "Headquartered at Vayu Pride Residency, Raksha Vihar, Bhopal, we serve discerning families, honeymoon couples, and corporate delegations across Madhya Pradesh and nationwide."
     };
     if (this._useFirestore) {
       try {

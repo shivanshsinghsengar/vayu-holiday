@@ -7,9 +7,9 @@
 const SITE = {
   url:         "https://www.vayuholidays.com",
   name:        "Vayu Holidays",
-  phone:       "+91-755-492-8899",
-  whatsapp:    "+91-98260-12345",
-  address:     "Raksha Vihar, Vayu Pride Residency, Airport Road, Bhopal, Madhya Pradesh 462030, India",
+  phone:       "+91-888-975-4969",
+  whatsapp:    "+91-888-975-4969",
+  address:     "Vayu Pride Residency, Raksha Vihar, Bhopal, Madhya Pradesh 462031, India",
   logo:        "https://www.vayuholidays.com/icons/icon-512.png",
   defaultImg:  "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
   rating:      4.9,
@@ -59,8 +59,8 @@ const ROUTE_META = {
     image:       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
   },
   "/contact": {
-    title:       "Contact Vayu Holidays — Bhopal Travel Agency | +91 755 492 8899",
-    description: "Contact Vayu Holidays at our Airport Road Bhopal office. Call +91 755 492 8899 or WhatsApp +91 98260 12345. Mon–Sat 9:30 AM–7:30 PM.",
+    title:       "Contact Vayu Holidays — Bhopal Travel Agency | +91 888 975 4969",
+    description: "Contact Vayu Holidays at our Bhopal office. Call +91 888 975 4969 or WhatsApp +91 888 975 4969. Mon–Sat 9:30 AM–7:30 PM.",
     image:       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
   },
   "/blog": {
@@ -84,7 +84,7 @@ const SERVICE_META = {
   flights:   { title: "Flight Bookings & Charters | Vayu Holidays Bhopal",        description: "Domestic & international flight bookings from Bhopal. Best fares, group rates, IATA accredited." },
   hotels:    { title: "Luxury Hotel Bookings & Resorts | Vayu Holidays",           description: "Handpicked 4★ & 5★ hotel bookings worldwide. Heritage palaces, overwater villas — all verified." },
   visa:      { title: "Visa Assistance (50+ Countries) | Vayu Holidays Bhopal",    description: "Expert visa assistance for Schengen, UAE, Bali, UK, USA & 50+ countries. 99% first-time approval." },
-  passport:  { title: "Passport Services — Fresh & Renewal | Vayu Holidays",       description: "Passport application, renewal, and Tatkaal assistance in Bhopal." },
+  passport:  { title: "Passport Services — Fresh & Renewal | Vayu Holidays",       description: "Passport application, renewal, and Tatkal assistance in Bhopal." },
   forex:     { title: "Forex & Multi-Currency Travel Cards | Vayu Holidays",       description: "Zero-markup foreign exchange and multi-currency travel cards. RBI-compliant. Doorstep delivery." },
   insurance: { title: "Travel Insurance — Cashless Global Cover | Vayu Holidays",  description: "Comprehensive travel insurance with cashless hospitalization. Schengen visa compliant." },
   bus:       { title: "Volvo Bus & Coach Bookings | Vayu Holidays Bhopal",         description: "Comfortable Volvo and luxury coach bookings from Bhopal. Group charters available." },
@@ -193,10 +193,10 @@ function schemaOrg() {
     "email": "concierge@vayuholidays.com",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Raksha Vihar, Vayu Pride Residency, Airport Road",
+      "streetAddress": "Vayu Pride Residency, Raksha Vihar",
       "addressLocality": "Bhopal",
       "addressRegion": "Madhya Pradesh",
-      "postalCode": "462030",
+      "postalCode": "462031",
       "addressCountry": "IN"
     },
     "geo": { "@type": "GeoCoordinates", "latitude": "23.2599", "longitude": "77.4126" },
@@ -236,8 +236,8 @@ function schemaPackage(pkg) {
 
 const HOME_FAQS = [
   { q: "What services does Vayu Holidays offer?",             a: "Bespoke holiday packages, flight bookings, hotel reservations, visa assistance for 50+ countries, forex, travel insurance, Volvo bus & train ticketing, and corporate MICE — all from our Bhopal office." },
-  { q: "Where is Vayu Holidays located?",                     a: "Raksha Vihar, Vayu Pride Residency, Airport Road, Bhopal, Madhya Pradesh, India — 462030." },
-  { q: "How do I book a holiday package with Vayu Holidays?", a: "Submit an enquiry via our website, WhatsApp us on +91 98260 12345, or call +91 755 492 8899. Our travel manager shares an itemized quotation within 2 hours." },
+  { q: "Where is Vayu Holidays located?",                     a: "Vayu Pride Residency, Raksha Vihar, Bhopal, Madhya Pradesh, India – 462031." },
+  { q: "How do I book a holiday package with Vayu Holidays?", a: "Submit an enquiry via our website, WhatsApp us on +91 888 975 4969, or call +91 888 975 4969. Our travel manager shares an itemized quotation within 2 hours." },
   { q: "Do you offer customized honeymoon packages?",         a: "Yes. All itineraries including honeymoon packages are fully customizable — private villas, specific airlines, dietary preferences, celebration amenities." },
   { q: "Does Vayu Holidays assist with Schengen visa?",       a: "Yes. Our dedicated visa desk has a 99% first-time approval rate for Schengen, UAE, UK, USA, and 50+ other country visas." }
 ];

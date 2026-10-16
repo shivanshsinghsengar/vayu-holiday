@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    VAYU HOLIDAYS — HOMEPAGE (Editorial Redesign)
    Philosophy: 80% whitespace · Restrained interactions · Editorial hierarchy
    ========================================================================== */
@@ -68,7 +68,7 @@ async function renderHomeView() {
   const services     = window.vayuStore.getServices();
   const testimonials = await window.vayuStore.getTestimonials();
   const blogs        = await window.vayuStore.getBlogs();
-  const waNumber     = (company.whatsapp || "919826012345").replace(/[^0-9]/g, "");
+  const waNumber     = (company.whatsapp || "918889754969").replace(/[^0-9]/g, "");
   const waMsg        = encodeURIComponent(company.whatsappMessage || "Hello Vayu Holidays! I'd like to inquire about a luxury holiday.");
 
   // Page settings with fallbacks

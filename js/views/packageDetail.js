@@ -5,7 +5,7 @@
 async function renderPackageDetailView(packageId) {
   const pkg      = await window.vayuStore.getPackageById(packageId);
   const company  = await window.vayuStore.getCompany();
-  const waNumber = (company.whatsapp || "919826012345").replace(/[^0-9]/g, "");
+  const waNumber = (company.whatsapp || "918889754969").replace(/[^0-9]/g, "");
 
   if (!pkg) {
     return `
