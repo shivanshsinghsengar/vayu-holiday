@@ -136,15 +136,15 @@ async function renderHomeView() {
           </div>
 
           <!-- Frosted Glass Dock Search Bar -->
-          <div class="hero-search-bar" role="search" aria-label="Journey finder">
+          <div class="hero-search-bar" role="search" aria-label="Journey finder" style="grid-template-columns: 1fr auto;">
 
             <div class="search-field" id="destSearchField" style="position:relative;z-index:100;">
-              <span class="search-field-label">${ICONS.mapPin} Where to?</span>
+              <span class="search-field-label">${ICONS.mapPin} Destination</span>
               <input
                 type="text"
                 class="search-field-input"
                 id="heroSearchDest"
-                placeholder='Try "Kashmir..."'
+                placeholder='Where do you want to go?'
                 autocomplete="off"
                 oninput="showDestSuggestions(this.value)"
                 onfocus="showDestSuggestions(this.value)"
@@ -154,47 +154,8 @@ async function renderHomeView() {
               <div id="destSuggestions" style="display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;width:max-content;max-width:440px;background:rgba(14,18,28,0.96);backdrop-filter:blur(20px);border:1px solid rgba(212,175,55,0.25);border-radius:14px;z-index:9999;max-height:260px;overflow-y:auto;box-shadow:0 20px 50px rgba(0,0,0,0.7);"></div>
             </div>
 
-            <div class="search-field">
-              <span class="search-field-label">${ICONS.calendar} When?</span>
-              <select class="search-field-select" id="heroSearchMonth" aria-label="Select month">
-                <option value="">Pick a month</option>
-                <option value="oct">Oct 2026</option>
-                <option value="nov">Nov 2026</option>
-                <option value="dec">Dec 2026</option>
-                <option value="jan">Jan 2027</option>
-                <option value="feb">Feb 2027</option>
-                <option value="mar">Mar 2027</option>
-                <option value="apr">Apr 2027</option>
-                <option value="may">May 2027</option>
-              </select>
-            </div>
-
-            <div class="search-field">
-              <span class="search-field-label">${ICONS.sparkles} Trip Type</span>
-              <select class="search-field-select" id="heroSearchTheme" aria-label="Select experience">
-                <option value="">Any Style</option>
-                <option value="honeymoon">💑 Honeymoon</option>
-                <option value="luxury">👑 Ultra-Luxury</option>
-                <option value="family">👨‍👩‍👧 Family</option>
-                <option value="group">🌍 Group Tour</option>
-                <option value="adventure">⛰️ Adventure</option>
-                <option value="mice">🏢 Corporate MICE</option>
-              </select>
-            </div>
-
-            <div class="search-field">
-              <span class="search-field-label">${ICONS.clock} Duration</span>
-              <select class="search-field-select" id="heroSearchDuration" aria-label="Select duration">
-                <option value="">How long?</option>
-                <option value="3-5">Weekend (3–5 Days)</option>
-                <option value="4-6">Short (4–6 Days)</option>
-                <option value="7-9">Classic (7–9 Days)</option>
-                <option value="10+">Grand Tour (10+ Days)</option>
-              </select>
-            </div>
-
             <button class="search-submit-btn" onclick="executeHeroSearch()">
-              ${ICONS.plane} Search
+              ${ICONS.plane} Find
             </button>
           </div>
 
