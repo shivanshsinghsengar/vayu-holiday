@@ -1540,6 +1540,495 @@ const INITIAL_DATA = {
     },
     // ── END NEW PACKAGES ──────────────────────────────────────────────────────
 
+    // ── PACKAGES FROM HTML DATA (BATCH 2) ─────────────────────────────────────
+    {
+      id: "pkg-kerala-gods-own",
+      title: "Kerala — God's Own Country",
+      slug: "kerala-gods-own-country-4n5d",
+      destinationId: "kerala",
+      destinationName: "Munnar, Thekkady & Alleppey, Kerala",
+      category: "domestic",
+      experienceType: "honeymoon",
+      durationDays: 5,
+      durationNights: 4,
+      price: 13499,
+      originalPrice: 16499,
+      rating: 4.9,
+      reviewsCount: 128,
+      image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1000&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1000&q=80",
+        "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?w=400&q=80",
+        "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&q=80",
+        "https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?w=400&q=80"
+      ],
+      tag: "Romantic & Family Favorite",
+      highlights: [
+        "Munnar: Eravikulam National Park (Nilgiri Tahr) & Mattupetty Dam",
+        "Tea Museum & Blossom International Park, Munnar",
+        "Periyar Wildlife Sanctuary boat ride, Thekkady",
+        "Alleppey backwater boating & Alleppey Beach",
+        "Cheeyappara & Valara waterfalls en route"
+      ],
+      overview: "Discover God's Own Country in 4 nights — from Munnar's emerald tea gardens and Thekkady's wildlife sanctuary to Alleppey's serene palm-fringed backwaters. A perfect blend of nature, wildlife, and leisure for couples and families.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Cochin to Munnar",
+          description: "Arrive in Cochin and drive to Munnar. En route visit Cheeyappara and Valara waterfalls. Afternoon visit Tea Museum and Blossom International Park.",
+          meals: "Breakfast (CP)",
+          stay: "Cloud Castle Resort, Munnar (4 Star, Deluxe Room)"
+        },
+        {
+          day: 2,
+          title: "Munnar Local Sightseeing",
+          description: "Visit Eravikulam National Park — home to the endangered Nilgiri Tahr. Stroll through tea gardens, visit Mattupetty Dam and Kundala Lake.",
+          meals: "Breakfast (CP)",
+          stay: "Cloud Castle Resort, Munnar (4 Star, Deluxe Room)"
+        },
+        {
+          day: 3,
+          title: "Munnar to Thekkady",
+          description: "Drive to Thekkady. Afternoon boat ride on Periyar Lake in Periyar Wildlife Sanctuary. Visit spice plantations and learn about various spices.",
+          meals: "Breakfast (CP)",
+          stay: "Hotel Lincoln Square, Thekkady (Deluxe Room)"
+        },
+        {
+          day: 4,
+          title: "Thekkady to Alleppey",
+          description: "Drive to Alleppey. Enjoy serene backwater boating (cost extra) through lush paddy fields and coconut groves. Evening at Alleppey Beach.",
+          meals: "Breakfast (CP)",
+          stay: "Lake Way Resort, Alleppey (Deluxe Room)"
+        },
+        {
+          day: 5,
+          title: "Alleppey to Cochin Departure",
+          description: "Drive to Cochin, enjoy last-minute shopping, and drop off at Cochin Airport for departure.",
+          meals: "Breakfast Included",
+          stay: "Check-out"
+        }
+      ],
+      inclusions: [
+        "04 Nights accommodation on twin sharing basis",
+        "Daily Breakfast (CP) at all hotels",
+        "All transfers and sightseeing by AC vehicle as per itinerary",
+        "Road taxes, parking fees, and fuel charges"
+      ],
+      exclusions: [
+        "Onward & return flight / train tickets",
+        "Travel Insurance",
+        "Entrance fees at sightseeing spots and boating charges",
+        "Lunch & Dinner",
+        "Personal expenses (tips, laundry, calls, medical)"
+      ],
+      hotelInfo: "Cloud Castle Resort Munnar (4 Star, 2N) + Hotel Lincoln Square Thekkady (1N) + Lake Way Resort Alleppey (1N). All CP meal plan.",
+      bestTime: "September to February"
+    },
+
+    {
+      id: "pkg-andaman-5star",
+      title: "Andaman & Nicobar Islands Tour",
+      slug: "andaman-port-blair-havelock-3n4d",
+      destinationId: "andaman",
+      destinationName: "Port Blair & Swaraj Dweep (Havelock), Andaman",
+      category: "domestic",
+      experienceType: "luxury",
+      durationDays: 4,
+      durationNights: 3,
+      price: 24500,
+      originalPrice: 28999,
+      rating: 4.95,
+      reviewsCount: 96,
+      image: "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=1000&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=1000&q=80",
+        "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80"
+      ],
+      tag: "Featured Island Escape",
+      highlights: [
+        "Cellular Jail National Memorial & evening Light & Sound Show",
+        "Corbyn's Cove Beach, Port Blair",
+        "Radhanagar Beach, Havelock — Asia's 7th Best Beach",
+        "Kalapathar Beach & Chidiya Tapu sunset",
+        "5-Star stays at Seashell Port Blair & Seashell Havelock"
+      ],
+      overview: "Experience the pristine turquoise islands of Andaman in luxury. Visit the historic Cellular Jail, cruise to legendary Radhanagar Beach, and stay at the award-winning 5-star Seashell properties — all in just 3 nights.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival at Port Blair & Tour Around",
+          description: "Airport pickup and hotel drop. After lunch visit Cellular Jail (National Memorial), Corbyn's Cove Beach, and attend the evening Light & Sound Show at Cellular Jail. Complimentary photography at Corbyn's Cove.",
+          meals: "Breakfast (CP)",
+          stay: "Seashell Port Blair (5 Star, Standard AC Room)"
+        },
+        {
+          day: 2,
+          title: "Trip to Swaraj Dweep (Havelock Island)",
+          description: "Transfer to Port Blair Jetty. Private cruise (Green Ocean / Nautika / Makruzz) to Havelock Island. Visit Kalapathar Beach and the iconic Radhanagar Beach — Asia's 7th best beach.",
+          meals: "Breakfast (CP)",
+          stay: "Seashell Havelock (5 Star, Nicobar Cottage)"
+        },
+        {
+          day: 3,
+          title: "Return to Port Blair",
+          description: "Checkout and return cruise from Havelock to Port Blair. Afternoon visit Chidiya Tapu Beach for beautiful sunset views. Return to hotel overnight.",
+          meals: "Breakfast (CP)",
+          stay: "Seashell Port Blair (5 Star, Standard AC Room)"
+        },
+        {
+          day: 4,
+          title: "Return with Sweet Memories",
+          description: "Checkout from hotel and drop at Airport 2 hours prior to flight. Fly home with unforgettable Andaman memories.",
+          meals: "Breakfast Included",
+          stay: "Check-out"
+        }
+      ],
+      inclusions: [
+        "03 Nights 5-Star accommodation at Seashell hotels (CP)",
+        "1 Private AC car for all pickups, drops & sightseeing",
+        "Private cruise transfers (Green Ocean / Nautika / Makruzz) Port Blair ↔ Havelock",
+        "Light & Sound Show tickets at Cellular Jail",
+        "Speed boat charges, permits, parking & GST",
+        "Complimentary Photography at Corbyn's Cove",
+        "24/7 support"
+      ],
+      exclusions: [
+        "Flight tickets to Port Blair",
+        "Lunch & Dinner",
+        "Laundry, calls, beverages, camera charges",
+        "Water sports charges",
+        "Personal expenses"
+      ],
+      hotelInfo: "Seashell Port Blair (5 Star, Standard AC Room, 2N) + Seashell Havelock (5 Star, Nicobar Cottage, 1N). All CP meal plan.",
+      bestTime: "November to May"
+    },
+
+    {
+      id: "pkg-ujjain-omkareshwar",
+      title: "Ujjain Omkareshwar 2N/3D Spiritual Tour",
+      slug: "ujjain-omkareshwar-indore-tour-2n3d",
+      destinationId: "madhyapradesh",
+      destinationName: "Ujjain, Omkareshwar & Indore, MP",
+      category: "domestic",
+      experienceType: "group",
+      durationDays: 3,
+      durationNights: 2,
+      price: 6499,
+      originalPrice: 8499,
+      rating: 4.92,
+      reviewsCount: 142,
+      image: "https://images.unsplash.com/photo-1627894483216-2138af692e32?w=1000&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1627894483216-2138af692e32?w=1000&q=80",
+        "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?w=400&q=80",
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80",
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80"
+      ],
+      tag: "Spiritual Bestseller",
+      highlights: [
+        "Mahakaleshwar Jyotirlinga Temple & Mahakal Lok Corridor, Ujjain",
+        "Kal Bhairav Temple & Harsiddhi Mata Mandir, Ujjain",
+        "Omkareshwar Jyotirlinga on Mandhata Island, Narmada River",
+        "Ram Ghat, Ujjain",
+        "Half-day Indore sightseeing & drop"
+      ],
+      overview: "A divine 2-night spiritual journey covering two of the 12 Jyotirlingas — Mahakaleshwar in Ujjain and Omkareshwar on Narmada's sacred island. Ideal for pilgrimage groups, families, and solo seekers departing from Bhopal, Indore, or Ujjain.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Pickup from Indore/Ujjain & Sightseeing",
+          description: "Pickup and transfer to Ujjain hotel. Visit Kal Bhairav Temple, Harsiddhi Mata Mandir, Mahakaleshwar Jyotirlinga Temple, and the grand Mahakal Corridor. Evening Ram Ghat darshan.",
+          meals: "Breakfast (CP)",
+          stay: "Hotel SS-1, Ujjain (Deluxe Room)"
+        },
+        {
+          day: 2,
+          title: "Ujjain to Omkareshwar Local Sightseeing",
+          description: "Drive to Omkareshwar on Mandhata Island. Visit Omkareshwar Jyotirlinga Temple, Mamleshwar Temple, Narmada River Ghats, and local markets. Return to Ujjain.",
+          meals: "Breakfast (CP)",
+          stay: "Hotel SS-1, Ujjain (Deluxe Room)"
+        },
+        {
+          day: 3,
+          title: "Half-Day Indore Sightseeing & Drop",
+          description: "Checkout after breakfast, enjoy half-day sightseeing and shopping in Indore (Chappan Dukan, Rajwada, Lal Bagh Palace), and drop at Indore Airport / Railway Station.",
+          meals: "Breakfast Included",
+          stay: "Check-out"
+        }
+      ],
+      inclusions: [
+        "02 Nights accommodation in Ujjain (CP)",
+        "Daily Breakfast",
+        "Pickup & Drop from Indore/Ujjain",
+        "Private vehicle for all transfers & sightseeing",
+        "Driver allowance, fuel, toll & parking"
+      ],
+      exclusions: [
+        "Flight / Train tickets",
+        "VIP Darshan / Aarti tickets",
+        "Entry tickets, boating charges, temple donations",
+        "Lunch & Dinner",
+        "Travel Insurance & personal expenses"
+      ],
+      hotelInfo: "Hotel SS-1, Ujjain — Deluxe Room, CP meal plan. 2 Nights.",
+      bestTime: "October to March | Mahashivratri special"
+    },
+
+    {
+      id: "pkg-manali-kasol",
+      title: "Manali Kasol 4N/5D Hill Adventure",
+      slug: "manali-kasol-himachal-tour-4n5d",
+      destinationId: "himachal",
+      destinationName: "Manali & Kasol, Himachal Pradesh",
+      category: "domestic",
+      experienceType: "group",
+      durationDays: 5,
+      durationNights: 4,
+      price: 12999,
+      originalPrice: 16999,
+      rating: 4.88,
+      reviewsCount: 110,
+      image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=1000&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=1000&q=80",
+        "https://images.unsplash.com/photo-1477414348463-c0eb7f1359b6?w=400&q=80",
+        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&q=80",
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80"
+      ],
+      tag: "Mountain Adventure Favorite",
+      highlights: [
+        "Manali: Solang Valley, Hadimba Devi Temple & Mall Road",
+        "Paragliding & River Rafting (optional activities)",
+        "Kasol: Parvati Valley riverside views",
+        "Manikaran Sahib Gurudwara & hot springs",
+        "Snow peaks & mountain viewpoints"
+      ],
+      overview: "A thrilling 4-night Himachal escape combining Manali's snow-capped adventure with the tranquil charm of Kasol's Parvati Valley. Perfect for groups, friends, and adventure seekers looking for mountains, rafting, and riverside peace.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival in Manali & Local Sightseeing",
+          description: "Check in at Manali hotel and enjoy local sightseeing including Hadimba Devi Temple, Mall Road, and the vibrant local markets.",
+          meals: "Dinner Included",
+          stay: "Khushbu Resort, Manali"
+        },
+        {
+          day: 2,
+          title: "Manali Adventure Excursion",
+          description: "Visit adventure valley points for Paragliding and River Rafting activities (charges extra). Experience the thrill of Himalayan adventure.",
+          meals: "Breakfast & Dinner",
+          stay: "Khushbu Resort, Manali"
+        },
+        {
+          day: 3,
+          title: "Manali Scenic Tour",
+          description: "Explore surrounding mountain viewpoints including Rohtang Pass area (subject to permit), Solang Valley, and local markets. Enjoy stunning snow-capped panoramas.",
+          meals: "Breakfast & Dinner",
+          stay: "Khushbu Resort, Manali"
+        },
+        {
+          day: 4,
+          title: "Manali to Kasol & Manikaran",
+          description: "Drive through the scenic Parvati Valley to Kasol. Visit the sacred Manikaran Sahib Gurudwara with its famous hot water springs. Overnight in Kasol.",
+          meals: "Breakfast & Dinner",
+          stay: "Hotel Anupam, Kasol"
+        },
+        {
+          day: 5,
+          title: "Kasol Exploration & Departure",
+          description: "Morning walk along the Parvati River. Enjoy Kasol's cafes and riverside charm before checkout and departure with fond Himalayan memories.",
+          meals: "Breakfast Included",
+          stay: "Check-out"
+        }
+      ],
+      inclusions: [
+        "04 Nights accommodation on double sharing basis",
+        "Daily Breakfast & Dinner as per itinerary",
+        "Private cab transfers and local sightseeing",
+        "All taxes, toll & parking"
+      ],
+      exclusions: [
+        "Airfare / Train fare",
+        "Adventure sport charges (Paragliding, Rafting)",
+        "Monument / Rohtang Pass permit charges",
+        "Lunch (own expense)",
+        "Personal expenses"
+      ],
+      hotelInfo: "Khushbu Resort Manali (3N) + Hotel Anupam Kasol (1N). Double occupancy.",
+      bestTime: "March to June | October to January (for snow)"
+    },
+
+    {
+      id: "pkg-bali-escape",
+      title: "Beautiful Bali Escape",
+      slug: "beautiful-bali-escape-5n6d",
+      destinationId: "bali",
+      destinationName: "Ubud, Kuta & Seminyak, Bali",
+      category: "international",
+      experienceType: "honeymoon",
+      durationDays: 6,
+      durationNights: 5,
+      price: 52500,
+      originalPrice: null,
+      rating: 4.97,
+      reviewsCount: 114,
+      image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1000&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1000&q=80",
+        "https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=400&q=80",
+        "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=400&q=80",
+        "https://images.unsplash.com/photo-1573790387438-4da905039392?w=400&q=80"
+      ],
+      tag: "Romantic Favorite",
+      highlights: [
+        "Ubud jungle resort stay: rice terraces & waterfalls",
+        "Kuta/Seminyak beach resort & beach clubs",
+        "Coastal temples, Tanah Lot & Uluwatu sunset",
+        "Water sports & Bali markets",
+        "Airport transfers & guided sightseeing throughout"
+      ],
+      overview: "Bali's most beautiful sides in one seamless 5-night journey — mystical Ubud jungles, terraced rice paddies, coastal sunset temples, and vibrant Seminyak beach clubs. Ideal for honeymoon couples and leisure travelers.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival in Bali & Transfer to Ubud",
+          description: "Pickup from Denpasar Airport and transfer to your Ubud jungle resort. Welcome with traditional Balinese hospitality.",
+          meals: "Breakfast",
+          stay: "Bakung Ubud Resort & Villa / Keep Jungle Resort, Ubud"
+        },
+        {
+          day: 2,
+          title: "Ubud Cultural & Nature Tour",
+          description: "Explore Ubud Tegalalang rice terraces, scenic waterfalls, Monkey Forest Sanctuary, and local art galleries. Balinese cooking class optional.",
+          meals: "Breakfast",
+          stay: "Bakung Ubud Resort & Villa / Keep Jungle Resort, Ubud"
+        },
+        {
+          day: 3,
+          title: "Island Excursion & Transfer to Kuta/Seminyak",
+          description: "Morning island sightseeing en route. Check-in at Kuta/Seminyak beachfront hotel. Evening at leisure on the beach.",
+          meals: "Breakfast",
+          stay: "Best Western Kuta Villa / Seminyak Paradise Hotel Bali"
+        },
+        {
+          day: 4,
+          title: "Bali Beaches & Sunset Temple Tour",
+          description: "Visit Tanah Lot sea temple for sunset, enjoy coastal beaches, and experience optional water sports at Tanjung Benoa.",
+          meals: "Breakfast",
+          stay: "Best Western Kuta Villa / Seminyak Paradise Hotel Bali"
+        },
+        {
+          day: 5,
+          title: "Leisure & Bali Exploration",
+          description: "Explore Seminyak's beach clubs, trendy cafes, boutique shopping markets, and local souvenir stores. Evening sunset cocktails at Seminyak.",
+          meals: "Breakfast",
+          stay: "Best Western Kuta Villa / Seminyak Paradise Hotel Bali"
+        },
+        {
+          day: 6,
+          title: "Departure from Bali",
+          description: "Checkout and transfer to Ngurah Rai Airport. Tour ends with beautiful Bali memories.",
+          meals: "Breakfast Included",
+          stay: "Check-out"
+        }
+      ],
+      inclusions: [
+        "05 Nights accommodation in Ubud jungle resort & Kuta/Seminyak hotel",
+        "Daily Breakfast at all properties",
+        "Airport transfers and guided sightseeing by private vehicle",
+        "English-speaking driver throughout"
+      ],
+      exclusions: [
+        "International Flights & Indonesia Visa on Arrival",
+        "Travel Insurance",
+        "Lunch & Dinner",
+        "Water sports charges (optional)",
+        "Personal expenses & currency exchange fluctuations"
+      ],
+      hotelInfo: "Bakung Ubud Resort & Villa / Keep Jungle Resort (2N, Ubud) + Best Western Kuta Villa / Seminyak Paradise Hotel Bali (3N). All daily breakfast.",
+      bestTime: "April to October"
+    },
+
+    {
+      id: "pkg-mp-heritage",
+      title: "Madhya Pradesh Heritage Jyotirlinga Escape",
+      slug: "mp-heritage-jyotirlinga-escape-3n4d",
+      destinationId: "madhyapradesh",
+      destinationName: "Ujjain, Omkareshwar, Maheshwar, Mandu & Indore, MP",
+      category: "domestic",
+      experienceType: "group",
+      durationDays: 4,
+      durationNights: 3,
+      price: 16833,
+      originalPrice: 19500,
+      rating: 4.94,
+      reviewsCount: 89,
+      image: "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?w=1000&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?w=1000&q=80",
+        "https://images.unsplash.com/photo-1627894483216-2138af692e32?w=400&q=80",
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80",
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80"
+      ],
+      tag: "Heritage & Spiritual Special",
+      highlights: [
+        "Mahakaleshwar Jyotirlinga & Mahakal Lok Corridor, Ujjain",
+        "Omkareshwar & Mamleshwar Jyotirlinga, Narmada River",
+        "Ahilya Fort & historic temples, Maheshwar",
+        "Mandu Heritage: Hindola Mahal, Jahaz Mahal & Roopmati Pavilion",
+        "Indore Chappan Dukan street food experience"
+      ],
+      overview: "A rich 3-night journey through Madhya Pradesh's most sacred and historically significant destinations — two Jyotirlingas, the ancient fort city of Maheshwar, the medieval splendor of Mandu, and cosmopolitan Indore. Perfect for heritage lovers and pilgrims.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival in Ujjain & Sightseeing",
+          description: "Check in to hotel. Visit Mahakaleshwar Temple, the grand Mahakal Lok Corridor, Ram Ghat, and Kal Bhairav Temple. Evening Aarti at Ram Ghat.",
+          meals: "Breakfast (CP)",
+          stay: "Hotel Perfect Stay / Perfectstayz Premium Shree Narayana, Ujjain"
+        },
+        {
+          day: 2,
+          title: "Ujjain to Omkareshwar & Maheshwar",
+          description: "Visit Omkareshwar & Mamleshwar Jyotirlinga on the sacred Mandhata Island on the Narmada River. Proceed to Maheshwar to visit Ahilya Fort, historic temples, and the beautiful Narmada Ghat.",
+          meals: "Breakfast (CP)",
+          stay: "Hotel Narmada Residency, Maheshwar"
+        },
+        {
+          day: 3,
+          title: "Maheshwar to Mandu & Indore",
+          description: "Explore Mandu's iconic heritage monuments — Hindola Mahal, Jahaz Mahal, and Roopmati Pavilion. Drive to Indore and explore the famous Chappan Dukan street food hub.",
+          meals: "Breakfast (CP)",
+          stay: "Amaya — A Boutique Hotel, Indore"
+        },
+        {
+          day: 4,
+          title: "Indore Sightseeing & Departure",
+          description: "Checkout after breakfast. Explore local Indore markets (Rajwada Palace, Lal Bagh). Drop at Indore Airport / Railway Station.",
+          meals: "Breakfast Included",
+          stay: "Check-out"
+        }
+      ],
+      inclusions: [
+        "03 Nights accommodation (Ujjain, Maheshwar, Indore) with CP",
+        "Sightseeing: Mahakal Lok, Ram Ghat, Kal Bhairav Temple",
+        "All transfers & sightseeing in Omkareshwar, Maheshwar, Mandu & Indore",
+        "Private vehicle with driver, fuel, toll & parking"
+      ],
+      exclusions: [
+        "Airfare / Train fare",
+        "Personal expenses (laundry, calls, room service)",
+        "Guide charges & monument entry fees",
+        "Unforeseen weather / roadblock expenses",
+        "Travel Insurance"
+      ],
+      hotelInfo: "Hotel Perfect Stay / Perfectstayz Premium Ujjain (1N) + Hotel Narmada Residency Maheshwar (1N) + Amaya Boutique Hotel Indore (1N). All CP.",
+      bestTime: "October to March"
+    },
+    // ── END BATCH 2 PACKAGES ─────────────────────────────────────────────────
+
     {
       id: "pkg-rajasthan-01",
       title: "Royal Heritage: Jaipur, Jodhpur & Udaipur Lakes",
