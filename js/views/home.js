@@ -231,7 +231,7 @@ async function renderHomeView() {
           <div class="dest-showcase-list" id="destinationsGrid">
             ${featuredDests.map((d, i) => `
               <div class="dest-list-item ${i === 0 ? 'active' : ''}"
-                   onclick="selectDestination(${i})"
+                   onclick="onDestManualSelect(${i})"
                    data-dest-id="${d.id}"
                    data-image="${d.image}"
                    data-name="${d.name}"
@@ -860,9 +860,16 @@ async function renderHomeView() {
 // ── Destination showcase interaction ────────────────────────────────────────
 const _destData = [];
 
+// Auto-rotate state
+let _destAutoTimer  = null;
+let _destTotalItems = 0;
+let _destCurrent    = 0;
+
 function selectDestination(index) {
   const items = document.querySelectorAll('.dest-list-item');
   if (!items[index]) return;
+
+  _destCurrent = index;
 
   // Update active state
   items.forEach(i => i.classList.remove('active'));
@@ -879,39 +886,80 @@ function selectDestination(index) {
   const destId   = item.dataset.destId;
 
   // Update main panel with smooth transition
-  const mainImg   = document.getElementById('destMainImg');
-  const mainName  = document.getElementById('destMainName');
+  const mainImg     = document.getElementById('destMainImg');
+  const mainName    = document.getElementById('destMainName');
   const mainTagline = document.getElementById('destMainTagline');
-  const mainTag   = document.getElementById('destMainTag');
-  const mainCount = document.getElementById('destMainCount');
-  const mainPrice = document.getElementById('destMainPrice');
-  const mainCta   = document.getElementById('destMainCta');
+  const mainTag     = document.getElementById('destMainTag');
+  const mainCount   = document.getElementById('destMainCount');
+  const mainPrice   = document.getElementById('destMainPrice');
+  const mainCta     = document.getElementById('destMainCta');
 
   if (mainImg) {
-    mainImg.style.opacity = '0';
-    mainImg.style.transform = 'scale(1.03)';
+    mainImg.style.transition = 'opacity 0.4s ease, transform 0.6s ease';
+    mainImg.style.opacity    = '0';
+    mainImg.style.transform  = 'scale(1.06)';
     setTimeout(() => {
-      mainImg.src = image;
-      mainImg.alt = name;
-      mainImg.style.opacity = '1';
-      mainImg.style.transform = 'scale(1)';
-    }, 200);
+      mainImg.src              = image;
+      mainImg.alt              = name;
+      mainImg.style.opacity    = '1';
+      mainImg.style.transform  = 'scale(1)';
+    }, 220);
   }
 
   const fade = (el, newText) => {
     if (!el) return;
-    el.style.opacity = '0';
-    setTimeout(() => { el.textContent = newText; el.style.opacity = '1'; }, 180);
+    el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    el.style.opacity    = '0';
+    el.style.transform  = 'translateY(8px)';
+    setTimeout(() => {
+      el.textContent      = newText;
+      el.style.opacity    = '1';
+      el.style.transform  = 'translateY(0)';
+    }, 200);
   };
 
-  fade(mainName, name);
+  fade(mainName,    name);
   fade(mainTagline, tagline);
-  fade(mainTag, type === 'domestic' ? 'Incredible India' : 'International');
-  fade(mainCount, count + ' itineraries');
-  fade(mainPrice, 'From ' + window.vayuStore.formatPrice(parseInt(price)));
-  if (mainCta) {
-    mainCta.href = '/packages?dest=' + destId;
+  fade(mainTag,     type === 'domestic' ? 'Incredible India' : 'International');
+  fade(mainCount,   count + ' itineraries');
+  fade(mainPrice,   'From ' + window.vayuStore.formatPrice(parseInt(price)));
+  if (mainCta) mainCta.href = '/packages?dest=' + destId;
+}
+
+/** Start auto-rotating destinations every 3.5 seconds */
+function startDestAutoRotate() {
+  _destTotalItems = document.querySelectorAll('.dest-list-item').length;
+  if (_destTotalItems < 2) return;
+
+  // Clear any existing timer
+  if (_destAutoTimer) clearInterval(_destAutoTimer);
+
+  _destAutoTimer = setInterval(() => {
+    _destCurrent = (_destCurrent + 1) % _destTotalItems;
+    selectDestination(_destCurrent);
+
+    // Scroll active item into view in the list (mobile)
+    const items = document.querySelectorAll('.dest-list-item');
+    if (items[_destCurrent]) {
+      items[_destCurrent].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, 3500);
+}
+
+/** Stop auto-rotate (called on manual click) */
+function stopDestAutoRotate() {
+  if (_destAutoTimer) {
+    clearInterval(_destAutoTimer);
+    _destAutoTimer = null;
   }
+}
+
+/** Manual click — pause auto-rotate for 8s then resume */
+function onDestManualSelect(index) {
+  stopDestAutoRotate();
+  selectDestination(index);
+  // Resume after 8 seconds of inactivity
+  setTimeout(startDestAutoRotate, 8000);
 }
 
 // ── Planner helpers ──────────────────────────────────────────────────────────
@@ -984,7 +1032,7 @@ async function filterDestinations(type, btn) {
 
   grid.innerHTML = filtered.slice(0, 6).map((d, i) => `
     <div class="dest-list-item ${i === 0 ? 'active' : ''}"
-         onclick="selectDestination(${i})"
+         onclick="onDestManualSelect(${i})"
          data-dest-id="${d.id}"
          data-image="${d.image}"
          data-name="${d.name}"

@@ -706,6 +706,13 @@ class VayuRouter {
         applyPackagesUrlFilters();
       }
 
+      // ── Start destination auto-rotate on home page ─────────────────
+      if (path === "/" || path === "/destinations" || path === "/experiences") {
+        setTimeout(() => {
+          if (typeof startDestAutoRotate === "function") startDestAutoRotate();
+        }, 800);
+      }
+
       // ── Page-in transition ─────────────────────────────────────────
       this._animateIn(app);
 

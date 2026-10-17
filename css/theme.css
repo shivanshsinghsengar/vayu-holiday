@@ -1731,6 +1731,28 @@ a[href*="netlify.com"][style*="position: fixed"] {
 .dest-list-item.active::before {
   content: '';
   position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--gold);
+  border-radius: 0 2px 2px 0;
+}
+
+/* Auto-rotate progress bar on active item */
+.dest-list-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transition: none;
+}
+.dest-list-item.active::after {
+  animation: destProgress 3.5s linear forwards;
+}
+
+@keyframes destProgress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
   background: var(--c-ink);
   border-radius: 0 2px 2px 0;
 }
