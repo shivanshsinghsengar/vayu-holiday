@@ -881,8 +881,8 @@ function searchEnquiriesTable(term) {
 }
 
 // --- Admin Modals for Package Editing & Enquiry Viewing ---
-function openPackageEditorModal(pkgId = null) {
-  const pkg = pkgId ? window.vayuStore.getPackageById(pkgId) : {
+async function openPackageEditorModal(pkgId = null) {
+  const pkg = pkgId ? (await window.vayuStore.getPackageById(pkgId)) : {
     title: "", destinationName: "Kashmir, India", destinationId: "kashmir",
     category: "domestic", experienceType: "luxury", durationDays: 6, durationNights: 5,
     price: 35000, originalPrice: 40000, bestTime: "Apr–Oct",
@@ -893,6 +893,11 @@ function openPackageEditorModal(pkgId = null) {
     inclusions: ["Accommodation in handpicked properties", "Daily buffet breakfast", "Private AC vehicle"],
     exclusions: ["Airfare", "Personal expenses"], hotelInfo: ""
   };
+
+  if (pkgId && !pkg) {
+    showToast("Error", "Package not found. Please refresh and try again.", "error");
+    return;
+  }
 
   // Safe join helpers for textarea fields
   const hlJoin  = (arr) => (arr || []).join('\n');
@@ -1064,8 +1069,8 @@ async function handleSavePackageForm(e, pkgId) {
     bestTime:        formData.get("bestTime"),
     hotelInfo:       formData.get("hotelInfo"),
     itinerary,
-    rating:          pkgId ? (window.vayuStore.getPackageById(pkgId)?.rating || 4.95) : 4.95,
-    reviewsCount:    pkgId ? (window.vayuStore.getPackageById(pkgId)?.reviewsCount || 42) : 42
+    rating:          pkgId ? ((await window.vayuStore.getPackageById(pkgId))?.rating || 4.95) : 4.95,
+    reviewsCount:    pkgId ? ((await window.vayuStore.getPackageById(pkgId))?.reviewsCount || 42) : 42
   };
   if (pkgId) pkgData.id = pkgId;
   await window.vayuStore.savePackage(pkgData);
