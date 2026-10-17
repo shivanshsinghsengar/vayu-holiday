@@ -1217,11 +1217,11 @@ const INITIAL_DATA = {
       originalPrice: null,
       rating: 4.7,
       reviewsCount: 0,
-      image: "https://images.unsplash.com/photo-1582560475093-ba66accbc7f4?auto=format&fit=crop&w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80",
       gallery: [
-        "https://images.unsplash.com/photo-1582560475093-ba66accbc7f4?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1591017403286-fd8493524e1e?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80"
+        "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80"
       ],
       tag: "Scenic Getaway",
       highlights: [
@@ -1448,9 +1448,9 @@ const INITIAL_DATA = {
       originalPrice: null,
       rating: 4.7,
       reviewsCount: 0,
-      image: "https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1200&q=80",
       gallery: [
-        "https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=800&q=80",
         "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
         "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80"
