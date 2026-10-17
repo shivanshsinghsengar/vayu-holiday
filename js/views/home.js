@@ -1019,6 +1019,17 @@ async function filterDestinations(type, btn) {
 }
 
 function executeHeroSearch() {
+  const destInput = document.getElementById('heroSearchDest');
+  const dest  = (destInput && (destInput.dataset.value || destInput.value) || '').toLowerCase().trim();
+  const theme = document.getElementById('heroSearchTheme')?.value || '';
+  const month = document.getElementById('heroSearchMonth')?.value || '';
+  const params = new URLSearchParams();
+  if (dest)  params.set('dest',  dest);
+  if (theme) params.set('theme', theme);
+  if (month) params.set('month', month);
+  window.navigate('/packages?' + params.toString());
+}
+
 // ── Destination Typeahead ────────────────────────────────────────────────────
 const DEST_SUGGESTIONS = [
   { label: 'Kashmir & Gulmarg',  value: 'kashmir',      tag: 'Domestic \u00b7 From \u20b936,500' },
