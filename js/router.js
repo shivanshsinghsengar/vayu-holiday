@@ -25,7 +25,7 @@ const ROUTE_META = {
   },
   "/packages": {
     title:       "Holiday Packages 2026 — Luxury Tours | Vayu Holidays Bhopal",
-    description: "Explore 2026 luxury holiday packages — Kashmir, Kerala, Dubai, Bali, Switzerland, Maldives & Rajasthan. Transparent pricing, private chauffeurs, 4★ & 5★ hotels.",
+    description: "Explore 2026 luxury holiday packages — Kashmir, Kerala, Dubai, Bali, Switzerland, Maldives & Rajasthan. Transparent pricing, Private Basiss, 4★ & 5★ hotels.",
     image:       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
   },
   "/domestic": {

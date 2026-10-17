@@ -28,7 +28,7 @@
 **Packages Section**
 - Eyebrow: Signature Journeys
 - H2: Curated Holiday Packages
-- Desc: Day-wise itineraries, verified stays, private chauffeurs — every detail handled.
+- Desc: Day-wise itineraries, verified stays, Private Basiss — every detail handled.
 - Button: View All Packages →
 
 **Bespoke Dark Section**
@@ -36,7 +36,7 @@
 - H2: Travel On Your Own Terms.
 - Para: Not all travelers fit rigid tour boxes. We design private journeys around your pace, dietary preferences, flight schedules, and personal wishlist — down to the finest detail.
 - Point 1: Zero cookie-cutter itineraries — every route drafted from scratch.
-- Point 2: Private chauffeur-driven vehicles — exclusively for your party.
+- Point 2: Private Basis-driven vehicles — exclusively for your party.
 - Point 3: 24/7 dedicated concierge — one message away, always.
 - Stat: 100% Fully Customizable
 - Button 1: Craft My Journey
@@ -159,7 +159,7 @@
 - Meta: Destination · Duration · Rating
 
 **Quick Facts**
-- Duration | Best Season | Stay Tier: 4★ & 5★ Luxury | Transfers: Private Chauffeur | Support: 24/7 Concierge
+- Duration | Best Season | Stay Tier: 4★ & 5★ Luxury | Transfers: Private Basis | Support: 24/7 Concierge
 
 **Journey Overview**
 - H2: Journey Overview
@@ -270,7 +270,7 @@
 - Eyebrow: (Category · Date · Read Time)
 - H1: (Article Title)
 - CTA H4: Inspired to experience this journey?
-- Para: Let our travel architects curate this exact route with verified luxury stays and private chauffeured transfers.
+- Para: Let our travel architects curate this exact route with verified luxury stays and Private Basised transfers.
 - Button: Plan This Journey
 - Back: ← Return to All Travel Stories
 

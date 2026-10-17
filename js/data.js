@@ -369,7 +369,7 @@ const INITIAL_DATA = {
         "05 Nights accommodation in handpicked 4★ & 5★ luxury properties",
         "01 Night in private Royal Houseboat with traditional heating",
         "Daily lavish buffet breakfast and multi-course chef dinners",
-        "Private chauffeur-driven luxury vehicle (Innova Crysta / Luxury Coach)",
+        "Private Basis-driven luxury vehicle (Innova Crysta / Luxury Coach)",
         "Exclusive 01-Hour Shikara ride on Dal Lake with Kahwa",
         "All toll taxes, parking, driver allowances, and fuel charges",
         "24/7 Vayu Holidays dedicated trip concierge support"
@@ -3475,7 +3475,7 @@ const INITIAL_DATA = {
       title: "Ultra-Luxury Escapes",
       tagline: "Privacy, Palaces & Private Jets",
       image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80",
-      description: "Handpicked 5-star suites, private chauffeurs, Michelin-star dining, and personal 24/7 dedicated trip concierges."
+      description: "Handpicked 5-star suites, Private Basiss, Michelin-star dining, and personal 24/7 dedicated trip concierges."
     },
     {
       id: "family",

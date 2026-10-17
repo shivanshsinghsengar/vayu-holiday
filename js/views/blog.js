@@ -114,7 +114,7 @@ async function renderSingleBlogView(slug) {
           <div>
             <h4 style="font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 0.35rem;">Inspired to experience this journey?</h4>
             <p style="font-size: 0.95rem; color: var(--color-text-muted);">
-              Let our travel architects curate this exact route with verified luxury stays and private chauffeured transfers.
+              Let our travel architects curate this exact route with verified luxury stays and Private Basised transfers.
             </p>
           </div>
 

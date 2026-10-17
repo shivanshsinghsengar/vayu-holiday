@@ -117,7 +117,7 @@ async function renderPackageDetailView(packageId) {
             <div class="fact-icon">${ICONS.plane}</div>
             <div>
               <div class="fact-label">Transfers</div>
-              <div class="fact-val">Private Chauffeur</div>
+              <div class="fact-val">Private Basis</div>
             </div>
           </div>
 

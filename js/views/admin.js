@@ -887,7 +887,7 @@ function openPackageEditorModal(pkgId = null) {
     category: "domestic", experienceType: "luxury", durationDays: 6, durationNights: 5,
     price: 35000, originalPrice: 40000, bestTime: "Apr–Oct",
     image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1200&q=80",
-    gallery: [], overview: "Original luxury itinerary crafted with private chauffeurs and handpicked verified stays.",
+    gallery: [], overview: "Original luxury itinerary crafted with Private Basiss and handpicked verified stays.",
     highlights: ["Private transfers", "Luxury 4/5 star hotels", "Breakfast & Dinner included"],
     itinerary: [{ day: 1, title: "Arrival & Welcome", description: "VIP reception and transfer to private luxury resort.", stay: "Luxury Resort", meals: "Dinner Included" }],
     inclusions: ["Accommodation in handpicked properties", "Daily buffet breakfast", "Private AC vehicle"],

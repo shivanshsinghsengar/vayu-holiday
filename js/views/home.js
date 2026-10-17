@@ -266,7 +266,7 @@ async function renderHomeView() {
         <div class="section-header text-center">
           <span class="eyebrow">Signature Journeys</span>
           <h2 class="section-title">Curated Holiday Packages</h2>
-          <p class="section-desc">Day-wise itineraries, verified stays, private chauffeurs — every detail handled.</p>
+          <p class="section-desc">Day-wise itineraries, verified stays, Private Basiss — every detail handled.</p>
         </div>
 
         <div class="packages-grid" id="packagesCatalogGrid">
@@ -353,7 +353,7 @@ async function renderHomeView() {
               <div class="bespoke-item">
                 <span style="color:var(--c-accent);margin-top:3px;flex-shrink:0;">${ICONS.check}</span>
                 <div>
-                  <strong style="color:var(--c-bg);font-family:var(--font-body);font-size:0.95rem;">Private chauffeur-driven vehicles</strong>
+                  <strong style="color:var(--c-bg);font-family:var(--font-body);font-size:0.95rem;">Private Basis-driven vehicles</strong>
                   <span style="color:var(--c-dark-muted);font-size:0.9rem;"> — exclusively for your party.</span>
                 </div>
               </div>
