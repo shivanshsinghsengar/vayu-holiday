@@ -1019,11 +1019,6 @@ async function filterDestinations(type, btn) {
 }
 
 function executeHeroSearch() {
-  const dest  = document.getElementById('heroSearchDest')?.value  || '';
-  const theme = document.getElementById('heroSearchTheme')?.value || '';
-  window.navigate('/packages?dest=' + dest + '&theme=' + theme);
-}
-
 // ── Destination Typeahead ────────────────────────────────────────────────────
 const DEST_SUGGESTIONS = [
   { label: 'Kashmir & Gulmarg',  value: 'kashmir',      tag: 'Domestic \u00b7 From \u20b936,500' },
@@ -1071,10 +1066,14 @@ function selectDestSuggestion(label, value) {
 
 function executeHeroSearch() {
   const destInput = document.getElementById('heroSearchDest');
-  const dest  = (destInput && (destInput.dataset.value || destInput.value) || '').toLowerCase().split(' ')[0];
+  const dest  = (destInput && (destInput.dataset.value || destInput.value) || '').toLowerCase().trim();
   const theme = document.getElementById('heroSearchTheme')?.value || '';
   const month = document.getElementById('heroSearchMonth')?.value || '';
-  window.navigate('/packages?dest=' + dest + '&theme=' + theme + '&month=' + month);
+  const params = new URLSearchParams();
+  if (dest)  params.set('dest',  dest);
+  if (theme) params.set('theme', theme);
+  if (month) params.set('month', month);
+  window.navigate('/packages?' + params.toString());
 }
 
 // Animated placeholder cycling — makes users want to type

@@ -701,6 +701,11 @@ class VayuRouter {
       const footer = await renderFooter();
       app.innerHTML = `${navbar}<main id="mainContent" role="main">${pageContent}</main>${footer}`;
 
+      // ── Apply URL-based filters for packages page ──────────────────
+      if (typeof applyPackagesUrlFilters === "function") {
+        applyPackagesUrlFilters();
+      }
+
       // ── Page-in transition ─────────────────────────────────────────
       this._animateIn(app);
 

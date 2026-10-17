@@ -128,6 +128,21 @@ async function renderPackagesView(filterType = "all") {
   `;
 }
 
+// ── Auto-apply URL filters after DOM renders ────────────────────────────────
+// Called by router after renderPackagesView HTML is injected into the DOM.
+function applyPackagesUrlFilters() {
+  const urlParams  = new URLSearchParams(window.location.search);
+  const queryDest  = urlParams.get("dest")  || "";
+  const queryTheme = urlParams.get("theme") || "";
+
+  // Input already pre-filled via value="${queryDest}" in the template.
+  // Just trigger the live filter function so the grid updates immediately.
+  if (queryDest || queryTheme) {
+    // Small delay to ensure the DOM is fully ready
+    setTimeout(() => filterPackagesCatalog(), 50);
+  }
+}
+
 function getHeaderTitleForCategory(filterType) {
   switch (filterType) {
     case "domestic": return "Domestic India Tours & Retreats";
