@@ -258,31 +258,6 @@ async function renderHomeView() {
 
 
     <!-- ══════════════════════════════════════════════════════════════
-         PACKAGES — SIMPLIFIED CARDS
-    ══════════════════════════════════════════════════════════════ -->
-    <section class="section section-sand" id="packagesSection" aria-label="Holiday packages">
-      <div class="container">
-
-        <div class="section-header text-center">
-          <span class="eyebrow">Signature Journeys</span>
-          <h2 class="section-title">Curated Holiday Packages</h2>
-          <p class="section-desc">Day-wise itineraries, verified stays, Private Basiss — every detail handled.</p>
-        </div>
-
-        <div class="packages-grid" id="packagesCatalogGrid">
-          ${packages.slice(0, 6).map(p => renderPackageCard(p)).join('')}
-        </div>
-
-        <div style="text-align:center;margin-top:var(--space-8);">
-          <a href="/packages" class="btn btn-primary btn-lg">
-            View All Packages ${ICONS.arrowRight}
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-
     <!-- ══════════════════════════════════════════════════════════════
          OFFERS & BANNERS — Dynamic from Admin
     ══════════════════════════════════════════════════════════════ -->
@@ -326,6 +301,31 @@ async function renderHomeView() {
       </div>
     </section>
     ` : ''}
+
+    <!-- ══════════════════════════════════════════════════════════════
+         PACKAGES — SIMPLIFIED CARDS
+    ══════════════════════════════════════════════════════════════ -->
+    <section class="section section-sand" id="packagesSection" aria-label="Holiday packages">
+      <div class="container">
+
+        <div class="section-header text-center">
+          <span class="eyebrow">Signature Journeys</span>
+          <h2 class="section-title">Curated Holiday Packages</h2>
+          <p class="section-desc">Day-wise itineraries, verified stays, Private Basiss — every detail handled.</p>
+        </div>
+
+        <div class="packages-grid" id="packagesCatalogGrid">
+          ${packages.slice(0, 6).map(p => renderPackageCard(p)).join('')}
+        </div>
+
+        <div style="text-align:center;margin-top:var(--space-8);">
+          <a href="/packages" class="btn btn-primary btn-lg">
+            View All Packages ${ICONS.arrowRight}
+          </a>
+        </div>
+
+      </div>
+    </section>
 
 
     <!-- ══════════════════════════════════════════════════════════════
