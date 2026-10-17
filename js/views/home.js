@@ -937,12 +937,6 @@ function startDestAutoRotate() {
   _destAutoTimer = setInterval(() => {
     _destCurrent = (_destCurrent + 1) % _destTotalItems;
     selectDestination(_destCurrent);
-
-    // Scroll active item into view in the list (mobile)
-    const items = document.querySelectorAll('.dest-list-item');
-    if (items[_destCurrent]) {
-      items[_destCurrent].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
   }, 3500);
 }
 
