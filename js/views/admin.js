@@ -962,26 +962,41 @@ async function openPackageEditorModal(pkgId = null) {
             <!-- Images -->
             <div class="form-group">
               <label class="form-label">Hero Cover Image</label>
-              <div style="display:flex;gap:.5rem;align-items:center;">
-                <input type="url" name="image" id="pkgHeroImageUrl" class="form-control" value="${pkg.image}" required placeholder="https://... or upload below" />
-                <label class="btn btn-secondary btn-sm" style="cursor:pointer;white-space:nowrap;flex-shrink:0;" title="Upload image to Firebase Storage">
-                  📁 Upload
-                  <input type="file" accept="image/*" style="display:none;" onchange="handlePkgImageUpload(event,'pkgHeroImageUrl','pkgHeroProgress')" />
-                </label>
+              <div
+                id="pkgHeroDropZone"
+                ondragover="event.preventDefault();this.style.borderColor='#E8B923';"
+                ondragleave="this.style.borderColor='rgba(232,185,35,0.3)';"
+                ondrop="handlePkgHeroDrop(event)"
+                style="border:2px dashed rgba(232,185,35,0.3);border-radius:10px;padding:1rem;margin-bottom:.5rem;text-align:center;transition:border-color .2s;cursor:pointer;background:rgba(232,185,35,0.04);"
+                onclick="this.querySelector('input[type=file]').click()"
+              >
+                <div style="font-size:.82rem;color:#b89758;margin-bottom:.4rem;">🖼️ Drag & drop image here or click to browse</div>
+                <div style="font-size:.74rem;color:#9ca3af;">JPG, PNG, WEBP — max 10MB</div>
+                <input type="file" accept="image/*" style="display:none;" onchange="handlePkgImageUpload(event,'pkgHeroImageUrl','pkgHeroProgress')" />
               </div>
+              <input type="url" name="image" id="pkgHeroImageUrl" class="form-control" value="${pkg.image}" required placeholder="Or paste image URL directly" />
               <div id="pkgHeroProgress" style="display:none;margin-top:.4rem;font-size:.78rem;color:#b89758;"></div>
-              <div id="pkgHeroPreview" style="margin-top:.5rem;"></div>
+              <div id="pkgHeroPreview" style="margin-top:.5rem;">
+                ${pkg.image ? `<img src="${pkg.image}" style="max-height:80px;border-radius:8px;object-fit:cover;" />` : ''}
+              </div>
             </div>
+
             <div class="form-group">
               <label class="form-label">Gallery Images (one URL per line)</label>
-              <textarea name="gallery" id="pkgGalleryUrls" class="form-control" style="min-height:80px;" placeholder="https://...">${galJoin(pkg.gallery)}</textarea>
-              <div style="display:flex;gap:.5rem;margin-top:.4rem;align-items:center;flex-wrap:wrap;">
-                <label class="btn btn-secondary btn-sm" style="cursor:pointer;white-space:nowrap;" title="Upload gallery images (multi-select)">
-                  📁 Upload Gallery Images
-                  <input type="file" accept="image/*" multiple style="display:none;" onchange="handlePkgGalleryUpload(event,'pkgGalleryUrls','pkgGalleryProgress')" />
-                </label>
-                <span id="pkgGalleryProgress" style="font-size:.78rem;color:#b89758;"></span>
+              <div
+                id="pkgGalleryDropZone"
+                ondragover="event.preventDefault();this.style.borderColor='#E8B923';"
+                ondragleave="this.style.borderColor='rgba(232,185,35,0.3)';"
+                ondrop="handlePkgGalleryDrop(event)"
+                style="border:2px dashed rgba(232,185,35,0.3);border-radius:10px;padding:1rem;margin-bottom:.5rem;text-align:center;transition:border-color .2s;cursor:pointer;background:rgba(232,185,35,0.04);"
+                onclick="this.querySelector('input[type=file]').click()"
+              >
+                <div style="font-size:.82rem;color:#b89758;margin-bottom:.4rem;">🖼️ Drag & drop multiple images or click to browse</div>
+                <div style="font-size:.74rem;color:#9ca3af;">Select multiple files at once — all will upload to Firebase</div>
+                <input type="file" accept="image/*" multiple style="display:none;" onchange="handlePkgGalleryUpload(event,'pkgGalleryUrls','pkgGalleryProgress')" />
               </div>
+              <textarea name="gallery" id="pkgGalleryUrls" class="form-control" style="min-height:80px;" placeholder="https://...">${galJoin(pkg.gallery)}</textarea>
+              <span id="pkgGalleryProgress" style="font-size:.78rem;color:#b89758;display:block;margin-top:.3rem;"></span>
             </div>
 
             <!-- Overview -->
@@ -2132,6 +2147,29 @@ async function handleSaveAboutSettingsForm(e) {
 // ═══════════════════════════════════════════════════════════════════════════
 // FIREBASE STORAGE IMAGE UPLOAD HANDLERS
 // ═══════════════════════════════════════════════════════════════════════════
+
+/** Drag & drop for hero image */
+function handlePkgHeroDrop(event) {
+  event.preventDefault();
+  const zone = document.getElementById('pkgHeroDropZone');
+  if (zone) zone.style.borderColor = 'rgba(232,185,35,0.3)';
+  const file = event.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) {
+    // Create a synthetic event to reuse the existing handler
+    handlePkgImageUpload({ target: { files: [file] } }, 'pkgHeroImageUrl', 'pkgHeroProgress');
+  }
+}
+
+/** Drag & drop for gallery images */
+function handlePkgGalleryDrop(event) {
+  event.preventDefault();
+  const zone = document.getElementById('pkgGalleryDropZone');
+  if (zone) zone.style.borderColor = 'rgba(232,185,35,0.3)';
+  const files = event.dataTransfer.files;
+  if (files && files.length > 0) {
+    handlePkgGalleryUpload({ target: { files } }, 'pkgGalleryUrls', 'pkgGalleryProgress');
+  }
+}
 
 /**
  * Upload hero image for a package to Firebase Storage.
