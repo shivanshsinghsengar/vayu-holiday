@@ -37,28 +37,25 @@ const COLLECTIONS = {
 };
 
 // ─── FIREBASE INIT ───────────────────────────────────────────────────────────
-let _db   = null;
-let _auth = null;
+let _db      = null;
+let _auth    = null;
+let _storage = null;
 let _firebaseReady = false;
 
 function initFirebase() {
   try {
-    // firebase compat SDK loaded via CDN in index.html
     if (typeof firebase === "undefined") {
       console.error("❌ Firebase SDK not loaded. Check index.html script tags.");
       return false;
     }
-
-    // Prevent double-init
     if (firebase.apps.length === 0) {
       firebase.initializeApp(FIREBASE_CONFIG);
     }
-
-    _db   = firebase.firestore();
-    _auth = firebase.auth();
+    _db      = firebase.firestore();
+    _auth    = firebase.auth();
+    _storage = firebase.storage();
     _firebaseReady = true;
 
-    // Enable offline persistence (single tab — avoids lease conflicts)
     _db.enablePersistence({ synchronizeTabs: false })
       .then(() => console.log("✅ Firestore offline persistence enabled"))
       .catch(err => {
@@ -90,6 +87,48 @@ function getDB() {
 function getAuth() {
   if (!_auth) throw new Error("Firebase Auth not initialized.");
   return _auth;
+}
+
+/** Get Storage instance (safe) */
+function getStorage() {
+  if (!_storage) throw new Error("Firebase Storage not initialized.");
+  return _storage;
+}
+
+/**
+ * Upload an image file to Firebase Storage.
+ * @param {File}   file      - The File object from <input type="file">
+ * @param {string} folder    - Storage folder: "packages", "destinations", "media"
+ * @param {string} fileName  - Desired filename (e.g. "pkg-dubai-01-hero.jpg")
+ * @param {Function} onProgress - optional callback(percent 0-100)
+ * @returns {Promise<string>} Permanent download URL
+ */
+async function uploadImageToStorage(file, folder = "images", fileName = null, onProgress = null) {
+  if (!isFirebaseConfigured()) throw new Error("Firebase not configured.");
+  const storage = getStorage();
+  const safeName = fileName || `${Date.now()}_${file.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
+  const storageRef = storage.ref(`${folder}/${safeName}`);
+
+  return new Promise((resolve, reject) => {
+    const uploadTask = storageRef.put(file, { contentType: file.type });
+
+    uploadTask.on(
+      firebase.storage.TaskEvent.STATE_CHANGED,
+      (snapshot) => {
+        if (onProgress) {
+          const pct = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+          onProgress(pct);
+        }
+      },
+      (error) => reject(error),
+      async () => {
+        try {
+          const url = await uploadTask.snapshot.ref.getDownloadURL();
+          resolve(url);
+        } catch (e) { reject(e); }
+      }
+    );
+  });
 }
 
 /** Check if Firebase config has been filled in */

@@ -956,12 +956,27 @@ function openPackageEditorModal(pkgId = null) {
 
             <!-- Images -->
             <div class="form-group">
-              <label class="form-label">Hero Cover Image URL *</label>
-              <input type="url" name="image" class="form-control" value="${pkg.image}" required />
+              <label class="form-label">Hero Cover Image</label>
+              <div style="display:flex;gap:.5rem;align-items:center;">
+                <input type="url" name="image" id="pkgHeroImageUrl" class="form-control" value="${pkg.image}" required placeholder="https://... or upload below" />
+                <label class="btn btn-secondary btn-sm" style="cursor:pointer;white-space:nowrap;flex-shrink:0;" title="Upload image to Firebase Storage">
+                  📁 Upload
+                  <input type="file" accept="image/*" style="display:none;" onchange="handlePkgImageUpload(event,'pkgHeroImageUrl','pkgHeroProgress')" />
+                </label>
+              </div>
+              <div id="pkgHeroProgress" style="display:none;margin-top:.4rem;font-size:.78rem;color:#b89758;"></div>
+              <div id="pkgHeroPreview" style="margin-top:.5rem;"></div>
             </div>
             <div class="form-group">
-              <label class="form-label">Gallery Image URLs (one per line)</label>
-              <textarea name="gallery" class="form-control" style="min-height:80px;" placeholder="https://images.unsplash.com/...">${galJoin(pkg.gallery)}</textarea>
+              <label class="form-label">Gallery Images (one URL per line)</label>
+              <textarea name="gallery" id="pkgGalleryUrls" class="form-control" style="min-height:80px;" placeholder="https://...">${galJoin(pkg.gallery)}</textarea>
+              <div style="display:flex;gap:.5rem;margin-top:.4rem;align-items:center;flex-wrap:wrap;">
+                <label class="btn btn-secondary btn-sm" style="cursor:pointer;white-space:nowrap;" title="Upload gallery images (multi-select)">
+                  📁 Upload Gallery Images
+                  <input type="file" accept="image/*" multiple style="display:none;" onchange="handlePkgGalleryUpload(event,'pkgGalleryUrls','pkgGalleryProgress')" />
+                </label>
+                <span id="pkgGalleryProgress" style="font-size:.78rem;color:#b89758;"></span>
+              </div>
             </div>
 
             <!-- Overview -->
@@ -1672,8 +1687,17 @@ function openMediaAddModal() {
               </select>
             </div>
             <div class="form-group">
-              <label class="form-label">Image URL (High-Res Unsplash or Web) *</label>
-              <input type="url" name="url" class="form-control" placeholder="https://images.unsplash.com/..." required />
+              <label class="form-label">Image</label>
+              <div style="display:flex;gap:.5rem;align-items:center;margin-bottom:.4rem;">
+                <label class="btn btn-gold btn-sm" style="cursor:pointer;white-space:nowrap;">
+                  📁 Upload Image to Firebase
+                  <input type="file" accept="image/*" style="display:none;" onchange="handleMediaFileUpload(event)" />
+                </label>
+                <span style="font-size:.78rem;color:var(--color-text-inverse-muted);">— or paste URL below —</span>
+              </div>
+              <div id="mediaUploadProgress" style="display:none;margin-bottom:.4rem;font-size:.78rem;color:#b89758;"></div>
+              <input type="url" name="url" id="mediaImageUrl" class="form-control" placeholder="https://firebasestorage.googleapis.com/... or any URL" required />
+              <div id="mediaImagePreview" style="margin-top:.5rem;"></div>
             </div>
           </div>
           <div class="modal-footer">
@@ -2099,3 +2123,135 @@ async function handleSaveAboutSettingsForm(e) {
 }
 
 
+
+// ═══════════════════════════════════════════════════════════════════════════
+// FIREBASE STORAGE IMAGE UPLOAD HANDLERS
+// ═══════════════════════════════════════════════════════════════════════════
+
+/**
+ * Upload hero image for a package to Firebase Storage.
+ * Puts the resulting URL into the specified input field.
+ */
+async function handlePkgImageUpload(event, targetInputId, progressId) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const progressEl = document.getElementById(progressId);
+  const inputEl    = document.getElementById(targetInputId);
+  const previewEl  = document.getElementById("pkgHeroPreview");
+
+  if (!progressEl || !inputEl) return;
+
+  // Check Firebase is ready
+  if (typeof uploadImageToStorage !== "function" || !isFirebaseConfigured()) {
+    showToast("Firebase Not Ready", "Firebase Storage is not configured. Please paste a URL manually.", "error");
+    return;
+  }
+
+  progressEl.style.display = "block";
+  progressEl.textContent   = "⏳ Uploading...";
+
+  try {
+    const folder   = "packages";
+    const fileName = `pkg_${Date.now()}_${file.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
+    const url = await uploadImageToStorage(file, folder, fileName, (pct) => {
+      progressEl.textContent = `⏳ Uploading... ${pct}%`;
+    });
+
+    inputEl.value            = url;
+    progressEl.textContent   = "✅ Upload complete!";
+    progressEl.style.color   = "#34d399";
+    if (previewEl) previewEl.innerHTML = `<img src="${url}" style="max-height:100px;border-radius:8px;margin-top:4px;" />`;
+
+    setTimeout(() => { progressEl.style.display = "none"; }, 3000);
+  } catch (err) {
+    progressEl.textContent = `❌ Upload failed: ${err.message}`;
+    progressEl.style.color = "#f87171";
+    console.error("Image upload failed:", err);
+  }
+}
+
+/**
+ * Upload multiple gallery images for a package.
+ * Appends each resulting URL as a new line in the textarea.
+ */
+async function handlePkgGalleryUpload(event, targetTextareaId, progressId) {
+  const files = Array.from(event.target.files);
+  if (!files.length) return;
+
+  const progressEl  = document.getElementById(progressId);
+  const textareaEl  = document.getElementById(targetTextareaId);
+  if (!progressEl || !textareaEl) return;
+
+  if (typeof uploadImageToStorage !== "function" || !isFirebaseConfigured()) {
+    showToast("Firebase Not Ready", "Firebase Storage is not configured. Please paste URLs manually.", "error");
+    return;
+  }
+
+  progressEl.textContent = `⏳ Uploading 0 / ${files.length}...`;
+
+  const uploadedUrls = [];
+  for (let i = 0; i < files.length; i++) {
+    try {
+      const file     = files[i];
+      const fileName = `pkg_gallery_${Date.now()}_${i}_${file.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
+      const url = await uploadImageToStorage(file, "packages", fileName, (pct) => {
+        progressEl.textContent = `⏳ Uploading image ${i + 1}/${files.length} — ${pct}%`;
+      });
+      uploadedUrls.push(url);
+      progressEl.textContent = `✅ ${i + 1}/${files.length} uploaded`;
+    } catch (err) {
+      progressEl.textContent = `❌ Failed on image ${i + 1}: ${err.message}`;
+    }
+  }
+
+  // Append to textarea
+  const existing = textareaEl.value.trim();
+  textareaEl.value = existing
+    ? existing + "\n" + uploadedUrls.join("\n")
+    : uploadedUrls.join("\n");
+
+  progressEl.textContent = `✅ All ${uploadedUrls.length} images uploaded!`;
+  progressEl.style.color = "#34d399";
+  setTimeout(() => { progressEl.textContent = ""; }, 4000);
+}
+
+/**
+ * Upload image for media library to Firebase Storage.
+ * Puts the resulting URL into #mediaImageUrl input.
+ */
+async function handleMediaFileUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const progressEl = document.getElementById("mediaUploadProgress");
+  const inputEl    = document.getElementById("mediaImageUrl");
+  const previewEl  = document.getElementById("mediaImagePreview");
+
+  if (typeof uploadImageToStorage !== "function" || !isFirebaseConfigured()) {
+    showToast("Firebase Not Ready", "Firebase Storage is not configured. Please paste a URL manually.", "error");
+    return;
+  }
+
+  progressEl.style.display = "block";
+  progressEl.textContent   = "⏳ Uploading...";
+  progressEl.style.color   = "#b89758";
+
+  try {
+    const fileName = `media_${Date.now()}_${file.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
+    const url = await uploadImageToStorage(file, "media", fileName, (pct) => {
+      progressEl.textContent = `⏳ Uploading... ${pct}%`;
+    });
+
+    if (inputEl) inputEl.value = url;
+    progressEl.textContent = "✅ Uploaded to Firebase Storage!";
+    progressEl.style.color = "#34d399";
+    if (previewEl) previewEl.innerHTML = `<img src="${url}" style="max-height:80px;border-radius:6px;margin-top:4px;" />`;
+
+    setTimeout(() => { progressEl.style.display = "none"; }, 3000);
+  } catch (err) {
+    progressEl.textContent = `❌ Upload failed: ${err.message}`;
+    progressEl.style.color = "#f87171";
+    console.error("Media upload failed:", err);
+  }
+}
