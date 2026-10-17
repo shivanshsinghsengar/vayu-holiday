@@ -2097,7 +2097,7 @@ const INITIAL_DATA = {
       bestTime: "October to March"
     },
 
-    // ── NEW INTERNATIONAL PACKAGES (MAKE MY TRIP CATALOG 2026) ──────────────
+    // ── NEW INTERNATIONAL PACKAGES (2026 EXPANSION) ──────────────────────────
     {
       id: "pkg-thailand-01",
       title: "Bangkok, Pattaya & Coral Island Escape",
