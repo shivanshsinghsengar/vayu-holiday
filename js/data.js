@@ -3595,53 +3595,7 @@ After three nights in the forest, moving to the coast introduces world-class bea
     }
   ],
 
-  enquiries: [
-    {
-      id: "enq-101",
-      name: "Aditya Verma",
-      email: "aditya.v@example.com",
-      phone: "+91 98261 44552",
-      destination: "Switzerland Alps",
-      packageId: "pkg-swiss-01",
-      travelMonth: "October 2026",
-      duration: "7 Days",
-      travelers: "2 Adults (Honeymoon)",
-      budgetPerPerson: "₹1,50,000 - ₹2,00,000",
-      notes: "Need 1st class Swiss passes and hotel room with direct Matterhorn view in Zermatt.",
-      status: "Quoted",
-      createdAt: "2026-09-22T14:20:00Z"
-    },
-    {
-      id: "enq-102",
-      name: "Dr. Sunita Sharma",
-      email: "sunita.sharma@example.com",
-      phone: "+91 94250 88219",
-      destination: "Kashmir in Bloom",
-      packageId: "pkg-kashmir-01",
-      travelMonth: "November 2026",
-      duration: "6 Days",
-      travelers: "4 Adults, 2 Kids (Family)",
-      budgetPerPerson: "₹35,000 - ₹45,000",
-      notes: "Require private luxury Innova Crysta throughout and heated houseboat stay.",
-      status: "New",
-      createdAt: "2026-09-23T10:15:00Z"
-    },
-    {
-      id: "enq-103",
-      name: "Karan Johri",
-      email: "karan.j@techcorp.in",
-      phone: "+91 99811 77340",
-      destination: "Dubai & Abu Dhabi",
-      packageId: "pkg-dubai-01",
-      travelMonth: "December 2026",
-      duration: "5 Days",
-      travelers: "2 Adults",
-      budgetPerPerson: "₹60,000 - ₹75,000",
-      notes: "Interested in Burj Khalifa Sky lounge access and private yacht dinner.",
-      status: "Contacted",
-      createdAt: "2026-09-21T09:40:00Z"
-    }
-  ],
+  enquiries: [],   // Real enquiries come from Firestore / user submissions only
 
   offers: [
     {
