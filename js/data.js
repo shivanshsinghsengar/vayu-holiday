@@ -156,6 +156,138 @@ const INITIAL_DATA = {
       packagesCount: 3,
       startingPrice: 52000,
       featured: false
+    },
+    {
+      id: "thailand",
+      name: "Thailand",
+      type: "international",
+      tagline: "Golden Temples, Tropical Beaches & Island Hopping",
+      image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=1200&q=80",
+      description: "Bangkok's glittering Grand Palace and floating markets, Coral Island waters off Pattaya, and Phuket's sunset beaches with island-hopping adventures.",
+      packagesCount: 2,
+      startingPrice: 39900,
+      featured: false
+    },
+    {
+      id: "singapore",
+      name: "Singapore",
+      type: "international",
+      tagline: "The Garden City of Future Wonders",
+      image: "https://images.unsplash.com/photo-1525628084225-2d25d6b1e6f8?auto=format&fit=crop&w=1200&q=80",
+      description: "Marina Bay Sands skyline, Gardens by the Bay Supertrees, Universal Studios Sentosa, and the world's best airport at Changi.",
+      packagesCount: 2,
+      startingPrice: 75000,
+      featured: false
+    },
+    {
+      id: "mauritius",
+      name: "Mauritius",
+      type: "international",
+      tagline: "Turquoise Lagoons & Coral Sand Romance",
+      image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1200&q=80",
+      description: "Catamaran sunset cruises, Chamarel seven-coloured earth, underwater waterfall illusion, and all-inclusive beachfront resorts.",
+      packagesCount: 2,
+      startingPrice: 89000,
+      featured: false
+    },
+    {
+      id: "srilanka",
+      name: "Sri Lanka",
+      type: "international",
+      tagline: "Pearl of the Indian Ocean",
+      image: "https://images.unsplash.com/photo-1546412414-e1885259563a?auto=format&fit=crop&w=1200&q=80",
+      description: "Sigiriya rock fortress, Kandy's Temple of the Tooth, Ceylon tea trails, and Bentota beach relaxation in one compact island.",
+      packagesCount: 2,
+      startingPrice: 42000,
+      featured: false
+    },
+    {
+      id: "nepal",
+      name: "Nepal",
+      type: "international",
+      tagline: "Himalayan Kingdom of Temples & Lakes",
+      image: "https://images.unsplash.com/photo-1532599772588-377cc8b63f72?auto=format&fit=crop&w=1200&q=80",
+      description: "Kathmandu Valley UNESCO heritage, sunrise over Annapurna from Pokhara, and jungle safari at Chitwan National Park.",
+      packagesCount: 2,
+      startingPrice: 36000,
+      featured: false
+    },
+    {
+      id: "bhutan",
+      name: "Bhutan",
+      type: "international",
+      tagline: "The Last Shangri-La of Happiness",
+      image: "https://images.unsplash.com/photo-1477414348463-c0eb7f1359b6?auto=format&fit=crop&w=1200&q=80",
+      description: "Tiger's Nest monastery cliff hike, Thimphu dzongs, Punakha valley suspension bridge, and the Gross National Happiness kingdom.",
+      packagesCount: 2,
+      startingPrice: 58000,
+      featured: false
+    },
+    {
+      id: "hongkong",
+      name: "Hong Kong & Macau",
+      type: "international",
+      tagline: "Skyline Thrills & Cotai Strip Glamour",
+      image: "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?auto=format&fit=crop&w=1200&q=80",
+      description: "Victoria Peak tram panorama, Disneyland Hong Kong, Star Ferry harbour crossing, and Macau's Ruins of St. Paul and Cotai casinos.",
+      packagesCount: 2,
+      startingPrice: 72000,
+      featured: false
+    },
+    {
+      id: "egypt",
+      name: "Egypt",
+      type: "international",
+      tagline: "Pyramids, Pharaohs & Nile Cruising",
+      image: "https://images.unsplash.com/photo-1539650116574-75c6c85f1c1a?auto=format&fit=crop&w=1200&q=80",
+      description: "Giza Pyramids and Sphinx, Luxor's Valley of the Kings, a luxury Nile cruise to Aswan, and the bazaars of Cairo.",
+      packagesCount: 2,
+      startingPrice: 95000,
+      featured: false
+    },
+    {
+      id: "kenya",
+      name: "Kenya Safari",
+      type: "international",
+      tagline: "The Great Wildebeest Migration",
+      image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=80",
+      description: "Masai Mara Big Five game drives, Lake Nakuru flamingos, Amboseli elephants under Kilimanjaro, and a hot air balloon safari at dawn.",
+      packagesCount: 2,
+      startingPrice: 115000,
+      featured: false
+    },
+    {
+      id: "japan",
+      name: "Japan",
+      type: "international",
+      tagline: "Cherry Blossoms, Neon Cities & Sacred Peaks",
+      image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80",
+      description: "Tokyo's Shibuya crossing and Senso-ji, Mt Fuji panoramas, bullet train to Kyoto's bamboo grove and golden temples, and Osaka street food.",
+      packagesCount: 2,
+      startingPrice: 145000,
+      featured: false
+    },
+    {
+      id: "europe",
+      name: "Europe (Paris, Italy & Switzerland)",
+      type: "international",
+      tagline: "The Grand European Dream Circuit",
+      image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
+      description: "Eiffel Tower and Seine romance in Paris, Venetian canals and Roman Colosseum in Italy, and Swiss alpine railways across the continent.",
+      packagesCount: 2,
+      startingPrice: 185000,
+      featured: false
+    },
+    {
+      id: "australia",
+      name: "Australia",
+      type: "international",
+      tagline: "Harbour City & Reef Adventure",
+      image: "https://images.unsplash.com/photo-1506973035872-a4ecaa1fcc38?auto=format&fit=crop&w=1200&q=80",
+      description: "Sydney Opera House and Harbour Bridge climb, Great Barrier Reef snorkeling, Gold Coast theme parks, and Blue Mountains escapes.",
+      packagesCount: 2,
+      startingPrice: 155000,
+      featured: false
     }
   ],
 
@@ -1963,6 +2095,1211 @@ const INITIAL_DATA = {
       ],
       hotelInfo: "Alsisar Haveli Jaipur / Ajit Bhawan Jodhpur / Fatehprakash Palace Udaipur.",
       bestTime: "October to March"
+    },
+
+    // ── NEW INTERNATIONAL PACKAGES (MAKE MY TRIP CATALOG 2026) ──────────────
+    {
+      id: "pkg-thailand-01",
+      title: "Bangkok, Pattaya & Coral Island Escape",
+      slug: "bangkok-pattaya-coral-island-escape",
+      destinationId: "thailand",
+      destinationName: "Bangkok & Pattaya, Thailand",
+      category: "international",
+      experienceType: "luxury",
+      durationDays: 6,
+      durationNights: 5,
+      price: 39900,
+      originalPrice: 49000,
+      rating: 4.88,
+      reviewsCount: 156,
+      image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1563492065-1a3c6cf6c1c0?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1546412414-e1885259563a?auto=format&fit=crop&w=800&q=80"
+      ],
+      tag: "Best Value International",
+      highlights: [
+        "Grand Palace & Emerald Buddha Temple guided tour in Bangkok",
+        "Coral Island (Koh Larn) full day with speedboat & snorkeling",
+        "Nong Nooch Village cultural show & botanical gardens",
+        "Chao Phraya river dinner cruise with live music",
+        "Thailand Visa on Arrival assistance included"
+      ],
+      overview: "Thailand's most-loved twin-city circuit. Combine Bangkok's glittering temples and floating markets with Pattaya's turquoise Coral Island waters, all wrapped in warm Thai hospitality and seamless Vayu Holidays transfers.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival in Bangkok & Chao Phraya Dinner Cruise",
+          description: "VIP meet and greet at Suvarnabhumi Airport. Private transfer to your hotel in the heart of Bangkok. Evening Chao Phraya River dinner cruise with international buffet and live music against the illuminated temples.",
+          meals: "Dinner Cruise Included",
+          stay: "4-Star Hotel, Bangkok (Pratunam / Sukhumvit)"
+        },
+        {
+          day: 2,
+          title: "Bangkok City Tour: Grand Palace & Temples",
+          description: "Guided half-day tour of the spectacular Grand Palace complex, the revered Emerald Buddha (Wat Phra Kaew), and the giant Reclining Buddha at Wat Pho. Afternoon free for shopping at MBK or Chatuchak market.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Bangkok"
+        },
+        {
+          day: 3,
+          title: "Bangkok to Pattaya & Nong Nooch Village",
+          description: "Transfer to Pattaya (approx 2 hours). Visit Nong Nooch Tropical Village for the cultural elephant show and beautifully landscaped gardens. Evening at Walking Street or leisure.",
+          meals: "Breakfast & Lunch",
+          stay: "4-Star Beachfront Hotel, Pattaya"
+        },
+        {
+          day: 4,
+          title: "Coral Island (Koh Larn) Full Day",
+          description: "Speedboat transfer to Coral Island. Enjoy crystal-clear waters for snorkeling, parasailing, and sunbathing on the white-sand beach. Indian lunch included at the island restaurant.",
+          meals: "Breakfast & Island Lunch",
+          stay: "4-Star Beachfront Hotel, Pattaya"
+        },
+        {
+          day: 5,
+          title: "Pattaya to Bangkok: Safari World & Marine Park",
+          description: "Return to Bangkok. Visit Safari World open zoo and Marine Park with dolphin and orangutan shows. Evening at leisure for shopping at Indra Market or Platinum Mall.",
+          meals: "Breakfast & Lunch",
+          stay: "4-Star Hotel, Bangkok"
+        },
+        {
+          day: 6,
+          title: "Departure from Bangkok",
+          description: "After breakfast, transfer to Suvarnabhumi Airport for your return flight with wonderful Thai memories.",
+          meals: "Breakfast Included",
+          stay: "Check-out"
+        }
+      ],
+      inclusions: [
+        "05 Nights in 4-star hotels with daily breakfast",
+        "All airport and intercity transfers in private AC vehicle",
+        "Half day Bangkok city tour with Grand Palace entrance",
+        "Full day Coral Island tour with speedboat and lunch",
+        "Safari World & Marine Park with lunch",
+        "Nong Nooch Village entrance ticket",
+        "Chao Phraya dinner cruise",
+        "Thailand Visa on Arrival assistance",
+        "24/7 Vayu Holidays trip concierge"
+      ],
+      exclusions: [
+        "International airfare (Flight Desk offers negotiated fares)",
+        "Personal expenses, tips, and travel insurance",
+        "Optional water sports at Coral Island"
+      ],
+      hotelInfo: "Bangkok: Baiyoke Sky / The Berkeley Pratunam. Pattaya: Centara Grand Mirage or equivalent 4-star.",
+      bestTime: "November to February"
+    },
+
+    {
+      id: "pkg-singapore-01",
+      title: "Singapore Marvel: Universal Studios & Sentosa",
+      slug: "singapore-marvel-universal-studios-sentosa",
+      destinationId: "singapore",
+      destinationName: "Singapore",
+      category: "international",
+      experienceType: "luxury",
+      durationDays: 5,
+      durationNights: 4,
+      price: 78000,
+      originalPrice: 89000,
+      rating: 4.9,
+      reviewsCount: 98,
+      image: "https://images.unsplash.com/photo-1525628084225-2d25d6b1e6f8?auto=format&fit=crop&w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1525628084225-2d25d6b1e6f8?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1567950796986-46e9087ce0c4?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1538485399081-7c8ed714d7cc?auto=format&fit=crop&w=800&q=80"
+      ],
+      tag: "Family Favourite",
+      highlights: [
+        "Universal Studios Singapore full day at Sentosa",
+        "Gardens by the Bay Flower Dome & Cloud Forest conservatories",
+        "Marina Bay Sands SkyPark observation deck",
+        "Half day Singapore city tour with Merlion & Chinatown",
+        "Singapore Tourist Visa assistance included"
+      ],
+      overview: "The Garden City delivers the ultimate family international escape. From thrilling Universal Studios rides to the futuristic Supertree Grove and Marina Bay skyline, Singapore packs world-class experiences into a safe, walkable, English-speaking city.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival in Singapore & Night Safari",
+          description: "Arrive at Changi Airport (world's best). Private transfer to your hotel. Evening visit to the Singapore Night Safari — the world's first nocturnal wildlife park with tram ride and creatures-of-the-night show.",
+          meals: "Dinner Included",
+          stay: "4-Star Hotel, Singapore (Little India / Geylang)"
+        },
+        {
+          day: 2,
+          title: "Singapore City Tour & Marina Bay Sands SkyPark",
+          description: "Half day city tour covering the Merlion Park, Chinatown heritage, Little India, and the colonial Civic District. Afternoon visit to Marina Bay Sands SkyPark observation deck for panoramic city views.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Singapore"
+        },
+        {
+          day: 3,
+          title: "Sentosa Island: Universal Studios Singapore",
+          description: "Full day at Universal Studios Singapore on Sentosa Island. Enjoy rides and attractions across Hollywood, Far Far Away, Ancient Egypt, and Sci-Fi City zones.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Singapore"
+        },
+        {
+          day: 4,
+          title: "Gardens by the Bay & Chinatown Food Walk",
+          description: "Visit the iconic Gardens by the Bay with entry to the Flower Dome and Cloud Forest cooled conservatories. Evening explore Chinatown food street for authentic local cuisine.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Singapore"
+        },
+        {
+          day: 5,
+          title: "Departure from Singapore",
+          description: "Morning at leisure. Transfer to Changi Airport, where you can enjoy the Jewel Rain Vortex, for your return flight.",
+          meals: "Breakfast Included",
+          stay: "Check-out"
+        }
+      ],
+      inclusions: [
+        "04 Nights in 4-star hotel with daily breakfast",
+        "Private airport transfers",
+        "Half day city tour with Merlion and Chinatown",
+        "Universal Studios Singapore one-day pass",
+        "Gardens by the Bay Flower Dome & Cloud Forest entry",
+        "Marina Bay Sands SkyPark observation deck ticket",
+        "Night Safari with tram tour",
+        "Singapore Tourist Visa assistance",
+        "24/7 Vayu Holidays concierge support"
+      ],
+      exclusions: [
+        "International airfare (Flight Desk available)",
+        "Lunches and dinners not specified",
+        "Personal shopping and optional Sentosa attractions"
+      ],
+      hotelInfo: "V Hotel Lavender / Parkroyal on Kitchener / Grand Mercure Singapore or equivalent 4-star.",
+      bestTime: "February to April (dry & pleasant)"
+    },
+
+    {
+      id: "pkg-mauritius-01",
+      title: "Mauritius Paradise: Beach Resort & Catamaran Cruise",
+      slug: "mauritius-paradise-beach-catamaran-cruise",
+      destinationId: "mauritius",
+      destinationName: "Mauritius",
+      category: "international",
+      experienceType: "honeymoon",
+      durationDays: 7,
+      durationNights: 6,
+      price: 89000,
+      originalPrice: 105000,
+      rating: 4.93,
+      reviewsCount: 71,
+      image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+      ],
+      tag: "Honeymoon Paradise",
+      highlights: [
+        "06 Nights all-inclusive luxury beachfront resort stay",
+        "Full day catamaran cruise to Ile aux Cerfs with BBQ lunch",
+        "Chamarel Seven Coloured Earth & Black River Gorges",
+        "North & South island sightseeing tours included",
+        "Speedboat to Île aux Gabrielf & underwater sea walk option"
+      ],
+      overview: "Surrender to the slow rhythm of the Indian Ocean. Mauritius wraps you in powder-white beaches, swaying casuarina palms, and reef-protected turquoise lagoons, with all-inclusive luxury and catamaran island-hopping curated by Vayu Holidays.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival in Mauritius & Resort Check-in",
+          description: "Arrive at Sir Seewoosagur Ramgoolam International Airport. Private transfer to your all-inclusive beachfront resort on the west or east coast. Welcome cocktails and leisure evening.",
+          meals: "All-Inclusive (Dinner)",
+          stay: "4-Star All-Inclusive Beach Resort"
+        },
+        {
+          day: 2,
+          title: "North Island Tour: Port Louis & Pamplemousses",
+          description: "Guided tour of Port Louis capital, the Citadel Fort Adelaide viewpoint, and the famous Pamplemousses Botanical Garden with its giant water lilies. Shopping at Caudan Waterfront.",
+          meals: "All-Inclusive (Breakfast & Dinner)",
+          stay: "4-Star All-Inclusive Beach Resort"
+        },
+        {
+          day: 3,
+          title: "Ile aux Cerfs Catamaran Cruise & BBQ",
+          description: "Full day catamaran cruise to the picture-perfect Ile aux Cerfs. Snorkeling in the lagoon, swimming in crystal waters, and a Creole BBQ lunch on the beach with unlimited rum punch.",
+          meals: "Breakfast & Catamaran BBQ Lunch",
+          stay: "4-Star All-Inclusive Beach Resort"
+        },
+        {
+          day: 4,
+          title: "South Island Tour: Chamarel & Black River Gorges",
+          description: "Visit the volcanic crater of Trou aux Cerfs, the sacred Grand Bassin lake, Black River Gorges viewpoint, and the surreal Seven Coloured Earth of Chamarel with its giant tortoises.",
+          meals: "All-Inclusive (Breakfast & Dinner)",
+          stay: "4-Star All-Inclusive Beach Resort"
+        },
+        {
+          day: 5,
+          title: "Leisure Day & Optional Water Sports",
+          description: "A full day at leisure to enjoy the resort's beach, pool, and complimentary non-motorized water sports (kayaking, paddleboarding, snorkeling). Optional undersea walk or submarine scooter.",
+          meals: "All-Inclusive",
+          stay: "4-Star All-Inclusive Beach Resort"
+        },
+        {
+          day: 6,
+          title: "Casela Nature Park & Sunset Beach Dinner",
+          description: "Visit Casela Nature Parks for a safari experience, zip-line, and walk with lions (optional). Evening candlelight beach dinner to celebrate your holiday.",
+          meals: "All-Inclusive & Candlelight Dinner",
+          stay: "4-Star All-Inclusive Beach Resort"
+        },
+        {
+          day: 7,
+          title: "Departure from Mauritius",
+          description: "Morning at leisure. Private transfer to the airport for your return flight home.",
+          meals: "Breakfast Included",
+          stay: "Check-out"
+        }
+      ],
+      inclusions: [
+        "06 Nights all-inclusive 4-star beachfront resort stay",
+        "All meals (breakfast, lunch, dinner) and selected beverages",
+        "Return airport transfers in private vehicle",
+        "North Island tour (Port Louis, Pamplemousses, Caudan)",
+        "South Island tour (Chamarel, Black River Gorges, Grand Bassin)",
+        "Full day Ile aux Cerfs catamaran cruise with BBQ lunch",
+        "Casela Nature Park entry",
+        "Complimentary non-motorized water sports at resort",
+        "Mauritius visa assistance"
+      ],
+      exclusions: [
+        "International airfare",
+        "Optional motorized water sports and undersea walk",
+        "Personal expenses, spa treatments, and tips"
+      ],
+      hotelInfo: "Le Palmiste Resort & Spa / Sugar Beach Resort / Tropical Attitude or equivalent 4-star all-inclusive.",
+      bestTime: "May to December (cool dry season)"
+    },
+
+    {
+      id: "pkg-srilanka-01",
+      title: "Sri Lanka Cultural Trail & Beach: Sigiriya to Bentota",
+      slug: "sri-lanka-cultural-trail-beach-sigiriya-bentota",
+      destinationId: "srilanka",
+      destinationName: "Sri Lanka",
+      category: "international",
+      experienceType: "luxury",
+      durationDays: 6,
+      durationNights: 5,
+      price: 42000,
+      originalPrice: 50000,
+      rating: 4.85,
+      reviewsCount: 64,
+      image: "https://images.unsplash.com/photo-1546412414-e1885259563a?auto=format&fit=crop&w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1546412414-e1885259563a?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80"
+      ],
+      tag: "Cultural Discovery",
+      highlights: [
+        "Sigiriya Lion Rock Fortress (UNESCO) sunrise climb",
+        "Temple of the Sacred Tooth Relic in Kandy",
+        "Ceylon tea plantation visit in Nuwara Eliya",
+        "Bentota beach stay & Madu River mangrove safari",
+        "Sri Lanka ETA visa assistance included"
+      ],
+      overview: "A compact jewel of an island where ancient kingdoms, emerald tea hills, and golden beaches unfold within hours. Climb Sigiriya's lion-paw fortress, witness Kandy's sacred rituals, and unwind on Bentota's palm-fringed coast.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival Colombo – Transfer to Dambulla/Sigiriya",
+          description: "Arrive at Bandaranaike International Airport. Drive to the cultural triangle. En route visit the Dambulla Cave Temple with its ancient Buddhist murals and statues.",
+          meals: "Dinner Included",
+          stay: "4-Star Hotel, Dambulla / Sigiriya"
+        },
+        {
+          day: 2,
+          title: "Sigiriya Rock Climb & Polonnaruwa Ruins",
+          description: "Early morning climb of Sigiriya Lion Rock — a 5th-century fortress palace atop a 200m monolith with frescoes and water gardens. Afternoon explore the UNESCO medieval city of Polonnaruwa.",
+          meals: "Breakfast & Dinner",
+          stay: "4-Star Hotel, Dambulla / Sigiriya"
+        },
+        {
+          day: 3,
+          title: "Dambulla to Kandy: Spice Garden & Temple of the Tooth",
+          description: "Drive to Kandy via a spice garden. Visit the Temple of the Sacred Tooth Relic and enjoy a Kandyan cultural dance performance in the evening.",
+          meals: "Breakfast & Dinner",
+          stay: "4-Star Hotel, Kandy"
+        },
+        {
+          day: 4,
+          title: "Kandy to Nuwara Eliya: Tea Country Train Ride",
+          description: "Scenic drive (or optional train ride) to Nuwara Eliya, 'Little England'. Visit a Ceylon tea plantation and factory, and enjoy the cool hill-country climate and colonial architecture.",
+          meals: "Breakfast & Dinner",
+          stay: "4-Star Hotel, Nuwara Eliya / Bentota"
+        },
+        {
+          day: 5,
+          title: "Bentota Beach & Madu River Safari",
+          description: "Transfer to the coastal town of Bentota. Enjoy a mangrove boat safari on the Madu River, visit a turtle hatchery, and relax on the golden beach.",
+          meals: "Breakfast & Dinner",
+          stay: "4-Star Beach Resort, Bentota"
+        },
+        {
+          day: 6,
+          title: "Bentota to Colombo & Departure",
+          description: "Morning at leisure. Drive to Colombo for a short city tour and shopping before transfer to the airport for departure.",
+          meals: "Breakfast Included",
+          stay: "Check-out"
+        }
+      ],
+      inclusions: [
+        "05 Nights in 4-star hotels and beach resort with daily breakfast & dinner",
+        "All transfers and sightseeing in private AC vehicle",
+        "Sigiriya, Dambulla Caves, and Polonnaruwa entrance tickets",
+        "Temple of the Tooth Relic visit in Kandy",
+        "Tea plantation and factory tour in Nuwara Eliya",
+        "Madu River boat safari and turtle hatchery visit",
+        "English-speaking chauffeur guide throughout",
+        "Sri Lanka ETA visa assistance"
+      ],
+      exclusions: [
+        "International airfare",
+        "Lunches throughout",
+        "Optional Kandy–Nuwara Eliya train ticket",
+        "Personal expenses and travel insurance"
+      ],
+      hotelInfo: "Dambulla: Sigiri Chaaya / Kandy: Cinnamon Citadel / Bentota: Cinnamon Bey or equivalent 4-star.",
+      bestTime: "December to April (west & south coast)"
+    },
+
+    {
+      id: "pkg-nepal-01",
+      title: "Nepal Himalayan Heritage: Kathmandu, Pokhara & Chitwan",
+      slug: "nepal-himalayan-heritage-kathmandu-pokhara-chitwan",
+      destinationId: "nepal",
+      destinationName: "Nepal",
+      category: "international",
+      experienceType: "luxury",
+      durationDays: 7,
+      durationNights: 6,
+      price: 36000,
+      originalPrice: 42000,
+      rating: 4.87,
+      reviewsCount: 53,
+      image: "https://images.unsplash.com/photo-1532599772588-377cc8b63f72?auto=format&fit=crop&w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1532599772588-377cc8b63f72?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1543248939-4296e1fea89b?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1546484959-f9a381d1330d?auto=format&fit=crop&w=800&q=80"
+      ],
+      tag: "Himalayan Getaway",
+      highlights: [
+        "UNESCO Kathmandu Valley heritage tour (Pashupatinath, Boudhanath, Patan)",
+        "Sunrise Annapurna Himalayan panorama at Sarangkot, Pokhara",
+        "Full day jungle safari & canoe ride at Chitwan National Park",
+        "Phewa Lake boating & Davis Fall in Pokhara",
+        "Nepal visa-free entry for Indian citizens (with passport/Aadhaar)"
+      ],
+      overview: "The Himalayan kingdom next door. From Kathmandu's medieval temple squares to the mirror-still lakes of Pokhara framed by Annapurna, and the jungle rhinos of Chitwan, Nepal delivers mountains, spirituality, and wilderness in one seamless loop.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival in Kathmandu & Heritage Walk",
+          description: "Arrive at Tribhuvan International Airport. Transfer to hotel. Evening stroll through Thamel market and welcome Nepali dinner.",
+          meals: "Dinner Included",
+          stay: "4-Star Hotel, Kathmandu"
+        },
+        {
+          day: 2,
+          title: "Kathmandu Valley UNESCO Tour",
+          description: "Full day sightseeing: Pashupatinath riverside temple, the colossal Boudhanath Stupa, Swayambhunath Monkey Temple, and Patan Durbar Square.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Kathmandu"
+        },
+        {
+          day: 3,
+          title: "Kathmandu to Pokhara: Enchanting Lakeside",
+          description: "Scenic drive or flight to Pokhara (approx 6 hours by road / 30 min flight). Evening at leisure along Phewa Lake with sunset views.",
+          meals: "Breakfast & Dinner",
+          stay: "4-Star Lakeview Hotel, Pokhara"
+        },
+        {
+          day: 4,
+          title: "Sarangkot Sunrise & Pokhara Sightseeing",
+          description: "Early morning drive to Sarangkot for sunrise over the Annapurna and Dhaulagiri range. Then visit Davis Fall, Gupteshwor Cave, and Tibetan refugee settlement. Afternoon boating on Phewa Lake.",
+          meals: "Breakfast",
+          stay: "4-Star Lakeview Hotel, Pokhara"
+        },
+        {
+          day: 5,
+          title: "Pokhara to Chitwan: Jungle Safari",
+          description: "Drive to Chitwan National Park. Afternoon jeep safari into the jungle to spot the one-horned rhinoceros, deer, and exotic birdlife. Evening Tharu cultural dance.",
+          meals: "Breakfast, Lunch & Dinner",
+          stay: "Jungle Lodge / Resort, Chitwan"
+        },
+        {
+          day: 6,
+          title: "Chitwan: Canoe Ride & Elephant Bath & Return to Kathmandu",
+          description: "Morning canoe ride on the Rapti river and visit the elephant breeding centre. Drive back to Kathmandu in the afternoon.",
+          meals: "Breakfast & Lunch",
+          stay: "4-Star Hotel, Kathmandu"
+        },
+        {
+          day: 7,
+          title: "Departure from Kathmandu",
+          description: "Morning at leisure for last-minute shopping. Transfer to the airport for your return flight.",
+          meals: "Breakfast Included",
+          stay: "Check-out"
+        }
+      ],
+      inclusions: [
+        "06 Nights in 4-star hotels and jungle lodge (twin sharing)",
+        "Daily breakfast and selected dinners",
+        "All transfers and sightseeing in private AC vehicle",
+        "Kathmandu Valley UNESCO monument entrance fees",
+        "Sarangkot sunrise trip and Pokhara sightseeing",
+        "Chitwan jungle safari, canoe ride, and Tharu cultural show",
+        "English-speaking local guide",
+        "Visa-free entry assistance for Indian citizens"
+      ],
+      exclusions: [
+        "Airfare (domestic and international)",
+        "Lunches (except as specified)",
+        "Optional Pokhara mountain flight",
+        "Personal expenses and tips"
+      ],
+      hotelInfo: "Kathmandu: Hotel Shanker / Yak & Yeti category. Pokhara: Hotel Barahi / Landmark. Chitwan: Green Park / Park Safari Lodge.",
+      bestTime: "September to November | March to May"
+    },
+
+    {
+      id: "pkg-bhutan-01",
+      title: "Bhutan Kingdom of Happiness: Thimphu, Paro & Punakha",
+      slug: "bhutan-kingdom-happiness-thimphu-paro-punakha",
+      destinationId: "bhutan",
+      destinationName: "Bhutan",
+      category: "international",
+      experienceType: "luxury",
+      durationDays: 7,
+      durationNights: 6,
+      price: 58000,
+      originalPrice: 68000,
+      rating: 4.92,
+      reviewsCount: 41,
+      image: "https://images.unsplash.com/photo-1477414348463-c0eb7f1359b6?auto=format&fit=crop&w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1477414348463-c0eb7f1359b6?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1546484959-f9a381d1330d?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1532599772588-377cc8b63f72?auto=format&fit=crop&w=800&q=80"
+      ],
+      tag: "Spiritual Journey",
+      highlights: [
+        "Tiger's Nest (Taktsang) monastery cliff hike in Paro",
+        "Punakha Dzong — Bhutan's most beautiful fortress at river confluence",
+        "Dochula Pass 108 stupas with Himalayan panorama",
+        "Buddha Dordenma giant statue & Thimphu heritage tour",
+        "Sustainable Development Fee and Bhutanese visa included"
+      ],
+      overview: "The world's only carbon-negative kingdom, where Gross National Happiness measures more than wealth. Hike to the gravity-defying Tiger's Nest, wander golden-roofed dzongs, and breathe the pristine air of the last Himalayan Shangri-La.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival in Paro & Transfer to Thimphu",
+          description: "Arrive at Paro Airport with spectacular Himalayan landing views. Drive to Thimphu (1.5 hours). Evening at leisure exploring the capital's cafes and craft bazaar.",
+          meals: "Dinner Included",
+          stay: "3-Star Hotel, Thimphu"
+        },
+        {
+          day: 2,
+          title: "Thimphu Sightseeing: Buddha, Memorial Chorten & Dzong",
+          description: "Visit the towering Buddha Dordenma statue, the National Memorial Chorten, Changangkha Lhakhang, and Tashichho Dzong seat of government. Optional visit to the Takin preserve.",
+          meals: "Breakfast & Dinner",
+          stay: "3-Star Hotel, Thimphu"
+        },
+        {
+          day: 3,
+          title: "Thimphu to Punakha via Dochula Pass",
+          description: "Drive to Punakha over the Dochula Pass (3,100m) with 108 memorial stupas and clear-day views of the eastern Himalayas. Visit Chimi Lhakhang fertility temple.",
+          meals: "Breakfast & Dinner",
+          stay: "3-Star Hotel, Punakha / Wangdue"
+        },
+        {
+          day: 4,
+          title: "Punakha Dzong & Suspension Bridge",
+          description: "Visit the majestic Punakha Dzong at the confluence of the Pho Chu and Mo Chu rivers — arguably Bhutan's most beautiful fortress. Walk the longest suspension bridge in Bhutan.",
+          meals: "Breakfast & Dinner",
+          stay: "3-Star Hotel, Punakha / Wangdue"
+        },
+        {
+          day: 5,
+          title: "Punakha to Paro via Thimphu",
+          description: "Scenic drive back to Paro. Visit the National Museum (Ta Dzong) and Rinpung Dzong. Evening stroll through Paro town.",
+          meals: "Breakfast & Dinner",
+          stay: "3-Star Hotel, Paro"
+        },
+        {
+          day: 6,
+          title: "Tiger's Nest (Taktsang) Monastery Hike",
+          description: "The highlight of Bhutan — a 2-3 hour uphill hike to the iconic Tiger's Nest monastery clinging to a vertical cliff at 3,120m. Spectacular views and profound spirituality. (Pony ride available halfway).",
+          meals: "Breakfast & Dinner",
+          stay: "3-Star Hotel, Paro"
+        },
+        {
+          day: 7,
+          title: "Departure from Paro",
+          description: "Morning at leisure. Transfer to Paro Airport for your onward flight.",
+          meals: "Breakfast Included",
+          stay: "Check-out"
+        }
+      ],
+      inclusions: [
+        "06 Nights in 3-star Bhutanese hotels (twin sharing)",
+        "Daily breakfast and dinner",
+        "All transfers and sightseeing in private AC vehicle",
+        "English-speaking licensed Bhutanese guide",
+        "Tiger's Nest monastery hike and all monument fees",
+        "Punakha Dzong and Dochula Pass visit",
+        "Sustainable Development Fee (SDF) included",
+        "Bhutan visa processing assistance"
+      ],
+      exclusions: [
+        "International airfare (Paro flights via Delhi/Kathmandu)",
+        "Lunches throughout",
+        "Optional pony ride to Tiger's Nest viewpoint",
+        "Personal expenses, tips, and travel insurance"
+      ],
+      hotelInfo: "Thimphu: Hotel Jhomolhari / Namgay Heritage. Paro: Tashi Namgay Resort / Khangkhu. Punakha: Damchen Resort or equivalent.",
+      bestTime: "March to May | September to November"
+    },
+
+    {
+      id: "pkg-hongkong-01",
+      title: "Hong Kong & Macau: Disneyland & Cotai Strip",
+      slug: "hong-kong-macau-disneyland-cotai-strip",
+      destinationId: "hongkong",
+      destinationName: "Hong Kong & Macau",
+      category: "international",
+      experienceType: "luxury",
+      durationDays: 6,
+      durationNights: 5,
+      price: 72000,
+      originalPrice: 85000,
+      rating: 4.89,
+      reviewsCount: 87,
+      image: "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?auto=format&fit=crop&w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1538485399081-7c8ed714d7cc?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1555881400-74d7acaacd6c?auto=format&fit=crop&w=800&q=80"
+      ],
+      tag: "Family Thrills",
+      highlights: [
+        "Hong Kong Disneyland full day with fireworks",
+        "Victoria Peak tram & Symphony of Lights harbour show",
+        "Macau day tour: Ruins of St. Paul, Senado Square & Cotai casino",
+        "Ngong Ping 360 cable car & Big Buddha on Lantau",
+        "Hong Kong & Macau visa assistance included"
+      ],
+      overview: "Two dazzling territories, one unforgettable trip. Scale Victoria Peak for the world's most photographed skyline, live the magic at Hong Kong Disneyland, then ferry across to Macau's Portuguese heritage and glittering Cotai Strip.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival in Hong Kong & Avenue of Stars",
+          description: "Arrive at Hong Kong International Airport. Private transfer to hotel. Evening visit to the Avenue of Stars on the Tsim Sha Tsui promenade for the Symphony of Lights harbour show.",
+          meals: "Dinner Included",
+          stay: "4-Star Hotel, Hong Kong (Kowloon)"
+        },
+        {
+          day: 2,
+          title: "Hong Kong City Tour: Victoria Peak & Aberdeen",
+          description: "Half day tour: ride the Peak Tram to Victoria Peak for panoramic harbour views, visit Aberdeen fishing village and the glittering Repulse Bay. Afternoon free for shopping at Harbour City.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Hong Kong"
+        },
+        {
+          day: 3,
+          title: "Hong Kong Disneyland Full Day",
+          description: "Full day at Hong Kong Disneyland with seven themed lands, parades, character meets, and the spectacular evening fireworks over Sleeping Beauty Castle.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Hong Kong"
+        },
+        {
+          day: 4,
+          title: "Ngong Ping 360 & Big Buddha – Ferry to Macau",
+          description: "Morning Ngong Ping 360 cable car ride to the Tian Tan Big Buddha and Po Lin Monastery on Lantau Island. Afternoon ferry transfer to Macau (1 hour).",
+          meals: "Breakfast & Dinner",
+          stay: "4-Star Hotel, Macau (Cotai Strip)"
+        },
+        {
+          day: 5,
+          title: "Macau City Tour: Ruins, Temples & Casinos",
+          description: "Macau sightseeing: UNESCO Ruins of St. Paul's Cathedral, Senado Square, A-Ma Temple, Macau Tower (outside). Evening free to try your luck on the Cotai Strip casinos and shows.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Macau"
+        },
+        {
+          day: 6,
+          title: "Macau to Hong Kong & Departure",
+          description: "Ferry back to Hong Kong. Transfer to the airport for your return flight.",
+          meals: "Breakfast Included",
+          stay: "Check-out"
+        }
+      ],
+      inclusions: [
+        "05 Nights in 4-star hotels (3N Hong Kong + 2N Macau) with daily breakfast",
+        "All airport, ferry, and sightseeing transfers",
+        "Hong Kong city tour with Peak Tram",
+        "Full day Hong Kong Disneyland ticket",
+        "Ngong Ping 360 cable car and Big Buddha visit",
+        "Macau city tour with all monument visits",
+        "Hong Kong–Macau ferry tickets",
+        "Hong Kong and Macau visa assistance",
+        "24/7 Vayu Holidays concierge"
+      ],
+      exclusions: [
+        "International airfare",
+        "Lunches and dinners not specified",
+        "Optional casino show tickets and personal expenses"
+      ],
+      hotelInfo: "Hong Kong: Dorsett Mongkok / Royal Plaza / Metropark. Macau: Broadway Macau / Artyzen Grand Lapa or equivalent 4-star.",
+      bestTime: "October to December (cool & dry)"
+    },
+
+    {
+      id: "pkg-egypt-01",
+      title: "Egypt Eternal: Pyramids, Nile Cruise & Luxor Temples",
+      slug: "egypt-pyramids-nile-cruise-luxor-temples",
+      destinationId: "egypt",
+      destinationName: "Egypt",
+      category: "international",
+      experienceType: "luxury",
+      durationDays: 8,
+      durationNights: 7,
+      price: 95000,
+      originalPrice: 112000,
+      rating: 4.9,
+      reviewsCount: 58,
+      image: "https://images.unsplash.com/photo-1539650116574-75c6c85f1c1a?auto=format&fit=crop&w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1539650116574-75c6c85f1c1a?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1567361808960-dec9cb578182?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1572252009286-268acec5ca0a?auto=format&fit=crop&w=800&q=80"
+      ],
+      tag: "Ancient Wonders",
+      highlights: [
+        "Great Pyramids of Giza & Sphinx with inside access option",
+        "4-night luxury Nile Cruise from Luxor to Aswan",
+        "Valley of the Kings & Temple of Hatshepsut",
+        "Temples of Karnak, Edfu, Philae & Abu Simbel (optional)",
+        "Egypt e-Visa assistance included"
+      ],
+      overview: "Stand before the only surviving Ancient Wonder of the World. Sail the timeless Nile on a luxury cruiser from Luxor's temple complexes to Aswan's serene cataracts, uncovering 5,000 years of pharaonic glory with expert Egyptologist guides.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival in Cairo & Welcome Dinner",
+          description: "Arrive at Cairo International Airport. Transfer to hotel. Evening welcome dinner with Nile-view restaurant and orientation.",
+          meals: "Dinner Included",
+          stay: "5-Star Hotel, Cairo"
+        },
+        {
+          day: 2,
+          title: "Giza Pyramids, Sphinx & Egyptian Museum",
+          description: "Full day tour of the Great Pyramids of Giza, the Sphinx, and the Valley Temple. Afternoon visit the Egyptian Museum in Tahrir with the Tutankhamun treasures and royal mummy rooms.",
+          meals: "Breakfast & Lunch",
+          stay: "5-Star Hotel, Cairo"
+        },
+        {
+          day: 3,
+          title: "Fly to Luxor & Board Nile Cruise: Karnak & Luxor Temples",
+          description: "Morning flight to Luxor. Board your 5-star Nile cruiser. Afternoon visit the colossal Karnak Temple complex and the avenue of sphinxes to Luxor Temple by night.",
+          meals: "Breakfast, Lunch & Dinner",
+          stay: "5-Star Nile Cruise, Luxor"
+        },
+        {
+          day: 4,
+          title: "Valley of the Kings, Hatshepsut & Sail to Edfu",
+          description: "Cross to the West Bank: Valley of the Kings (Tutankhamun's tomb), Temple of Queen Hatshepsut, and the Colossi of Memnon. Sail south toward Edfu.",
+          meals: "All Meals Onboard",
+          stay: "5-Star Nile Cruise, Edfu"
+        },
+        {
+          day: 5,
+          title: "Edfu Temple & Kom Ombo — Sail to Aswan",
+          description: "Horse-carriage ride to the well-preserved Temple of Horus at Edfu. Afternoon visit Kom Ombo, the unique double temple of Sobek and Haroeris. Sail to Aswan.",
+          meals: "All Meals Onboard",
+          stay: "5-Star Nile Cruise, Aswan"
+        },
+        {
+          day: 6,
+          title: "Aswan: Philae Temple & High Dam – Fly to Cairo",
+          description: "Visit the beautiful Philae Temple (Isis) by motorboat, the Aswan High Dam, and the Unfinished Obelisk. Evening flight back to Cairo.",
+          meals: "Breakfast & Lunch",
+          stay: "5-Star Hotel, Cairo"
+        },
+        {
+          day: 7,
+          title: "Old Cairo Bazaars & Optional Pyramids Light Show",
+          description: "Explore historic Coptic Cairo, the Hanging Church, and the labyrinthine Khan el-Khalili bazaar for souvenirs, spices, and gold. Optional evening Sound & Light show at Giza.",
+          meals: "Breakfast",
+          stay: "5-Star Hotel, Cairo"
+        },
+        {
+          day: 8,
+          title: "Departure from Cairo",
+          description: "Transfer to Cairo International Airport for your return flight.",
+          meals: "Breakfast Included",
+          stay: "Check-out"
+        }
+      ],
+      inclusions: [
+        "07 Nights (3N Cairo 5-star hotel + 4N luxury Nile Cruise)",
+        "Daily breakfast and all meals on cruise (full board)",
+        "Internal flights: Cairo–Luxor and Aswan–Cairo",
+        "All sightseeing in private AC vehicle with Egyptologist guide",
+        "Giza Pyramids, Sphinx, and Egyptian Museum entrance",
+        "Valley of the Kings, Karnak, Edfu, Kom Ombo, Philae entrance fees",
+        "Egypt e-Visa processing assistance",
+        "24/7 Vayu Holidays trip concierge"
+      ],
+      exclusions: [
+        "International airfare",
+        "Optional Abu Simbel excursion (flight + tour)",
+        "Personal expenses, tips for guide and cruise staff",
+        "Travel insurance"
+      ],
+      hotelInfo: "Cairo: Le Méridien Pyramids / Cairo Marriott. Nile Cruise: MS Royal Lily / MS Sonesta St George 5-star category.",
+      bestTime: "October to April (cool season)"
+    },
+
+    {
+      id: "pkg-kenya-01",
+      title: "Kenya Safari Expedition: Masai Mara, Nakuru & Amboseli",
+      slug: "kenya-safari-expedition-masai-mara-nakuru-amboseli",
+      destinationId: "kenya",
+      destinationName: "Kenya",
+      category: "international",
+      experienceType: "luxury",
+      durationDays: 7,
+      durationNights: 6,
+      price: 115000,
+      originalPrice: 138000,
+      rating: 4.94,
+      reviewsCount: 46,
+      image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1535083252457-31a25c65876b?auto=format&fit=crop&w=800&q=80"
+      ],
+      tag: "Wildlife Safari",
+      highlights: [
+        "Masai Mara Big Five game drives in 4x4 safari vehicles",
+        "Optional dawn hot air balloon safari over the savanna",
+        "Lake Nakuru flamingo & rhino sanctuary",
+        "Amboseli elephants with Kilimanjaro backdrop",
+        "Masai village cultural visit included"
+      ],
+      overview: "The original safari country. Track the Big Five across the Masai Mara's golden plains, witness a million flamingos at Lake Nakuru, and photograph elephants silhouetted against Kilimanjaro at Amboseli. Kenya delivers the Africa of your imagination.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival Nairobi & Transfer to Masai Mara",
+          description: "Arrive at Jomo Kenyatta International Airport. Drive (or fly) to the legendary Masai Mara National Reserve. Afternoon game drive en route to your safari lodge.",
+          meals: "Lunch & Dinner",
+          stay: "Safari Lodge / Tented Camp, Masai Mara"
+        },
+        {
+          day: 2,
+          title: "Masai Mara: Full Day Game Drives",
+          description: "Morning and afternoon game drives in search of lions, leopards, elephants, buffalo, and the great migration herds (Jul–Oct). Picnic lunch in the bush.",
+          meals: "Breakfast, Lunch & Dinner",
+          stay: "Safari Lodge / Tented Camp, Masai Mara"
+        },
+        {
+          day: 3,
+          title: "Masai Mara: Balloon Safari & Masai Village",
+          description: "Optional dawn hot air balloon safari with champagne breakfast. Visit a traditional Masai village to learn about their nomadic culture and dances.",
+          meals: "Breakfast, Lunch & Dinner",
+          stay: "Safari Lodge / Tented Camp, Masai Mara"
+        },
+        {
+          day: 4,
+          title: "Masai Mara to Lake Nakuru",
+          description: "Morning game drive, then drive to Lake Nakuru National Park. Afternoon game drive to see rhinos, Rothschild giraffes, and the famous flamingo flocks.",
+          meals: "Breakfast, Lunch & Dinner",
+          stay: "Lodge, Lake Nakuru"
+        },
+        {
+          day: 5,
+          title: "Lake Nakuru to Amboseli via Nairobi",
+          description: "Drive to Amboseli National Park at the foot of Mount Kilimanjaro. Afternoon game drive with the chance to spot large elephant herds.",
+          meals: "Breakfast, Lunch & Dinner",
+          stay: "Safari Lodge, Amboseli"
+        },
+        {
+          day: 6,
+          title: "Amboseli: Kilimanjaro Views & Game Drive",
+          description: "Early morning game drive for the classic elephant-and-Kilimanjaro photograph. Visit a Masai community project and Observation Hill for sweeping marsh views.",
+          meals: "Breakfast, Lunch & Dinner",
+          stay: "Safari Lodge, Amboseli"
+        },
+        {
+          day: 7,
+          title: "Amboseli to Nairobi & Departure",
+          description: "Morning game drive. Drive to Nairobi. Optional Giraffe Centre and Karen Blixen Museum before transfer to the airport for departure.",
+          meals: "Breakfast & Lunch",
+          stay: "Check-out"
+        }
+      ],
+      inclusions: [
+        "06 Nights in safari lodges and tented camps (full board)",
+        "All park and reserve entrance fees",
+        "Game drives in pop-top 4x4 safari vehicles",
+        "Services of a professional English-speaking driver-guide",
+        "Masai village cultural visit",
+        "All transfers between parks",
+        "Kenya e-Visa assistance",
+        "Bottled water during game drives"
+      ],
+      exclusions: [
+        "International airfare",
+        "Optional hot air balloon safari (approx $450)",
+        "Beverages, laundry, and personal expenses",
+        "Tips for guide and lodge staff",
+        "Travel insurance"
+      ],
+      hotelInfo: "Mara: Mara Simba / Keekorok Lodge. Nakuru: Sarova Lion Hill. Amboseli: Amboseli Sopa / Sentrim or equivalent.",
+      bestTime: "July to October (migration) | Jan–Feb (dry)"
+    },
+
+    {
+      id: "pkg-japan-01",
+      title: "Japan Discovery: Tokyo, Mt Fuji & Kyoto",
+      slug: "japan-discovery-tokyo-mt-fuji-kyoto",
+      destinationId: "japan",
+      destinationName: "Japan",
+      category: "international",
+      experienceType: "luxury",
+      durationDays: 8,
+      durationNights: 7,
+      price: 145000,
+      originalPrice: 168000,
+      rating: 4.95,
+      reviewsCount: 39,
+      image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1480796927426-f609979314bd?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=800&q=80"
+      ],
+      tag: "Premium Discovery",
+      highlights: [
+        "Tokyo: Shibuya Crossing, Senso-ji Temple & teamLab digital art",
+        "Mt Fuji 5th station & Lake Ashi pirate cruise with Hakone hot springs",
+        "Bullet train (Shinkansen) to Kyoto",
+        "Kyoto: Fushimi Inari torii gates, Arashiyama bamboo grove & golden pavilion",
+        "Japan Tourist Visa assistance included"
+      ],
+      overview: "Where ancient tradition meets neon future. From Tokyo's buzzing crossings to the serenity of Mt Fuji, ride the bullet train into Kyoto's 1,000 temples, bamboo groves, and geisha streets. Japan is precise, beautiful, and unforgettable.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival in Tokyo",
+          description: "Arrive at Narita/Haneda Airport. Shared or private transfer to hotel in Tokyo. Evening at leisure to explore Shinjuku or Ginza.",
+          meals: "Dinner Included",
+          stay: "4-Star Hotel, Tokyo"
+        },
+        {
+          day: 2,
+          title: "Tokyo City Tour: Senso-ji, Shibuya & Meiji Shrine",
+          description: "Guided tour of Asakusa's Senso-ji Temple and Nakamise market, the Meiji Shrine forest, Harajuku, and the famous Shibuya Crossing. Evening at teamLab Planets immersive digital art museum.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Tokyo"
+        },
+        {
+          day: 3,
+          title: "Mt Fuji, Hakone & Lake Ashi Cruise",
+          description: "Drive to Mt Fuji 5th station for panoramic views. Ride the Hakone ropeway over volcanic Owakudani valley, take the Lake Ashi pirate cruise, and relax in a traditional onsen hot spring. Overnight in Hakone.",
+          meals: "Breakfast & Dinner",
+          stay: "Ryokan / Onsen Hotel, Hakone"
+        },
+        {
+          day: 4,
+          title: "Bullet Train to Kyoto",
+          description: "Board the Shinkansen bullet train to Kyoto (approx 2 hours). Afternoon explore the Gion geisha district and Yasaka Shrine.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Kyoto"
+        },
+        {
+          day: 5,
+          title: "Kyoto: Fushimi Inari, Kinkaku-ji & Nijo Castle",
+          description: "Walk the vermilion torii gates of Fushimi Inari shrine. Visit the Golden Pavilion (Kinkaku-ji), Ryoan-ji rock garden, and Nijo Castle with its singing nightingale floors.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Kyoto"
+        },
+        {
+          day: 6,
+          title: "Arashiyama Bamboo Grove & Nara Day Trip",
+          description: "Morning at the surreal Arashiyama bamboo grove and Tenryu-ji temple. Afternoon visit to Nara: the giant Todai-ji Buddha and friendly sika deer park.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Kyoto"
+        },
+        {
+          day: 7,
+          title: "Kyoto to Osaka: Castle & Dotonbori Food Street",
+          description: "Transfer to Osaka. Visit Osaka Castle and explore Dotonbori's neon food street for takoyaki, okonomiyaki, and street-food adventures.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Osaka"
+        },
+        {
+          day: 8,
+          title: "Departure from Osaka",
+          description: "Morning at leisure. Transfer to Kansai International Airport for your return flight.",
+          meals: "Breakfast Included",
+          stay: "Check-out"
+        }
+      ],
+      inclusions: [
+        "07 Nights in 4-star hotels + 1 night ryokan (twin sharing)",
+        "Daily breakfast and selected dinners",
+        "Mt Fuji and Hakone day tour with Lake Ashi cruise",
+        "Shinkansen bullet train ticket Kyoto",
+        "All city tours with English-speaking guide",
+        "Senso-ji, teamLab, Kinkaku-ji, Fushimi Inari and Nara deer park entry",
+        "All intercity and airport transfers",
+        "Japan Tourist Visa assistance",
+        "24/7 Vayu Holidays concierge"
+      ],
+      exclusions: [
+        "International airfare",
+        "Lunches and dinners not specified",
+        "JR Pass (if extended travel desired)",
+        "Personal expenses and travel insurance"
+      ],
+      hotelInfo: "Tokyo: Shinjuku Granbell / Hotel Gracery. Hakone: Hakone Gora Byakudan. Kyoto: Mitsui Garden / Cross. Osaka: Cross Hotel Osaka or equivalent.",
+      bestTime: "March–April (cherry blossom) | October–November (autumn)"
+    },
+
+    {
+      id: "pkg-europe-01",
+      title: "Europe Grand Tour: Paris, Switzerland & Italy",
+      slug: "europe-grand-tour-paris-switzerland-italy",
+      destinationId: "europe",
+      destinationName: "Paris, Switzerland & Italy",
+      category: "international",
+      experienceType: "luxury",
+      durationDays: 9,
+      durationNights: 8,
+      price: 185000,
+      originalPrice: 215000,
+      rating: 4.96,
+      reviewsCount: 52,
+      image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1552832230-c0fab7b9e8e9?auto=format&fit=crop&w=800&q=80"
+      ],
+      tag: "Ultra Luxury",
+      highlights: [
+        "Paris: Eiffel Tower summit, Seine river cruise & Louvre Museum",
+        "Switzerland: Mt Titlis, Jungfraujoch & Lucerne old town",
+        "Italy: Venice gondola, Florence Duomo & Rome Colosseum",
+        "Scenic Eurail transfers between countries",
+        "Schengen Visa documentation & appointment assistance"
+      ],
+      overview: "The European dream in one grand loop. Romance in Paris beneath the Eiffel Tower, alpine grandeur in Switzerland aboard scenic trains, and Renaissance glory through Italy's Venice, Florence, and Rome. Three countries, countless icons.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival in Paris & Seine River Cruise",
+          description: "Arrive at Paris Charles de Gaulle Airport. Transfer to hotel. Evening illuminated Seine river cruise past the Eiffel Tower and Notre Dame.",
+          meals: "Dinner Included",
+          stay: "4-Star Hotel, Paris"
+        },
+        {
+          day: 2,
+          title: "Paris: Eiffel Tower, Louvre & Champs-Élysées",
+          description: "Guided city tour: Eiffel Tower summit access, Arc de Triomphe, Champs-Élysées, and a visit to the Louvre Museum to see the Mona Lisa.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Paris"
+        },
+        {
+          day: 3,
+          title: "Paris to Switzerland: Basel & Lucerne",
+          description: "High-speed train to Basel, transfer to Lucerne. Stroll the historic Chapel Bridge and Old Town by the lake.",
+          meals: "Breakfast & Dinner",
+          stay: "4-Star Hotel, Lucerne"
+        },
+        {
+          day: 4,
+          title: "Mt Titlis & Lucerne",
+          description: "Ascend Mt Titlis via the Rotair revolving cable car and Cliff Walk suspension bridge. Afternoon at leisure in lakeside Lucerne.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Lucerne"
+        },
+        {
+          day: 5,
+          title: "Jungfraujoch — Top of Europe",
+          description: "Day trip to Interlaken and up to Jungfraujoch (3,454m) by cogwheel railway — Europe's highest railway station with glacier palace and snow plateau.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Lucerne / Interlaken"
+        },
+        {
+          day: 6,
+          title: "Switzerland to Venice: Gondola & St. Mark's",
+          description: "Travel to Venice. Evening gondola ride through the romantic canals past St. Mark's Square and the Rialto Bridge.",
+          meals: "Breakfast & Dinner",
+          stay: "4-Star Hotel, Venice / Mestre"
+        },
+        {
+          day: 7,
+          title: "Venice to Florence: Duomo & Ponte Vecchio",
+          description: "Train to Florence. Tour the magnificent Duomo, Baptistery, Piazza della Signoria, and the medieval Ponte Vecchio bridge.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Florence"
+        },
+        {
+          day: 8,
+          title: "Florence to Rome: Colosseum & Vatican",
+          description: "High-speed train to Rome. Visit the Colosseum and Roman Forum. Optional Vatican Museums, Sistine Chapel, and St. Peter's Basilica tour.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Rome"
+        },
+        {
+          day: 9,
+          title: "Departure from Rome",
+          description: "Morning at leisure for a final Italian espresso. Transfer to Fiumicino Airport for your return flight.",
+          meals: "Breakfast Included",
+          stay: "Check-out"
+        }
+      ],
+      inclusions: [
+        "08 Nights in 4-star hotels (twin sharing) with daily breakfast",
+        "Eiffel Tower summit, Louvre Museum, and Seine cruise in Paris",
+        "Mt Titlis and Jungfraujoch excursion tickets in Switzerland",
+        "Gondola ride in Venice; Colosseum entrance in Rome",
+        "High-speed train transfers Paris–Switzerland and within Italy",
+        "All sightseeing transfers and English-speaking local guides",
+        "Schengen Visa documentation and appointment assistance",
+        "24/7 Vayu Holidays European trip concierge"
+      ],
+      exclusions: [
+        "International airfare",
+        "Lunches and dinners not specified",
+        "City tourist taxes (payable directly at hotels)",
+        "Optional Vatican Museums tour and personal expenses",
+        "Travel insurance"
+      ],
+      hotelInfo: "Paris: Novotel Les Halles / Mercure. Lucerne: Astoria / Continental Park. Venice: NH / Sheraton Mestre. Florence: Hotel Brunelleschi / c-hotels. Rome: c-hotels Club House / Nazionale or equivalent.",
+      bestTime: "April to June | September to October"
+    },
+
+    {
+      id: "pkg-australia-01",
+      title: "Australia Adventure: Sydney, Reef & Gold Coast",
+      slug: "australia-adventure-sydney-reef-gold-coast",
+      destinationId: "australia",
+      destinationName: "Australia",
+      category: "international",
+      experienceType: "luxury",
+      durationDays: 8,
+      durationNights: 7,
+      price: 155000,
+      originalPrice: 180000,
+      rating: 4.93,
+      reviewsCount: 44,
+      image: "https://images.unsplash.com/photo-1506973035872-a4ecaa1fcc38?auto=format&fit=crop&w=1200&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1506973035872-a4ecaa1fcc38?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1523428096881-5bd79d043006?auto=format&fit=crop&w=800&q=80"
+      ],
+      tag: "Adventure Down Under",
+      highlights: [
+        "Sydney Opera House guided tour & Harbour Bridge climb (optional)",
+        "Full day Great Barrier Reef snorkeling & glass-bottom boat cruise",
+        "Gold Coast theme parks: Movie World or Sea World",
+        "Blue Mountains Scenic World & Three Sisters rock formation",
+        "Australia Tourist Visa (Subclass 600) assistance included"
+      ],
+      overview: "The land of extraordinary contrasts. Photograph the iconic Sydney Opera House, snorkel the kaleidoscopic Great Barrier Reef, ride rollercoasters on the Gold Coast, and breathe the eucalyptus air of the Blue Mountains — all in one epic Australian adventure.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival in Sydney & Harbour Dinner Cruise",
+          description: "Arrive at Sydney Kingsford Smith Airport. Transfer to hotel. Evening Sydney Harbour dinner cruise past the Opera House and Harbour Bridge.",
+          meals: "Dinner Cruise Included",
+          stay: "4-Star Hotel, Sydney (CBD)"
+        },
+        {
+          day: 2,
+          title: "Sydney City Tour: Opera House, Bondi & The Rocks",
+          description: "Guided Sydney Opera House tour, walk through The Rocks historic quarter, Mrs Macquarie's Chair viewpoint, and the famous Bondi Beach. Optional Harbour Bridge climb.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Sydney"
+        },
+        {
+          day: 3,
+          title: "Blue Mountains Day Trip: Scenic World & Three Sisters",
+          description: "Full day excursion to the Blue Mountains. Ride the Scenic Railway, Skyway, and Cableway, see the Three Sisters rock formation, and meet koalas and kangaroos at Featherdale Wildlife Park.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Sydney"
+        },
+        {
+          day: 4,
+          title: "Fly Sydney to Cairns & Kuranda Scenic Railway",
+          description: "Morning flight to Cairns. Afternoon Skyrail rainforest cableway and historic Kuranda Scenic Railway through UNESCO Wet Tropics rainforest.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Cairns / Palm Cove"
+        },
+        {
+          day: 5,
+          title: "Great Barrier Reef Full Day Cruise",
+          description: "Outer reef cruise with snorkeling, glass-bottom boat, and semi-submersible viewing of the world's largest coral reef system. Tropical buffet lunch onboard.",
+          meals: "Breakfast & Reef Lunch",
+          stay: "4-Star Hotel, Cairns / Palm Cove"
+        },
+        {
+          day: 6,
+          title: "Fly Cairns to Gold Coast & Beach Leisure",
+          description: "Flight to the Gold Coast. Afternoon at leisure on the golden surf beaches of Surfers Paradise.",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Gold Coast"
+        },
+        {
+          day: 7,
+          title: "Gold Coast Theme Park Full Day",
+          description: "Full day at Warner Bros. Movie World (thrill rides and shows) or Sea World (marine shows and dolphin encounters).",
+          meals: "Breakfast",
+          stay: "4-Star Hotel, Gold Coast"
+        },
+        {
+          day: 8,
+          title: "Departure from Gold Coast / Brisbane",
+          description: "Morning at leisure. Transfer to Brisbane or Gold Coast Airport for your return flight.",
+          meals: "Breakfast Included",
+          stay: "Check-out"
+        }
+      ],
+      inclusions: [
+        "07 Nights in 4-star hotels with daily breakfast",
+        "Sydney–Cairns and Cairns–Gold Coast domestic flights",
+        "Sydney Opera House guided tour and Harbour dinner cruise",
+        "Blue Mountains day trip with Scenic World and Featherdale Wildlife Park",
+        "Great Barrier Reef full day cruise with snorkeling and lunch",
+        "Kuranda Scenic Railway and Skyrail rainforest cableway",
+        "Gold Coast theme park entry (Movie World or Sea World)",
+        "All transfers and Australia Tourist Visa assistance",
+        "24/7 Vayu Holidays concierge"
+      ],
+      exclusions: [
+        "International airfare",
+        "Optional Sydney Harbour Bridge climb",
+        "Lunches and dinners not specified",
+        "Personal expenses, optional reef dives, and travel insurance"
+      ],
+      hotelInfo: "Sydney: Vibe Hotel Sydney / Novotel Darling Harbour. Cairns: Shangri-La The Marina / Riley. Gold Coast: Mantra Legends / QT Surfers Paradise or equivalent.",
+      bestTime: "September to November (spring) | March–May (autumn)"
     }
   ],
 
