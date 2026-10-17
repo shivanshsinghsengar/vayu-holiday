@@ -437,6 +437,7 @@ async function renderFooter() {
             <a href="/privacy">Cookie Policy</a>
             <a href="/about">About Us</a>
             <a href="/contact">Contact</a>
+            <a href="/admin" style="color:rgba(255,255,255,0.35);font-size:.75rem;" title="Admin Panel">⚙ Admin</a>
           </div>
         </div>
 
