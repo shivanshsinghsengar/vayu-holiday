@@ -151,49 +151,11 @@ window.addEventListener("DOMContentLoaded", () => {
 // ─── DOM READY ────────────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ── LENIS SMOOTH SCROLL INITIALIZATION ─────────────────────────────────────  // Waits for Lenis CDN script to be available (loaded with defer)
-  function initLenis() {
-    if (typeof Lenis === "undefined") {
-      // Retry up to 5 times if Lenis hasn't parsed yet
-      if (!initLenis._retries) initLenis._retries = 0;
-      if (initLenis._retries < 5) {
-        initLenis._retries++;
-        setTimeout(initLenis, 300);
-      }
-      return;
-    }
-    const lenis = new Lenis({
-      duration:        0.8,
-      easing:          t => 1 - Math.pow(1 - t, 3),
-      direction:       "vertical",
-      smoothWheel:     true,
-      smoothTouch:     false,
-      touchMultiplier: 1.5,
-      infinite:        false,
-    });
-    window._vayuLenis = lenis;
-
-    // Connect Lenis RAF to GSAP ticker when GSAP is ready
-    function connectGSAP() {
-      if (window.gsap) {
-        window.gsap.ticker.add((time) => lenis.raf(time * 1000));
-        window.gsap.ticker.lagSmoothing(0);
-        if (window.ScrollTrigger) {
-          lenis.on("scroll", window.ScrollTrigger.update);
-        }
-      } else {
-        // Fallback: own RAF loop
-        function raf(time) {
-          lenis.raf(time);
-          requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-      }
-    }
-    // GSAP is loaded with defer — give it a moment
-    setTimeout(connectGSAP, 400);
-  }
-  initLenis();
+  // ── NATIVE SMOOTH SCROLL ───────────────────────────────────────────────────
+  // Using browser-native smooth scroll — zero JS overhead, perfect on mobile.
+  // CSS handles it via html { scroll-behavior: smooth } in main.css.
+  // Expose a simple stub so any code referencing _vayuLenis doesn't break.
+  window._vayuLenis = null;
 
   // ── PRELOADER ──────────────────────────────────────────────────────────────
   const preloader = document.getElementById("vayu-preloader");
