@@ -206,7 +206,7 @@ const INITIAL_DATA = {
       name: "Nepal",
       type: "international",
       tagline: "Himalayan Kingdom of Temples & Lakes",
-      image: "https://images.unsplash.com/photo-1532599772588-377cc8b63f72?auto=format&fit=crop&w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80",
       description: "Kathmandu Valley UNESCO heritage, sunrise over Annapurna from Pokhara, and jungle safari at Chitwan National Park.",
       packagesCount: 2,
       startingPrice: 36000,
@@ -283,7 +283,7 @@ const INITIAL_DATA = {
       name: "Australia",
       type: "international",
       tagline: "Harbour City & Reef Adventure",
-      image: "https://images.unsplash.com/photo-1506973035872-a4ecaa1fcc38?auto=format&fit=crop&w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1523428096881-5bd79d043006?auto=format&fit=crop&w=1200&q=80",
       description: "Sydney Opera House and Harbour Bridge climb, Great Barrier Reef snorkeling, Gold Coast theme parks, and Blue Mountains escapes.",
       packagesCount: 2,
       startingPrice: 155000,
@@ -2484,9 +2484,9 @@ const INITIAL_DATA = {
       originalPrice: 42000,
       rating: 4.87,
       reviewsCount: 53,
-      image: "https://images.unsplash.com/photo-1532599772588-377cc8b63f72?auto=format&fit=crop&w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80",
       gallery: [
-        "https://images.unsplash.com/photo-1532599772588-377cc8b63f72?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1543248939-4296e1fea89b?auto=format&fit=crop&w=800&q=80",
         "https://images.unsplash.com/photo-1546484959-f9a381d1330d?auto=format&fit=crop&w=800&q=80"
       ],
@@ -2588,7 +2588,7 @@ const INITIAL_DATA = {
       gallery: [
         "https://images.unsplash.com/photo-1477414348463-c0eb7f1359b6?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1546484959-f9a381d1330d?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1532599772588-377cc8b63f72?auto=format&fit=crop&w=800&q=80"
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80"
       ],
       tag: "Spiritual Journey",
       highlights: [
@@ -2888,7 +2888,7 @@ const INITIAL_DATA = {
       gallery: [
         "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1535083252457-31a25c65876b?auto=format&fit=crop&w=800&q=80"
+        "https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?auto=format&fit=crop&w=800&q=80"
       ],
       tag: "Wildlife Safari",
       highlights: [
@@ -3097,7 +3097,7 @@ const INITIAL_DATA = {
       gallery: [
         "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1552832230-c0fab7b9e8e9?auto=format&fit=crop&w=800&q=80"
+        "https://images.unsplash.com/photo-1489171078254-c3365d6e359f?auto=format&fit=crop&w=800&q=80"
       ],
       tag: "Ultra Luxury",
       highlights: [
@@ -3208,9 +3208,9 @@ const INITIAL_DATA = {
       originalPrice: 180000,
       rating: 4.93,
       reviewsCount: 44,
-      image: "https://images.unsplash.com/photo-1506973035872-a4ecaa1fcc38?auto=format&fit=crop&w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1523428096881-5bd79d043006?auto=format&fit=crop&w=1200&q=80",
       gallery: [
-        "https://images.unsplash.com/photo-1506973035872-a4ecaa1fcc38?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1523428096881-5bd79d043006?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=800&q=80",
         "https://images.unsplash.com/photo-1523428096881-5bd79d043006?auto=format&fit=crop&w=800&q=80"
       ],
