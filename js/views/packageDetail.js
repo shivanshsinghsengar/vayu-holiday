@@ -322,9 +322,6 @@ async function renderPackageDetailView(packageId) {
                 ${ICONS.phone} Call Us: ${company.phone}
               </a>
 
-              <button class="btn btn-white" style="width: 100%; border: 1px solid var(--border-subtle);" onclick="window.print()">
-                Print / Save Itinerary (PDF)
-              </button>
             </div>
 
             <p class="quote-concierge-note">
