@@ -554,6 +554,22 @@ class VayuRouter {
         updatePageMeta({ title: "Staff Portal — Vayu Holidays CMS", description: "Internal CMS. Authorized access only.", canonical: `${SITE.url}/admin` });
         document.querySelector('meta[name="robots"]')?.setAttribute("content", "noindex, nofollow");
         injectJSONLD([schemaOrg()]);
+
+        // Lazy-load admin.js if not already loaded
+        if (typeof renderAdminView === "undefined") {
+          window.dispatchEvent(new Event('vayu-load-admin'));
+          // Wait for script to load
+          await new Promise(resolve => {
+            const check = setInterval(() => {
+              if (typeof renderAdminView !== "undefined") {
+                clearInterval(check);
+                resolve();
+              }
+            }, 50);
+            setTimeout(() => { clearInterval(check); resolve(); }, 5000);
+          });
+        }
+
         app.innerHTML = await renderAdminView();
         return;
       }

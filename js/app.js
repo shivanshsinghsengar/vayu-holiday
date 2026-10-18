@@ -164,9 +164,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const prePlane  = document.getElementById("preloaderPlane");
   let   barWidth  = 0;
 
-  // Animate progress bar + counter + plane
+  // Animate progress bar + counter + plane — faster
   const barInterval = setInterval(() => {
-    barWidth += Math.random() * 18 + 8;
+    barWidth += Math.random() * 28 + 14;
     if (barWidth >= 100) {
       barWidth = 100;
       clearInterval(barInterval);
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (preBar)   preBar.style.width = barWidth + "%";
     if (preCount) preCount.textContent = String(pct).padStart(2, "0") + "%";
     if (prePlane) prePlane.style.left  = barWidth + "%";
-  }, 110);
+  }, 60);
 
   // Hide preloader with cinematic curtain reveal
   const hidePreloader = () => {
@@ -189,11 +189,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (preloader) preloader.classList.add("hide");
       document.body.classList.add("page-ready");
 
-      // After curtain finishes (0.9s), mark as gone & scale down hero BG
+      // After curtain finishes (0.55s), mark as gone
       setTimeout(() => {
         if (preloader) preloader.classList.add("gone");
-        // Hero BG scale-down is handled by CSS animation heroBgReveal
-      }, 950);
+      }, 600);
 
       // Start scroll reveal after page is ready
       setTimeout(() => {
@@ -204,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 320);
   };
 
-  const minTime = 900;
+  const minTime = 400;
   const started = Date.now();
   window.addEventListener("load", () => {
     const elapsed = Date.now() - started;
@@ -212,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(hidePreloader, wait);
   });
   // Safety fallback
-  setTimeout(hidePreloader, 3500);
+  setTimeout(hidePreloader, 2000);
 
   // ── STICKY HEADER ──────────────────────────────────────────────────────────
   window.addEventListener("scroll", () => {

@@ -28,7 +28,7 @@
   position: absolute;
   inset: 0;
   background: var(--obsidian, #0A0D12);
-  transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+  transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
   will-change: transform;
   z-index: 1;
 }

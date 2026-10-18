@@ -351,11 +351,30 @@
   <script src="js/views/about.js" defer></script>
   <script src="js/views/blog.js" defer></script>
   <script src="js/views/contact.js" defer></script>
-  <script src="js/views/admin.js" defer></script>
   <script src="js/views/legal.js" defer></script>
 
   <!-- Router & App — runs after all views are defined -->
   <script src="js/router.js" defer></script>
   <script src="js/app.js" defer></script>
+
+  <!-- Admin — loaded on demand only when /admin route is accessed -->
+  <script>
+    (function() {
+      function loadAdminScript() {
+        if (document.getElementById('vayu-admin-script')) return;
+        var s = document.createElement('script');
+        s.src = 'js/views/admin.js';
+        s.id  = 'vayu-admin-script';
+        document.body.appendChild(s);
+      }
+      // Load if current path is /admin
+      if (window.location.pathname === '/admin') {
+        document.addEventListener('DOMContentLoaded', loadAdminScript);
+      } else {
+        // Also load lazily when user navigates to /admin via SPA router
+        window.addEventListener('vayu-load-admin', loadAdminScript, { once: true });
+      }
+    })();
+  </script>
 </body>
 </html>
