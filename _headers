@@ -2,6 +2,13 @@
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+  X-XSS-Protection: 1; mode=block
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+/js/views/admin.js
+  X-Robots-Tag: noindex
+  Cache-Control: no-store, no-cache, must-revalidate
 
 /js/*
   Cache-Control: public, max-age=0, must-revalidate

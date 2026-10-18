@@ -763,20 +763,45 @@ function renderAdminLogin() {
 }
 
 // --- Admin Handlers ---
+// ── Brute Force Protection ───────────────────────────────────────────────────
+const _loginAttempts = { count: 0, lockedUntil: 0 };
+
 async function handleAdminLoginSubmit(e) {
   e.preventDefault();
-  const u = document.getElementById("adminUsername")?.value;
+
+  // Check if locked out
+  if (_loginAttempts.lockedUntil > Date.now()) {
+    const minsLeft = Math.ceil((_loginAttempts.lockedUntil - Date.now()) / 60000);
+    alert(`Too many failed attempts. Try again in ${minsLeft} minute(s).`);
+    return;
+  }
+
+  const u = document.getElementById("adminUsername")?.value?.trim();
   const p = document.getElementById("adminPassword")?.value;
+  const btn = e.target.querySelector('button[type="submit"]');
+
+  if (btn) { btn.disabled = true; btn.textContent = "Verifying..."; }
+
   try {
     const success = await window.vayuStore.loginAdmin(u, p);
     if (success) {
+      _loginAttempts.count = 0;
       showToast("Access Granted", "Welcome to the Vayu Holidays Staff CMS.");
       await switchAdminTab("dashboard");
-    } else {
-      alert("Invalid credentials. Please check your email and password.");
     }
   } catch (err) {
-    alert(err.message || "Login failed. Please try again.");
+    _loginAttempts.count++;
+    const remaining = 5 - _loginAttempts.count;
+
+    if (_loginAttempts.count >= 5) {
+      _loginAttempts.lockedUntil = Date.now() + 15 * 60 * 1000; // 15 min lock
+      _loginAttempts.count = 0;
+      alert("Too many failed attempts. Admin portal locked for 15 minutes.");
+    } else {
+      alert(`${err.message || "Login failed."} ${remaining} attempt(s) remaining.`);
+    }
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = "Access Portal"; }
   }
 }
 

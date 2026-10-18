@@ -652,11 +652,10 @@ class VayuStore {
     return sessionStorage.getItem(LS.AUTH) === "true";
   }
 
-  /** Login — uses Firebase Auth if configured, otherwise legacy hardcoded check */
+  /** Login — uses Firebase Auth only */
   async loginAdmin(username, password) {
     if (this._useFirestore && this._auth) {
       try {
-        // Firebase Auth requires email format
         const email = username.includes("@") ? username : `${username}@vayuholidays.com`;
         await this._auth.signInWithEmailAndPassword(email, password);
         window._vayuAdminFirebaseLoggedIn = true;
@@ -664,22 +663,14 @@ class VayuStore {
         return true;
       } catch (err) {
         console.warn("Firebase login failed:", err.code);
-        // Show friendly error messages
-        if (err.code === "auth/user-not-found")    throw new Error("No admin account found. Check your email.");
-        if (err.code === "auth/wrong-password")    throw new Error("Incorrect password. Please try again.");
+        if (err.code === "auth/user-not-found")    throw new Error("No admin account found.");
+        if (err.code === "auth/wrong-password")    throw new Error("Incorrect password.");
         if (err.code === "auth/too-many-requests") throw new Error("Too many failed attempts. Try again later.");
-        throw new Error(err.message);
+        throw new Error("Login failed. Please try again.");
       }
     }
-    // Fallback: legacy hardcoded credentials
-    if (
-      (username === "admin@vayuholidays.com" || username === "admin") &&
-      password === "Vayu@Admin2026#"
-    ) {
-      sessionStorage.setItem(LS.AUTH, "true");
-      return true;
-    }
-    return false;
+    // Firebase not configured — block access entirely
+    throw new Error("Admin access requires Firebase Authentication to be configured.");
   }
 
   /** Logout */
