@@ -3514,7 +3514,7 @@ const INITIAL_DATA = {
       location: "Bhopal, MP",
       trip: "Kashmir 6D Luxury Tour",
       rating: 5,
-      avatar: "/icons/face1",
+      avatar: "/icons/face1.jpeg",
       quote: "Vayu Holidays planned our 25th anniversary trip to Kashmir with pure perfection. The private houseboat in Nigeen lake was pristine, and our chauffeur was courteous and punctual. The personal care from their Bhopal office gave us absolute confidence!"
     },
     {
@@ -3523,7 +3523,7 @@ const INITIAL_DATA = {
       location: "Indore, MP",
       trip: "Switzerland Grand Alpine Tour",
       rating: 5,
-      avatar: "/icons/face2",
+      avatar: "/icons/face2.jpeg",
       quote: "Our Swiss vacation was flawlessly organized. From Schengen visa guidance within days to 1st class Swiss Rail passes and breathtaking hotel views in Lucerne and Zermatt, Vayu Holidays lived up to their promise of minimal luxury and zero stress."
     },
     {
@@ -3532,7 +3532,7 @@ const INITIAL_DATA = {
       location: "Bhopal & Delhi",
       trip: "Corporate Annual Offsite (Dubai - 45 Delegates)",
       rating: 5,
-      avatar: "/icons/face3",
+      avatar: "/icons/face3.jpeg",
       quote: "Managing 45 corporate leaders in Dubai requires meticulous execution. Managing Director Shubham and the Vayu Holidays team managed flights, luxury coaches, gala dinner at Dubai Marina, and desert safari without a single hitch. Exceptional!"
     }
   ],
