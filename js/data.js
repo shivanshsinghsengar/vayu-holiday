@@ -51,7 +51,7 @@ const INITIAL_DATA = {
     ],
     leadership: [
       {
-        name: "Simran Singh Sengar",
+        name: "Simran Sengar",
         role: "Chairman",
         bio: "Providing vision and strategic stewardship, championing trust, hospitality, and bespoke luxury travel from Central India to the world."
       },

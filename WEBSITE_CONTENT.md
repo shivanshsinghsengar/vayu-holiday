@@ -99,7 +99,7 @@
 - Eyebrow: Executive Stewardship
 - H2: Leadership Team
 - Desc: Guided by decades of collective dedication to hospitality excellence, trust, and guest satisfaction.
-- Leader 1: Simran Singh Sengar — Chairman
+- Leader 1: Simran Sengar — Chairman
 - Leader 2: Shubham Vishwkarma — Managing Director & CEO
 - Leader 3: Hardik Singh Sengar — Director
 
