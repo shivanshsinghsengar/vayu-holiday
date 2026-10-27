@@ -262,7 +262,7 @@ async function renderHomeView() {
          OFFERS & BANNERS — Dynamic from Admin
     ══════════════════════════════════════════════════════════════ -->
     ${activeOffers.length > 0 ? `
-    <section class="section" style="padding-top:0;padding-bottom:var(--space-10);" aria-label="Special offers">
+    <section class="section" style="padding-top:0;padding-bottom:2rem;" aria-label="Special offers">
       <div class="container">
         <div style="display:flex;flex-direction:column;gap:1.25rem;">
           ${activeOffers.map(offer => `
@@ -270,7 +270,7 @@ async function renderHomeView() {
               background:${offer.bannerImage ? `url('${offer.bannerImage}') center/cover no-repeat` : (offer.bannerBg || '#111111')};
               color:${offer.bannerText || '#ffffff'};
               border-radius:var(--radius-lg);
-              padding:2rem 2.5rem;
+              padding:3rem 3.5rem;
               display:flex;
               align-items:center;
               justify-content:space-between;
@@ -278,16 +278,16 @@ async function renderHomeView() {
               flex-wrap:wrap;
               position:relative;
               overflow:hidden;
-              min-height:120px;
+              min-height:180px;
             ">
               ${offer.bannerImage ? `<div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.45) 60%,rgba(0,0,0,0.2) 100%);border-radius:var(--radius-lg);"></div>` : ''}
               <div style="position:relative;z-index:1;max-width:65%;">
-                <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;opacity:0.8;margin-bottom:0.35rem;font-family:var(--font-body);">Special Offer</div>
-                <h3 style="font-family:var(--font-display);font-size:1.35rem;font-weight:700;margin-bottom:0.35rem;text-shadow:0 1px 4px rgba(0,0,0,0.4);">${offer.title}</h3>
-                <p style="font-size:0.9rem;opacity:0.9;font-family:var(--font-body);margin-bottom:0.6rem;text-shadow:0 1px 3px rgba(0,0,0,0.3);">${offer.discount}</p>
+                <div style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.14em;opacity:0.8;margin-bottom:0.5rem;font-family:var(--font-body);">Special Offer</div>
+                <h3 style="font-family:var(--font-display);font-size:1.75rem;font-weight:700;margin-bottom:0.5rem;text-shadow:0 1px 4px rgba(0,0,0,0.4);">${offer.title}</h3>
+                <p style="font-size:1rem;opacity:0.9;font-family:var(--font-body);margin-bottom:0.85rem;text-shadow:0 1px 3px rgba(0,0,0,0.3);">${offer.discount}</p>
                 <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
-                  <code style="background:rgba(255,255,255,0.2);backdrop-filter:blur(4px);padding:0.25rem 0.75rem;border-radius:6px;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;border:1px solid rgba(255,255,255,0.25);">${offer.code}</code>
-                  <span style="font-size:0.78rem;opacity:0.7;">${offer.validity}</span>
+                  <code style="background:rgba(255,255,255,0.2);backdrop-filter:blur(4px);padding:0.35rem 1rem;border-radius:6px;font-size:0.92rem;font-weight:700;letter-spacing:0.08em;border:1px solid rgba(255,255,255,0.25);">${offer.code}</code>
+                  <span style="font-size:0.85rem;opacity:0.7;">${offer.validity}</span>
                 </div>
               </div>
               <div style="position:relative;z-index:1;flex-shrink:0;">

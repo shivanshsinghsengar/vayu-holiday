@@ -109,12 +109,12 @@ button, input, select, textarea {
 }
 
 .section {
-  padding: 6.5rem 0;
+  padding: 4rem 0;
   position: relative;
 }
 
 .section-sm {
-  padding: 4rem 0;
+  padding: 2.5rem 0;
 }
 
 .section-dark {
