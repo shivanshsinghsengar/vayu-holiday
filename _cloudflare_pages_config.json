@@ -1,0 +1,20 @@
+{
+  "build": {
+    "command": "",
+    "output": "."
+  },
+  "routes": [
+    {
+      "action": "rewrite",
+      "path": "/*",
+      "to": "/index.html"
+    }
+  ],
+  "headers": {
+    "/*": {
+      "X-Frame-Options": "DENY",
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "strict-origin-when-cross-origin"
+    }
+  }
+}

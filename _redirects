@@ -1,1 +1,16 @@
+# SPA fallback - serve index.html for all routes
+/packages /index.html 200
+/domestic /index.html 200
+/international /index.html 200
+/honeymoon /index.html 200
+/group-tours /index.html 200
+/mice /index.html 200
+/contact /index.html 200
+/about /index.html 200
+/blog /index.html 200
+/blog/* /index.html 200
+/package/* /index.html 200
+/services/* /index.html 200
+
+# Catch-all fallback
 /* /index.html 200
