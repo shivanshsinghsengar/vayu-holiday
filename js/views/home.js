@@ -121,6 +121,9 @@ async function renderHomeView() {
           <h1 class="hero-title">
             Your Journey.<br/><em class="hero-title-em">Beautifully</em> Planned.
           </h1>
+          <p class="hero-subtitle" style="font-size: 1.1rem; margin-top: 1rem; color: rgba(255, 255, 255, 0.85); font-weight: 400;">
+            Luxury holiday and tour packages from Bhopal, India
+          </p>
 
           <p class="hero-subtitle">
             ${heroSubtitle}

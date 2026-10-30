@@ -19,28 +19,28 @@ const SITE = {
 // ── Per-route SEO metadata ──────────────────────────────────────────────────
 const ROUTE_META = {
   "/": {
-    title:       "Vayu Holidays — Luxury Travel Agency | Bhopal",
-    description: "Bhopal's most trusted luxury travel agency. Bespoke holiday packages to Kashmir, Kerala, Dubai, Bali & Switzerland. Visa, forex, flights & 24/7 concierge.",
+    title:       "Vayu Holidays | Curated Journeys Across the World",
+    description: "Vayu Holidays designs private, curated journeys to Switzerland, Dubai, Bali, Maldives and more. Visa, flights and on-trip support, all handled by one team.",
     image:       "https://www.vayuholidays.com/icons/og-image.jpg"
   },
   "/packages": {
-    title:       "Holiday Packages 2026 — Luxury Tours | Vayu Holidays Bhopal",
-    description: "Explore 2026 luxury holiday packages — Kashmir, Kerala, Dubai, Bali, Switzerland, Maldives & Rajasthan. Transparent pricing, Private Basiss, 4★ & 5★ hotels.",
+    title:       "Holiday Packages | Vayu Holidays",
+    description: "Explore curated holiday packages to destinations worldwide. Private tours, luxury stays, and seamless travel planning from Bhopal, India.",
     image:       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
   },
   "/domestic": {
-    title:       "Domestic India Tour Packages — Kashmir, Kerala, Rajasthan | Vayu Holidays",
-    description: "Handcrafted domestic holiday packages from Bhopal. Kashmir valleys, Kerala backwaters, Rajasthan palaces. Private vehicles, verified stays, 24/7 support.",
+    title:       "India Tour Packages | Vayu Holidays",
+    description: "Discover India with handcrafted tour packages. Kashmir valleys, Kerala backwaters, Rajasthan palaces. Private vehicles and verified stays.",
     image:       "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1200&q=80"
   },
   "/international": {
-    title:       "International Tour Packages — Dubai, Bali, Switzerland | Vayu Holidays",
-    description: "Luxury international holiday packages from Bhopal. Dubai, Bali, Switzerland, Maldives & Vietnam. Visa assistance, forex, private transfers included.",
+    title:       "International Tour Packages | Vayu Holidays",
+    description: "International luxury holidays to Dubai, Bali, Switzerland, Maldives and Vietnam. Complete visa assistance and private transfers included.",
     image:       "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80"
   },
   "/honeymoon": {
-    title:       "Honeymoon Packages 2026 — Romantic Escapes | Vayu Holidays Bhopal",
-    description: "Romantic honeymoon packages — Maldives overwater villas, Bali jungle retreats, Kashmir houseboats. Private, curated, unforgettable.",
+    title:       "Honeymoon Packages | Vayu Holidays",
+    description: "Romantic honeymoon journeys to Maldives overwater villas, Bali jungle retreats, Kashmir houseboats. Private, curated, unforgettable.",
     image:       "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1200&q=80"
   },
   "/group-tours": {
@@ -59,8 +59,8 @@ const ROUTE_META = {
     image:       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
   },
   "/contact": {
-    title:       "Contact Vayu Holidays — Bhopal Travel Agency | +91 888 975 4969",
-    description: "Contact Vayu Holidays at our Bhopal office. Call +91 888 975 4969 or WhatsApp +91 888 975 4969. Mon–Sat 9:30 AM–7:30 PM.",
+    title:       "Plan Your Journey | Contact Vayu Holidays",
+    description: "Contact our travel specialists in Bhopal. Call +91 888 975 4969 or WhatsApp for personalized journey planning. Mon–Sat 9:30 AM–7:30 PM.",
     image:       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
   },
   "/blog": {
@@ -199,6 +199,20 @@ function schemaOrg() {
       "postalCode": "462031",
       "addressCountry": "IN"
     },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Bhopal"
+      },
+      {
+        "@type": "State",
+        "name": "Madhya Pradesh"
+      },
+      {
+        "@type": "Country",
+        "name": "India"
+      }
+    ],
     "geo": { "@type": "GeoCoordinates", "latitude": "23.2599", "longitude": "77.4126" },
     "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "09:30", "closes": "19:30" }],
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": SITE.rating, "reviewCount": SITE.reviewCount, "bestRating": 5 }
