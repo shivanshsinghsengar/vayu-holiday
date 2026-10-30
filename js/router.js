@@ -190,7 +190,7 @@ function schemaOrg() {
     "url": SITE.url,
     "logo": SITE.logo,
     "telephone": SITE.phone,
-    "email": "concierge@vayuholidays.com",
+    "email": "info@vayuholidays.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Vayu Pride Residency, Raksha Vihar",

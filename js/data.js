@@ -12,8 +12,8 @@ const INITIAL_DATA = {
     phone: "+91 888 975 4969",
     whatsapp: "+91 888 975 4969",
     whatsappMessage: "Hello Vayu Holidays Concierge, I would like to inquire about planning a luxury journey.",
-    email: "concierge@vayuholidays.com",
-    supportEmail: "travel@vayuholidays.com",
+    email: "info@vayuholidays.com",
+    supportEmail: "info@vayuholidays.com",
     hours: "Mon - Sat: 9:30 AM – 7:30 PM | 24/7 VIP Traveler Support",
     branches: [
       {
