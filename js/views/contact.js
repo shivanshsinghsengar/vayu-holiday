@@ -113,6 +113,21 @@ async function renderContactView() {
                 </div>
 
                 <div style="display: flex; align-items: flex-start; gap: 0.85rem;">
+                  <div style="color: var(--color-gold-dark); margin-top: 3px;">${ICONS.sparkles}</div>
+                  <div>
+                    <strong style="color: var(--color-obsidian); font-size: 0.95rem;">Email Us:</strong>
+                    <div style="margin-top: 2px; display: flex; flex-direction: column; gap: 0.25rem;">
+                      <a href="mailto:${company.email}" style="color: var(--color-gold-dark); font-weight: 600;">
+                        ${company.email}
+                      </a>
+                      <a href="mailto:${company.salesEmail || 'sales@vayuholidays.com'}" style="color: var(--color-gold-dark); font-weight: 600;">
+                        ${company.salesEmail || 'sales@vayuholidays.com'}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: flex-start; gap: 0.85rem;">
                   <div style="color: var(--color-gold-dark); margin-top: 3px;">${ICONS.clock}</div>
                   <div>
                     <strong style="color: var(--color-obsidian); font-size: 0.95rem;">Office Hours:</strong>

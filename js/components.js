@@ -403,6 +403,9 @@ async function renderFooter() {
                 <span class="footer-contact-icon" aria-hidden="true">${ICONS.sparkles}</span>
                 <div>
                   <a href="mailto:${company.email}" style="color:rgba(255,255,255,0.75);">${company.email}</a>
+                  <span style="display:block;font-size:0.80rem;margin-top:0.25rem;">
+                    <a href="mailto:${company.salesEmail || 'sales@vayuholidays.com'}" style="color:rgba(255,255,255,0.65);">${company.salesEmail || 'sales@vayuholidays.com'}</a>
+                  </span>
                 </div>
               </div>
             </address>
