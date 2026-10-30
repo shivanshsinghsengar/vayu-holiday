@@ -90,11 +90,28 @@ async function renderAboutView() {
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2.5rem;">
-          ${leadership.map(leader => `
+          ${leadership.map(leader => {
+            // Map leader names to their image files
+            let leaderImage = '';
+            if (leader.name.toLowerCase().includes('simran')) {
+              leaderImage = '/icons/simran.jpeg';
+            } else if (leader.name.toLowerCase().includes('shubham')) {
+              leaderImage = '/icons/sub.jpeg';
+            }
+
+            return `
             <div style="background: var(--color-cream); border: 1px solid var(--border-gold); border-radius: var(--radius-lg); padding: 2.5rem 2rem; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column;">
-              <div style="width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--color-obsidian) 0%, var(--color-slate-dark) 100%); color: var(--color-gold); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 2rem; font-weight: 700; margin: 0 auto 1.5rem; border: 2px solid var(--border-gold);">
-                ${initials(leader.name)}
-              </div>
+              ${leaderImage ? `
+                <img 
+                  src="${leaderImage}" 
+                  alt="${leader.name}" 
+                  style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.5rem; border: 3px solid var(--color-gold); box-shadow: var(--shadow-md);" 
+                />
+              ` : `
+                <div style="width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--color-obsidian) 0%, var(--color-slate-dark) 100%); color: var(--color-gold); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 2rem; font-weight: 700; margin: 0 auto 1.5rem; border: 2px solid var(--border-gold);">
+                  ${initials(leader.name)}
+                </div>
+              `}
               <h3 style="font-family: var(--font-serif); font-size: 1.45rem; margin-bottom: 0.35rem; color: var(--color-obsidian);">
                 ${leader.name}
               </h3>
@@ -105,7 +122,7 @@ async function renderAboutView() {
                 ${leader.bio}
               </p>
             </div>
-          `).join('')}
+          `}).join('')}
         </div>
       </div>
     </section>
