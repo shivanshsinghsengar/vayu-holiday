@@ -231,18 +231,29 @@ document.addEventListener("DOMContentLoaded", () => {
   // ── COOKIE CONSENT ─────────────────────────────────────────────────────────
   showCookieBanner();
 
-  // ── SERVICE WORKER — force update old caches ───────────────────────────────
+  // ── SERVICE WORKER — cleanup and unregister old version ────────────────────
   if ("serviceWorker" in navigator) {
+    // Listen for cleanup complete message
+    navigator.serviceWorker.addEventListener("message", (event) => {
+      if (event.data.type === "SW_CLEANUP_COMPLETE") {
+        console.log("[App] SW cleanup complete - unregistering all service workers");
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          registrations.forEach((reg) => {
+            reg.unregister().then(() => {
+              console.log("[App] Service worker unregistered:", reg.scope);
+            });
+          });
+        });
+      }
+    });
+
+    // Register the cleanup service worker
     navigator.serviceWorker.register("/sw.js")
       .then(reg => {
-        console.log("SW registered:", reg.scope);
-        reg.update();
+        console.log("[App] Cleanup SW registered:", reg.scope);
+        reg.update(); // Force immediate update
       })
-      .catch(e => console.warn("SW failed:", e));
-
-    navigator.serviceWorker.addEventListener("controllerchange", () => {
-      window.location.reload();
-    });
+      .catch(e => console.warn("[App] SW registration failed:", e));
   }
 
   // ── FIREBASE AUTH ──────────────────────────────────────────────────────────
