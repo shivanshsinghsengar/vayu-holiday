@@ -52,7 +52,7 @@ const INITIAL_DATA = {
     ],
     leadership: [
       {
-        name: "Simran Sengar",
+        name: "Simran Sengar", // Chairman - updated Oct 2026
         role: "Chairman",
         bio: "Providing vision and strategic stewardship, championing trust, hospitality, and bespoke luxury travel from Central India to the world."
       },
