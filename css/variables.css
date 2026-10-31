@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    VAYU HOLIDAYS — LUXURY DESIGN SYSTEM v3 — BRIGHT & VIBRANT
    ========================================================================== */
 
@@ -51,16 +51,16 @@
     rgba(232,185,35,0.20) 40%,
     rgba(255,255,255,0.08) 100%);
 
-  /* ── BASE PALETTE ────────────────────────────────────────────────────  */
+  /* ── BASE PALETTE — IMPROVED CONTRAST ────────────────────────────────  */
   --c-bg:          #FFFFFF;
   --c-bg-subtle:   #F4F6FA;
   --c-bg-muted:    #E8ECF2;
 
-  /* Darker, crisper ink for readability */
+  /* Darker text colors for better readability (WCAG AA compliant) */
   --c-ink:         #0D1117;
   --c-ink-2:       #1F2937;
-  --c-ink-3:       #4B5563;
-  --c-ink-4:       #9CA3AF;
+  --c-ink-3:       #374151;  /* Changed from #4B5563 for better contrast */
+  --c-ink-4:       #6B7280;  /* Changed from #9CA3AF - now 4.6:1 contrast on white */
 
   --c-accent:      #3B82F6;
   --c-accent-dark: #1D4ED8;
@@ -68,8 +68,8 @@
 
   --c-dark:        #0D1117;
   --c-dark-2:      #161D2B;
-  --c-dark-muted:  rgba(255,255,255,0.70);
-  --c-dark-faint:  rgba(255,255,255,0.35);
+  --c-dark-muted:  rgba(255,255,255,0.85);  /* Increased opacity for better contrast */
+  --c-dark-faint:  rgba(255,255,255,0.50);  /* Increased opacity */
 
   --c-border:      rgba(13,17,23,0.10);
   --c-border-mid:  rgba(13,17,23,0.18);
@@ -89,7 +89,7 @@
   --color-slate-light:    var(--c-ink-3);
   --color-primary:        var(--c-ink);
   --color-primary-dark:   #000000;
-  --color-primary-light:  var(--c-ink-2);
+  --color-primary-light:   var(--c-ink-2);
   --color-primary-pale:   var(--c-bg-subtle);
   --color-primary-muted:  rgba(13,17,23,0.06);
   --color-accent:         var(--c-accent);
@@ -141,12 +141,12 @@
   --radius-2xl:  28px;
   --radius-full: 9999px;
 
-  /* ── MOTION ──────────────────────────────────────────────────────────  */
+  /* ── MOTION — IMPROVED (removed bounce easings) ──────────────────────  */
   --ease-luxury:     cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out:        cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out:     cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ease-expo:       cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-expo:       cubic-bezier(0.19, 1, 0.22, 1);        /* Use instead of spring */
+  --ease-spring:     cubic-bezier(0.19, 1, 0.22, 1);        /* Now uses exponential */
   --ease-magnetic:   cubic-bezier(0.23, 1, 0.32, 1);
 
   --transition-fast:   all 0.18s var(--ease-in-out);
