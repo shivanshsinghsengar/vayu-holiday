@@ -1,0 +1,440 @@
+/* ==========================================================================
+   VAYU HOLIDAYS — CONVERSION PSYCHOLOGY BOOSTERS CSS
+   Exit Intent Popup, Live Activity Ticker, Enhanced WhatsApp Widget
+   ========================================================================== */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   1. EXIT INTENT POPUP
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+#exitIntentOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 13, 18, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#exitIntentOverlay.show {
+  opacity: 1;
+}
+
+.exit-popup {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F5F3EF 100%);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+  border: 2px solid #D4AF37;
+}
+
+#exitIntentOverlay.show .exit-popup {
+  transform: scale(1);
+}
+
+.exit-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.exit-close:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #000;
+}
+
+.exit-content {
+  text-align: center;
+}
+
+.exit-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.exit-title {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  color: #0A0D12;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.exit-subtitle {
+  font-size: 1.1rem;
+  color: #4A5568;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.exit-subtitle strong {
+  color: #D4AF37;
+}
+
+.exit-form {
+  margin-bottom: 1.5rem;
+}
+
+.exit-input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid #D4AF37;
+  border-radius: 12px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  transition: all 0.2s;
+}
+
+.exit-input:focus {
+  outline: none;
+  border-color: #B8941F;
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+}
+
+.exit-btn {
+  width: 100%;
+  padding: 1.1rem 2rem;
+  background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.exit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.exit-trust {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.exit-trust-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   2. LIVE ACTIVITY TICKER
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.live-ticker {
+  position: fixed;
+  top: 120px;
+  left: 20px;
+  background: white;
+  padding: 0.85rem 1.25rem;
+  border-radius: 50px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  z-index: 9998;
+  transform: translateX(-150%);
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  border: 2px solid #F5F3EF;
+  max-width: 350px;
+}
+
+.live-ticker.show {
+  transform: translateX(0);
+}
+
+.live-ticker-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.live-ticker-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.live-ticker-text {
+  font-size: 0.9rem;
+  color: #2D3748;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* Different ticker types */
+.live-ticker-booking {
+  border-color: #48BB78;
+}
+
+.live-ticker-booking .live-ticker-icon {
+  color: #48BB78;
+}
+
+.live-ticker-live {
+  border-color: #F56565;
+}
+
+.live-ticker-live .live-ticker-icon {
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.live-ticker-urgency {
+  border-color: #ED8936;
+  background: linear-gradient(135deg, #FFF5F0 0%, #FFFFFF 100%);
+}
+
+.live-ticker-urgency .live-ticker-icon {
+  color: #ED8936;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   3. ENHANCED WHATSAPP WIDGET
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.wa-widget {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 9999;
+  transform: scale(0);
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wa-widget.show {
+  transform: scale(1);
+}
+
+.wa-widget.pulse .wa-widget-btn {
+  animation: widgetPulse 0.6s;
+}
+
+@keyframes widgetPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.wa-widget-btn {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #25D366 0%, #20BA5A 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  padding: 0.75rem 1.25rem;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+  transition: all 0.3s ease;
+  gap: 1rem;
+  max-width: 320px;
+}
+
+.wa-widget-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.45);
+}
+
+.wa-widget-content {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex: 1;
+}
+
+.wa-widget-avatar {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid white;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.wa-widget-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wa-widget-status {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  background: #10B981;
+  border: 2px solid white;
+  border-radius: 50%;
+  animation: statusPulse 2s infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  50% { box-shadow: 0 0 0 4px rgba(16, 185, 129, 0); }
+}
+
+.wa-widget-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.wa-widget-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.wa-widget-msg {
+  font-size: 0.85rem;
+  opacity: 0.95;
+  line-height: 1.2;
+}
+
+.wa-widget-reply {
+  font-size: 0.75rem;
+  opacity: 0.85;
+  font-weight: 600;
+}
+
+.wa-widget-icon {
+  background: rgba(255, 255, 255, 0.2);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.wa-widget-btn:hover .wa-widget-icon {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(360deg);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  /* Exit Popup Mobile */
+  .exit-popup {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+  }
+  
+  .exit-title {
+    font-size: 1.4rem;
+  }
+  
+  .exit-subtitle {
+    font-size: 1rem;
+  }
+  
+  /* Live Ticker Mobile */
+  .live-ticker {
+    top: 80px;
+    left: 10px;
+    right: 10px;
+    max-width: calc(100% - 20px);
+    padding: 0.75rem 1rem;
+  }
+  
+  .live-ticker-text {
+    font-size: 0.85rem;
+  }
+  
+  /* WhatsApp Widget Mobile */
+  .wa-widget {
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .wa-widget-btn {
+    padding: 0.65rem 1rem;
+    max-width: 280px;
+  }
+  
+  .wa-widget-avatar {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .wa-widget-name {
+    font-size: 0.9rem;
+  }
+  
+  .wa-widget-msg {
+    font-size: 0.8rem;
+  }
+  
+  .wa-widget-icon {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Compact WhatsApp Widget for very small screens */
+  .wa-widget-text {
+    display: none;
+  }
+  
+  .wa-widget-btn {
+    border-radius: 50%;
+    padding: 1rem;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .wa-widget-content {
+    justify-content: center;
+  }
+  
+  .wa-widget-icon {
+    width: 44px;
+    height: 44px;
+  }
+}
