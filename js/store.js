@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    VAYU HOLIDAYS — STORE (Firestore + localStorage fallback)
    
    Architecture:
@@ -23,6 +23,7 @@ const LS = {
   BLOGS:        "vayu_blogs_2026",
   TESTIMONIALS: "vayu_testimonials_2026",
   OFFERS:       "vayu_offers_2026",
+  DELETED_OFFERS: "vayu_deleted_offers",
   COMPANY:      "vayu_company_2026",
   SERVICES:     "vayu_services_2026",
   CURRENCY:     "vayu_currency_pref",
