@@ -563,7 +563,7 @@ function initConversionBoosters() {
       initExitIntent();
       initLiveActivityTicker();
       initEnhancedWhatsApp();
-      initCountdownTimer();
+      // initCountdownTimer(); // DISABLED - not needed
       initTrustBadgeBar();
       initSmartNotifications();
       initLiveCounter();
@@ -573,7 +573,7 @@ function initConversionBoosters() {
     initExitIntent();
     initLiveActivityTicker();
     initEnhancedWhatsApp();
-    initCountdownTimer();
+    // initCountdownTimer(); // DISABLED - not needed
     initTrustBadgeBar();
     initSmartNotifications();
     initLiveCounter();
