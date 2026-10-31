@@ -246,11 +246,6 @@ async function renderNavbar() {
       </div>
     </aside>
 
-    <!-- Floating WhatsApp -->
-    <a href="https://wa.me/${waNumber}?text=${waMsg}" target="_blank" rel="noopener" class="floating-wa-btn" aria-label="WhatsApp">
-      ${ICONS.whatsapp}
-    </a>
-
     <!-- Mobile Bottom Bar -->
     <div class="vn-mob-bar" role="complementary">
       <a href="tel:${company.phone}" class="vn-mob-btn">
