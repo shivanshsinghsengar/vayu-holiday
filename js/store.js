@@ -670,8 +670,17 @@ class VayuStore {
         throw new Error("Login failed. Please try again.");
       }
     }
-    // Firebase not configured — block access entirely
-    throw new Error("Admin access requires Firebase Authentication to be configured.");
+    
+    // Firebase not configured — use fallback credentials
+    const validUsername = username === "admin" || username === "admin@vayuholidays.com";
+    const validPassword = password === "vayu2026";
+    
+    if (validUsername && validPassword) {
+      sessionStorage.setItem(LS.AUTH, "true");
+      return true;
+    }
+    
+    throw new Error("Invalid username or password.");
   }
 
   /** Logout */
