@@ -210,6 +210,349 @@ function initEnhancedWhatsApp() {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
+// 4. COUNTDOWN TIMER ON HERO
+// ═══════════════════════════════════════════════════════════════════════════
+
+function initCountdownTimer() {
+  const banner = document.createElement('div');
+  banner.id = 'urgencyBanner';
+  banner.className = 'urgency-banner';
+  
+  // Set target time (24 hours from now, resets daily)
+  const now = new Date();
+  const target = new Date();
+  target.setHours(23, 59, 59, 999);
+  
+  banner.innerHTML = `
+    <div class="urgency-content">
+      <div class="urgency-icon">⚡</div>
+      <div class="urgency-text">
+        <div class="urgency-title">FLASH DEAL ENDS IN:</div>
+        <div class="urgency-timer" id="countdownTimer">
+          <span class="time-unit"><span class="time-value" id="hours">00</span><span class="time-label">HRS</span></span>
+          <span class="time-sep">:</span>
+          <span class="time-unit"><span class="time-value" id="minutes">00</span><span class="time-label">MIN</span></span>
+          <span class="time-sep">:</span>
+          <span class="time-unit"><span class="time-value" id="seconds">00</span><span class="time-label">SEC</span></span>
+        </div>
+      </div>
+      <div class="urgency-offer">
+        <div class="urgency-deal">Save ₹8,000 on Kashmir Packages</div>
+        <button class="urgency-cta" onclick="openEnquiryModal({ title: 'Flash Deal - Kashmir Package' })">
+          Claim Offer Now →
+        </button>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(banner);
+  
+  // Update countdown every second
+  updateCountdown(target);
+  setInterval(() => updateCountdown(target), 1000);
+  
+  // Show banner after 2 seconds
+  setTimeout(() => banner.classList.add('show'), 2000);
+}
+
+function updateCountdown(target) {
+  const now = new Date();
+  let diff = target - now;
+  
+  // Reset to next day if expired
+  if (diff < 0) {
+    target.setDate(target.getDate() + 1);
+    diff = target - now;
+  }
+  
+  const hours = Math.floor(diff / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  
+  const hoursEl = document.getElementById('hours');
+  const minutesEl = document.getElementById('minutes');
+  const secondsEl = document.getElementById('seconds');
+  
+  if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+  if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+  if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 5. TRUST BADGE BAR
+// ═══════════════════════════════════════════════════════════════════════════
+
+function initTrustBadgeBar() {
+  const bar = document.createElement('div');
+  bar.id = 'trustBadgeBar';
+  bar.className = 'trust-bar';
+  bar.innerHTML = `
+    <div class="trust-bar-content">
+      <div class="trust-label">TRUSTED BY 2,450+ FAMILIES</div>
+      <div class="trust-badges">
+        <div class="trust-badge">
+          <span class="trust-badge-icon">⭐</span>
+          <div class="trust-badge-text">
+            <strong>4.9/5</strong>
+            <span>Google Rating</span>
+          </div>
+        </div>
+        <div class="trust-badge">
+          <span class="trust-badge-icon">✈️</span>
+          <div class="trust-badge-text">
+            <strong>IATA</strong>
+            <span>Certified</span>
+          </div>
+        </div>
+        <div class="trust-badge">
+          <span class="trust-badge-icon">🏆</span>
+          <div class="trust-badge-text">
+            <strong>156+</strong>
+            <span>5★ Reviews</span>
+          </div>
+        </div>
+        <div class="trust-badge">
+          <span class="trust-badge-icon">🔒</span>
+          <div class="trust-badge-text">
+            <strong>100%</strong>
+            <span>Secure</span>
+          </div>
+        </div>
+        <div class="trust-badge">
+          <span class="trust-badge-icon">📞</span>
+          <div class="trust-badge-text">
+            <strong>24/7</strong>
+            <span>Support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  // Insert after hero section
+  setTimeout(() => {
+    const hero = document.querySelector('.hero-section') || document.querySelector('section');
+    if (hero && hero.nextSibling) {
+      hero.parentNode.insertBefore(bar, hero.nextSibling);
+    } else {
+      document.body.appendChild(bar);
+    }
+    
+    setTimeout(() => bar.classList.add('show'), 100);
+  }, 1000);
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 6. SMART NOTIFICATION SYSTEM
+// ═══════════════════════════════════════════════════════════════════════════
+
+const notifications = [
+  {
+    icon: "💰",
+    title: "Special Offer Alert!",
+    message: "Kashmir Package - ₹5,000 OFF today only",
+    cta: "Claim Offer",
+    delay: 15000
+  },
+  {
+    icon: "🎉",
+    title: "Limited Slots!",
+    message: "Only 3 spots left for March Bali departures",
+    cta: "Book Now",
+    delay: 30000
+  },
+  {
+    icon: "⚡",
+    title: "Flash Deal Active",
+    message: "Book any package today, get free visa assistance",
+    cta: "Get Deal",
+    delay: 45000
+  }
+];
+
+let notificationIndex = 0;
+
+function initSmartNotifications() {
+  // Show first notification after delay
+  setTimeout(() => showNotification(notifications[0]), notifications[0].delay);
+}
+
+function showNotification(notif) {
+  const notification = document.createElement('div');
+  notification.className = 'smart-notification';
+  notification.innerHTML = `
+    <div class="notif-icon">${notif.icon}</div>
+    <div class="notif-content">
+      <div class="notif-title">${notif.title}</div>
+      <div class="notif-message">${notif.message}</div>
+    </div>
+    <button class="notif-cta" onclick="handleNotificationClick(); this.parentElement.remove();">
+      ${notif.cta} →
+    </button>
+    <button class="notif-close" onclick="this.parentElement.remove();" aria-label="Close">✕</button>
+  `;
+  
+  document.body.appendChild(notification);
+  
+  // Animate in
+  setTimeout(() => notification.classList.add('show'), 100);
+  
+  // Auto-hide after 8 seconds
+  setTimeout(() => {
+    notification.classList.remove('show');
+    setTimeout(() => notification.remove(), 300);
+  }, 8000);
+  
+  // Schedule next notification
+  notificationIndex = (notificationIndex + 1) % notifications.length;
+  const next = notifications[notificationIndex];
+  setTimeout(() => showNotification(next), next.delay);
+}
+
+function handleNotificationClick() {
+  if (typeof openEnquiryModal === 'function') {
+    openEnquiryModal({ title: 'Special Offer Inquiry' });
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 7. LIVE COUNTER WIDGET
+// ═══════════════════════════════════════════════════════════════════════════
+
+function initLiveCounter() {
+  const counter = document.createElement('div');
+  counter.id = 'liveCounter';
+  counter.className = 'live-counter';
+  counter.innerHTML = `
+    <div class="live-counter-title">THIS MONTH</div>
+    <div class="live-counter-stats">
+      <div class="counter-stat">
+        <div class="counter-value" data-target="247">0</div>
+        <div class="counter-label">Bookings</div>
+      </div>
+      <div class="counter-divider"></div>
+      <div class="counter-stat">
+        <div class="counter-value" data-target="18">0</div>
+        <div class="counter-label">Traveling Now</div>
+      </div>
+      <div class="counter-divider"></div>
+      <div class="counter-stat">
+        <div class="counter-value">4.9★</div>
+        <div class="counter-label">Rating</div>
+      </div>
+    </div>
+  `;
+  
+  // Insert in hero or after hero
+  setTimeout(() => {
+    const hero = document.querySelector('.hero-section') || document.querySelector('section');
+    if (hero) {
+      hero.appendChild(counter);
+      animateCounters();
+    }
+  }, 1500);
+}
+
+function animateCounters() {
+  const counters = document.querySelectorAll('.counter-value[data-target]');
+  counters.forEach(counter => {
+    const target = parseInt(counter.getAttribute('data-target'));
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    let current = 0;
+    
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        counter.textContent = target;
+        clearInterval(timer);
+      } else {
+        counter.textContent = Math.floor(current);
+      }
+    }, 16);
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 8. FIRST-TIME VISITOR DISCOUNT POPUP
+// ═══════════════════════════════════════════════════════════════════════════
+
+function initFirstTimePopup() {
+  // Check if user has visited before
+  if (localStorage.getItem('vayu_returning_visitor') === 'true') return;
+  
+  // Mark as returning visitor
+  localStorage.setItem('vayu_returning_visitor', 'true');
+  
+  // Show popup after 5 seconds
+  setTimeout(() => {
+    const popup = document.createElement('div');
+    popup.id = 'firstTimePopup';
+    popup.className = 'first-time-popup';
+    popup.innerHTML = `
+      <div class="first-time-content">
+        <button class="first-time-close" onclick="closeFirstTimePopup()" aria-label="Close">✕</button>
+        
+        <div class="first-time-icon">🎉</div>
+        <h3 class="first-time-title">Welcome, First-Time Visitor!</h3>
+        <p class="first-time-subtitle">Get <strong>₹3,000 OFF</strong> your first booking with us</p>
+        
+        <form class="first-time-form" onsubmit="handleFirstTimeSubmit(event)">
+          <input 
+            type="tel" 
+            id="firstTimePhone" 
+            class="first-time-input" 
+            placeholder="📱 Your WhatsApp Number" 
+            required 
+            pattern="[0-9]{10}"
+          />
+          <button type="submit" class="first-time-btn">
+            Claim My ₹3,000 Discount →
+          </button>
+        </form>
+        
+        <div class="first-time-note">
+          ✨ Code will be sent to your WhatsApp instantly
+        </div>
+      </div>
+    `;
+    
+    document.body.appendChild(popup);
+    setTimeout(() => popup.classList.add('show'), 100);
+  }, 5000);
+}
+
+function closeFirstTimePopup() {
+  const popup = document.getElementById('firstTimePopup');
+  if (popup) {
+    popup.classList.remove('show');
+    setTimeout(() => popup.remove(), 300);
+  }
+}
+
+async function handleFirstTimeSubmit(e) {
+  e.preventDefault();
+  const phone = document.getElementById('firstTimePhone').value;
+  
+  // Save enquiry
+  await window.vayuStore.addEnquiry({
+    name: "First-Time Visitor",
+    phone: phone,
+    email: "",
+    destination: "Discount Claim",
+    source: "First-Time Popup"
+  });
+  
+  // Redirect to WhatsApp
+  const waNumber = "918889754969";
+  const message = encodeURIComponent(`Hi! I'm a first-time visitor. Please send my ₹3,000 discount code. My number: ${phone}`);
+  window.open(`https://wa.me/${waNumber}?text=${message}`, '_blank');
+  
+  closeFirstTimePopup();
+  showToast("Success!", "Check WhatsApp for your discount code!");
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
 // INITIALIZE ALL
 // ═══════════════════════════════════════════════════════════════════════════
 
@@ -220,11 +563,21 @@ function initConversionBoosters() {
       initExitIntent();
       initLiveActivityTicker();
       initEnhancedWhatsApp();
+      initCountdownTimer();
+      initTrustBadgeBar();
+      initSmartNotifications();
+      initLiveCounter();
+      initFirstTimePopup();
     });
   } else {
     initExitIntent();
     initLiveActivityTicker();
     initEnhancedWhatsApp();
+    initCountdownTimer();
+    initTrustBadgeBar();
+    initSmartNotifications();
+    initLiveCounter();
+    initFirstTimePopup();
   }
 }
 
@@ -234,3 +587,6 @@ initConversionBoosters();
 // Make functions globally accessible
 window.closeExitPopup = closeExitPopup;
 window.handleExitFormSubmit = handleExitFormSubmit;
+window.closeFirstTimePopup = closeFirstTimePopup;
+window.handleFirstTimeSubmit = handleFirstTimeSubmit;
+window.handleNotificationClick = handleNotificationClick;
