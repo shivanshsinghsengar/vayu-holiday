@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    VAYU HOLIDAYS — SEED DATASET (2026 LUXURY TRAVEL EDITION)
    Authentic Brand Details, Curated Packages, Day-wise Itineraries, Services
    ========================================================================== */
@@ -6,11 +6,11 @@
 const INITIAL_DATA = {
   company: {
     name: "Vayu Holidays",
-    tagline: "Your Journey. Beautifully Planned.",
-    type: "Travel Agency & Tour Operator",
+    tagline: "Travel + Explore + Live",
+    type: "A Division of Vayu Build well Private Limited",
     office: "Vayu Pride Residency, Raksha Vihar, Bhopal, Madhya Pradesh - 462031",
-    phone: "+91 888 975 4969",
-    whatsapp: "+91 888 975 4969",
+    phone: "+91 88897 54969, +91 88283 52311",
+    whatsapp: "+91 88897 54969",
     whatsappMessage: "Hello Vayu Holidays Concierge, I would like to inquire about planning a luxury journey.",
     email: "info@vayuholidays.com",
     salesEmail: "sales@vayuholidays.com",
@@ -22,7 +22,7 @@ const INITIAL_DATA = {
         name: "Ava Hotel – Sector 45",
         city: "Gurugram",
         address: "Plot No. 2010, Block A, Greenwood City, Opposite Chimes 61, Sector 45, Gurugram, Haryana – 122003",
-        phone: "+91 888 975 4969",
+        phone: "+91 88897 54969, +91 88283 52311",
         mapUrl: "https://www.google.com/maps/search/?api=1&query=Ava+Hotel+Sector+45+Greenwood+City+Gurugram+Haryana"
       },
       {
@@ -30,7 +30,7 @@ const INITIAL_DATA = {
         name: "Mehmaan Manor – Sector 57",
         city: "Gurugram",
         address: "Building No. G-219, G-Block, Sushant Lok-2, Sector 57, Gurugram, Haryana – 122011",
-        phone: "+91 888 975 4969",
+        phone: "+91 88897 54969, +91 88283 52311",
         mapUrl: "https://www.google.com/maps/search/?api=1&query=Mehmaan+Manor+Sushant+Lok+2+Sector+57+Gurugram"
       },
       {
@@ -38,7 +38,7 @@ const INITIAL_DATA = {
         name: "Ava Hotel – Zirakpur",
         city: "Zirakpur",
         address: "Ambala-Chandigarh Expressway (NH-22), Adjoining Paras Downtown Square Mall, Zirakpur, Punjab – 140603",
-        phone: "+91 888 975 4969",
+        phone: "+91 88897 54969, +91 88283 52311",
         mapUrl: "https://www.google.com/maps/search/?api=1&query=Ava+Hotel+Zirakpur+NH-22+Paras+Downtown+Square+Mall"
       },
       {
@@ -46,14 +46,19 @@ const INITIAL_DATA = {
         name: "Priya Nagari",
         city: "Mathura",
         address: "Mathura Bypass, NH-2, Near Highway Thana (Police Station), Mathura, Uttar Pradesh – 281001",
-        phone: "+91 888 975 4969",
+        phone: "+91 88897 54969, +91 88283 52311",
         mapUrl: "https://www.google.com/maps/search/?api=1&query=Mathura+Bypass+NH2+Highway+Thana+Mathura+UP"
       }
     ],
     leadership: [
-      {
-        name: "Simran Sengar", // Chairman - updated Oct 2026
-        role: "Chairman",
+            {
+        name: "Skydiver Rammanohar Singh Sengar",
+        role: "Founder & Chairman",
+        bio: "Former Indian Air Force Akash Ganga Team member, Parachute Jump Instructor, and visionary founder. His distinguished service shaped Vayu Holidays' core values of discipline, precision, excellence, and commitment to making travel experiences extraordinary."
+      },
+{
+        name: "Simran Sengar",
+        role: "Managing Director",
         bio: "Providing vision and strategic stewardship, championing trust, hospitality, and bespoke luxury travel from Central India to the world."
       },
       {
@@ -62,9 +67,9 @@ const INITIAL_DATA = {
         bio: "Leading executive operations, international partnerships, bespoke itinerary architecture, and cutting-edge guest experiences."
       },
       {
-        name: "Hardik Singh Sengar",
+        name: "Neeraj Singh Nayal",
         role: "Director",
-        bio: "Directing strategic alliances, domestic destination expansion, MICE partnerships, and premium customer journey management."
+        bio: "IHM Dehradun graduate with 9+ years at Marriott and Accor. Brings hospitality expertise, strategic vision, and operational excellence to deliver exceptional travel experiences and sustainable growth."
       }
     ]
   },
