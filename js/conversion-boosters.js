@@ -557,19 +557,30 @@ async function handleFirstTimeSubmit(e) {
 // ═══════════════════════════════════════════════════════════════════════════
 
 function initConversionBoosters() {
-  // ALL POPUP NOTIFICATIONS DISABLED
-  // User requested to remove all conversion psychology popups
+  // Partially enabled - only WhatsApp Widget and Exit Intent
+  // User wants: Enhanced WhatsApp Widget + Exit Intent Popup
+  // Disabled: Live Activity Ticker, Trust Badge Bar, Smart Notifications, Live Counter, First-Time Popup
   
-  // DISABLED: Exit Intent Popup
-  // DISABLED: Live Activity Ticker  
-  // DISABLED: Enhanced WhatsApp Widget
-  // DISABLED: Trust Badge Bar
-  // DISABLED: Smart Notification System
-  // DISABLED: Live Counter Widget
-  // DISABLED: First-Time Visitor Discount Popup
-  
-  // Only keeping core functionality - no popups or notifications
-  console.log('Conversion boosters disabled by user request');
+  // Wait for page to load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initExitIntent();              // ? ENABLED
+      initEnhancedWhatsApp();         // ? ENABLED
+      // initLiveActivityTicker();    // ? DISABLED
+      // initTrustBadgeBar();         // ? DISABLED
+      // initSmartNotifications();    // ? DISABLED
+      // initLiveCounter();           // ? DISABLED
+      // initFirstTimePopup();        // ? DISABLED
+    });
+  } else {
+    initExitIntent();                 // ? ENABLED
+    initEnhancedWhatsApp();          // ? ENABLED
+    // initLiveActivityTicker();     // ? DISABLED
+    // initTrustBadgeBar();          // ? DISABLED
+    // initSmartNotifications();     // ? DISABLED
+    // initLiveCounter();            // ? DISABLED
+    // initFirstTimePopup();         // ? DISABLED
+  }
 }
 
 // Auto-initialize
