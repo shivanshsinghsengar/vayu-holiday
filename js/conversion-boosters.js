@@ -557,28 +557,19 @@ async function handleFirstTimeSubmit(e) {
 // ═══════════════════════════════════════════════════════════════════════════
 
 function initConversionBoosters() {
-  // Wait for page to load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      initExitIntent();
-      initLiveActivityTicker();
-      initEnhancedWhatsApp();
-      // initCountdownTimer(); // DISABLED - not needed
-      initTrustBadgeBar();
-      initSmartNotifications();
-      initLiveCounter();
-      initFirstTimePopup();
-    });
-  } else {
-    initExitIntent();
-    initLiveActivityTicker();
-    initEnhancedWhatsApp();
-    // initCountdownTimer(); // DISABLED - not needed
-    initTrustBadgeBar();
-    initSmartNotifications();
-    initLiveCounter();
-    initFirstTimePopup();
-  }
+  // ALL POPUP NOTIFICATIONS DISABLED
+  // User requested to remove all conversion psychology popups
+  
+  // DISABLED: Exit Intent Popup
+  // DISABLED: Live Activity Ticker  
+  // DISABLED: Enhanced WhatsApp Widget
+  // DISABLED: Trust Badge Bar
+  // DISABLED: Smart Notification System
+  // DISABLED: Live Counter Widget
+  // DISABLED: First-Time Visitor Discount Popup
+  
+  // Only keeping core functionality - no popups or notifications
+  console.log('Conversion boosters disabled by user request');
 }
 
 // Auto-initialize
@@ -590,3 +581,4 @@ window.handleExitFormSubmit = handleExitFormSubmit;
 window.closeFirstTimePopup = closeFirstTimePopup;
 window.handleFirstTimeSubmit = handleFirstTimeSubmit;
 window.handleNotificationClick = handleNotificationClick;
+
