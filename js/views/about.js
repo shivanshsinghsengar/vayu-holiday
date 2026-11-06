@@ -1,219 +1,365 @@
 ﻿/* ==========================================================================
-   VAYU HOLIDAYS — ABOUT US VIEW (Heritage, Leadership & Bhopal Headquarters)
+   VAYU HOLIDAYS — ABOUT US PAGE (Complete Overwrite - 2025)
+   Sections: Hero, Welcome, Founder, Vision/Mission, Business Verticals, 
+   Leadership Team, Leadership Spotlight, Why Vayu, Contact CTA
    ========================================================================== */
 
 async function renderAboutView() {
-  const company      = await window.vayuStore.getCompany();
-  const pageSettings = await window.vayuStore.getPageSettings();
-  const leadership   = (company.leadership || []);
-  const waNumber     = (company.whatsapp || "918889754969").replace(/[^0-9]/g, "");
+  const company = await window.vayuStore.getCompany();
+  const leadership = company.leadership || [];
+  const waNumber = (company.whatsapp || "918889754969").replace(/[^0-9]/g, "");
 
-  // Initials helper
-  const initials = (name) => name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
-
-  const storyTitle = pageSettings.aboutStoryTitle || "Your Journey. Beautifully Planned.";
-  const storyBody  = pageSettings.aboutStoryBody  || "At Vayu Holidays, we believe that true luxury travel is never loud or cookie-cutter. It is found in unhurried mornings on misty tea estates, private sunset shikaras, seamless international airport transfers, and the absolute confidence that a dedicated concierge is always one message away.";
-  const storyBody2 = pageSettings.aboutStoryBody2 || `Headquartered at <strong>${company.office || 'Vayu Pride Residency, Raksha Vihar, Bhopal'}</strong>, we serve discerning families, honeymoon couples, and corporate delegations across Madhya Pradesh and nationwide.`;
+  // Find specific leaders
+  const founder = leadership.find(l => l.role === "Founder");
+  const simran = leadership.find(l => l.name.includes("Simran"));
+  const neeraj = leadership.find(l => l.name.includes("Neeraj"));
+  const shubham = leadership.find(l => l.name.includes("Shubham"));
 
   return `
-    <div class="package-detail-header">
+    <!-- SECTION 1: HERO / BANNER -->
+    <div style="background: linear-gradient(135deg, #14203A 0%, #2B4F9A 100%); color: #fff; padding: 5rem 0 4rem; text-align: center;">
       <div class="container">
-        <div class="breadcrumbs">
-          <a href="/">Home</a>
-          <span class="breadcrumb-separator">/</span>
-          <span style="color: var(--color-obsidian); font-weight: 600;">About Us</span>
-        </div>
-
-        <div class="package-detail-title-wrap">
-          <div>
-            <span class="eyebrow">Our Philosophy & Heritage</span>
-            <h1 class="package-detail-title">About Vayu Holidays</h1>
-            <p style="font-size: 1.15rem; max-width: 720px; color: var(--color-text-muted); line-height: 1.7;">
-              Founded with the vision to deliver original, minimal luxury travel, Vayu Holidays combines the warmth of personal hospitality with the precision of an international travel atelier.
-            </p>
-          </div>
-        </div>
+        <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; font-family: var(--font-serif, Georgia, serif);">
+          About Vayu Holidays
+        </h1>
+        <p style="font-size: 1.3rem; margin-bottom: 0.5rem; opacity: 0.95;">
+          Domestic & International Travel | Corporate Tours | MICE | Group Travel
+        </p>
+        <p style="font-size: 1.5rem; font-weight: 600; color: #D4AF37; margin: 1.5rem 0 0.5rem; font-family: var(--font-serif, Georgia, serif);">
+          Travel + Explore + Live
+        </p>
+        <p style="font-size: 0.95rem; opacity: 0.8;">
+          A Division of Vayu Build well Private Limited
+        </p>
       </div>
     </div>
 
-    <!-- STORY & MISSION -->
-    <section class="section">
-      <div class="container">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; align-items: center;">
-          <div>
-            <span class="eyebrow">The Vayu Standard</span>
-            <h2 class="section-title">${storyTitle}</h2>
-            <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-main); margin-bottom: 1.5rem;">
-              ${storyBody}
-            </p>
-            <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-muted); margin-bottom: 2rem;">
-              ${storyBody2}
-            </p>
+    <!-- SECTION 2: WELCOME MESSAGE -->
+    <section class="section" style="background: #fff; padding: 4rem 0;">
+      <div class="container" style="max-width: 1100px;">
+        <h2 style="font-size: 2.5rem; font-weight: 700; color: #14203A; margin-bottom: 2rem; text-align: center; font-family: var(--font-serif, Georgia, serif);">
+          Welcome Message
+        </h2>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle);">
-              <div>
-                <div style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--color-gold-dark); font-weight: 700;">100%</div>
-                <div style="font-size: 0.85rem; color: var(--color-text-muted);">Custom Tailored Routes</div>
-              </div>
-              <div>
-                <div style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--color-gold-dark); font-weight: 700;">24/7</div>
-                <div style="font-size: 0.85rem; color: var(--color-text-muted);">Active Concierge Care</div>
-              </div>
-            </div>
-          </div>
-
-          <div style="position: relative;">
-            <img 
-              src="/icons/headquator.png" 
-              alt="Vayu Holidays Headquarters — Vayu Pride Residency, Raksha Vihar, Bhopal" 
-              style="border-radius: var(--radius-xl); border: 1px solid var(--border-gold); box-shadow: var(--shadow-xl); width: 100%; object-fit: cover;" 
-            />
-            <div style="position: absolute; bottom: -25px; right: -25px; background: var(--color-obsidian); color: var(--color-ivory); padding: 1.5rem 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-gold); max-width: 280px; box-shadow: var(--shadow-lg);">
-              <div style="color: var(--color-gold); font-size: 1.25rem; margin-bottom: 0.5rem;">${ICONS.shield}</div>
-              <div style="font-family: var(--font-serif); font-size: 1.15rem; margin-bottom: 0.25rem;">Bhopal Headquarters</div>
-              <div style="font-size: 0.8rem; color: var(--color-text-inverse-muted);">Raksha Vihar, Airport Road</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXECUTIVE LEADERSHIP PROFILES -->
-    <section class="section section-sand">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="eyebrow">Executive Stewardship</span>
-          <h2 class="section-title">Leadership Team</h2>
-          <p class="section-desc">
-            Guided by decades of collective dedication to hospitality excellence, trust, and guest satisfaction.
+        <div style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 2rem;">
+          <p style="margin-bottom: 1.5rem;">
+            At Vayu Holidays, we believe that every business journey is an opportunity to build relationships, exchange ideas and move organisations forward. Corporate travel is more than arranging tickets and hotel rooms—it requires careful planning, clear communication, dependable coordination and attention to every detail.
+          </p>
+          <p style="margin-bottom: 2rem;">
+            Our aim is to make travel and event management simpler for organisations by bringing flights, accommodation, transfers, group movements, meetings, incentive programmes and event requirements together through one coordinated service. We work to understand each client's objectives, timelines, traveller preferences and budget before recommending a suitable solution.
           </p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2.5rem;">
-          ${leadership.map(leader => {
-            // Map leader names to their image files
-            let leaderImage = '';
-            if (leader.name.toLowerCase().includes('simran')) {
-              leaderImage = '/icons/simran.jpeg';
-            } else if (leader.name.toLowerCase().includes('shubham')) {
-              leaderImage = '/icons/sub.jpeg';
-            }
-
-            return `
-            <div style="background: var(--color-cream); border: 1px solid var(--border-gold); border-radius: var(--radius-lg); padding: 2.5rem 2rem; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column;">
-              ${leaderImage ? `
-                <img 
-                  src="${leaderImage}" 
-                  alt="${leader.name}" 
-                  style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.5rem; border: 3px solid var(--color-gold); box-shadow: var(--shadow-md);" 
-                />
-              ` : `
-                <div style="width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--color-obsidian) 0%, var(--color-slate-dark) 100%); color: var(--color-gold); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 2rem; font-weight: 700; margin: 0 auto 1.5rem; border: 2px solid var(--border-gold);">
-                  ${initials(leader.name)}
-                </div>
-              `}
-              <h3 style="font-family: var(--font-serif); font-size: 1.45rem; margin-bottom: 0.35rem; color: var(--color-obsidian);">
-                ${leader.name}
-              </h3>
-              <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-gold-dark); font-weight: 700; margin-bottom: 1.25rem;">
-                ${leader.role}
-              </div>
-              <p style="font-size: 0.92rem; color: var(--color-text-muted); line-height: 1.7; flex-grow: 1;">
-                ${leader.bio}
-              </p>
-            </div>
-          `}).join('')}
+        <div style="background: linear-gradient(135deg, #2B4F9A 0%, #14203A 100%); color: #fff; padding: 2.5rem; border-radius: 12px; border-left: 5px solid #D4AF37; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+          <p style="font-size: 1.25rem; font-style: italic; margin: 0; line-height: 1.7; text-align: center; font-family: var(--font-serif, Georgia, serif);">
+            "A personal commitment to thoughtful planning, reliable coordination and professional service."
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- CORE VALUES -->
-    <section class="section">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="eyebrow">Our Guiding Compass</span>
-          <h2 class="section-title">The Four Core Commitments</h2>
-          <p class="section-desc">Every recommendation we make is anchored in these four non-negotiable standards.</p>
-        </div>
+    <!-- SECTION 3: OUR FOUNDER -->
+    <section class="section" style="background: #F8F9FA; padding: 4rem 0;">
+      <div class="container" style="max-width: 1100px;">
+        <h2 style="font-size: 2.5rem; font-weight: 700; color: #14203A; margin-bottom: 3rem; text-align: center; font-family: var(--font-serif, Georgia, serif);">
+          Our Founder
+        </h2>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-          <div style="padding: 2rem; border-left: 3px solid var(--color-gold); background: var(--color-cream); border-radius: 0 var(--radius-md) var(--radius-md) 0;">
-            <h4 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 0.5rem;">Total Transparency</h4>
-            <p style="font-size: 0.92rem; color: var(--color-text-muted);">
-              Clear, itemized pricing. We detail every inclusion, hotel tier, vehicle type, and tax so you know precisely what you are investing in.
-            </p>
-          </div>
-
-          <div style="padding: 2rem; border-left: 3px solid var(--color-gold); background: var(--color-cream); border-radius: 0 var(--radius-md) var(--radius-md) 0;">
-            <h4 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 0.5rem;">Curated Sanctuaries</h4>
-            <p style="font-size: 0.92rem; color: var(--color-text-muted);">
-              We never book properties blindly. Every hotel, houseboat, and resort is vetted for aesthetic poise, cleanliness, and guest hospitality.
-            </p>
-          </div>
-
-          <div style="padding: 2rem; border-left: 3px solid var(--color-gold); background: var(--color-cream); border-radius: 0 var(--radius-md) var(--radius-md) 0;">
-            <h4 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 0.5rem;">Concierge Accountability</h4>
-            <p style="font-size: 0.92rem; color: var(--color-text-muted);">
-              You are never treated as a support ticket. You receive direct phone and WhatsApp access to senior travel directors in Bhopal.
-            </p>
-          </div>
-
-          <div style="padding: 2rem; border-left: 3px solid var(--color-gold); background: var(--color-cream); border-radius: 0 var(--radius-md) var(--radius-md) 0;">
-            <h4 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 0.5rem;">Original Design</h4>
-            <p style="font-size: 0.92rem; color: var(--color-text-muted);">
-              No generic bus-tour schedules. We design your day around optimal lighting, crowd avoidance, and authentic cultural encounters.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- BHOPAL OFFICE CARD & VISIT INVITATION -->
-    <section class="section section-sand" style="padding-bottom: 5rem;">
-      <div class="container">
-        <div style="background: var(--color-cream); border: 1px solid var(--border-gold); border-radius: var(--radius-xl); padding: 3.5rem; display: grid; grid-template-columns: 1.2fr 1fr; gap: 3.5rem; align-items: center;">
-          <div>
-            <span class="eyebrow">Personal Hospitality</span>
-            <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 1rem;">
-              Visit Us in Bhopal
-            </h2>
-            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-text-main); margin-bottom: 1.5rem;">
-              We welcome travelers to visit our office on Airport Road for an in-person journey consultation over freshly brewed coffee. Sit down with our itinerary architects and review private options together.
-            </p>
-
-            <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; font-size: 0.95rem;">
-              <div><strong>Address:</strong> ${company.office}</div>
-              <div><strong>Direct Phone:</strong> <a href="tel:${company.phone}">${company.phone}</a></div>
-              <div><strong>Working Hours:</strong> ${company.hours}</div>
-            </div>
-
-            <div style="display: flex; gap: 1rem;">
-              <a href="/contact" class="btn btn-primary">Find Us on Map</a>
-              <button class="btn btn-gold" onclick="openEnquiryModal({ title: 'Schedule Office Consultation' })">
-                Schedule Meeting
-              </button>
-            </div>
-          </div>
-
-          <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-gold); box-shadow: var(--shadow-lg); position: relative;">
-            <img
-              src="/icons/headquator.png"
-              alt="Vayu Holidays Headquarters — Vayu Pride Residency, Raksha Vihar, Bhopal"
-              style="width: 100%; height: 280px; object-fit: cover; display: block;"
+        ${founder ? `
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start;">
+          <div style="text-align: center;">
+            <img 
+              src="${founder.image || '/icons/founder.jpeg'}" 
+              alt="${founder.name}" 
+              style="width: 220px; height: 220px; border-radius: 50%; object-fit: cover; border: 5px solid #D4AF37; box-shadow: 0 8px 20px rgba(0,0,0,0.15); margin-bottom: 1.5rem;" 
             />
-            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(10,13,18,0.88) 0%, transparent 100%); padding: 1.5rem 1.25rem 1.25rem;">
-              <h4 style="font-family: var(--font-serif); font-size: 1.2rem; color: #fff; margin-bottom: 0.3rem;">Vayu Pride Residency, Airport Road</h4>
-              <p style="font-size: 0.82rem; color: rgba(255,255,255,0.72); margin-bottom: 1rem;">
-                Easily accessible from Raja Bhoj Airport Bhopal, VIP Road, and surrounding neighborhoods.
-              </p>
-              <a href="https://wa.me/${waNumber}?text=${encodeURIComponent('Hello Vayu Holidays! I would like to schedule a visit to your Airport Road Bhopal office.')}" target="_blank" rel="noopener" class="btn btn-whatsapp" style="width: 100%; justify-content: center;">
-                ${ICONS.whatsapp} WhatsApp For Directions
-              </a>
-            </div>
+            <h3 style="font-size: 1.6rem; font-weight: 700; color: #14203A; margin-bottom: 0.5rem; font-family: var(--font-serif, Georgia, serif);">
+              ${founder.name}
+            </h3>
+            <p style="font-size: 0.95rem; color: #2B4F9A; font-weight: 600; line-height: 1.6;">
+              ${founder.title || 'Former Member – Indian Air Force Akash Ganga Team | Parachute Jump Instructor | Entrepreneur | Spiritual Visionary'}
+            </p>
+          </div>
+
+          <div style="font-size: 1.05rem; line-height: 1.8; color: #333;">
+            <p style="margin-bottom: 1.5rem;">
+              Vayu Holidays is inspired by his vision, values, and entrepreneurial spirit. His distinguished service in the Indian Air Force shaped his leadership philosophy around discipline, courage, precision, teamwork, responsibility, and commitment to excellence.
+            </p>
+            <p style="margin-bottom: 1.5rem;">
+              After retirement, he entered entrepreneurship and played an active role in developing business ventures, particularly in the real estate sector.
+            </p>
+            <p style="margin-bottom: 0;">
+              As founder of Vayu Holidays, he brings these principles into travel and tourism with a vision to make travel more than simply visiting a destination.
+            </p>
           </div>
         </div>
+        ` : ''}
+      </div>
+    </section>
+
+    <!-- SECTION 4: VISION & MISSION -->
+    <section class="section" style="background: #fff; padding: 4rem 0;">
+      <div class="container" style="max-width: 1100px;">
+        <h2 style="font-size: 2.5rem; font-weight: 700; color: #14203A; margin-bottom: 3rem; text-align: center; font-family: var(--font-serif, Georgia, serif);">
+          Vision & Mission
+        </h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;">
+          <!-- Vision Card -->
+          <div style="background: linear-gradient(135deg, #2B4F9A 0%, #14203A 100%); color: #fff; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 1.5rem; color: #D4AF37; font-family: var(--font-serif, Georgia, serif);">
+              Vision
+            </h3>
+            <p style="font-size: 1.05rem; line-height: 1.8; margin: 0;">
+              To become a trusted and preferred travel partner for businesses and travellers by delivering well-planned, dependable and value-conscious travel experiences.
+            </p>
+          </div>
+
+          <!-- Mission Card -->
+          <div style="background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%); color: #14203A; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 1.5rem; font-family: var(--font-serif, Georgia, serif);">
+              Mission
+            </h3>
+            <p style="font-size: 1.05rem; line-height: 1.8; margin: 0;">
+              To make corporate and leisure travel easier through end-to-end planning, transparent quotations and practical travel options, while building long-term client relationships through responsive service and creating meaningful corporate tours, incentive programmes and event experiences.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: OUR BUSINESS VERTICALS -->
+    <section class="section" style="background: #F8F9FA; padding: 4rem 0;">
+      <div class="container" style="max-width: 1200px;">
+        <h2 style="font-size: 2.5rem; font-weight: 700; color: #14203A; margin-bottom: 1.5rem; text-align: center; font-family: var(--font-serif, Georgia, serif);">
+          Our Services / Our Business Verticals
+        </h2>
+
+        <p style="font-size: 1.1rem; line-height: 1.8; color: #333; text-align: center; max-width: 900px; margin: 0 auto 3rem;">
+          With a diverse portfolio across multiple industries, Vayu Group operates through strategic business verticals focused on creating sustainable value, delivering quality services, and building long-term relationships.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+          <!-- Vertical 1 -->
+          <div style="background: #fff; border: 2px solid #2B4F9A; border-radius: 12px; padding: 2rem; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">✈️</div>
+            <h4 style="font-size: 1.2rem; font-weight: 700; color: #14203A; margin: 0;">Travel, Tourism & Adventure</h4>
+          </div>
+
+          <!-- Vertical 2 -->
+          <div style="background: #fff; border: 2px solid #2B4F9A; border-radius: 12px; padding: 2rem; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🏗️</div>
+            <h4 style="font-size: 1.2rem; font-weight: 700; color: #14203A; margin: 0;">Real Estate & Infrastructure</h4>
+          </div>
+
+          <!-- Vertical 3 -->
+          <div style="background: #fff; border: 2px solid #2B4F9A; border-radius: 12px; padding: 2rem; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🏨</div>
+            <h4 style="font-size: 1.2rem; font-weight: 700; color: #14203A; margin: 0;">Hospitality & Hotels</h4>
+          </div>
+
+          <!-- Vertical 4 -->
+          <div style="background: #fff; border: 2px solid #2B4F9A; border-radius: 12px; padding: 2rem; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🌾</div>
+            <h4 style="font-size: 1.2rem; font-weight: 700; color: #14203A; margin: 0;">Agriculture & Agribusiness</h4>
+          </div>
+
+          <!-- Vertical 5 -->
+          <div style="background: #fff; border: 2px solid #2B4F9A; border-radius: 12px; padding: 2rem; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🕉️</div>
+            <h4 style="font-size: 1.2rem; font-weight: 700; color: #14203A; margin: 0;">Spiritual & Religious Events</h4>
+          </div>
+        </div>
+
+        <div style="background: #14203A; color: #fff; padding: 2rem; border-radius: 12px; text-align: center;">
+          <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 0.8rem;">
+            ✓ We are committed to delivering quality, reliable, and professional solutions across diverse sectors.
+          </p>
+          <p style="font-size: 1.05rem; line-height: 1.8; margin: 0;">
+            ✓ Our focus is on creating value-driven services and memorable experiences for our clients and partners.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: OUR LEADERSHIP TEAM -->
+    <section class="section" style="background: #fff; padding: 4rem 0;">
+      <div class="container" style="max-width: 1200px;">
+        <h2 style="font-size: 2.5rem; font-weight: 700; color: #14203A; margin-bottom: 1.5rem; text-align: center; font-family: var(--font-serif, Georgia, serif);">
+          Our Best Team
+        </h2>
+
+        <p style="font-size: 1.1rem; line-height: 1.8; color: #333; text-align: center; max-width: 900px; margin: 0 auto 3rem;">
+          At Vayu Holidays, our leadership team is committed to building a trusted travel brand driven by vision, expertise, innovation, and customer satisfaction. Together, we strive to create seamless, memorable, and exceptional travel experiences while continuously growing with our partners, clients, and team.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;">
+          ${simran ? `
+          <div style="background: #F8F9FA; border: 2px solid #D4AF37; border-radius: 12px; padding: 2.5rem; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <img 
+              src="${simran.image || '/icons/simran.jpeg'}" 
+              alt="${simran.name}" 
+              style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid #D4AF37; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 1.5rem;" 
+            />
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: #14203A; margin-bottom: 0.5rem; font-family: var(--font-serif, Georgia, serif);">
+              ${simran.name}
+            </h3>
+            <p style="font-size: 0.9rem; color: #2B4F9A; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">
+              ${simran.role}
+            </p>
+            <p style="font-size: 1rem; line-height: 1.7; color: #333; margin: 0;">
+              A visionary leader driving Vayu Holidays with strategic excellence, innovation, and a strong commitment to delivering exceptional travel experiences.
+            </p>
+          </div>
+          ` : ''}
+
+          ${neeraj ? `
+          <div style="background: #F8F9FA; border: 2px solid #D4AF37; border-radius: 12px; padding: 2.5rem; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <img 
+              src="${neeraj.image || '/icons/neeraj.jpeg'}" 
+              alt="${neeraj.name}" 
+              style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid #D4AF37; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 1.5rem;" 
+            />
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: #14203A; margin-bottom: 0.5rem; font-family: var(--font-serif, Georgia, serif);">
+              ${neeraj.name}
+            </h3>
+            <p style="font-size: 0.9rem; color: #2B4F9A; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">
+              ${neeraj.role}
+            </p>
+            <p style="font-size: 1rem; line-height: 1.7; color: #333; margin: 0;">
+              A dynamic hospitality professional bringing strong leadership, industry expertise, and a commitment to excellence in travel and guest experiences.
+            </p>
+          </div>
+          ` : ''}
+
+          ${shubham ? `
+          <div style="background: #F8F9FA; border: 2px solid #D4AF37; border-radius: 12px; padding: 2.5rem; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <img 
+              src="${shubham.image || '/icons/sub.jpeg'}" 
+              alt="${shubham.name}" 
+              style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid #D4AF37; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 1.5rem;" 
+            />
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: #14203A; margin-bottom: 0.5rem; font-family: var(--font-serif, Georgia, serif);">
+              ${shubham.name}
+            </h3>
+            <p style="font-size: 0.9rem; color: #2B4F9A; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">
+              ${shubham.role}
+            </p>
+            <p style="font-size: 1rem; line-height: 1.7; color: #333; margin: 0;">
+              A results-driven leader focused on strategic growth, operational excellence, and creating exceptional travel experiences for every customer.
+            </p>
+          </div>
+          ` : ''}
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: LEADERSHIP SPOTLIGHT -->
+    <section class="section" style="background: #F8F9FA; padding: 4rem 0;">
+      <div class="container" style="max-width: 1100px;">
+        <h2 style="font-size: 2.5rem; font-weight: 700; color: #14203A; margin-bottom: 3rem; text-align: center; font-family: var(--font-serif, Georgia, serif);">
+          Leadership Spotlight
+        </h2>
+
+        ${neeraj ? `
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start; background: #fff; padding: 3rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-left: 5px solid #D4AF37;">
+          <div style="text-align: center;">
+            <img 
+              src="${neeraj.image || '/icons/neeraj.jpeg'}" 
+              alt="${neeraj.name}" 
+              style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 4px solid #2B4F9A; box-shadow: 0 6px 16px rgba(0,0,0,0.12); margin-bottom: 1rem;" 
+            />
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: #14203A; margin-bottom: 0.3rem; font-family: var(--font-serif, Georgia, serif);">
+              ${neeraj.name}
+            </h3>
+            <p style="font-size: 1rem; color: #2B4F9A; font-weight: 600;">
+              Director of Vayu Holidays
+            </p>
+          </div>
+
+          <div style="font-size: 1.05rem; line-height: 1.8; color: #333;">
+            <p style="margin-bottom: 1.5rem;">
+              A hospitality professional and entrepreneur, Neeraj Singh Nayal is a Hotel Management graduate from IHM Dehradun with over 9 years of leadership experience at globally recognized hospitality brands such as Marriott and Accor.
+            </p>
+            <p style="margin-bottom: 1.5rem;">
+              His professional expertise includes hotel operations, pre-openings, revenue management, business expansion, and brand development.
+            </p>
+            <p style="margin-bottom: 0;">
+              As Director of Vayu Holidays, he brings strategic vision, hospitality expertise, and operational knowledge to support the development of a trusted travel and hospitality brand focused on exceptional customer experiences, sustainable growth, and professionally managed services.
+            </p>
+          </div>
+        </div>
+        ` : ''}
+      </div>
+    </section>
+
+    <!-- SECTION 8: WHY VAYU HOLIDAYS? -->
+    <section class="section" style="background: #fff; padding: 4rem 0;">
+      <div class="container" style="max-width: 1100px;">
+        <h2 style="font-size: 2.5rem; font-weight: 700; color: #14203A; margin-bottom: 2rem; text-align: center; font-family: var(--font-serif, Georgia, serif);">
+          Why Vayu Holidays?
+        </h2>
+
+        <div style="font-size: 1.1rem; line-height: 1.8; color: #333;">
+          <p style="margin-bottom: 1.5rem;">
+            At Vayu Holidays, we believe that a holiday is much more than a destination. It is an opportunity to discover, reconnect, celebrate, explore, and create memories that last a lifetime.
+          </p>
+          <p style="margin-bottom: 1.5rem;">
+            Our approach combines the discipline and leadership values inspired by the founder's Indian Air Force background with professional hospitality expertise and a customer-focused approach.
+          </p>
+          <p style="margin-bottom: 0;">
+            Whether the purpose is relaxation, adventure, family time, cultural exploration, corporate travel, or spiritual discovery, our goal is to provide travellers with carefully planned experiences and dependable support.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: GET IN TOUCH (CTA) -->
+    <section class="section" style="background: linear-gradient(135deg, #14203A 0%, #2B4F9A 100%); color: #fff; padding: 4rem 0; text-align: center;">
+      <div class="container" style="max-width: 900px;">
+        <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; font-family: var(--font-serif, Georgia, serif);">
+          Get In Touch
+        </h2>
+        <p style="font-size: 1.5rem; color: #D4AF37; margin-bottom: 2.5rem; font-family: var(--font-serif, Georgia, serif);">
+          Discover the World, Experience the Difference
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; text-align: left; margin-bottom: 2.5rem;">
+          <div>
+            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 0.3rem;">📞 Phone</p>
+            <p style="font-size: 1.05rem; font-weight: 600; margin: 0;">
+              <a href="tel:+918889754969" style="color: #fff; text-decoration: none;">+91 88897 54969</a><br/>
+              <a href="tel:+918828352311" style="color: #fff; text-decoration: none;">+91 88283 52311</a>
+            </p>
+          </div>
+
+          <div>
+            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 0.3rem;">📧 Email</p>
+            <p style="font-size: 1.05rem; font-weight: 600; margin: 0;">
+              <a href="mailto:info@vayuholidays.com" style="color: #fff; text-decoration: none;">info@vayuholidays.com</a><br/>
+              <a href="mailto:sales@vayuholidays.com" style="color: #fff; text-decoration: none;">sales@vayuholidays.com</a>
+            </p>
+          </div>
+
+          <div>
+            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 0.3rem;">🌐 Website</p>
+            <p style="font-size: 1.05rem; font-weight: 600; margin: 0;">
+              <a href="https://www.vayuholidays.com" style="color: #fff; text-decoration: none;">www.vayuholidays.com</a>
+            </p>
+          </div>
+
+          <div>
+            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 0.3rem;">📍 Location</p>
+            <p style="font-size: 1.05rem; font-weight: 600; margin: 0;">
+              Vayu Pride Residency<br/>Raksha Vihar, Bhopal
+            </p>
+          </div>
+        </div>
+
+        <a href="/contact" class="btn btn-primary" style="background: #D4AF37; color: #14203A; padding: 1rem 3rem; font-size: 1.1rem; font-weight: 700; border-radius: 8px; text-decoration: none; display: inline-block; border: none; box-shadow: 0 4px 12px rgba(212,175,55,0.3); transition: all 0.3s ease;">
+          Contact Us
+        </a>
       </div>
     </section>
   `;
 }
-
