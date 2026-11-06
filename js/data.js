@@ -59,8 +59,8 @@ const INITIAL_DATA = {
         image: "/icons/founder.jpeg"
       },
       {
-        name: "Simran Singh Sengar",
-        role: "Chairman",
+        name: "Simran Sengar",
+        role: "Managing Director",
         bio: "A visionary leader driving Vayu Holidays with strategic excellence, innovation, and a strong commitment to delivering exceptional travel experiences.",
         image: "/icons/simran.jpeg"
       },
