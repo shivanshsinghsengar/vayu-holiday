@@ -50,26 +50,31 @@ const INITIAL_DATA = {
         mapUrl: "https://www.google.com/maps/search/?api=1&query=Mathura+Bypass+NH2+Highway+Thana+Mathura+UP"
       }
     ],
-    leadership: [
-            {
+        leadership: [
+      {
         name: "Skydiver Rammanohar Singh Sengar",
-        role: "Founder & Chairman",
-        bio: "Former Indian Air Force Akash Ganga Team member, Parachute Jump Instructor, and visionary founder. His distinguished service shaped Vayu Holidays' core values of discipline, precision, excellence, and commitment to making travel experiences extraordinary."
-      },
-{
-        name: "Simran Sengar",
-        role: "Managing Director",
-        bio: "Providing vision and strategic stewardship, championing trust, hospitality, and bespoke luxury travel from Central India to the world."
+        role: "Founder",
+        title: "Former Member – Indian Air Force Akash Ganga Team | Parachute Jump Instructor | Entrepreneur | Spiritual Visionary",
+        bio: "Vayu Holidays is inspired by his vision, values, and entrepreneurial spirit. His distinguished service in the Indian Air Force shaped his leadership philosophy around discipline, courage, precision, teamwork, responsibility, and commitment to excellence. After retirement, he entered entrepreneurship and played an active role in developing business ventures, particularly in the real estate sector. As founder of Vayu Holidays, he brings these principles into travel and tourism with a vision to make travel more than simply visiting a destination.",
+        image: "/icons/founder.jpeg"
       },
       {
-        name: "Shubham Vishwkarma",
-        role: "Managing Director & CEO",
-        bio: "Leading executive operations, international partnerships, bespoke itinerary architecture, and cutting-edge guest experiences."
+        name: "Simran Singh Sengar",
+        role: "Chairman",
+        bio: "A visionary leader driving Vayu Holidays with strategic excellence, innovation, and a strong commitment to delivering exceptional travel experiences.",
+        image: "/icons/simran.jpeg"
       },
       {
         name: "Neeraj Singh Nayal",
         role: "Director",
-        bio: "IHM Dehradun graduate with 9+ years at Marriott and Accor. Brings hospitality expertise, strategic vision, and operational excellence to deliver exceptional travel experiences and sustainable growth."
+        bio: "A hospitality professional and entrepreneur, Neeraj Singh Nayal is a Hotel Management graduate from IHM Dehradun with over 9 years of leadership experience at globally recognized hospitality brands such as Marriott and Accor. His professional expertise includes hotel operations, pre-openings, revenue management, business expansion, and brand development. As Director of Vayu Holidays, he brings strategic vision, hospitality expertise, and operational knowledge to support the development of a trusted travel and hospitality brand focused on exceptional customer experiences, sustainable growth, and professionally managed services.",
+        image: "/icons/neeraj.jpeg"
+      },
+      {
+        name: "Shubham Vishwkarma",
+        role: "CEO",
+        bio: "A results-driven leader focused on strategic growth, operational excellence, and creating exceptional travel experiences for every customer.",
+        image: "/icons/shubham.jpeg"
       }
     ]
   },
