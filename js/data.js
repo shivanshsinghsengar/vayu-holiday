@@ -71,7 +71,7 @@ const INITIAL_DATA = {
         image: "/icons/neeraj.jpeg"
       },
       {
-        name: "Shubham Vishwkarma",
+        name: "Shubham Viswakarma",
         role: "CEO",
         bio: "A results-driven leader focused on strategic growth, operational excellence, and creating exceptional travel experiences for every customer.",
         image: "/icons/shubham.jpeg"
@@ -3627,4 +3627,5 @@ After three nights in the forest, moving to the coast introduces world-class bea
     }
   ]
 };
+
 
