@@ -67,7 +67,7 @@ const INITIAL_DATA = {
       {
         name: "Neeraj Singh Nayal",
         role: "Director",
-        bio: "A hospitality professional and entrepreneur, Neeraj Singh Nayal is a Hotel Management graduate from IHM Dehradun with over 9 years of leadership experience at globally recognized hospitality brands such as Marriott and Accor. His professional expertise includes hotel operations, pre-openings, revenue management, business expansion, and brand development. As Director of Vayu Holidays, he brings strategic vision, hospitality expertise, and operational knowledge to support the development of a trusted travel and hospitality brand focused on exceptional customer experiences, sustainable growth, and professionally managed services.",
+        bio: "A dynamic hospitality professional bringing strong leadership, industry expertise, and a commitment to excellence in travel and guest experiences.",
         image: "/icons/neeraj.jpeg"
       },
       {
@@ -3627,3 +3627,4 @@ After three nights in the forest, moving to the coast introduces world-class bea
     }
   ]
 };
+

@@ -95,6 +95,10 @@ async function renderAboutView() {
             let leaderImage = '';
             if (leader.name.toLowerCase().includes('simran')) {
               leaderImage = '/icons/simran.jpeg';
+            } else if (leader.name.toLowerCase().includes('neeraj')) {
+              leaderImage = '/icons/neeraj.jpeg';
+            } else if (leader.name.toLowerCase().includes('neeraj')) {
+              leaderImage = '/icons/neeraj.jpeg';
             } else if (leader.name.toLowerCase().includes('shubham')) {
               leaderImage = '/icons/sub.jpeg';
             }
@@ -257,5 +261,8 @@ async function renderAboutView() {
     </section>
   `;
 }
+
+
+
 
 
