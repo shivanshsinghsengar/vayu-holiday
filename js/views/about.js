@@ -90,7 +90,7 @@ async function renderAboutView() {
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2.5rem;">
-          ${leadership.map(leader => {
+          ${leadership.filter(leader => leader.role !== "Founder").map(leader => {
             // Map leader names to their image files
             let leaderImage = '';
             if (leader.name.toLowerCase().includes('simran')) {
@@ -261,6 +261,7 @@ async function renderAboutView() {
     </section>
   `;
 }
+
 
 
 
