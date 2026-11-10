@@ -52,7 +52,7 @@ const INITIAL_DATA = {
     ],
         leadership: [
       {
-        name: "Skydiver Rammanohar Singh Sengar",
+        name: " Rammanohar Singh Sengar",
         role: "Founder",
         title: "Former Member – Indian Air Force Akash Ganga Team | Parachute Jump Instructor | Entrepreneur | Spiritual Visionary",
         bio: "Vayu Holidays is inspired by his vision, values, and entrepreneurial spirit. His distinguished service in the Indian Air Force shaped his leadership philosophy around discipline, courage, precision, teamwork, responsibility, and commitment to excellence. After retirement, he entered entrepreneurship and played an active role in developing business ventures, particularly in the real estate sector. As founder of Vayu Holidays, he brings these principles into travel and tourism with a vision to make travel more than simply visiting a destination.",

@@ -139,12 +139,12 @@ async function renderAboutView() {
             <div style="text-align: center;">
               <img 
                 src="/icons/founder.jpeg" 
-                alt="Skydiver Rammanohar Singh Sengar" 
+                alt=" Rammanohar Singh Sengar" 
                 style="width: 220px; height: 220px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.5rem; border: 5px solid var(--color-gold); box-shadow: var(--shadow-xl);" 
                 onerror="this.style.display=''none''"
               />
               <h3 style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--color-obsidian); margin-bottom: 0.75rem;">
-                Skydiver Rammanohar Singh Sengar
+                 Rammanohar Singh Sengar
               </h3>
               <div style="font-size: 0.95rem; color: var(--color-gold-dark); font-weight: 600; line-height: 1.6; margin-bottom: 1rem;">
                 Former Member – Indian Air Force Akash Ganga Team | Parachute Jump Instructor | Entrepreneur | Spiritual Visionary
