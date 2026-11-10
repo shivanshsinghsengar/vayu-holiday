@@ -125,6 +125,47 @@ async function renderAboutView() {
           `}).join('')}
         </div>
       </div>
+
+    <!-- OUR FOUNDER -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="eyebrow">Our Philosophy & Heritage</span>
+          <h2 class="section-title">Our Founder</h2>
+        </div>
+
+        <div style="background: var(--color-cream); border: 1px solid var(--border-gold); border-radius: var(--radius-xl); padding: 4rem; max-width: 1100px; margin: 0 auto;">
+          <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 3.5rem; align-items: start;">
+            <div style="text-align: center;">
+              <img 
+                src="/icons/founder.jpeg" 
+                alt="Skydiver Rammanohar Singh Sengar" 
+                style="width: 220px; height: 220px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.5rem; border: 5px solid var(--color-gold); box-shadow: var(--shadow-xl);" 
+                onerror="this.style.display=''none''"
+              />
+              <h3 style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--color-obsidian); margin-bottom: 0.75rem;">
+                Skydiver Rammanohar Singh Sengar
+              </h3>
+              <div style="font-size: 0.95rem; color: var(--color-gold-dark); font-weight: 600; line-height: 1.6; margin-bottom: 1rem;">
+                Former Member – Indian Air Force Akash Ganga Team | Parachute Jump Instructor | Entrepreneur | Spiritual Visionary
+              </div>
+            </div>
+
+            <div>
+              <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text-main); margin-bottom: 1.5rem;">
+                Vayu Holidays is inspired by his vision, values, and entrepreneurial spirit. His distinguished service in the Indian Air Force shaped his leadership philosophy around discipline, courage, precision, teamwork, responsibility, and commitment to excellence.
+              </p>
+              <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text-main); margin-bottom: 1.5rem;">
+                After retirement, he entered entrepreneurship and played an active role in developing business ventures, particularly in the real estate sector.
+              </p>
+              <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text-main); margin-bottom: 0;">
+                As founder of Vayu Holidays, he brings these principles into travel and tourism with a vision to make travel more than simply visiting a destination.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     </section>
 
     <!-- CORE VALUES -->
@@ -216,4 +257,5 @@ async function renderAboutView() {
     </section>
   `;
 }
+
 
