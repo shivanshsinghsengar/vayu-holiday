@@ -1,17 +1,17 @@
-/* ==========================================================================
-   VAYU HOLIDAYS — FIREBASE CONFIGURATION & INITIALIZATION
+﻿/* ==========================================================================
+   VAYU HOLIDAYS â€” FIREBASE CONFIGURATION & INITIALIZATION
    
    SETUP STEPS (see FIREBASE_SETUP.md for full guide):
    1. Go to https://console.firebase.google.com
    2. Create project "vayu-holidays"
-   3. Add a Web App → copy config values below
+   3. Add a Web App â†’ copy config values below
    4. Enable Firestore Database (test mode first)
-   5. Enable Authentication → Email/Password provider
+   5. Enable Authentication â†’ Email/Password provider
    ========================================================================== */
 
-// ─── YOUR FIREBASE CONFIG ────────────────────────────────────────────────────
+// â”€â”€â”€ YOUR FIREBASE CONFIG â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Replace ALL values below with your actual Firebase project config.
-// Get these from: Firebase Console → Project Settings → Your Apps → SDK setup
+// Get these from: Firebase Console â†’ Project Settings â†’ Your Apps â†’ SDK setup
 const FIREBASE_CONFIG = {
   apiKey:            "AIzaSyCbQ2j87mCTilxpmoUdqzHN13qx3hxhz7E",
   authDomain:        "vayu-holidays.firebaseapp.com",
@@ -21,7 +21,7 @@ const FIREBASE_CONFIG = {
   appId:             "1:571347400827:web:9ffd202c08da92dfd34ade",
   measurementId:     "G-JQ6P0LC90W"
 };
-// ─────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 // Collection names in Firestore
 const COLLECTIONS = {
@@ -36,16 +36,19 @@ const COLLECTIONS = {
   PAGE_SETTINGS: "settings"    // single doc: "pageSettings"
 };
 
-// ─── FIREBASE INIT ───────────────────────────────────────────────────────────
+// â”€â”€â”€ FIREBASE INIT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 let _db      = null;
 let _auth    = null;
 let _storage = null;
 let _firebaseReady = false;
 
 function initFirebase() {
+  // TEMPORARILY DISABLED TO USE LOCAL DATA UNTIL FIREBASE IS UPDATED
+  return false;
+  /* ORIGINAL CODE - UNCOMMENT TO RE-ENABLE FIREBASE:
   try {
     if (typeof firebase === "undefined") {
-      console.error("❌ Firebase SDK not loaded. Check index.html script tags.");
+      console.error("âŒ Firebase SDK not loaded. Check index.html script tags.");
       return false;
     }
     if (firebase.apps.length === 0) {
@@ -57,42 +60,46 @@ function initFirebase() {
     _firebaseReady = true;
 
     _db.enablePersistence({ synchronizeTabs: false })
-      .then(() => console.log("✅ Firestore offline persistence enabled"))
+      .then(() => console.log("âœ… Firestore offline persistence enabled"))
       .catch(err => {
         if (err.code === "failed-precondition") {
-          console.warn("⚠️ Multiple tabs open — persistence only in one tab.");
+          console.warn("âš ï¸ Multiple tabs open â€” persistence only in one tab.");
         } else if (err.code === "unimplemented") {
-          console.warn("⚠️ Browser does not support offline persistence.");
+          console.warn("âš ï¸ Browser does not support offline persistence.");
         }
       });
 
-    console.log("✅ Firebase initialized — Project:", FIREBASE_CONFIG.projectId);
+    console.log("âœ… Firebase initialized â€” Project:", FIREBASE_CONFIG.projectId);
     return true;
 
   } catch (err) {
-    console.error("❌ Firebase init failed:", err.message);
+    console.error("âŒ Firebase init failed:", err.message);
     return false;
   }
+  */ // END DISABLED CODE
 }
 
-// ─── HELPERS ─────────────────────────────────────────────────────────────────
+// â”€â”€â”€ HELPERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /** Get Firestore instance (safe) */
 function getDB() {
   if (!_db) throw new Error("Firestore not initialized. Call initFirebase() first.");
   return _db;
+  */ // END DISABLED CODE
 }
 
 /** Get Auth instance (safe) */
 function getAuth() {
   if (!_auth) throw new Error("Firebase Auth not initialized.");
   return _auth;
+  */ // END DISABLED CODE
 }
 
 /** Get Storage instance (safe) */
 function getStorage() {
   if (!_storage) throw new Error("Firebase Storage not initialized.");
   return _storage;
+  */ // END DISABLED CODE
 }
 
 /**
@@ -129,33 +136,38 @@ async function uploadImageToStorage(file, folder = "images", fileName = null, on
       }
     );
   });
+  */ // END DISABLED CODE
 }
 
 /** Check if Firebase config has been filled in */
 function isFirebaseConfigured() {
   return FIREBASE_CONFIG.apiKey !== "YOUR_API_KEY" && _firebaseReady;
+  */ // END DISABLED CODE
 }
 
-/** Convert Firestore doc snapshot → plain object with id */
+/** Convert Firestore doc snapshot â†’ plain object with id */
 function docToObj(doc) {
   if (!doc.exists) return null;
   return { id: doc.id, ...doc.data() };
+  */ // END DISABLED CODE
 }
 
-/** Convert Firestore query snapshot → array of plain objects */
+/** Convert Firestore query snapshot â†’ array of plain objects */
 function snapshotToArray(snapshot) {
   return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  */ // END DISABLED CODE
 }
 
 /** Generate a slug from a string */
 function slugify(str) {
   return str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  */ // END DISABLED CODE
 }
 
-// ─── SEED FIRESTORE WITH INITIAL DATA ────────────────────────────────────────
+// â”€â”€â”€ SEED FIRESTORE WITH INITIAL DATA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 /**
  * Seeds Firestore with INITIAL_DATA from data.js
- * Only runs once — checks if packages collection already has data.
+ * Only runs once â€” checks if packages collection already has data.
  * Call from admin panel or run once manually.
  */
 async function seedFirestoreIfEmpty() {
@@ -165,11 +177,11 @@ async function seedFirestoreIfEmpty() {
   try {
     const pkgSnap = await db.collection(COLLECTIONS.PACKAGES).limit(1).get();
     if (!pkgSnap.empty) {
-      console.log("ℹ️ Firestore already has data — skipping seed.");
+      console.log("â„¹ï¸ Firestore already has data â€” skipping seed.");
       return;
     }
 
-    console.log("🌱 Seeding Firestore with initial data...");
+    console.log("ðŸŒ± Seeding Firestore with initial data...");
     const batch = db.batch();
 
     // Packages
@@ -213,12 +225,13 @@ async function seedFirestoreIfEmpty() {
     });
 
     await batch.commit();
-    console.log("✅ Firestore seeded successfully!");
+    console.log("âœ… Firestore seeded successfully!");
     showToast("Database Seeded", "All initial data loaded into Firestore.");
 
   } catch (err) {
-    console.error("❌ Seed failed:", err.message);
+    console.error("âŒ Seed failed:", err.message);
   }
+  */ // END DISABLED CODE
 }
 
 // Initialize on script load
